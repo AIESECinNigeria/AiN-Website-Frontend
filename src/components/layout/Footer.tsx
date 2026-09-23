@@ -13,8 +13,6 @@ interface GalleryPhoto {
   alt: string;
 }
 
-// These files already have the rotation baked in from Figma — no CSS
-// transform needed or applied here.
 const galleryPhotos: GalleryPhoto[] = [
   { src: "/images/footerPhoto1.png", alt: "AIESEC in Nigeria members at an event" },
   { src: "/images/footerPhoto2.png", alt: "AIESEC in Nigeria members at an event" },
@@ -25,7 +23,7 @@ const galleryPhotos: GalleryPhoto[] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 text-white">
+    <footer className="bg-black text-white">
       {/* Newsletter */}
       <div className="mx-auto px-6 pt-16 lg:px-20">
         <div className="flex flex-col justify-between gap-8 pb-14 lg:flex-row lg:items-end">
@@ -66,7 +64,7 @@ export default function Footer() {
       </div>
 
       <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-x-hidden">
-        <div className="flex h-60 sm:h-80 lg:h-[450px]">
+        <div className="flex h-56 sm:h-72 lg:h-96">
           {galleryPhotos.map((photo) => (
             <div key={photo.src} className="relative flex-1">
               <Image
@@ -81,8 +79,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Link columns — pulled up to overlap the bottom of the photo strip. */}
-      <div className="relative z-10 -mt-28 bg-gray-950 pt-4 sm:-mt-36 lg:-mt-48">
+      <div className="relative z-10 -mt-20 bg-black pt-4 sm:-mt-28 lg:-mt-32">
         <div className="mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-2 gap-10 py-14 sm:grid-cols-3 lg:grid-cols-5">
             <div className="col-span-2 sm:col-span-3 lg:col-span-1">
@@ -130,7 +127,7 @@ function FooterColumn({
           <li key={link.label}>
             <Link
               href={link.href}
-              className="text-sm text-white/70 transition-colors italic hover:text-white"
+              className="text-base text-white/70 transition-colors italic hover:text-white"
             >
               {link.label}
             </Link>

@@ -127,7 +127,7 @@ function NavbarContent() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur transition-shadow ${
+      className={`sticky top-0 z-50 w-full border-b bg-white backdrop-blur transition-shadow ${
         isScrolled ? "border-gray-200 shadow-sm" : "border-transparent"
       }`}
     >
@@ -173,7 +173,7 @@ function NavbarContent() {
 
           <Link
             href="/become-a-partner"
-            className="rounded-full border border-gray-900 px-5 py-2.5 text-base font-medium text-gray-900 transition-colors hover:bg-gray-900 hover:text-white leading-[150%] tracking-[-1%]"
+            className="rounded-full border border-[#5C5C5C] px-5 py-2.5 text-base font-medium text-[#5C5C5C] transition-colors hover:bg-gray-900 hover:text-white leading-[150%] tracking-[-1%]"
           >
             Become a Partner
           </Link>
@@ -192,7 +192,7 @@ function NavbarContent() {
           {isMobileMenuOpen ? (
             <CloseIcon className="size-6 cursor-pointer text-aiesec-blue" />
           ) : (
-            <span className="flex flex-col items-center justify-center gap-1.5">
+            <span className="flex flex-col items-center justify-center gap-1.5 cursor-pointer">
               <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
               <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
               <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
@@ -218,8 +218,8 @@ function NavbarContent() {
                 onClick={closePrograms}
                 className="rounded-xl p-3 transition-colors hover:bg-gray-50"
               >
-                <p className="text-lg font-medium text-gray-900">{program.label}</p>
-                <p className="mt-1 text-xs leading-snug text-gray-500">
+                <p className="text-lg font-medium text-black">{program.label}</p>
+                <p className="mt-1 text-xs leading-snug text-[#5C5C5C]">
                   {program.description}
                 </p>
               </Link>
