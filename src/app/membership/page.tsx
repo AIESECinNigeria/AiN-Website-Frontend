@@ -1,3 +1,5 @@
+import Focus from "@/components/Membership/Focus";
+import Reviews from "@/components/Membership/Reviews";
 import ScrollRevealHero from "@/components/Membership/ScrollRevealHero";
 import type { ScatteredPhoto } from "@/components/Membership/ScrollRevealHero";
 
@@ -17,7 +19,7 @@ const photos: ScatteredPhoto[] = [
 
 export default function MembershipPage() {
   return (
-    <main>
+    <main className = "bg-white">
       <section aria-labelledby="membership-heading">
         <ScrollRevealHero
           photos={photos}
@@ -29,6 +31,8 @@ export default function MembershipPage() {
           ]}
           cta={{ label: "Join Waitlist", href: "/waitlist" }}
         />
+        <Focus />
+        <Reviews />
       </section>
     </main>
   );

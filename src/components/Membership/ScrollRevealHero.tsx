@@ -63,7 +63,7 @@ export default function ScrollRevealHero({ photos, segments, cta }: ScrollReveal
 
   return (
     <div ref={containerRef} style={{ height: `${PINNED_HEIGHT_VH}vh` }} className="relative">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#f2f1ee]">
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
         {photos.map((photo, index) => (
           <ScatteredPhotoItem key={photo.src} photo={photo} index={index} scrollYProgress={scrollYProgress} />
         ))}
