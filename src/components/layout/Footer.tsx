@@ -50,11 +50,11 @@ export default function Footer() {
                 type="email"
                 required
                 placeholder="e.g johnemmanuel@gmail.com"
-                className="w-full min-w-0 flex-1 rounded-full px-4 py-2 text-lg text-white bg-[#3A3A3A] placeholder-[#C0C0C0] outline-none"
+                className="w-full min-w-0 flex-1 rounded-full px-6 py-4 text-lg text-white bg-[#3A3A3A] placeholder-[#C0C0C0] outline-none"
               />
               <button
                 type="submit"
-                className="shrink-0 rounded-full bg-[#C0C0C0] px-5 py-2.5 text-sm font-medium text-[#222222] transition-colors leading-[150%] tracking-[-1%]"
+                className="shrink-0 rounded-full bg-[#C0C0C0] px-6 py-4 text-lg font-medium text-[#222222] transition-colors leading-[150%] tracking-[-1%]"
               >
                 Subscribe
               </button>
@@ -83,7 +83,7 @@ export default function Footer() {
         <div className="mx-auto px-6 lg:px-20">
           <div className="grid grid-cols-2 gap-10 py-14 sm:grid-cols-3 lg:grid-cols-5">
             <div className="col-span-2 sm:col-span-3 lg:col-span-1">
-              <Image src="/logoWhite.svg" alt="AIESEC in Nigeria" width={100} height={40} />
+              <Image src="/svgs/logoWhite.svg" alt="AIESEC in Nigeria" width={100} height={40} />
               <address className="mt-4 text-sm italic leading-relaxed text-white/60">
                 {officeAddress.line1}
                 <br />
