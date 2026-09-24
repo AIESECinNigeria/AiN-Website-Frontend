@@ -27,3 +27,10 @@ export const programLinks = [
     description: "Volunteer projects with organizations here in Nigeria.",
   },
 ];
+
+export const transparentNavRoutes: string[] = ["/blog"];
+
+
+export function isNavHiddenRoute(pathname: string): boolean {
+  return pathname.startsWith("/blog/") && pathname !== "/blog/";
+}
