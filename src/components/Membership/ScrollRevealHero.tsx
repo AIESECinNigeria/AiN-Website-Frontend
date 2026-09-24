@@ -30,13 +30,8 @@ export interface ScrollRevealHeroProps {
   cta?: HeroCta;
 }
 
-// How long the section stays pinned before it releases and scrolls away
-// normally — this is scroll distance, not time.
 const PINNED_HEIGHT_VH = 180;
 
-// How far (in px) a photo travels along its own exit direction by the time
-// the sequence completes. Generous on purpose so it clears the viewport
-// regardless of screen size.
 const EXIT_DISTANCE = 700;
 
 function groupIntoLines(segments: HeroSegment[]): HeroSegment[][] {
@@ -81,9 +76,6 @@ export default function ScrollRevealHero({ photos, segments, cta }: ScrollReveal
             ))}
           </h1>
 
-          {/* The button is intentionally NOT tied to scroll — it stays fully
-              visible while the photos move away, and only leaves the screen
-              when the pinned section itself releases and scrolls off. */}
           {cta && (
             <Link
               href={cta.href}
@@ -109,9 +101,6 @@ function HeadlineLine({
   totalLines: number;
   scrollYProgress: MotionValue<number>;
 }) {
-  // Each line fades out in its own scroll window, staggered so earlier
-  // lines finish fading before later ones start — pure opacity, no
-  // movement, per spec ("fade away on their position").
   const windowSize = 0.55 / totalLines;
   const start = 0.08 + lineIndex * (0.35 / totalLines);
   const end = start + windowSize;
@@ -148,10 +137,7 @@ function ScatteredPhotoItem({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // Direction this photo exits in, derived from where it actually sits
-  // relative to center — a top-left photo drifts further up-left, a
-  // bottom-right photo further down-right, etc. Computed once from its
-  // static position, not reactive.
+  // Direction of the photo
   const leftPct = parseFloat(photo.left) || 50;
   const topPct = parseFloat(photo.top) || 50;
   let dirX = leftPct - 50;
@@ -163,19 +149,17 @@ function ScatteredPhotoItem({
   const exitX = useTransform(scrollYProgress, [0.05, 0.85], [0, dirX * EXIT_DISTANCE]);
   const exitY = useTransform(scrollYProgress, [0.05, 0.85], [0, dirY * EXIT_DISTANCE]);
 
-  // Magnetic hover: nudges toward the cursor, springs back, clamped to a
-  // small range so it never drifts far from its resting position.
+  // Magnetic hover
   const hoverX = useMotionValue(0);
   const hoverY = useMotionValue(0);
   const springX = useSpring(hoverX, { stiffness: 200, damping: 18 });
   const springY = useSpring(hoverY, { stiffness: 200, damping: 18 });
 
-  // Combine the scroll-driven exit with the hover nudge into one final
-  // position, so both can apply to the same element at once.
+  // Combined scroll driven exit
   const x = useTransform(() => exitX.get() + springX.get());
   const y = useTransform(() => exitY.get() + springY.get());
 
-  const MAX_OFFSET = 14; // px — hover nudge range, "just a little bit"
+  const MAX_OFFSET = 14; 
 
   function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
     const rect = ref.current?.getBoundingClientRect();

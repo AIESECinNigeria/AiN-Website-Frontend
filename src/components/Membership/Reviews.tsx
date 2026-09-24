@@ -75,14 +75,13 @@ function ReviewCard({ review }: { review: Review }) {
         sizes="(min-width: 1024px) 25vw, (min-width: 640px) 46vw, 68vw"
         className="object-cover"
       />
-
-      {/* default state: name/role over a plain dark scrim, no color */}
+{/* default state */}
       <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-3 pb-3 pt-8 sm:px-5 sm:pb-5 sm:pt-12">
         <p className="text-xs font-bold text-white sm:text-base">{review.name}</p>
         <p className="text-[11px] text-white/80 sm:text-sm">{review.role}</p>
       </div>
 
-      {/* hover state: colored asset slides up from below, hidden entirely otherwise */}
+{/* hover state */}
       <div
         className={`absolute inset-x-0 bottom-0 z-20 transition-transform duration-500 ease-out ${
           hovered ? "translate-y-0" : "translate-y-full"
