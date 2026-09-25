@@ -1,4 +1,3 @@
-// components/Blog/BlogDetail.tsx
 "use client";
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -19,8 +18,8 @@ function ShareRow({ post }: { post: BlogPost }) {
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <span className="text-sm font-medium text-gray-700">Share this blog</span>
+    <div className="flex flex-col gap-2 mt-4 md:mt-0">
+      <span className="text-base sm:text-lg lg:text-xl font-semibold text-[#00000E]">Share this blog</span>
 
       <div className="flex flex-wrap items-center gap-3">
         <button
@@ -99,7 +98,7 @@ function RelatedCard({ post }: { post: BlogPost }) {
 
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <p className="text-base italic text-[#5C5C5C]">
+          <p className="text-base italic text-[#5C5C5C] font-semibold">
             Written by {post.authors.join(" and ")}
           </p>
           <p className="text-base italic text-[#5C5C5C]">{post.publishedAt}</p>
@@ -166,27 +165,27 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
         <div className="mx-auto flex flex-col gap-6">
           <Link
             href="/blog"
-            className="inline-flex w-fit items-center gap-1 text-sm font-medium text-gray-600 hover:text-aiesec-blue"
+            className="inline-flex w-fit items-center gap-1 text-base font-medium text-[#00000E] hover:text-aiesec-blue leading-[150%] tracking-[-1%]"
           >
             <ArrowLeftIcon className="size-4" />
             Back
           </Link>
 
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
-            <div className="flex flex-col gap-4 w-[67%]">
-              <p className="text-sm text-gray-500">
+            <div className="flex flex-col gap-4 w-full md:w-[67%]">
+              <p className="text-sm text-[#5C5C5C]">
                 Published {post.publishedAt} &middot; {post.readTime}
               </p>
 
-              <h1 className="text-3xl font-bold leading-[120%] tracking-[-1%] text-gray-900 sm:text-4xl">
+              <h1 className="text-3xl font-bold leading-[120%] tracking-[-1%] text-[#00000E] sm:text-4xl lg:text-5xl">
                 {post.title}
               </h1>
 
-              <p className="text-base leading-relaxed text-[#5C5C5C] sm:text-lg">
+              <p className="text-base leading-[150%] tracking-[-1%] text-[#5C5C5C] sm:text-lg lg:text-xl font-medium">
                 {post.excerpt}
               </p>
 
-              <p className="text-sm italic text-gray-500">
+              <p className="text-sm sm:text-base lg:text-lg italic text-[#5C5C5C] leading-6 tracking-[-1%]">
                 Written by {post.authors.join(" and ")}
               </p>
             </div>
@@ -210,7 +209,7 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
                 return (
                   <p
                     key={index}
-                    className="text-base leading-relaxed text-[#5C5C5C] sm:text-lg"
+                    className="text-base leading-[170%] tracking-[-1%] text-[#363636] sm:text-lg lg:text-xl"
                   >
                     {block.text}
                   </p>
@@ -229,7 +228,7 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
                     />
                   </div>
                   {block.caption && (
-                    <figcaption className="text-center text-sm text-gray-500">
+                    <figcaption className="text-center text-sm text-[#5C5C5C]">
                       {block.caption}
                     </figcaption>
                   )}

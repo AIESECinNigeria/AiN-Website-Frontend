@@ -18,7 +18,7 @@ export default function BlogHero() {
           {/* [ "Leading Out Loud" lettering SVG ] */}
         </div>
 
-        <p className="w-full lg:w-[35%] text-lg leading-[150%] tracking-[-2%] text-white md:text-2xl">
+        <p className="w-[70%] lg:w-[35%] text-xl leading-[150%] tracking-[-2%] text-white md:text-2xl">
           Real stories. Bold perspectives. Conversations with people shaping the future.
         </p>
 

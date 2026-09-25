@@ -10,7 +10,7 @@ const categories: Array<BlogCategory | "All Articles"> = ["All Articles", "Leade
 function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-4">
-      <div className="relative aspect-4/3 w-full overflow-hidden rounded-[20px] bg-gray-100">
+      <div className="relative h-50 w-full overflow-hidden rounded-[20px] bg-gray-100 sm:h-auto sm:aspect-4/3">
         <Image
           src={post.coverImage}
           alt={post.title}
@@ -57,7 +57,7 @@ export default function BlogGrid() {
 
   return (
     <section className="px-6 py-16 lg:px-20 lg:py-24">
-      <div className="mx-auto flex flex-col items-center gap-4 text-center">
+      <div className="mx-auto flex flex-col items-start md:items-center gap-2 md:gap-4 text-left md:text-center">
         <h2 className="text-3xl font-extrabold leading-18 tracking-[-2%] text-aiesec-blue sm:text-4xl lg:text-5xl">
           Our Blog
         </h2>
@@ -69,7 +69,7 @@ export default function BlogGrid() {
       </div>
 
       <div className="mx-auto mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 order-2 md:order-1">
           {categories.map((category) => {
             const isActive = activeCategory === category;
             return (
@@ -80,7 +80,7 @@ export default function BlogGrid() {
                   setActiveCategory(category);
                   setVisibleCount(PAGE_SIZE);
                 }}
-                className={`cursor-pointer rounded-full px-5 py-2.5 text-lg font-medium transition-colors hover:scale-105 ${
+                className={`cursor-pointer rounded-full px-5 py-2.5 text-sm md:text-lg font-medium transition-colors hover:scale-105 ${
                   isActive ? "border-aiesec-blue bg-aiesec-blue text-white" : "bg-[#F4F4F4] text-[#5C5C5C]"
                 }`}
               >
@@ -90,7 +90,7 @@ export default function BlogGrid() {
           })}
         </div>
 
-        <div className="relative w-full md:w-[30%]">
+        <div className="relative w-full md:w-[30%] order-1 md:order-2">
           <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#5C5C5C]" />
           <input
             type="search"
@@ -100,7 +100,7 @@ export default function BlogGrid() {
               setVisibleCount(PAGE_SIZE);
             }}
             placeholder="Search"
-            className="w-full rounded-full border-[#D9D9D9] bg-[#F0F0F0] py-3 pl-9 pr-6 text-base text-[#5C5C5C] outline-none focus:border-aiesec-blue"
+            className="w-full rounded-full border-[#D9D9D9] bg-[#F0F0F0] py-3 pl-9 pr-6 text-sm md:text-base text-[#5C5C5C] outline-none focus:border-aiesec-blue"
           />
         </div>
       </div>

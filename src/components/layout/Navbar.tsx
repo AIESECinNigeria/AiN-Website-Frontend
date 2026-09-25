@@ -24,7 +24,11 @@ function NavbarContent() {
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
   const isTransparentRoute = transparentNavRoutes.includes(pathname);
-  const showOverlayStyle = isTransparentRoute && !isScrolled;
+  // The header stays see-through only while nothing is open over it — once the
+  // mobile menu or the desktop Programs dropdown opens, force the solid white
+  // bar so there's never a transparent/black strip sitting above a white panel.
+  const isMenuOpen = isMobileMenuOpen || isProgramsOpen;
+  const showOverlayStyle = isTransparentRoute && !isScrolled && !isMenuOpen;
 
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -202,7 +206,9 @@ function NavbarContent() {
               aria-haspopup="true"
               aria-expanded={isProgramsOpen}
               aria-controls="programs-menu"
-              className="flex items-center gap-1 text-lg font-medium text-[#5C5C5C] transition-colors cursor-pointer hover:text-aiesec-blue"
+              className={`flex items-center gap-1 text-lg font-medium transition-colors duration-500 ease-in-out cursor-pointer ${
+                showOverlayStyle ? "text-white hover:text-white/80" : "text-[#5C5C5C] hover:text-aiesec-blue"
+              }`}
             >
               Programs
               <ChevronIcon
