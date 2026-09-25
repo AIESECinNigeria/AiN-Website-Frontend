@@ -27,6 +27,7 @@ function NavbarContent() {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const programsTriggerRef = useRef<HTMLButtonElement>(null);
   const programsMenuRef = useRef<HTMLDivElement>(null);
+  const programsCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Throttle scroll state updates to one per animation frame.
   useEffect(() => {
@@ -62,8 +63,19 @@ function NavbarContent() {
   }, []);
 
   const closePrograms = useCallback(() => {
+    if (programsCloseTimerRef.current) clearTimeout(programsCloseTimerRef.current);
     setIsProgramsOpen(false);
   }, []);
+
+  const openPrograms = () => {
+    if (programsCloseTimerRef.current) clearTimeout(programsCloseTimerRef.current);
+    setIsProgramsOpen(true);
+  };
+
+  const scheduleProgramsClose = () => {
+    if (programsCloseTimerRef.current) clearTimeout(programsCloseTimerRef.current);
+    programsCloseTimerRef.current = setTimeout(() => setIsProgramsOpen(false), 120);
+  };
 
   // Close the desktop dropdown on outside click and Escape.
   useEffect(() => {
@@ -154,22 +166,33 @@ function NavbarContent() {
             </Link>
           ))}
 
-          <button
-            ref={programsTriggerRef}
-            type="button"
-            onClick={() => setIsProgramsOpen((open) => !open)}
-            aria-haspopup="true"
-            aria-expanded={isProgramsOpen}
-            aria-controls="programs-menu"
-            className="flex items-center gap-1 text-lg font-medium text-[#5C5C5C] transition-colors cursor-pointer hover:text-aiesec-blue"
+          <div
+            onMouseEnter={openPrograms}
+            onMouseLeave={scheduleProgramsClose}
+            onFocus={openPrograms}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                setIsProgramsOpen(false);
+              }
+            }}
           >
-            Programs
-            <ChevronIcon
-              className={`size-4 transition-transform duration-200 cursor-pointer ${
-                isProgramsOpen ? "rotate-180" : ""
-              }`}
-            />
-          </button>
+            <button
+              ref={programsTriggerRef}
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={isProgramsOpen}
+              aria-controls="programs-menu"
+              className="flex items-center gap-1 text-lg font-medium text-[#5C5C5C] transition-colors cursor-pointer hover:text-aiesec-blue"
+            >
+              Programs
+              <ChevronIcon
+                className={`size-4 transition-transform duration-200 cursor-pointer ${
+                  isProgramsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+          </div>
 
           <Link
             href="/become-a-partner"
@@ -207,12 +230,14 @@ function NavbarContent() {
           ref={programsMenuRef}
           role="menu"
           aria-label="Programs"
+          onMouseEnter={openPrograms}
+          onMouseLeave={scheduleProgramsClose}
           className="absolute inset-x-0 top-full hidden border-t border-gray-100 bg-white shadow-xl lg:block"
         >
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2 px-6 py-6 lg:px-20">
             {programLinks.map((program: ProgramLink) => (
               <Link
-                key={program.href}
+                key={program.label}
                 href={program.href}
                 role="menuitem"
                 onClick={closePrograms}
@@ -270,7 +295,7 @@ function NavbarContent() {
               <div className="flex flex-col gap-1 overflow-hidden pl-3">
                 {programLinks.map((program: ProgramLink) => (
                   <Link
-                    key={program.href}
+                    key={program.label}
                     href={program.href}
                     onClick={closeMobileMenu}
                     className="rounded-lg px-3 py-2.5 text-lg font-medium text-gray-600 hover:bg-gray-50"
