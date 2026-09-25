@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import CloudImage from "@/components/CloudImage";
 import {
   companyLinks,
   forYouthsLinks,
@@ -14,11 +15,11 @@ interface GalleryPhoto {
 }
 
 const galleryPhotos: GalleryPhoto[] = [
-  { src: "/images/footerPhoto1.png", alt: "AIESEC in Nigeria members at an event" },
-  { src: "/images/footerPhoto2.png", alt: "AIESEC in Nigeria members at an event" },
-  { src: "/images/footerPhoto3.png", alt: "AIESEC in Nigeria members at an event" },
-  { src: "/images/footerPhoto4.png", alt: "AIESEC in Nigeria members at an event" },
-  { src: "/images/footerPhoto5.png", alt: "AIESEC in Nigeria members at an event" },
+  { src: "ain/footer/gallery-1", alt: "AIESEC in Nigeria members at an event" },
+  { src: "ain/footer/gallery-2", alt: "AIESEC in Nigeria members at an event" },
+  { src: "ain/footer/gallery-3", alt: "AIESEC in Nigeria members at an event" },
+  { src: "ain/footer/gallery-4", alt: "AIESEC in Nigeria members at an event" },
+  { src: "ain/footer/gallery-5", alt: "AIESEC in Nigeria members at an event" },
 ];
 
 export default function Footer() {
@@ -67,13 +68,7 @@ export default function Footer() {
         <div className="flex h-56 sm:h-72 lg:h-96">
           {galleryPhotos.map((photo) => (
             <div key={photo.src} className="relative flex-1">
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                fill
-                sizes="20vw"
-                className="object-cover"
-              />
+              <CloudImage id={photo.src} alt={photo.alt} className="absolute inset-0 h-full w-full object-cover" />
             </div>
           ))}
         </div>

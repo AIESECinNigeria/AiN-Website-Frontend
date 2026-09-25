@@ -7,7 +7,7 @@ export const companyLinks = [
 ];
 
 export const forYouthsLinks = [
-  { label: "Global Volunteer", href: "/programs/global-volunteer" },
+  { label: "Global Volunteer", href: "/ogx" },
   { label: "Global Talent", href: "/programs/global-talent" },
   { label: "Global Teacher", href: "/programs/global-teacher" },
   { label: "National Volunteer", href: "/programs/national-volunteer" },
