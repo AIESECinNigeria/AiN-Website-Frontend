@@ -29,15 +29,15 @@ const previousPartners: PartnerLogo[] = [
 
 function LogoGrid({ logos }: { logos: PartnerLogo[] }) {
   return (
-    <div className="grid grid-cols-3 gap-x-8 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
+    <div className="grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-8 sm:grid-cols-4 sm:justify-items-stretch lg:grid-cols-6">
       {logos.map((logo) => (
-        <div key={logo.name} className="relative aspect-5/2 w-full">
+        <div key={logo.name} className="relative aspect-5/2 w-32 sm:w-full">
           <Image
             src={logo.src}
             alt={logo.name}
             fill
             sizes="16vw"
-            className="object-contain object-left"
+            className="object-contain object-center sm:object-left"
           />
         </div>
       ))}

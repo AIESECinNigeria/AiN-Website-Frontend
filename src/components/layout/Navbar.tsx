@@ -23,19 +23,14 @@ function NavbarContent() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
+  const isTransparentRoute = transparentNavRoutes.includes(pathname);
+  const showOverlayStyle = isTransparentRoute && !isScrolled;
 
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const programsTriggerRef = useRef<HTMLButtonElement>(null);
   const programsMenuRef = useRef<HTMLDivElement>(null);
-
-  // Pages listed in nav-data's `transparentNavRoutes` render a dark hero right under
-  // the nav, so the bar itself starts see-through with light text and only turns into
-  // the normal white bar once the page is scrolled (or once a menu is open, so the
-  // dropdowns are always readable against a solid background).
-  const isTransparentRoute = transparentNavRoutes.includes(pathname);
-  const isMenuOpen = isMobileMenuOpen || isProgramsOpen;
-  const showOverlayStyle = isTransparentRoute && !isScrolled && !isMenuOpen;
+  const programsCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Throttle scroll state updates to one per animation frame.
   useEffect(() => {
@@ -71,8 +66,19 @@ function NavbarContent() {
   }, []);
 
   const closePrograms = useCallback(() => {
+    if (programsCloseTimerRef.current) clearTimeout(programsCloseTimerRef.current);
     setIsProgramsOpen(false);
   }, []);
+
+  const openPrograms = () => {
+    if (programsCloseTimerRef.current) clearTimeout(programsCloseTimerRef.current);
+    setIsProgramsOpen(true);
+  };
+
+  const scheduleProgramsClose = () => {
+    if (programsCloseTimerRef.current) clearTimeout(programsCloseTimerRef.current);
+    programsCloseTimerRef.current = setTimeout(() => setIsProgramsOpen(false), 120);
+  };
 
   // Close the desktop dropdown on outside click and Escape.
   useEffect(() => {
@@ -180,24 +186,33 @@ function NavbarContent() {
             );
           })}
 
-          <button
-            ref={programsTriggerRef}
-            type="button"
-            onClick={() => setIsProgramsOpen((open) => !open)}
-            aria-haspopup="true"
-            aria-expanded={isProgramsOpen}
-            aria-controls="programs-menu"
-            className={`flex cursor-pointer items-center gap-1 text-lg font-medium transition-colors duration-500 ease-in-out ${
-              showOverlayStyle ? "text-white hover:text-white/80" : "text-[#5C5C5C] hover:text-aiesec-blue"
-            }`}
+          <div
+            onMouseEnter={openPrograms}
+            onMouseLeave={scheduleProgramsClose}
+            onFocus={openPrograms}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                setIsProgramsOpen(false);
+              }
+            }}
           >
-            Programs
-            <ChevronIcon
-              className={`size-4 cursor-pointer transition-transform duration-200 ${
-                isProgramsOpen ? "rotate-180" : ""
-              }`}
-            />
-          </button>
+            <button
+              ref={programsTriggerRef}
+              type="button"
+              aria-haspopup="true"
+              aria-expanded={isProgramsOpen}
+              aria-controls="programs-menu"
+              className="flex items-center gap-1 text-lg font-medium text-[#5C5C5C] transition-colors cursor-pointer hover:text-aiesec-blue"
+            >
+              Programs
+              <ChevronIcon
+                className={`size-4 transition-transform duration-200 cursor-pointer ${
+                  isProgramsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+          </div>
 
           <Link
             href="/become-a-partner"
@@ -222,22 +237,22 @@ function NavbarContent() {
           aria-controls="mobile-menu"
         >
           {isMobileMenuOpen ? (
-            <CloseIcon className="size-6 cursor-pointer text-aiesec-blue" />
+            <CloseIcon className="size-6 cursor-pointer text-black" />
           ) : (
             <span className="flex cursor-pointer flex-col items-center justify-center gap-1.5">
               <span
                 className={`block h-0.5 w-6 rounded-full transition-colors duration-500 ease-in-out ${
-                  showOverlayStyle ? "bg-white" : "bg-aiesec-blue"
+                  showOverlayStyle ? "bg-white" : "bg-black"
                 }`}
               />
               <span
                 className={`block h-0.5 w-6 rounded-full transition-colors duration-500 ease-in-out ${
-                  showOverlayStyle ? "bg-white" : "bg-aiesec-blue"
+                  showOverlayStyle ? "bg-white" : "bg-black"
                 }`}
               />
               <span
                 className={`block h-0.5 w-6 rounded-full transition-colors duration-500 ease-in-out ${
-                  showOverlayStyle ? "bg-white" : "bg-aiesec-blue"
+                  showOverlayStyle ? "bg-white" : "bg-black"
                 }`}
               />
             </span>
@@ -251,12 +266,14 @@ function NavbarContent() {
           ref={programsMenuRef}
           role="menu"
           aria-label="Programs"
+          onMouseEnter={openPrograms}
+          onMouseLeave={scheduleProgramsClose}
           className="absolute inset-x-0 top-full hidden border-t border-gray-100 bg-white shadow-xl lg:block"
         >
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2 px-6 py-6 lg:px-20">
             {programLinks.map((program: ProgramLink) => (
               <Link
-                key={program.href}
+                key={program.label}
                 href={program.href}
                 role="menuitem"
                 onClick={closePrograms}
@@ -314,7 +331,7 @@ function NavbarContent() {
               <div className="flex flex-col gap-1 overflow-hidden pl-3">
                 {programLinks.map((program: ProgramLink) => (
                   <Link
-                    key={program.href}
+                    key={program.label}
                     href={program.href}
                     onClick={closeMobileMenu}
                     className="rounded-lg px-3 py-2.5 text-lg font-medium text-gray-600 hover:bg-gray-50"

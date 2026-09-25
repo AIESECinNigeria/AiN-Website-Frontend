@@ -27,13 +27,14 @@ export default function Hero({
   align = "left",
   className = "",
 }: HeroProps) {
+  const centered = align === "center";
   return (
     <section
-      className={`px-6 py-16 lg:px-20 ${
-        align === "center" ? "mx-auto max-w-3xl text-center" : "text-left"
+      className={`px-6 py-16 lg:px-20 lg:py-24 ${
+        centered ? "mx-auto max-w-4xl text-center" : "text-left"
       } ${className}`}
     >
-      <h1 className="text-3xl font-bold leading-18 tracking-[-2%] text-black sm:text-4xl lg:text-6xl">
+      <h1 className="text-3xl font-bold leading-[120%] tracking-[-1%] text-black sm:text-4xl lg:text-[3.25rem]">
         {segments.map((segment, index) => {
           if (segment.type === "break") return <br key={index} />;
           if (segment.type === "text") return <span key={index}>{segment.value}</span>;
@@ -49,7 +50,11 @@ export default function Hero({
       </h1>
 
       {description && (
-        <p className="mt-4 w-full max-w-none text-lg text-[#5C5C5C] lg:text-xl">
+        <p
+          className={`mt-5 max-w-2xl text-lg text-gray-500 lg:text-xl ${
+            centered ? "mx-auto" : ""
+          }`}
+        >
           {description}
         </p>
       )}
@@ -57,7 +62,7 @@ export default function Hero({
       {cta && (
         <Link
           href={cta.href}
-          className="mt-6 inline-flex items-center justify-center rounded-full bg-aiesec-blue px-6 py-3 text-lg font-normal text-white transition-colors hover:bg-aiesec-blue/90"
+          className="mt-8 inline-flex items-center justify-center rounded-full bg-aiesec-blue px-8 py-3.5 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90"
         >
           {cta.label}
         </Link>

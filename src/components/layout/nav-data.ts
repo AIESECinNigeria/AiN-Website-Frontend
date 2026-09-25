@@ -8,22 +8,22 @@ export const navLinks = [
 export const programLinks = [
   {
     label: "Global Volunteer",
-    href: "/programs/global-volunteer",
-    description: "Short-term volunteer projects tackling the SDGs abroad.",
+    href: "/ogx",
+    description: "Explore global volunteer, talent, and teacher exchanges.",
   },
   {
     label: "Global Talent",
-    href: "/programs/global-talent",
+    href: "/ogx",
     description: "Paid professional internships with international companies.",
   },
   {
     label: "Global Teacher",
-    href: "/programs/global-teacher",
+    href: "/ogx",
     description: "Teaching internships that build cross-cultural classrooms.",
   },
   {
     label: "National Volunteer",
-    href: "/programs/national-volunteer",
+    href: "/ogx",
     description: "Volunteer projects with organizations here in Nigeria.",
   },
 ];

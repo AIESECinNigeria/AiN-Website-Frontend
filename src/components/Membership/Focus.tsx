@@ -55,7 +55,7 @@ export default function Focus() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-2xl font-extrabold text-aiesec-blue sm:text-3xl lg:text-5xl leading-[120%] tracking-[-1%]"
+          className="text-[28px] font-extrabold text-aiesec-blue sm:text-4xl lg:text-5xl leading-[130%] tracking-[-1%]"
         >
           Our Focus
         </motion.h2>
@@ -72,15 +72,15 @@ export default function Focus() {
                 ease: "easeOut",
                 delay: index * 0.2,
               }}
-              className="rounded-3xl cursor-pointer bg-white p-4 shadow-sm lg:p-8 flex flex-col gap-4"
+              className="rounded-2xl cursor-pointer bg-white p-4 shadow-sm lg:p-8 flex flex-col gap-4"
             >
-              <h3 className="text-lg font-bold text-[#00000E] lg:text-2xl">
+              <h3 className="text-xl font-bold text-[#00000E] lg:text-2xl">
                 {area.title}
               </h3>
-              <p className="text-xl leading-[150%] text-[#5C5C5C]">
+              <p className="text-base lg:text-xl leading-[150%] tracking-[-1%] text-[#5C5C5C]">
                 {area.description}
               </p>
-              <p className="text-xl italic font-medium text-[#00000E]">
+              <p className="text-base lg:text-xl leading-[150%] tracking-[-1%] italic font-medium text-[#00000E]">
                 {area.skills.join(" · ")}
               </p>
             </motion.div>

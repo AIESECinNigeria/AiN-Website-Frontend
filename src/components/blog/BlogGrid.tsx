@@ -1,4 +1,3 @@
-// components/Blog/BlogGrid.tsx
 "use client";
 import { useMemo, useState } from "react";
 import Link from "next/link";
@@ -53,7 +52,8 @@ export default function BlogGrid() {
   }, [activeCategory, search]);
 
   const visiblePosts = filteredPosts.slice(0, visibleCount);
-  const hasMore = visibleCount < filteredPosts.length;
+
+  const hasMore = filteredPosts.length >= PAGE_SIZE;
 
   return (
     <section className="px-6 py-16 lg:px-20 lg:py-24">

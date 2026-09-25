@@ -66,7 +66,7 @@ function ReviewCard({ review }: { review: Review }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative h-[70vh] md:h-[60vh] w-[68%] cursor-pointer flex-shrink-0 snap-start overflow-hidden rounded-2xl bg-black sm:w-[46%] sm:rounded-3xl lg:w-[calc((100%-4.5rem)/3.5)]"
+      className="relative h-[50vh] md:h-[60vh] w-[60%] md:w-[68%] cursor-pointer shrink-0 snap-start overflow-hidden rounded-2xl bg-black sm:w-[46%] sm:rounded-3xl lg:w-[calc((100%-4.5rem)/3.5)]"
     >
       <Image
         src={review.photo}
@@ -77,8 +77,8 @@ function ReviewCard({ review }: { review: Review }) {
       />
 {/* default state */}
       <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-3 pb-3 pt-8 sm:px-5 sm:pb-5 sm:pt-12">
-        <p className="text-xs font-bold text-white sm:text-base">{review.name}</p>
-        <p className="text-[11px] text-white/80 sm:text-sm">{review.role}</p>
+        <h3 className="text-lg font-bold text-white md:text-xl leading-7">{review.name}</h3>
+            <p className="text-base text-[#EEEEEE] md:text-xl">{review.role}</p>
       </div>
 
 {/* hover state */}
@@ -87,14 +87,18 @@ function ReviewCard({ review }: { review: Review }) {
           hovered ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <img src={ReviewBg[review.color]} alt="" className="block h-auto w-full" />
-        <div className="absolute inset-0 flex flex-col justify-end gap-1.5 px-3 pb-3 pt-5 sm:gap-3 sm:px-5 sm:pb-5 sm:pt-8">
-          <p className="text-xs leading-snug text-white sm:text-sm sm:leading-relaxed">
+        <Image
+          src={ReviewBg[review.color]}
+          alt=""
+          className="block w-full h-auto"
+        />
+        <div className="absolute inset-0 flex flex-col justify-end gap-1.5 px-3 pb-3 pt-2 sm:gap-3 sm:px-5 sm:pb-5">
+          <p className="text-base text-white md:text-xl leading-[150%] tracking-[-1%] line-clamp-4">
             {review.quote}
           </p>
           <div>
-            <p className="text-xs font-bold text-white sm:text-base">{review.name}</p>
-            <p className="text-[11px] text-white/80 sm:text-sm">{review.role}</p>
+            <h3 className="text-lg font-bold text-white md:text-xl leading-7">{review.name}</h3>
+            <p className="text-base text-[#EEEEEE] md:text-xl">{review.role}</p>
           </div>
         </div>
       </div>
@@ -105,7 +109,7 @@ function ReviewCard({ review }: { review: Review }) {
 export default function Reviews() {
   return (
     <section className="py-10 sm:py-16 lg:py-24">
-      <h2 className="mb-6 px-4 text-xl font-extrabold leading-[120%] tracking-[-1%] text-aiesec-blue sm:mb-10 sm:px-6 sm:text-3xl lg:px-20 lg:text-5xl">
+      <h2 className="mb-6 px-4 text-[28px] font-extrabold leading-[130%] tracking-[-1%] text-aiesec-blue sm:mb-10 sm:px-6 sm:text-4xl lg:px-20 lg:text-5xl">
         Reviews from Members
       </h2>
 
