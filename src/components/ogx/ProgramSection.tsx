@@ -84,17 +84,17 @@ export default function ProgramSection({
             alt={imageAlt}
             className="aspect-square w-full rounded-2xl object-cover"
           />
-          <div className="absolute right-4 top-4 pt-6 flex items-center gap-2 rounded-xl bg-white px-3 py-2 shadow-sm">
+          <div className="absolute right-4 top-0 pt-8 flex items-center gap-2 rounded-b-lg bg-white px-3 py-2 shadow-sm">
             <SwirlMark color={accent} />
             <div>
               <p
-                className="text-[11px] font-semibold leading-none"
+                className="text-base font-medium leading-none"
                 style={{ color: accent }}
               >
                 Global
               </p>
               <p
-                className="text-sm font-extrabold leading-tight"
+                className="text-lg font-extrabold leading-tight"
                 style={{ color: accent }}
               >
                 {badgeBottom}
