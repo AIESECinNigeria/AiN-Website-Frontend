@@ -9,22 +9,34 @@ export const programLinks = [
   {
     label: "Global Volunteer",
     href: "/ogx",
-    description: "Explore global volunteer, talent, and teacher exchanges.",
   },
   {
     label: "Global Talent",
     href: "/ogx",
-    description: "Paid professional internships with international companies.",
   },
   {
     label: "Global Teacher",
     href: "/ogx",
-    description: "Teaching internships that build cross-cultural classrooms.",
   },
   {
     label: "National Volunteer",
-    href: "/ogx",
-    description: "Volunteer projects with organizations here in Nigeria.",
+    href: "/nv",
+  },
+   {
+    label: "Youth Speak Forum",
+    href: "/ysf",
+  },
+   {
+    label: "Global Money Week",
+    href: "/gmw",
+  },
+   {
+    label: "International Youth Day",
+    href: "/iyd",
+  },
+   {
+    label: "Leadership Summit",
+    href: "/leadership-summit",
   },
 ];
 

@@ -2,39 +2,47 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { blogPosts, type BlogCategory, type BlogPost } from "./blog-data";
 
 const PAGE_SIZE = 6;
 const categories: Array<BlogCategory | "All Articles"> = ["All Articles", "Leadership", "Interview"];
 
-function BlogCard({ post }: { post: BlogPost }) {
+function BlogCard({ post, index }: { post: BlogPost; index: number }) {
   return (
-    <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-4">
-      <div className="relative h-50 w-full overflow-hidden rounded-[20px] bg-gray-100 sm:h-auto sm:aspect-4/3">
-        <Image
-          src={post.coverImage}
-          alt={post.title}
-          fill
-          sizes="(min-width: 1024px) 32vw, (min-width: 640px) 46vw, 100vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
-        <span className="absolute right-3 bottom-3 flex size-8 items-center justify-center rounded-full bg-white text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <ArrowUpRightIcon className="size-4" />
-        </span>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center justify-between">
-          <p className="text-base italic text-[#5C5C5C]">Written by {post.authors.join(" and ")}</p>
-          <p className="text-base italic text-[#5C5C5C]">{post.publishedAt}</p>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.3 }}
+      transition={{ duration: 0.6, ease: "easeOut", delay: (index % 3) * 0.15 }}
+    >
+      <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-4">
+        <div className="relative h-50 w-full overflow-hidden rounded-[20px] bg-gray-100 sm:h-auto sm:aspect-4/3">
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            fill
+            sizes="(min-width: 1024px) 32vw, (min-width: 640px) 46vw, 100vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
+          <span className="absolute right-3 bottom-3 flex size-8 items-center justify-center rounded-full bg-white text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <ArrowUpRightIcon className="size-4" />
+          </span>
         </div>
-        <h3 className="text-xl font-bold leading-8 tracking-[-1%] text-[#00000E]">{post.title}</h3>
-        <p className="line-clamp-3 text-base font-medium leading-[150%] tracking-[-1%] text-[#5C5C5C]">
-          {post.excerpt}
-        </p>
-      </div>
-    </Link>
+
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            <p className="text-base italic text-[#5C5C5C]">Written by {post.authors.join(" and ")}</p>
+            <p className="text-base italic text-[#5C5C5C]">{post.publishedAt}</p>
+          </div>
+          <h3 className="text-xl font-bold leading-8 tracking-[-1%] text-[#00000E]">{post.title}</h3>
+          <p className="line-clamp-3 text-base font-medium leading-[150%] tracking-[-1%] text-[#5C5C5C]">
+            {post.excerpt}
+          </p>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
 
@@ -106,8 +114,8 @@ export default function BlogGrid() {
       </div>
 
       <div className="mx-auto mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-        {visiblePosts.map((post) => (
-          <BlogCard key={post.slug} post={post} />
+        {visiblePosts.map((post, index) => (
+          <BlogCard key={post.slug} post={post} index={index} />
         ))}
       </div>
 
