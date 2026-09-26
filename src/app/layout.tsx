@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Marquee from "@/components/Membership/Marquee";
 import "./globals.css";
 
 const lato = Lato({
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${lato.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans overflow-x-hidden">
+        <Marquee />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

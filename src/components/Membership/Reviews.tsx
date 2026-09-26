@@ -42,21 +42,13 @@ const reviews: Review[] = [
     color: "orange",
   },
   {
-    name: "Eniola Olakunle",
-    role: "AIESEC in Ibadan",
+    name: "Ubahakwe Chisom Favour",
+    role: "AIESEC in Enugu",
     quote:
-      "AIESEC gave me my first experience of how a well-structured organisation works.",
+      "I joined AIESEC with beginner level skills and left with experiences that helped me land internships, a job, and helped me have a softer transition to the corporate world.",
     photo: "/reviews/eniola.jpg",
     color: "blue",
-  },
-  {
-    name: "Fadlu",
-    role: "AIESEC in Ilorin",
-    quote:
-      "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
-    photo: "/reviews/fadlu.jpg",
-    color: "orange",
-  },
+  }
 ];
 
 function ReviewCard({ review }: { review: Review }) {
@@ -89,7 +81,7 @@ function ReviewCard({ review }: { review: Review }) {
       >
         <Image
           src={ReviewBg[review.color]}
-          alt=""
+          alt="" width={1000} height={1000}
           className="block w-full h-auto"
         />
         <div className="absolute inset-0 flex flex-col justify-end gap-1.5 px-3 pb-3 pt-2 sm:gap-3 sm:px-5 sm:pb-5">
