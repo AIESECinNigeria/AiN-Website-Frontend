@@ -7,14 +7,14 @@ export default function OgxBanner() {
   return (
     <section className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-[#cde5fd]">
       <CloudImage
-        id="ain/ogx/world-map"
+        id="world-map"
         alt=""
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
       />
 
       <div className="relative mx-auto flex h-[440px] max-w-[1512px] items-end justify-center sm:h-[520px] lg:h-[600px]">
         <CloudImage
-          id="ain/ogx/hero-speaker"
+          id="hero-speaker"
           alt="AIESEC in Nigeria member holding a microphone"
           className="h-[94%] w-[280px] object-cover object-top grayscale sm:w-[360px] lg:w-[460px]"
         />
