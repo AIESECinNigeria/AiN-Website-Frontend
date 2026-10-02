@@ -14,11 +14,11 @@ const stats: Stat[] = [
 // Avatars placed along a semicircular dome. Angles are measured from the
 // positive x-axis (90° = apex). x% = 50 + 50·cosθ, y% = 100 − 100·sinθ.
 const avatars = [
-  { id: "ain/home/stat-avatar-1", angle: 90 },
-  { id: "ain/home/stat-avatar-2", angle: 122 },
-  { id: "ain/home/stat-avatar-3", angle: 58 },
-  { id: "ain/home/stat-avatar-4", angle: 158 },
-  { id: "ain/home/stat-avatar-5", angle: 22 },
+  { id: "stat-avatar-1", angle: 90 },
+  { id: "stat-avatar-2", angle: 122 },
+  { id: "stat-avatar-3", angle: 58 },
+  { id: "stat-avatar-4", angle: 158 },
+  { id: "stat-avatar-5", angle: 22 },
 ];
 
 function StatList({ className = "" }: { className?: string }) {
@@ -36,7 +36,7 @@ function StatList({ className = "" }: { className?: string }) {
 
 export default function StatsArc() {
   return (
-    <section className="px-6 pb-16 lg:px-20">
+    <section className="pt-20 px-6 pb-16 lg:px-20">
       {/* Desktop: avatars along an arc with the stats resting near the base */}
       <div className="relative mx-auto hidden aspect-[2/1] max-w-4xl lg:block">
         <svg
@@ -51,8 +51,9 @@ export default function StatsArc() {
 
         {avatars.map((avatar) => {
           const rad = (avatar.angle * Math.PI) / 180;
-          const left = 50 + 50 * Math.cos(rad);
-          const top = 100 - 100 * Math.sin(rad);
+          const radius = avatar.id.endsWith("stat-avatar-2") || avatar.id.endsWith("stat-avatar-3") ? 330 / 396 : 1;
+          const left = 50 + 50 * radius * Math.cos(rad);
+          const top = 100 - 100 * radius * Math.sin(rad);
           return (
             <div
               key={avatar.id}

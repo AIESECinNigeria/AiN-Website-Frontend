@@ -17,7 +17,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "ain/home/blog-1",
+    imageId: "stat-avatar-2",
     href: "/blog",
   },
   {
@@ -26,7 +26,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "ain/home/blog-2",
+    imageId: "stat-avatar-2",
     href: "/blog",
   },
   {
@@ -35,7 +35,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "ain/home/blog-3",
+    imageId: "stat-avatar-5",
     href: "/blog",
   },
 ];
@@ -62,8 +62,8 @@ export default function BlogSection() {
       </div>
 
       <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
-          <Link key={post.imageId} href={post.href} className="group block">
+        {posts.map((post, index) => (
+          <Link key={`${post.title}-${index}`} href={post.href} className="group block">
             <div className="overflow-hidden rounded-xl">
               <CloudImage
                 id={post.imageId}

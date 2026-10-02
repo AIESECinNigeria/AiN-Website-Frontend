@@ -15,11 +15,11 @@ interface GalleryPhoto {
 }
 
 const galleryPhotos: GalleryPhoto[] = [
-  { src: "ain/footer/gallery-1", alt: "AIESEC in Nigeria members at an event" },
-  { src: "ain/footer/gallery-2", alt: "AIESEC in Nigeria members at an event" },
-  { src: "ain/footer/gallery-3", alt: "AIESEC in Nigeria members at an event" },
-  { src: "ain/footer/gallery-4", alt: "AIESEC in Nigeria members at an event" },
-  { src: "ain/footer/gallery-5", alt: "AIESEC in Nigeria members at an event" },
+  { src: "gallery-1", alt: "AIESEC in Nigeria members at an event" },
+  { src: "gallery-2", alt: "AIESEC in Nigeria members at an event" },
+  { src: "gallery-3", alt: "AIESEC in Nigeria members at an event" },
+  { src: "gallery-4", alt: "AIESEC in Nigeria members at an event" },
+  { src: "gallery-5", alt: "AIESEC in Nigeria members at an event" },
 ];
 
 export default function Footer() {
