@@ -10,14 +10,14 @@ interface Member {
 }
 
 const team: Member[] = [
-  { name: "Eniola Olakunle", role: "Country Director", variant: "red", imageId: "ain/about/team-1", aspect: "aspect-[3/4]" },
-  { name: "Adeola Adedara", role: "Finance Manager", variant: "blue", imageId: "ain/about/team-2", aspect: "aspect-[4/5]" },
-  { name: "Toluwalase Agbetuyi", role: "Programs Manager", variant: "red", imageId: "ain/about/team-3", aspect: "aspect-square" },
-  { name: "Ajayi Israel", role: "Product Operations Manager", variant: "blue", imageId: "ain/about/team-4", aspect: "aspect-[3/4]" },
-  { name: "Demilade Adekunle", role: "Marketing Manager", variant: "red", imageId: "ain/about/team-5", aspect: "aspect-[4/5]" },
-  { name: "Sabatha Joshua", role: "Expansions and PR Manager", variant: "blue", imageId: "ain/about/team-6", aspect: "aspect-[3/4]" },
-  { name: "Atiradeoluwa Olaoye", role: "Partnerships Manager", variant: "red", imageId: "ain/about/team-7", aspect: "aspect-square" },
-  { name: "Favour Bassey", role: "Human Resource Manager", variant: "blue", imageId: "ain/about/team-8", aspect: "aspect-[3/4]" },
+  { name: "Eniola Olakunle", role: "Country Director", variant: "red", imageId: "team-1", aspect: "aspect-[3/4]" },
+  { name: "Adeola Adedara", role: "Finance Manager", variant: "blue", imageId: "team-2", aspect: "aspect-[4/5]" },
+  { name: "Toluwalase Agbetuyi", role: "Programs Manager", variant: "red", imageId: "team-3", aspect: "aspect-square" },
+  { name: "Ajayi Israel", role: "Product Operations Manager", variant: "blue", imageId: "team-4", aspect: "aspect-[3/4]" },
+  { name: "Demilade Adekunle", role: "Marketing Manager", variant: "red", imageId: "team-5", aspect: "aspect-[4/5]" },
+  { name: "Sabatha Joshua", role: "Expansions and PR Manager", variant: "blue", imageId: "team-6", aspect: "aspect-[3/4]" },
+  { name: "Atiradeoluwa Olaoye", role: "Partnerships Manager", variant: "red", imageId: "team-7", aspect: "aspect-square" },
+  { name: "Favour Bassey", role: "Human Resource Manager", variant: "blue", imageId: "team-8", aspect: "aspect-[3/4]" },
 ];
 
 /** "We are led by the right people" — a masonry of team photos. The name plate
