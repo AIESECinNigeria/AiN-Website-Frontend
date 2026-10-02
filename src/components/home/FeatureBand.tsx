@@ -8,6 +8,7 @@ export interface FeatureBandProps {
   href: string;
   imageId: string;
   imageAlt: string;
+  imageFormat?: "auto" | "webp";
 }
 
 const bgByVariant: Record<FeatureBandProps["variant"], string> = {
@@ -25,6 +26,7 @@ export default function FeatureBand({
   href,
   imageId,
   imageAlt,
+  imageFormat = "auto",
 }: FeatureBandProps) {
   return (
     <section
@@ -44,6 +46,7 @@ export default function FeatureBand({
           <CloudImage
             id={imageId}
             alt={imageAlt}
+            format={imageFormat}
             className="h-[260px] w-[240px] object-contain object-bottom sm:h-[300px] sm:w-[280px] lg:h-[440px] lg:w-[360px]"
           />
         </div>

@@ -455,7 +455,7 @@ export default function LocationsMap() {
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden">
               <CloudImage
-                id="ain/footer/gallery-1"
+                id="gallery-1"
                 alt="AIESEC members together at a local committee event"
                 className="h-full w-full object-cover"
               />
