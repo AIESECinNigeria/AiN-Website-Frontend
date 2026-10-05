@@ -17,7 +17,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "stat-avatar-2",
+    imageId: "blog-1",
     href: "/blog",
   },
   {
@@ -26,7 +26,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "stat-avatar-2",
+    imageId: "blog-2",
     href: "/blog",
   },
   {
@@ -35,7 +35,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "stat-avatar-5",
+    imageId: "blog-3",
     href: "/blog",
   },
 ];
@@ -68,7 +68,7 @@ export default function BlogSection() {
               <CloudImage
                 id={post.imageId}
                 alt={post.title}
-                className="h-52 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                className="aspect-[434/278] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
               />
             </div>
             <div className="mt-3 flex items-center justify-between text-sm italic text-gray-500">
