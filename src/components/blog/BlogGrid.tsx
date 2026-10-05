@@ -1,0 +1,230 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import CloudImage from "@/components/CloudImage";
+
+interface Article {
+  title: string;
+  author: string;
+  date: string;
+  excerpt: string;
+  imageId: string;
+  category: "Leadership" | "Interview";
+  slug: string;
+}
+
+const articles: Article[] = [
+  {
+    title: "Interview with Henry Tabansi",
+    author: "Written by Mary and Eniola",
+    date: "13 July, 2026",
+    excerpt:
+      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
+    imageId: "blog-1",
+    category: "Interview",
+    slug: "interview-with-henry-tabansi",
+  },
+  {
+    title: "Interview with Henry Tabansi",
+    author: "Written by Mary and Eniola",
+    date: "13 July, 2026",
+    excerpt:
+      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
+    imageId: "blog-2",
+    category: "Interview",
+    slug: "interview-with-henry-tabansi",
+  },
+  {
+    title: "Interview with Henry Tabansi",
+    author: "Written by Mary and Eniola",
+    date: "13 July, 2026",
+    excerpt:
+      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
+    imageId: "blog-3",
+    category: "Leadership",
+    slug: "interview-with-henry-tabansi",
+  },
+  {
+    title: "Interview with Henry Tabansi",
+    author: "Written by Mary and Eniola",
+    date: "13 July, 2026",
+    excerpt:
+      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
+    imageId: "blog-4",
+    category: "Leadership",
+    slug: "interview-with-henry-tabansi",
+  },
+  {
+    title: "Interview with Henry Tabansi",
+    author: "Written by Mary and Eniola",
+    date: "13 July, 2026",
+    excerpt:
+      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
+    imageId: "blog-5",
+    category: "Interview",
+    slug: "interview-with-henry-tabansi",
+  },
+  {
+    title: "Interview with Henry Tabansi",
+    author: "Written by Mary and Eniola",
+    date: "13 July, 2026",
+    excerpt:
+      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
+    imageId: "blog-6",
+    category: "Leadership",
+    slug: "interview-with-henry-tabansi",
+  },
+];
+
+const filters = ["All Articles", "Leadership", "Interview"] as const;
+type Filter = (typeof filters)[number];
+
+/** The "Our Blog" listing: heading, filters, search, and the article grid. */
+export default function BlogGrid() {
+  const [filter, setFilter] = useState<Filter>("All Articles");
+  const [query, setQuery] = useState("");
+  const [visible, setVisible] = useState(6);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return articles.filter((article) => {
+      const matchesFilter =
+        filter === "All Articles" || article.category === filter;
+      const matchesQuery =
+        !q ||
+        article.title.toLowerCase().includes(q) ||
+        article.excerpt.toLowerCase().includes(q);
+      return matchesFilter && matchesQuery;
+    });
+  }, [filter, query]);
+
+  const shown = filtered.slice(0, visible);
+
+  return (
+    <section id="episodes" className="px-6 py-14 lg:px-20 lg:py-20">
+      <h2 className="text-center text-4xl font-bold text-aiesec-blue lg:text-5xl">
+        Our Blog
+      </h2>
+      <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-[165%] text-gray-600 lg:text-lg">
+        AIESEC has shaped countless young lives, and your story could be next.
+        Explore stories and experiences from our community as young people find
+        their voice, build confidence, and grow into leaders.
+      </p>
+
+      {/* Filters + search */}
+      <div className="mx-auto mt-10 flex max-w-[1300px] flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-wrap items-center gap-3">
+          {filters.map((name) => (
+            <button
+              key={name}
+              type="button"
+              onClick={() => {
+                setFilter(name);
+                setVisible(6);
+              }}
+              className={`cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium transition-colors lg:text-base ${
+                filter === name
+                  ? "bg-aiesec-blue text-white"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              {name}
+            </button>
+          ))}
+        </div>
+
+        <div className="relative w-full lg:w-[320px]">
+          <SearchIcon className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-gray-400" />
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setVisible(6);
+            }}
+            placeholder="Search"
+            aria-label="Search articles"
+            className="w-full rounded-full bg-gray-100 py-3 pl-11 pr-5 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
+          />
+        </div>
+      </div>
+
+      {/* Grid */}
+      <div className="mx-auto mt-10 grid max-w-[1300px] gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        {shown.map((article, index) => (
+          <article key={`${article.imageId}-${index}`}>
+            <Link href={`/blog/${article.slug}`} className="group block">
+              <div className="relative overflow-hidden rounded-2xl">
+                <CloudImage
+                  id={article.imageId}
+                  alt={article.title}
+                  className="aspect-[434/278] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+                <span className="absolute bottom-3 right-3 flex size-9 items-center justify-center rounded-full bg-white text-gray-900 opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
+                  <ArrowUpRightIcon className="size-4" />
+                </span>
+              </div>
+              <div className="mt-3 flex items-center justify-between text-sm italic text-gray-500">
+                <span>{article.author}</span>
+                <span>{article.date}</span>
+              </div>
+              <h3 className="mt-2 text-xl font-bold text-gray-900 lg:text-2xl">
+                {article.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500 lg:text-base">
+                {article.excerpt}
+              </p>
+            </Link>
+          </article>
+        ))}
+      </div>
+
+      {filtered.length === 0 && (
+        <p className="mt-12 text-center text-base text-gray-500">
+          No articles match your search.
+        </p>
+      )}
+
+      {visible < filtered.length && (
+        <div className="mt-12 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setVisible((count) => count + 6)}
+            className="cursor-pointer rounded-full bg-aiesec-blue px-8 py-3.5 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90 lg:text-lg"
+          >
+            Load More
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth={2} />
+      <path
+        d="m20 20-3.5-3.5"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowUpRightIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M7 17 17 7M9 7h8v8"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}

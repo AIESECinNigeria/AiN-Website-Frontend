@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 /** Team-member name plate with a scalloped ("wavy") top edge that bites into
  *  the photo above it, matching the AIESEC review-card shape. Colour alternates
  *  red / blue across the team grid. */
@@ -13,7 +15,10 @@ export default function WavyLabel({
   className?: string;
 }) {
   const fill = variant === "red" ? "#f94141" : "#037ef3";
-  const patternId = `wavy-${variant}`;
+  // Both responsive card layouts render in the DOM, so each SVG needs its own
+  // pattern ID. Shared IDs can make desktop waves resolve to the hidden mobile
+  // SVG's pattern and render as a flat edge.
+  const patternId = `wavy-${variant}-${useId().replace(/:/g, "")}`;
 
   return (
     <div className={className} style={{ color: fill }}>
