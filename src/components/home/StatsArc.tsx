@@ -1,27 +1,32 @@
 import CloudImage from "@/components/CloudImage";
 
-interface Stat {
+export interface Stat {
   value: string;
   label: string;
 }
 
-const stats: Stat[] = [
+export interface StatsArcProps {
+  /** Three stats shown near the base of the dome. Defaults to the home figures. */
+  stats?: Stat[];
+}
+
+const defaultStats: Stat[] = [
   { value: "100,000+", label: "youths impacted" },
   { value: "1000+", label: "active volunteers" },
   { value: "15+", label: "cities" },
 ];
 
-// Avatars placed along a semicircular dome. Angles are measured from the
-// positive x-axis (90° = apex). x% = 50 + 50·cosθ, y% = 100 − 100·sinθ.
+// Avatar centres as a percentage of the dome box (1352 × 560), measured
+// directly from the design so the scatter matches exactly.
 const avatars = [
-  { id: "stat-avatar-1", angle: 90 },
-  { id: "stat-avatar-2", angle: 122 },
-  { id: "stat-avatar-3", angle: 58 },
-  { id: "stat-avatar-4", angle: 158 },
-  { id: "stat-avatar-5", angle: 22 },
+  { id: "stat-avatar-1", left: 49.7, top: 7.3 },
+  { id: "stat-avatar-2", left: 35.4, top: 33.0 },
+  { id: "stat-avatar-3", left: 82.8, top: 32.3 },
+  { id: "stat-avatar-4", left: 9.2, top: 58.8 },
+  { id: "stat-avatar-5", left: 90.1, top: 81.6 },
 ];
 
-function StatList({ className = "" }: { className?: string }) {
+function StatList({ stats, className = "" }: { stats: Stat[]; className?: string }) {
   return (
     <div className={`flex justify-center gap-8 text-center sm:gap-12 lg:gap-16 ${className}`}>
       {stats.map((stat) => (
@@ -34,46 +39,43 @@ function StatList({ className = "" }: { className?: string }) {
   );
 }
 
-export default function StatsArc() {
+export default function StatsArc({ stats = defaultStats }: StatsArcProps) {
   return (
-    <section className="pt-20 px-6 pb-16 lg:px-20">
-      {/* Desktop: avatars along an arc with the stats resting near the base */}
-      <div className="relative mx-auto hidden aspect-[2/1] max-w-4xl lg:block">
+    <section className="px-6 pb-16 pt-8 lg:px-20 lg:pt-10">
+      {/* Desktop: avatars scattered over a concentric-arc dome, stats at the base */}
+      <div className="relative mx-auto hidden aspect-[1352/560] w-full max-w-[1352px] lg:block">
         <svg
-          viewBox="0 0 800 400"
+          viewBox="0 0 1352 560"
+          preserveAspectRatio="none"
           className="absolute inset-0 h-full w-full"
           fill="none"
           aria-hidden="true"
         >
-          <path d="M4 400 A 396 396 0 0 1 796 400" stroke="#e6e8eb" strokeWidth="1.5" />
-          <path d="M70 400 A 330 330 0 0 1 730 400" stroke="#eef0f2" strokeWidth="1.5" />
+          <path d="M40 560 A 647 647 0 0 1 1312 560" stroke="#e6e8eb" strokeWidth="1.5" />
+          <path d="M108 560 A 580 580 0 0 1 1244 560" stroke="#eef0f2" strokeWidth="1.5" />
         </svg>
 
-        {avatars.map((avatar) => {
-          const rad = (avatar.angle * Math.PI) / 180;
-          const radius = avatar.id.endsWith("stat-avatar-2") || avatar.id.endsWith("stat-avatar-3") ? 330 / 396 : 1;
-          const left = 50 + 50 * radius * Math.cos(rad);
-          const top = 100 - 100 * radius * Math.sin(rad);
-          return (
-            <div
-              key={avatar.id}
-              className="absolute size-16 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full bg-white p-0.5 shadow-md outline outline-2 outline-aiesec-blue/40"
-              style={{ left: `${left}%`, top: `${top}%` }}
-            >
+        {avatars.map((avatar) => (
+          <div
+            key={avatar.id}
+            className="absolute w-[6.3%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-aiesec-blue p-1 shadow-md"
+            style={{ left: `${avatar.left}%`, top: `${avatar.top}%` }}
+          >
+            <div className="aspect-square overflow-hidden rounded-full bg-white p-0.5">
               <CloudImage
                 id={avatar.id}
                 alt="AIESEC in Nigeria participant"
                 className="h-full w-full rounded-full object-cover"
               />
             </div>
-          );
-        })}
+          </div>
+        ))}
 
-        <StatList className="absolute inset-x-0 bottom-8" />
+        <StatList stats={stats} className="absolute inset-x-0 top-[79%]" />
       </div>
 
       {/* Mobile: stats only */}
-      <StatList className="lg:hidden" />
+      <StatList stats={stats} className="lg:hidden" />
     </section>
   );
 }

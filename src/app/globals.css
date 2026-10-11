@@ -21,9 +21,20 @@
   --color-aiesec-yellow: #ffc845;
   --color-aiesec-gray: #52565e;
   --color-aiesec-red: #f94141;
+  --color-aiesec-cream: #f3e7ce;
+  --color-aiesec-highlight: #e3effb;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }

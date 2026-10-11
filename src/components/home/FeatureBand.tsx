@@ -32,12 +32,12 @@ export default function FeatureBand({
     <section
       className={`relative left-1/2 w-screen -translate-x-1/2 overflow-hidden ${bgByVariant[variant]}`}
     >
-      <div className="mx-auto grid max-w-[1300px] grid-cols-1 gap-8 px-6 py-12 lg:min-h-[440px] lg:grid-cols-3 lg:items-center lg:gap-6 lg:px-20 lg:py-0">
+      <div className="mx-auto grid max-w-[1300px] grid-cols-1 gap-8 px-6 py-12 lg:min-h-[640px] lg:grid-cols-3 lg:items-center lg:gap-6 lg:px-20 lg:py-0">
         <div className="order-1 lg:py-16">
-          <h2 className="text-3xl font-bold leading-[115%] tracking-[-1%] text-white lg:text-4xl">
+          <h2 className="text-3xl font-bold leading-[115%] tracking-[-1%] text-aiesec-cream lg:text-4xl">
             {title}
           </h2>
-          <ArrowLink href={href} className="mt-4 text-white">
+          <ArrowLink href={href} className="mt-4 text-aiesec-cream">
             Learn More
           </ArrowLink>
         </div>
@@ -47,11 +47,11 @@ export default function FeatureBand({
             id={imageId}
             alt={imageAlt}
             format={imageFormat}
-            className="h-[260px] w-[240px] object-contain object-bottom sm:h-[300px] sm:w-[280px] lg:h-[440px] lg:w-[360px]"
+            className="h-[320px] w-[280px] object-contain object-bottom grayscale sm:h-[380px] sm:w-[320px] lg:h-[560px] lg:w-[360px]"
           />
         </div>
 
-        <p className="order-2 text-lg leading-[150%] text-white lg:order-3 lg:py-16">
+        <p className="order-2 text-lg leading-[150%] text-aiesec-cream lg:order-3 lg:py-16">
           {description}
         </p>
       </div>

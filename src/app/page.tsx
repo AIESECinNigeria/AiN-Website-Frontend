@@ -10,12 +10,12 @@ import BlogSection from "@/components/home/BlogSection";
 import Faq from "@/components/home/Faq";
 
 const partners = [
-  "ain/home/partner-1",
-  "ain/home/partner-2",
-  "ain/home/partner-3",
-  "ain/home/partner-4",
-  "ain/home/partner-5",
-  "ain/home/partner-6",
+  "partner-nestle",
+  "partner-trailblaze",
+  "partner-sycamore",
+  "partner-timon",
+  "partner-cocreation",
+  "partner-drench",
 ];
 
 export default function HomePage() {
@@ -76,7 +76,7 @@ export default function HomePage() {
         </div>
 
         {/* Partner logos */}
-        <div className="mx-auto mt-14 flex max-w-5xl flex-wrap items-center justify-center gap-x-12 gap-y-8 lg:justify-between">
+        <div className="mx-auto mt-14 hidden max-w-5xl flex-wrap items-center justify-center gap-x-12 gap-y-8 lg:flex lg:justify-between">
           {partners.map((id) => (
             <CloudImage
               key={id}

@@ -16,7 +16,8 @@ export default function OgxBanner() {
         <CloudImage
           id="hero-speaker"
           alt="AIESEC in Nigeria member holding a microphone"
-          className="h-[94%] w-[280px] object-cover object-top grayscale sm:w-[360px] lg:w-[460px]"
+          grayscale
+          className="h-full w-auto max-w-[62%] object-contain object-bottom grayscale sm:max-w-[48%] lg:max-w-[38%]"
         />
 
         {/* fee callout + arrow */}

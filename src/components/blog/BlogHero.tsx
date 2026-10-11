@@ -21,20 +21,17 @@ export default function BlogHero() {
         </span>
 
         {/* Ribbon lockup */}
-        <div className="relative mt-8 inline-flex items-center justify-center px-8 py-4 lg:px-14 lg:py-6">
-          <span className="absolute inset-0 -skew-y-2 bg-[#1f1f1f]" aria-hidden="true" />
-          <span className="relative flex flex-col items-center leading-[0.85]">
-            <span className="flex items-end gap-1 text-aiesec-yellow">
-              <span className="text-5xl font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
-                Leading
-              </span>
-              <span className="mb-2 text-lg font-bold text-white sm:text-2xl lg:text-3xl">
-                OUT
-              </span>
+        <div className="relative mt-8 flex flex-col items-center">
+          <span className="relative inline-flex -rotate-3 items-end gap-2 bg-[#1b1b1b] px-5 py-1.5">
+            <span className="text-5xl font-extrabold tracking-tight text-aiesec-yellow sm:text-6xl lg:text-7xl">
+              Leading
             </span>
-            <span className="mt-1 text-6xl font-extrabold tracking-tight text-aiesec-yellow sm:text-7xl lg:text-8xl">
-              Loud
+            <span className="pb-2 text-base font-bold uppercase tracking-wide text-white sm:text-xl lg:text-2xl">
+              Out
             </span>
+          </span>
+          <span className="relative -mt-1 inline-block -rotate-3 bg-[#1b1b1b] px-6 py-1 text-6xl font-extrabold tracking-tight text-aiesec-yellow sm:text-7xl lg:text-8xl">
+            Loud
           </span>
         </div>
 
