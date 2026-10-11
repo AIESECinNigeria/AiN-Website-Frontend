@@ -1,19 +1,10 @@
-import { notFound } from "next/navigation";
-import BlogDetail from "@/components/blog/BlogDetail";
-import { blogPosts } from "@/components/blog/blog-data";
+import BlogArticle from "@/components/blog/BlogArticle";
 
-interface BlogPostPageProps {
+export default async function BlogArticlePage({
+  params,
+}: {
   params: Promise<{ slug: string }>;
-}
-
-export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params;
-
-  const post = blogPosts.find((p) => p.slug === slug);
-
-  if (!post) {
-    notFound();
-  }
-
-  return <BlogDetail post={post} />;
+}) {
+  await params;
+  return <BlogArticle />;
 }

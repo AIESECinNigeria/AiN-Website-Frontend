@@ -92,7 +92,7 @@ export default function HomePage() {
         variant="coral"
         title="Go global from Nigeria with AIESEC"
         href="/ogx"
-        imageId="ain/home/go-global"
+        imageId="go-global"
         imageAlt="AIESEC in Nigeria member speaking into a microphone"
         description="Explore the world, gain real experience, and connect across cultures. Our global exchange opportunities help young Nigerians grow their skills, broaden their perspectives, and make an impact beyond borders."
       />
@@ -101,7 +101,8 @@ export default function HomePage() {
         variant="green"
         title="Volunteer in Nigeria with AIESEC"
         href="/programs/national-volunteer"
-        imageId="ain/home/volunteer-nigeria"
+        imageId="volunteer-nigeria"
+        imageFormat="webp"
         imageAlt="AIESEC in Nigeria volunteer speaking at a community event"
         description="Step beyond your city and make an impact where it matters. Volunteer in communities across Nigeria, gain meaningful experience, meet people from different backgrounds, and contribute to causes that matter."
       />

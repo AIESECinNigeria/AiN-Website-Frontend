@@ -62,7 +62,7 @@ export default function OgxPage() {
             rest: "Short-term volunteering on a social project. Open to students.",
           }}
           href="/apply/global-volunteer"
-          imageId="ain/ogx/global-volunteer"
+          imageId="global-volunteer"
           imageAlt="AIESEC in Nigeria volunteers together abroad"
         />
 
@@ -82,7 +82,7 @@ export default function OgxPage() {
             rest: "Teaching placement in a classroom abroad. Graduates only.",
           }}
           href="/apply/global-talent"
-          imageId="ain/ogx/global-talent"
+          imageId="global-talent"
           imageAlt="Young professional working on a laptop in an office abroad"
         />
 
@@ -102,7 +102,7 @@ export default function OgxPage() {
             rest: "Teaching placement in a classroom abroad. Graduates only.",
           }}
           href="/apply/global-teacher"
-          imageId="ain/ogx/global-teacher"
+          imageId="global-teacher"
           imageAlt="Global Teacher participant teaching in a classroom abroad"
         />
       </div>

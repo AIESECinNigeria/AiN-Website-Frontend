@@ -6,10 +6,10 @@ interface Category {
 }
 
 const categories: Category[] = [
-  { label: "Since 1961", imageId: "ain/about/category-since-1961" },
-  { label: "Impacting Youths", imageId: "ain/about/category-impacting-youths" },
-  { label: "Across Nigeria", imageId: "ain/about/category-across-nigeria" },
-  { label: "Beyond Borders", imageId: "ain/about/category-beyond-borders" },
+  { label: "Since 1961", imageId: "category-since-1961" },
+  { label: "Impacting Youths", imageId: "category-impacting-youths" },
+  { label: "Across Nigeria", imageId: "category-across-nigeria" },
+  { label: "Beyond Borders", imageId: "category-beyond-borders" },
 ];
 
 /** Four tall photo cards with a white label at the base. Horizontal scroll on
