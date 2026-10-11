@@ -12,18 +12,18 @@ const focusAreas: FocusArea[] = [
     title: "Programme Management",
     description:
       "Support youth from your city to connect with experiences abroad. You'll work with AIESEC offices overseas and help guide young people who choose to take up an AIESEC exchange experience.",
-    skills: ["Planning", "Coordination", "Communication", "Project Management"],
+    skills: ["Sales", "Planning", "Coordination", "Communication", "Project Management"],
   },
   {
     title: "Marketing",
     description:
       "Use your creativity and analytical skills to create promotional campaigns to attract customers to our programmes, events, and initiatives. You'll brainstorm ideas and collaborate to make them happen.",
-    skills: ["Brand Management", " Data Analysis", "Social Media", "Campaign Planning"],
+    skills: ["Brand Management", "Data Analysis", "Social Media", "Campaign Planning"],
   },
   {
     title: "Partnerships & Business Development",
     description:
-      "Build relationships with organisations and businesses to create opportunities for young people to lead and grow.",
+      "Work with organisations and individuals to create meaningful opportunities and support AIESEC in Nigeria's growth. Gain real-world experience through engaging with external stakeholders.",
     skills: ["Communication", "Negotiation", "Sales", "Relationship Building"],
   },
   {
@@ -60,7 +60,7 @@ export default function Focus() {
           Our Focus
         </motion.h2>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 bg-[#FCFCFC]">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
           {focusAreas.map((area, index) => (
             <motion.div
               key={area.title}
@@ -72,15 +72,15 @@ export default function Focus() {
                 ease: "easeOut",
                 delay: index * 0.2,
               }}
-              className="rounded-3xl cursor-pointer bg-white p-4 shadow-sm lg:p-8 flex flex-col gap-4"
+              className="flex cursor-pointer flex-col gap-3 rounded-2xl bg-[#FAFAFA] p-6 lg:p-8"
             >
-              <h3 className="text-lg font-bold text-[#00000E] lg:text-2xl">
+              <h3 className="text-lg font-bold text-[#00000E] lg:text-xl">
                 {area.title}
               </h3>
-              <p className="text-xl leading-[150%] text-[#5C5C5C]">
+              <p className="text-base leading-[150%] text-[#5C5C5C] lg:text-[17px]">
                 {area.description}
               </p>
-              <p className="text-xl italic font-medium text-[#00000E]">
+              <p className="text-sm font-medium italic text-[#00000E] lg:text-[15px]">
                 {area.skills.join(" · ")}
               </p>
             </motion.div>

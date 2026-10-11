@@ -21,11 +21,13 @@ export default function CategoryCards() {
         {categories.map((category) => (
           <article
             key={category.label}
-            className="relative aspect-[3/4] w-[72vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl lg:w-auto lg:max-w-none"
+            className="relative aspect-[4/5] w-[72vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl lg:w-auto lg:max-w-none"
           >
             <CloudImage
               id={category.imageId}
               alt={category.label}
+              crop="fill"
+              ar="4:5"
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent p-5 pt-16">

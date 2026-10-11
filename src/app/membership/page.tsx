@@ -1,5 +1,6 @@
 import Focus from "@/components/Membership/Focus";
 import Reviews from "@/components/Membership/Reviews";
+import RecruitmentTicker from "@/components/Membership/RecruitmentTicker";
 import ScrollRevealHero from "@/components/Membership/ScrollRevealHero";
 import type { ScatteredPhoto } from "@/components/Membership/ScrollRevealHero";
 
@@ -20,6 +21,7 @@ const photos: ScatteredPhoto[] = [
 export default function MembershipPage() {
   return (
     <main className = "bg-white">
+      <RecruitmentTicker />
       <section aria-labelledby="membership-heading">
         <ScrollRevealHero
           photos={photos}

@@ -85,6 +85,18 @@ export default function BlogGrid() {
   const [filter, setFilter] = useState<Filter>("All Articles");
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(6);
+  const [filterOpen, setFilterOpen] = useState(false);
+
+  const selectFilter = (name: Filter) => {
+    setFilter(name);
+    setVisible(6);
+    setFilterOpen(false);
+  };
+
+  const handleQuery = (value: string) => {
+    setQuery(value);
+    setVisible(6);
+  };
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -113,40 +125,81 @@ export default function BlogGrid() {
       </p>
 
       {/* Filters + search */}
-      <div className="mx-auto mt-10 flex max-w-[1300px] flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-wrap items-center gap-3">
-          {filters.map((name) => (
-            <button
-              key={name}
-              type="button"
-              onClick={() => {
-                setFilter(name);
-                setVisible(6);
-              }}
-              className={`cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium transition-colors lg:text-base ${
-                filter === name
-                  ? "bg-aiesec-blue text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              {name}
-            </button>
-          ))}
+      <div className="mx-auto mt-10 max-w-[1300px]">
+        {/* Desktop: pill filters on the left, search on the right */}
+        <div className="hidden lg:flex lg:items-center lg:justify-between">
+          <div className="flex flex-wrap items-center gap-3">
+            {filters.map((name) => (
+              <button
+                key={name}
+                type="button"
+                onClick={() => selectFilter(name)}
+                className={`cursor-pointer rounded-full px-5 py-2.5 text-base font-medium transition-colors ${
+                  filter === name
+                    ? "bg-aiesec-blue text-white"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
+
+          <SearchBox value={query} onChange={handleQuery} className="w-[320px]" />
         </div>
 
-        <div className="relative w-full lg:w-[320px]">
-          <SearchIcon className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-gray-400" />
-          <input
-            type="search"
-            value={query}
-            onChange={(event) => {
-              setQuery(event.target.value);
-              setVisible(6);
-            }}
-            placeholder="Search"
-            aria-label="Search articles"
-            className="w-full rounded-full bg-gray-100 py-3 pl-11 pr-5 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
-          />
+        {/* Mobile: search on the left, filter dropdown on the right */}
+        <div className="flex items-center gap-3 lg:hidden">
+          <SearchBox value={query} onChange={handleQuery} className="flex-1" />
+
+          <div className="relative shrink-0">
+            <button
+              type="button"
+              onClick={() => setFilterOpen((open) => !open)}
+              aria-haspopup="listbox"
+              aria-expanded={filterOpen}
+              className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700"
+            >
+              {filter === "All Articles" ? "All" : filter}
+              <ChevronDownIcon
+                className={`size-4 text-gray-500 transition-transform duration-200 ${
+                  filterOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {filterOpen && (
+              <>
+                <button
+                  type="button"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  onClick={() => setFilterOpen(false)}
+                  className="fixed inset-0 z-10 cursor-default"
+                />
+                <ul
+                  role="listbox"
+                  className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-2xl border border-gray-100 bg-white py-1 shadow-lg"
+                >
+                  {filters.map((name) => (
+                    <li key={name} role="option" aria-selected={filter === name}>
+                      <button
+                        type="button"
+                        onClick={() => selectFilter(name)}
+                        className={`block w-full px-5 py-2.5 text-left text-sm transition-colors ${
+                          filter === name
+                            ? "font-semibold text-aiesec-blue"
+                            : "text-gray-700 hover:bg-gray-50"
+                        }`}
+                      >
+                        {name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -198,6 +251,44 @@ export default function BlogGrid() {
         </div>
       )}
     </section>
+  );
+}
+
+function SearchBox({
+  value,
+  onChange,
+  className = "",
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  className?: string;
+}) {
+  return (
+    <div className={`relative ${className}`}>
+      <SearchIcon className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-gray-400" />
+      <input
+        type="search"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        placeholder="Search"
+        aria-label="Search articles"
+        className="w-full rounded-full bg-gray-100 py-3 pl-11 pr-5 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
+      />
+    </div>
+  );
+}
+
+function ChevronDownIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <path
+        d="M6 9l6 6 6-6"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 

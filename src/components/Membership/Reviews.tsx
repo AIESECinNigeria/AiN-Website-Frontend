@@ -107,7 +107,7 @@ export default function Reviews() {
   return (
     <section className="py-10 sm:py-16 lg:py-24">
       <h2 className="mb-6 px-4 text-xl font-extrabold leading-[120%] tracking-[-1%] text-aiesec-blue sm:mb-10 sm:px-6 sm:text-3xl lg:px-20 lg:text-5xl">
-        Reviews from Members
+        Reviews<span className="hidden lg:inline"> from Members</span>
       </h2>
 
       <div
