@@ -1,0 +1,233 @@
+.container {
+  padding: 72px 120px;
+  background-color: #ffffff;
+  position: relative; /* added for absolute positioning context */
+}
+
+.headerSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.headerVector {
+  position: absolute;
+  top: 202px;
+  right: 42px;
+  width: 180px;
+  height: auto;
+  flex-shrink: 0;
+  z-index: 0;
+}
+
+.infoSection {
+  margin-top: 72px;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  height: 605px;
+  background-color: transparent;
+  border-radius: 32px 0px 0px 32px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.infoSection > div:nth-child(1) {
+  width: 42%;
+}
+
+.infoSection > div:nth-child(1) > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 32px 0px 0px 32px;
+}
+
+.infoSection > div:nth-child(2) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 83px 30px;
+  background-color: transparent;
+  width: 58%;
+  min-height: 100%;
+  text-align: left;
+  border-radius: 0 32px 32px 0;
+  overflow: hidden;
+}
+
+.infoSection > div:nth-child(2)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://res.cloudinary.com/njljiov2/image/upload/f_auto,q_auto/ain/nv/vector2');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 95% 100%;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+.infoSection > div:nth-child(2) > p {
+  position: relative;
+  font-family: 'Kind Sans Regular', 'Kind Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 32px;
+  text-align: left;
+  color: #ffffff;
+  padding: 1rem 0;
+  width: 80%;
+  z-index: 3;
+}
+
+.infoSection > div:nth-child(2) > p:nth-child(1) {
+  border-bottom: 1px solid #ffffff;
+}
+
+.infoSection > div:nth-child(2) > button {
+  position: relative;
+  align-self: flex-start;
+  margin-left: 10%;
+  margin-top: 2rem;
+  width: 270px;
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #007a33;
+  z-index: 3;
+}
+
+/* Tablet */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    padding: 32px 24px;
+  }
+
+  .headerSection {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .headerVector {
+    width: 120px;
+    top: 122px;
+    right: 20px;
+  }
+
+  .infoSection {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 0.75rem;
+    padding: 0;
+  }
+
+  .infoSection > div:nth-child(1) {
+    width: 100%;
+  }
+
+  .infoSection > div:nth-child(1) > img {
+    width: 100%;
+    height: 360px;
+    border-radius: 32px;
+    margin-bottom: 0;
+  }
+
+  .infoSection > div:nth-child(2) {
+    padding: 32px 20px;
+    width: 100%;
+    min-height: 360px;
+    border-radius: 32px;
+  }
+
+  .infoSection > div:nth-child(2) > p {
+    font-family: 'Kind Sans Regular', 'Kind Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: left;
+    width: 100%;
+  }
+
+  .infoSection > div:nth-child(2) > button {
+    align-self: flex-start;
+    margin-left: 0;
+    margin-top: 2rem;
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 28px 16px;
+  }
+
+  .headerSection {
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .headerVector {
+    width: 72px;
+    top: 96px;
+    right: 12px;
+  }
+
+  .infoSection {
+    margin-top: 32px;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    height: auto;
+    gap: 0.75rem;
+  }
+
+  .infoSection > div:nth-child(1) {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .infoSection > div:nth-child(1) > img {
+    width: 100%;
+    height: 280px;
+    border-radius: 32px;
+    margin-bottom: 0;
+  }
+
+  .infoSection > div:nth-child(2) {
+    padding: 24px 16px;
+    width: 100%;
+    margin: 0;
+    min-height: 300px;
+    border-radius: 32px;
+  }
+
+  .infoSection > div:nth-child(2)::after {
+    background-size: 100% 100%;
+  }
+
+  .infoSection > div:nth-child(2) > p {
+    font-family: 'Kind Sans Regular', 'Kind Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: left;
+    width: 100%;
+  }
+
+  .infoSection > div:nth-child(2) > p:nth-child(1) {
+    border-bottom: none;
+  }
+
+  .infoSection > div:nth-child(2) > button {
+    align-self: center;
+    margin: 1.5rem 0 0;
+    margin-left: 0;
+    width: 220px;
+  }
+}

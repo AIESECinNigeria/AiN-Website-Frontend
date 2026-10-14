@@ -1,14 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* legacy tokens used by ported program pages (gmw/nv/ysf/iyd/ls) */
+  --primary-color: #ffcc33;
+  --blue: #3d8dfc;
+  --grey: #a7a2a2;
+}
+
+/* ---- Custom fonts used by the ported program pages ---- */
+@font-face {
+  font-family: 'Regular';
+  src: local('Expose-Regular'), url('/fonts/Expose-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'skope';
+  src: url('/fonts/fonnts.com-Skope-.otf') format('truetype');
+}
+@font-face {
+  font-family: 'Kunire Grotesk';
+  src: url('/fonts/KunireGroteskPersonalUse-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Kind Sans';
+  src: url('/fonts/kind-sans-thin.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Kind Sans Regular';
+  src: url('/fonts/kindsans-regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Kind Sans Bold';
+  src: url('/fonts/kindsans-bold.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Kind Sans Medium';
+  src: url('/fonts/kindsans-medium.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Lato Thin';
+  src: url('/fonts/Lato-Thin.ttf') format('truetype');
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-lato);
+
+  /* legacy font-family utilities (font-body / font-sec / font-playfair / font-mainText) */
+  --font-body: 'Lato', sans-serif;
+  --font-sec: 'Lato', sans-serif;
+  --font-mainText: 'Raleway', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
 
   /* AIESEC brand palette */
   --color-aiesec-blue: #037ef3;
@@ -23,6 +70,9 @@
   --color-aiesec-red: #f94141;
   --color-aiesec-cream: #f3e7ce;
   --color-aiesec-highlight: #e3effb;
+
+  /* animation utilities */
+  --animate-partner-scroll: partner-scroll 20s linear infinite;
 }
 
 body {
@@ -30,6 +80,7 @@ body {
   color: var(--foreground);
 }
 
+/* RecruitmentTicker (new-design) marquee — keep as-is */
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -37,4 +88,124 @@ body {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* ---- keyframes used by the ported program pages ---- */
+@keyframes partner-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+/* legacy .animate-marquee (namespaced keyframe to avoid clash with the ticker's `marquee`) */
+@keyframes marquee-legacy {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ---- legacy helper classes referenced by the ported program pages ---- */
+.fl {
+  font-family: 'Raleway', sans-serif;
+}
+.fcd {
+  font-family: 'Clash Display', sans-serif;
+}
+.b-shade {
+  box-shadow: 8px 8px 2px -4px rgba(0, 0, 0, 1);
+}
+.p-shade {
+  box-shadow: 8px 8px 2px -4px #5b57f4;
+}
+.text-prime {
+  color: rgba(255, 204, 51, 1);
+}
+.text-purple {
+  font-family: 'Clash Display', sans-serif;
+  color: rgba(91, 87, 244, 1);
+}
+.text-apurple {
+  color: #b07ef6;
+}
+.text-blue {
+  color: rgba(61, 141, 252, 1);
+}
+.text-grey {
+  color: rgba(167, 162, 162, 1);
+}
+.primary-btn {
+  text-decoration: none;
+  padding: 12px 30px;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  font-family: 'Lato';
+}
+.white-btn {
+  text-decoration: none;
+  padding: 14px 32px;
+  background-color: transparent;
+  border-radius: 8px;
+  font-family: 'Lato';
+}
+@media screen and (max-width: 500px) {
+  .primary-btn {
+    border-radius: 4px;
+    padding: 12px 16px;
+  }
+  .white-btn {
+    padding: 14px 20px;
+  }
+}
+.spinner {
+  animation: rotate 2s linear infinite;
+  z-index: 2;
+  width: 15px;
+  height: 15px;
+}
+.spinner .path {
+  stroke: #000000;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.animate-marquee {
+  animation: marquee-legacy 15s linear infinite;
 }

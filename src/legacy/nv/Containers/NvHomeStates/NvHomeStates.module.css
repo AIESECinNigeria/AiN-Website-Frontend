@@ -1,0 +1,255 @@
+.container {
+  padding: 72px 0;
+  background-image: url('https://res.cloudinary.com/njljiov2/image/upload/f_auto,q_auto/ain/nv/vectorbg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 120px;
+}
+
+.header > div,
+.header > p {
+  flex-basis: 50%;
+}
+
+.header > div:nth-child(1) > h4 {
+  color: #fff;
+  font-size: 56px;
+  font-weight: 600;
+  font-family: 'Kunire Grotesk', sans-serif;
+  line-height: 1.02;
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+.header > div:nth-child(1) > p {
+  color: #858585;
+  font-size: 24px;
+  font-family: 'Kind Sans Regular', 'Kind Sans', sans-serif;
+  margin-bottom: 0;
+}
+
+.header > p {
+  font-family: 'Kind Sans Regular', 'Kind Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 32px;
+  text-align: right;
+  color: #acacac;
+}
+
+.citySection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.citySection:nth-child(2) {
+  margin-top: 96px;
+  animation: scrollInfinity 30s linear infinite;
+}
+
+.citySection:nth-child(3) {
+  margin-left: calc(-100% - 100vw);
+  animation: scrollInfinity2 40s linear infinite;
+}
+
+.city {
+  width: 217.61px;
+  flex-basis: 218px;
+  flex-shrink: 0;
+  height: 217.61px;
+  border-radius: 12.26px;
+  padding: 12px;
+  border: 0.77px solid #ffffff;
+  cursor: pointer;
+}
+
+.city > div {
+  border-radius: 12.26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: 'Kind Sans', sans-serif;
+  font-size: 24.52px;
+  font-weight: 700;
+  line-height: 29.42px;
+  text-align: center;
+}
+
+.city:nth-child(3n + 1) > div {
+  background-color: #007a33;
+}
+
+.city:nth-child(3n + 2) > div {
+  background-color: #f4be60;
+}
+
+.city:nth-child(3n) > div {
+  background-color: #f15a29;
+}
+
+@keyframes scrollInfinity {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scrollInfinity2 {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 22px;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .header > div:nth-child(1) > h4 {
+    font-size: 32px;
+  }
+
+  .header > div:nth-child(1) > p {
+    font-size: 20px;
+  }
+
+  .header > div,
+  .header > p {
+    flex-basis: 100%;
+  }
+
+  .header > p {
+    font-size: 16px;
+    line-height: 150%;
+    text-align: left;
+  }
+
+  .citySection {
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .citySection:nth-child(2) {
+    margin-top: 36px;
+    animation: none;
+  }
+
+  .citySection:nth-child(3) {
+    margin-left: calc(-100% - 100vw);
+    animation: none;
+    display: none;
+  }
+
+  .city {
+    width: 46%;
+    flex-basis: 46%;
+    height: 117.61px;
+    border-radius: 10.26px;
+    padding: 8px;
+  }
+
+  .city > div {
+    border-radius: 10.26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: 'Kind Sans', sans-serif;
+    font-size: 16.52px;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    padding: 22px;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .header > div,
+  .header > p {
+    flex-basis: 100%;
+  }
+
+  .header > p {
+    font-size: 16px;
+    line-height: 150%;
+    text-align: left;
+  }
+
+  .citySection {
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .citySection:nth-child(2) {
+    margin-top: 36px;
+    animation: none;
+  }
+
+  .citySection:nth-child(3) {
+    margin-left: calc(-100% - 100vw);
+    animation: none;
+    display: none;
+  }
+
+  .city {
+    width: 46%;
+    flex-basis: 46%;
+    height: 117.61px;
+    border-radius: 10.26px;
+    padding: 8px;
+  }
+
+  .city > div {
+    border-radius: 10.26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: 'Kind Sans', sans-serif;
+    font-size: 16.52px;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: center;
+  }
+}
