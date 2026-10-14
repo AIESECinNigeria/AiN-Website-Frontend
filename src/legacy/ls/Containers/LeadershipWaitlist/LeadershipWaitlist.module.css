@@ -1,0 +1,52 @@
+.fl{
+    font-family: 'Raleway', sans-serif;
+}
+
+.fcd {
+    font-family: 'Clash Display', sans-serif;
+}
+
+.textPurple{
+    font-family: 'Clash Display', sans-serif;
+    color: rgb(91, 87, 244, 1);
+}
+
+.textGrey {
+    color: rgb(167, 162, 162, 1);
+}
+
+.primaryBtn {
+    text-decoration: none;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    font-family: "Lato";
+}
+
+#waitlist {
+    .waitlistForm {
+      input {
+        border-radius: 8px;
+        border: 1px solid #000;
+        background: #ebeff7;
+        color: #000000;
+        width: 45%;
+        padding: 12px 16px;
+
+        @media screen and (max-width: 480px) {
+          width: 100%;
+        }
+
+        &::placeholder {
+          color: #969696;
+        }
+      }
+    }
+  }
+
+@media screen and (max-width:500px) {
+    .primaryBtn {
+        border-radius: 4px;
+        padding: 12px 16px;
+    }
+}

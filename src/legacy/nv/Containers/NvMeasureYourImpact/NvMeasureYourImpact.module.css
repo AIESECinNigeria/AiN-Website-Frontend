@@ -1,0 +1,350 @@
+.container {
+  padding: 76px 128px;
+  background: #f5e8d0;
+}
+
+.container > button {
+  width: 200px;
+  margin: 3rem auto 0px;
+}
+
+.whySection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 96px;
+  gap: 1rem;
+}
+
+.measureImpact {
+  text-align: center;
+}
+
+.measureImpact > h4 {
+  font-family: 'Kunire Grotesk', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.02;
+  color: #2d2d2d;
+  text-transform: uppercase;
+}
+
+.measureImpact > p {
+  font-family: 'Kind Sans Regular', 'Kind Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 23.04px;
+  color: #808080;
+  margin-bottom: 2rem;
+}
+
+.cardShell,
+.standardCard,
+.firstCard,
+.secondCard {
+  flex-basis: 48%;
+  min-width: 48%;
+  max-width: 600px;
+  height: 600px;
+  position: relative;
+}
+
+.standardCard,
+.firstCard,
+.secondCard {
+  border-radius: 32px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: visible;
+}
+
+.cardShell {
+  overflow: visible;
+}
+
+.secondShell {
+  z-index: 1;
+}
+
+.secondCard {
+  z-index: 1;
+}
+
+.cardVectorLeft,
+.cardVectorRight {
+  position: absolute;
+  width: 180px;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cardVectorBottom {
+  position: absolute;
+  width: 180px;
+  height: auto;
+  right: -76px;
+  bottom: 120px;
+  transform: none;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cardVectorBetweenMobile {
+  display: none;
+}
+
+.cardVectorBetweenRightMobile {
+  display: none;
+}
+
+.cardVectorMiddleLeftMobile {
+  display: none;
+}
+
+.cardVectorMiddleLeft {
+  position: absolute;
+  width: 180px;
+  height: auto;
+  left: -144px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cardVectorLeft {
+  top: -56px;
+  left: -88px;
+}
+
+.cardVectorRight {
+  top: -62px;
+  right: 12px;
+  z-index: -1;
+}
+
+.standardCard > span,
+.firstCard > span,
+.secondCard > span {
+  font-family: 'Kind Sans', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 56px;
+  text-align: left;
+  position: absolute;
+  left: 48px;
+  bottom: 48px;
+  width: 80%;
+  color: #ffffff;
+  z-index: 3;
+  text-transform: none;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    padding: 20px 22px;
+  }
+
+  .container > button {
+    margin: 1rem auto 0px;
+  }
+
+  .measureImpact > h4 {
+    font-size: 32px;
+    line-height: 0.95;
+  }
+
+  .measureImpact > p {
+    font-size: 16px;
+    font-weight: 275;
+    line-height: 140%;
+    margin-bottom: 0.3rem;
+  }
+
+  .whySection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 1rem;
+  }
+
+  .cardShell,
+  .standardCard,
+  .firstCard,
+  .secondCard {
+    flex-basis: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 420px;
+  }
+
+  .standardCard > span,
+  .firstCard > span,
+  .secondCard > span {
+    font-size: 26px;
+    line-height: 150%;
+    left: 18px;
+    bottom: 18px;
+  }
+
+  .cardVectorLeft,
+  .cardVectorRight,
+  .cardVectorBottom,
+  .cardVectorMiddleLeft {
+    width: 120px;
+  }
+
+  .cardVectorLeft {
+    top: -34px;
+    left: -50px;
+  }
+
+  .cardVectorRight {
+    top: -40px;
+    right: 10px;
+  }
+
+  .cardVectorBottom {
+    right: -48px;
+    bottom: 90px;
+  }
+
+  .cardVectorMiddleLeft {
+    left: -90px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 20px 22px;
+  }
+
+  .measureImpact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .container > button {
+    margin: 1rem auto 0px;
+  }
+
+  .measureImpact > h4 {
+    font-size: 32px;
+    line-height: 0.95;
+    margin-top: 0;
+  }
+
+  .measureImpact > p {
+    font-size: 16px;
+    font-weight: 275;
+    line-height: 140%;
+    margin-bottom: 0.2rem;
+  }
+
+  .whySection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 1rem;
+  }
+
+  .cardShell,
+  .standardCard,
+  .firstCard,
+  .secondCard {
+    flex-basis: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 420px;
+  }
+
+  .standardCard > span,
+  .firstCard > span,
+  .secondCard > span {
+    font-size: 26px;
+    line-height: 150%;
+    left: 18px;
+    bottom: 18px;
+  }
+
+  .cardVectorLeft,
+  .cardVectorRight,
+  .cardVectorBottom,
+  .cardVectorMiddleLeft {
+    width: 90px;
+  }
+
+  .cardVectorLeft {
+    top: -24px;
+    left: auto;
+    right: -34px;
+  }
+
+  .cardVectorRight {
+    top: -28px;
+    right: 8px;
+  }
+
+  .cardVectorBottom {
+    right: -34px;
+    bottom: 70px;
+  }
+
+  .cardVectorBottom {
+    display: none;
+  }
+
+  .cardVectorMiddleLeft {
+    left: -64px;
+  }
+
+  .cardVectorRight {
+    display: none;
+  }
+
+  .cardVectorBetweenMobile {
+    display: block;
+    position: absolute;
+    width: 90px;
+    height: auto;
+    left: -22px;
+    top: -42px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .cardVectorBetweenRightMobile {
+    display: block;
+    position: absolute;
+    width: 90px;
+    height: auto;
+    right: -22px;
+    top: -42px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .cardVectorMiddleLeft {
+    display: none;
+  }
+
+  .cardVectorMiddleLeftMobile {
+    display: block;
+    position: absolute;
+    width: 90px;
+    height: auto;
+    left: -64px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,32 @@
+.container {
+  padding: 72px 120px;
+  background: #ffffff;
+}
+
+.container :global(.container) > h4 {
+  color: #007a33;
+}
+
+.questionSection {
+  margin-top: 96px;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 20px;
+  }
+
+  .questionSection {
+    margin-top: 36px;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    padding: 20px;
+  }
+
+  .questionSection {
+    margin-top: 36px;
+  }
+}

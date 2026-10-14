@@ -1,0 +1,39 @@
+.highlight {
+  --highlight-color: #f15a29;
+  position: relative;
+  display: inline-block;
+  padding: 0 0.08em 0.04em;
+  vertical-align: baseline;
+  isolation: isolate;
+}
+
+.bg {
+  position: absolute;
+  left: 0.02em;
+  right: 0.02em;
+  bottom: 0.28em;
+  height: 0.58em;
+  background: var(--highlight-color);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  display: block;
+  line-height: 0.92;
+}
+
+@media screen and (max-width: 767px) {
+  .bg {
+    left: 0.02em;
+    right: 0.02em;
+    bottom: -0.02em;
+    height: 0.58em;
+  }
+
+  .text {
+    line-height: 0.92;
+  }
+}
