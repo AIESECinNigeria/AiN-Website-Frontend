@@ -20,7 +20,7 @@ const LeadershipWhyAttend = () => {
 
           <div className="flex justify-start my-4">
             <a
-              href="LeadershipSummit/register"
+              href="/leadership-summit/register"
               className="white-btn text-black text-[12px] md:text-base items-center border-black border b-shade"
             >
               Register for Leadership Summit

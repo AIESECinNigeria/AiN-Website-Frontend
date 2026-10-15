@@ -7,10 +7,12 @@ export const companyLinks = [
 ];
 
 export const forYouthsLinks = [
-  { label: "Global Volunteer", href: "/ogx" },
-  { label: "Global Talent", href: "/programs/global-talent" },
-  { label: "Global Teacher", href: "/programs/global-teacher" },
-  { label: "National Volunteer", href: "/programs/national-volunteer" },
+  { label: "Global Exchange", href: "/ogx" },
+  { label: "National Volunteer", href: "/nv" },
+  { label: "Leadership Summit", href: "/leadership-summit" },
+  { label: "YouthSpeak Forum", href: "/ysf" },
+  { label: "Global Money Week", href: "/gmw" },
+  { label: "International Youth Day", href: "/iyd" },
   { label: "Become a Member", href: "/membership" },
 ];
 
