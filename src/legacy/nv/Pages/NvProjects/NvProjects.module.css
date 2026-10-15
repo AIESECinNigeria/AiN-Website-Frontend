@@ -1,0 +1,24 @@
+.bottomVector {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -12px;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .bottomVector {
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    margin-top: -8px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .bottomVector {
+    height: 110px;
+    object-fit: cover;
+    object-position: center;
+    margin-top: -4px;
+  }
+}

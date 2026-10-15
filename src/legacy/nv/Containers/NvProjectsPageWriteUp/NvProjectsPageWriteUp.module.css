@@ -1,0 +1,173 @@
+.container {
+  background: #000;
+  padding: 90px 110px;
+  background: url('https://res.cloudinary.com/njljiov2/image/upload/f_auto,q_auto/ain/nv/projectbg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container > h4 {
+  color: #fff;
+  text-align: center;
+  font-family: 'Kunire Grotesk', sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.18;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+
+.container > p {
+  color: #fff;
+  font-family: 'Kunire Grotesk', sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.vector9 {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -16px;
+}
+
+.vectorSection {
+  position: relative;
+}
+
+.searchSection {
+  background-color: #f4faf5;
+  padding: 24px 0 0;
+}
+
+.searchWrapper {
+  position: relative;
+  left: auto;
+  top: auto;
+  width: 26%;
+  margin: 0 auto;
+  z-index: 5;
+}
+
+.container > button {
+  margin-top: 2rem;
+  width: 50%;
+  margin: 2rem auto;
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1300px) {
+  .container {
+    background: #000;
+    padding: 90px 60px;
+  }
+
+  .container > h4 {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    padding: 30px 40px;
+  }
+
+  .container > h4 {
+    color: #fff;
+    font-size: 26px;
+    line-height: 1.22;
+  }
+
+  .container > p {
+    font-size: 14px;
+    margin-top: 2rem;
+  }
+
+  .vector9 {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    margin-top: -8px;
+  }
+
+  .searchSection {
+    padding-top: 20px;
+  }
+
+  .searchWrapper {
+    width: 42%;
+  }
+
+  .container > button {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 20px;
+  }
+
+  .container > h4 {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.28;
+  }
+
+  .container > p {
+    font-size: 14px;
+    margin-top: 2rem;
+  }
+
+  .vector9 {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    object-position: center;
+    margin-top: -4px;
+  }
+
+  .searchSection {
+    padding-top: 16px;
+  }
+
+  .searchWrapper {
+    width: 78%;
+  }
+
+  .searchWrapper > div:first-child {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-right: 1rem;
+  }
+
+  .searchWrapper > div:first-child p {
+    font-size: 14px;
+  }
+
+  .searchWrapper > div:first-child > div:first-child {
+    padding: 0.65rem;
+  }
+
+  .searchWrapper > div:first-child > div:first-child img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .searchWrapper > div:first-child > div:last-child img {
+    width: 18px;
+  }
+
+  .container > button {
+    width: 90%;
+  }
+}
