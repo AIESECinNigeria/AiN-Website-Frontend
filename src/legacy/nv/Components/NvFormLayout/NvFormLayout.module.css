@@ -1,0 +1,320 @@
+.container {
+  min-height: 100vh; /* Ensures it takes full height */
+  display: flex;
+  flex-direction: column;
+  background: #08841b14;
+}
+
+.upperSection {
+  padding: 0;
+  background: url('https://res.cloudinary.com/njljiov2/image/upload/f_auto,q_auto/ain/nv/formHeader');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* flex-basis: 40vh; */
+  min-height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerContent {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobileBreak {
+  display: none;
+}
+
+.upperSection > div > h4 {
+  color: #fff;
+  font-family: 'Kunire Grotesk', sans-serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 130.5%;
+  text-transform: uppercase;
+}
+
+.upperSection > div > h4 > span {
+  color: #f4be60;
+  font-family: 'Kunire Grotesk', sans-serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 130.5%;
+}
+
+.headerVector {
+  position: absolute;
+  top: -92px;
+  right: -108px;
+  width: 128px;
+  height: auto;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.vector11 {
+  width: 100%;
+  display: block;
+  margin-top: -16px;
+}
+
+.lowerSection {
+  /* flex-basis: calc(100vh - 10vh - 25vh);
+  max-height: calc(100vh - 10vh - 25vh); */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-grow: 1;
+  margin: 56px 150px 150px;
+}
+
+.lowerSection > div {
+  flex-basis: 60%;
+}
+
+.lowerSection > div:nth-child(1) {
+  background: #f9f9f9;
+  border: 1px solid #f5e8d0;
+  padding: 34px 27px;
+  border-radius: 50px;
+  text-align: center;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.lowerSection > div:nth-child(1) > p {
+  color: #000;
+  font-family: 'Kind Sans Regular', 'Kind Sans', sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  text-transform: none;
+}
+
+.lowerSection > div:nth-child(1) > i {
+  color: #000;
+  font-family: 'Kind Sans Bold', 'Kind Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 2.5rem;
+  display: block;
+  text-transform: none;
+}
+
+.lowerSection > div:nth-child(2) {
+  overflow: visible;
+  padding: 34px 27px;
+}
+
+.lowerSection > div:nth-child(2) > form > h4 {
+  color: #000;
+  font-family: 'Kunire Grotesk', sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.lowerSection > div:nth-child(2) > form > .headingWrap > h4 {
+  color: #000;
+  font-family: Lato;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+.lowerSection > div:nth-child(2) > form > button {
+  margin-top: 100px;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container {
+    min-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  .upperSection {
+    padding: 0 20px;
+    flex-basis: 160px;
+  }
+
+  .upperSection > div > h4,
+  .upperSection > div > h4 > span {
+    font-family: 'Kunire Grotesk', sans-serif;
+    font-size: 20px;
+    line-height: 130.5%;
+  }
+
+  .headerVector {
+    top: -44px;
+    right: -40px;
+    width: 64px;
+  }
+
+  .vector11 {
+    height: 120px;
+    object-fit: cover;
+    margin-top: -8px;
+  }
+
+  .lowerSection {
+    flex-basis: auto;
+    max-height: 3000px;
+    flex-direction: column;
+    margin: 32px 60px 60px;
+  }
+
+  .lowerSection > div {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .lowerSection > div:nth-child(1) {
+    /* background: #08841b; */
+    padding: 34px 27px;
+    margin-top: 0;
+  }
+
+  .lowerSection > div:nth-child(1) > p,
+  .lowerSection > div:nth-child(1) > i {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+  }
+
+  .lowerSection > div:nth-child(1) > i {
+    font-size: 16px;
+  }
+
+  .lowerSection > div:nth-child(2) {
+    overflow: visible;
+    padding: 34px 27px;
+  }
+
+  .lowerSection > div:nth-child(2) > form > h4 {
+    color: #000;
+    font-family: 'Kunire Grotesk', sans-serif;
+    font-size: 20.381px;
+    line-height: normal;
+  }
+
+  .lowerSection > div:nth-child(2) > form > .headingWrap > h4 {
+    color: #000;
+    font-size: 20.381px;
+    line-height: normal;
+    margin-bottom: 0;
+  }
+
+  .lowerSection > div:nth-child(2) > form > button {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .headerContent {
+    text-align: center;
+  }
+
+  .mobileBreak {
+    display: block;
+  }
+
+  .container {
+    min-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  .upperSection {
+    padding: 0 20px;
+    flex-basis: 160px;
+  }
+
+  .upperSection > div > h4,
+  .upperSection > div > h4 > span {
+    font-family: 'Kunire Grotesk', sans-serif;
+    font-size: 20px;
+    line-height: 130.5%;
+  }
+
+  .headerVector {
+    top: -28px;
+    right: -12px;
+    width: 48px;
+  }
+
+  .vector11 {
+    height: 110px;
+    object-fit: cover;
+    margin-top: -4px;
+  }
+
+  .lowerSection {
+    /* flex-basis: auto; */
+    /* max-height: 3000px; */
+    flex-direction: column;
+    margin: 0 0 24px;
+  }
+
+  .lowerSection > div {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .lowerSection > div:nth-child(1) {
+    /* background: #08841b; */
+    padding: 20px;
+    margin: 24px auto 30px;
+    width: 90%;
+    /* margin: 20px 90px 20px 20px; */
+  }
+
+  .lowerSection > div:nth-child(1) > p,
+  .lowerSection > div:nth-child(1) > i {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+  }
+
+  .lowerSection > div:nth-child(1) > i {
+    font-size: 16px;
+  }
+
+  .lowerSection > div:nth-child(2) {
+    overflow: visible;
+    padding: 34px 27px;
+  }
+
+  .lowerSection > div:nth-child(2) > form > h4 {
+    color: #000;
+    font-family: 'Kunire Grotesk', sans-serif;
+    font-size: 20.381px;
+    line-height: normal;
+  }
+
+  .lowerSection > div:nth-child(2) > form > .headingWrap > h4 {
+    color: #000;
+    font-size: 20.381px;
+    line-height: normal;
+    margin-bottom: 0;
+  }
+
+  .lowerSection > div:nth-child(2) > form > button {
+    margin-top: 40px;
+  }
+}

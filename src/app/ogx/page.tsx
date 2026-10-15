@@ -61,7 +61,7 @@ export default function OgxPage() {
             lead: "6-8 Weeks.",
             rest: "Short-term volunteering on a social project. Open to students.",
           }}
-          href="/apply/global-volunteer"
+          href="/ogx/apply"
           imageId="global-volunteer"
           imageAlt="AIESEC in Nigeria volunteers together abroad"
         />
@@ -81,7 +81,7 @@ export default function OgxPage() {
             lead: "6-7 Weeks.",
             rest: "Teaching placement in a classroom abroad. Graduates only.",
           }}
-          href="/apply/global-talent"
+          href="/ogx/apply"
           imageId="global-talent"
           imageAlt="Young professional working on a laptop in an office abroad"
         />
@@ -101,7 +101,7 @@ export default function OgxPage() {
             lead: "6-7 Weeks.",
             rest: "Teaching placement in a classroom abroad. Graduates only.",
           }}
-          href="/apply/global-teacher"
+          href="/ogx/apply"
           imageId="global-teacher"
           imageAlt="Global Teacher participant teaching in a classroom abroad"
         />

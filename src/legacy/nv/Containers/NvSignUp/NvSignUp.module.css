@@ -1,0 +1,50 @@
+.headingWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.headingTitle {
+  color: #000;
+  font-family: 'Kunire Grotesk', sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.headingVector {
+  position: absolute;
+  top: -96px;
+  left: -228px;
+  width: 220px;
+  height: auto;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .headingTitle {
+    font-size: 20.381px;
+  }
+
+  .headingVector {
+    top: -66px;
+    left: -122px;
+    width: 164px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .headingTitle {
+    font-size: 20.381px;
+  }
+
+  .headingVector {
+    top: -54px;
+    left: -128px;
+    width: 126px;
+  }
+}
