@@ -14,7 +14,7 @@ export default function OgxPage() {
           { type: "text", value: " sets you apart." },
         ]}
         description="Find verified internships, teaching placements, and social impact projects abroad with AIESEC in Nigeria"
-        cta={{ label: "Get Started", href: "#programs" }}
+        cta={{ label: "Get Started", href: "/ogx/apply" }}
         className="!py-12 lg:!py-16"
       />
 
