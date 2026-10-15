@@ -32,7 +32,7 @@ const LeadershipOurTheme = () => {
               </p>
             </div>
             <div className="flex justify-start my-4">
-              <a href="LeadershipSummit/register" className="flex white-btn text-white lg:text-base items-center border-white border">
+              <a href="/leadership-summit/register" className="flex white-btn text-white lg:text-base items-center border-white border">
                 Register for Leadership Summit
                 <svg
                   width="20"
@@ -82,7 +82,7 @@ const LeadershipOurTheme = () => {
                 </p>
               </div>
               <div className="flex justify-start my-4">
-                <a href="LeadershipSummit/register" className="flex white-btn text-white items-center border-white border">
+                <a href="/leadership-summit/register" className="flex white-btn text-white items-center border-white border">
                   Register for Leadership Summit
                   <svg
                     width="20"
