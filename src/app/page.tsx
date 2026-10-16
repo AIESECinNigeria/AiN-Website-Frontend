@@ -5,17 +5,17 @@ import ArrowLink from "@/components/ui/ArrowLink";
 import HeroBanner from "@/components/home/HeroBanner";
 import StatsArc from "@/components/home/StatsArc";
 import FeatureBand from "@/components/home/FeatureBand";
-import ReviewsCarousel from "@/components/home/ReviewsCarousel";
 import BlogSection from "@/components/home/BlogSection";
 import Faq from "@/components/home/Faq";
+import Reviews from "@/components/Membership/Reviews";
 
 const partners = [
-  "partner-nestle",
-  "partner-trailblaze",
-  "partner-sycamore",
-  "partner-timon",
-  "partner-cocreation",
-  "partner-drench",
+  "partner-nestle.svg",
+  "partner-trailblaze.svg",
+  "partner-sycamore.svg",
+  "partner-timon.svg",
+  "partner-cocreation.svg",
+  "partner-drench.svg",
 ];
 
 export default function HomePage() {
@@ -107,7 +107,8 @@ export default function HomePage() {
         description="Step beyond your city and make an impact where it matters. Volunteer in communities across Nigeria, gain meaningful experience, meet people from different backgrounds, and contribute to causes that matter."
       />
 
-      <ReviewsCarousel />
+      {/* <ReviewsCarousel /> */}
+      <Reviews title = "Reviews" />
 
       <BlogSection />
 

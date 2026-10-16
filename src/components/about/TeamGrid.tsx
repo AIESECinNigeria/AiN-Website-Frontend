@@ -32,8 +32,8 @@ const columns: Member[][] = [
     { name: "Favour Bassey", role: "Human Resource Manager", variant: "red", imageId: "team-8", ar: "1:1", aspect: "aspect-square" },
   ],
   [
-    { name: "Sabatha Joshua", role: "Expansions and PR Manager", variant: "red", imageId: "team-3", ar: "3:2", aspect: "aspect-[3/2]" },
-    { name: "Toluwalase Agbetuyi", role: "Product Operations Manager", variant: "blue", imageId: "team-6", ar: "6:9", aspect: "aspect-[3/4]" },
+    { name: "Sabatha Joshua", role: "Expansions and PR Manager", variant: "red", imageId: "team-6", ar: "3:2", aspect: "aspect-[3/2]" },
+    { name: "Toluwalase Agbetuyi", role: "Product Operations Manager", variant: "blue", imageId: "team-3", ar: "6:9", aspect: "aspect-[3/4]" },
   ],
   [
     { name: "Atiradeoluwa Olaoye", role: "Partnerships Manager", variant: "blue", imageId: "team-7", ar: "1:1", aspect: "aspect-square" },

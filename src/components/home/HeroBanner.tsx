@@ -1,3 +1,4 @@
+
 import CloudImage from "@/components/CloudImage";
 
 /** Full-bleed hero photo with tilted #VOLUNTEER / #TRAVEL speech-bubble tags. */
@@ -7,6 +8,7 @@ export default function HeroBanner() {
       <div className="relative h-[300px] sm:h-[420px] lg:h-[520px]">
         <CloudImage
           id="hero-group"
+          priority
           alt="AIESEC in Nigeria members gathered together at an event"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -30,3 +32,4 @@ export default function HeroBanner() {
     </section>
   );
 }
+

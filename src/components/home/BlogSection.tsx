@@ -1,44 +1,17 @@
 import Link from "next/link";
-import CloudImage from "@/components/CloudImage";
+// import CloudImage from "@/components/CloudImage";
+import BlogGrid from "@/components/blog/BlogGrid"; 
 
-interface Post {
-  title: string;
-  author: string;
-  date: string;
-  excerpt: string;
-  imageId: string;
-  href: string;
-}
+// interface Post {
+//   title: string;
+//   author: string;
+//   date: string;
+//   excerpt: string;
+//   imageId: string;
+//   href: string;
+// }
 
-const posts: Post[] = [
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-1",
-    href: "/blog",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-2",
-    href: "/blog",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-3",
-    href: "/blog",
-  },
-];
+// const posts: Post[] = [ ...the three posts... ];
 
 function ReadMoreButton({ className = "" }: { className?: string }) {
   return (
@@ -61,6 +34,11 @@ export default function BlogSection() {
         <ReadMoreButton className="hidden lg:inline-flex" />
       </div>
 
+      <div className="mt-8">
+        <BlogGrid embedded limit={3} />
+      </div>
+
+      {/* Colleague's original grid, replaced by BlogGrid
       <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post, index) => (
           <Link key={`${post.title}-${index}`} href={post.href} className="group block">
@@ -80,6 +58,7 @@ export default function BlogSection() {
           </Link>
         ))}
       </div>
+      */}
 
       <div className="mt-10 flex justify-center lg:hidden">
         <ReadMoreButton />

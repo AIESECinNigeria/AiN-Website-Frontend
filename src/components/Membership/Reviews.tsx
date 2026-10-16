@@ -1,13 +1,12 @@
-// components/Membership/Reviews.tsx
 "use client";
 import { useState } from "react";
-import Image from "next/image";
+import CloudImage from "@/components/CloudImage";
 
 interface Review {
   name: string;
   role: string;
   quote: string;
-  photo: string;
+  imageId: string; // Cloudinary public ID
   color: "orange" | "blue";
 }
 
@@ -22,7 +21,7 @@ const reviews: Review[] = [
     role: "AIESEC in Ilorin",
     quote:
       "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
-    photo: "/reviews/fadlu.jpg",
+    imageId: "review-1.png",
     color: "orange",
   },
   {
@@ -30,7 +29,7 @@ const reviews: Review[] = [
     role: "AIESEC in Akure",
     quote:
       "AIESEC gave me my first experience of how a well-structured organisation works. It taught me how to collaborate with people from different backgrounds and work towards shared goals.",
-    photo: "/reviews/eniola.jpg",
+    imageId: "review-2.png",
     color: "blue",
   },
   {
@@ -38,7 +37,7 @@ const reviews: Review[] = [
     role: "AIESEC in Benin",
     quote:
       "I joined AIESEC because I wanted to meet more people and do something outside of Statistics. Now, to me, AIESEC is not just an organisation, it’s community and growth.",
-    photo: "/reviews/fadlu.jpg",
+    imageId: "review-3.png",
     color: "orange",
   },
   {
@@ -46,17 +45,17 @@ const reviews: Review[] = [
     role: "AIESEC in Ibadan",
     quote:
       "AIESEC gave me my first experience of how a well-structured organisation works.",
-    photo: "/reviews/eniola.jpg",
+    imageId: "review-4.png",
     color: "blue",
   },
-  {
-    name: "Fadlu",
-    role: "AIESEC in Ilorin",
-    quote:
-      "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
-    photo: "/reviews/fadlu.jpg",
-    color: "orange",
-  },
+  // {
+  //   name: "Fadlu",
+  //   role: "AIESEC in Ilorin",
+  //   quote:
+  //     "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
+  //   imageId: "review-5.png",
+  //   color: "orange",
+  // },
 ];
 
 function ReviewCard({ review }: { review: Review }) {
@@ -68,17 +67,17 @@ function ReviewCard({ review }: { review: Review }) {
       onMouseLeave={() => setHovered(false)}
       className="relative h-[70vh] md:h-[60vh] w-[68%] cursor-pointer flex-shrink-0 snap-start overflow-hidden rounded-2xl bg-black sm:w-[46%] sm:rounded-3xl lg:w-[calc((100%-4.5rem)/3.5)]"
     >
-      <Image
-        src={review.photo}
+      <CloudImage
+        id={review.imageId}
         alt={review.name}
-        fill
-        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 46vw, 68vw"
-        className="object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
       />
 
       {/* default state: name/role over a plain dark scrim, no color */}
       <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-3 pb-3 pt-8 sm:px-5 sm:pb-5 sm:pt-12">
-        <p className="text-xs font-bold text-white sm:text-base">{review.name}</p>
+        <p className="text-xs font-bold text-white sm:text-base">
+          {review.name}
+        </p>
         <p className="text-[11px] text-white/80 sm:text-sm">{review.role}</p>
       </div>
 
@@ -88,14 +87,22 @@ function ReviewCard({ review }: { review: Review }) {
           hovered ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <img src={ReviewBg[review.color]} alt="" className="block h-auto w-full" />
+        <img
+          src={ReviewBg[review.color]}
+          alt=""
+          className="block h-auto w-full"
+        />
         <div className="absolute inset-0 flex flex-col justify-end gap-1.5 px-3 pb-3 pt-5 sm:gap-3 sm:px-5 sm:pb-5 sm:pt-8">
           <p className="text-xs leading-snug text-white sm:text-sm sm:leading-relaxed">
             {review.quote}
           </p>
           <div>
-            <p className="text-xs font-bold text-white sm:text-base">{review.name}</p>
-            <p className="text-[11px] text-white/80 sm:text-sm">{review.role}</p>
+            <p className="text-xs font-bold text-white sm:text-base">
+              {review.name}
+            </p>
+            <p className="text-[11px] text-white/80 sm:text-sm">
+              {review.role}
+            </p>
           </div>
         </div>
       </div>
@@ -103,11 +110,15 @@ function ReviewCard({ review }: { review: Review }) {
   );
 }
 
-export default function Reviews() {
+export default function Reviews({
+  title = "Reviews from Members",
+}: {
+  title?: string;
+}) {
   return (
     <section className="py-10 sm:py-16 lg:py-24">
       <h2 className="mb-6 px-4 text-xl font-extrabold leading-[120%] tracking-[-1%] text-aiesec-blue sm:mb-10 sm:px-6 sm:text-3xl lg:px-20 lg:text-5xl">
-        Reviews<span className="hidden lg:inline"> from Members</span>
+        {title}
       </h2>
 
       <div

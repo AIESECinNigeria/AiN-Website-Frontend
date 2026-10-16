@@ -21,7 +21,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-1",
+    imageId: "stat-avatar-2",
     category: "Interview",
     slug: "interview-with-henry-tabansi",
   },
@@ -31,7 +31,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-2",
+    imageId: "stat-avatar-2",
     category: "Interview",
     slug: "interview-with-henry-tabansi",
   },
@@ -41,7 +41,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-3",
+    imageId: "stat-avatar-2",
     category: "Leadership",
     slug: "interview-with-henry-tabansi",
   },
@@ -51,7 +51,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-4",
+    imageId: "stat-avatar-3",
     category: "Leadership",
     slug: "interview-with-henry-tabansi",
   },
@@ -61,7 +61,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-5",
+    imageId: "stat-avatar-3",
     category: "Interview",
     slug: "interview-with-henry-tabansi",
   },
@@ -71,7 +71,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-6",
+    imageId: "stat-avatar-3",
     category: "Leadership",
     slug: "interview-with-henry-tabansi",
   },
@@ -80,8 +80,22 @@ const articles: Article[] = [
 const filters = ["All Articles", "Leadership", "Interview"] as const;
 type Filter = (typeof filters)[number];
 
-/** The "Our Blog" listing: heading, filters, search, and the article grid. */
-export default function BlogGrid() {
+/**
+ * The blog listing: heading, filters, search, and the article grid.
+ *
+ * Pass `embedded` to use it inside another section (e.g. the home page):
+ * it then renders only the first `limit` articles, with no heading, intro,
+ * filters, section padding or Load More button.
+ */
+export default function BlogGrid({
+  embedded = false,
+  limit = 3,
+}: {
+  /** Home-page mode: grid only. */
+  embedded?: boolean;
+  /** How many articles to show when embedded. */
+  limit?: number;
+}) {
   const [filter, setFilter] = useState<Filter>("All Articles");
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(6);
@@ -111,100 +125,125 @@ export default function BlogGrid() {
     });
   }, [filter, query]);
 
-  const shown = filtered.slice(0, visible);
+  const shown = embedded
+    ? filtered.slice(0, limit)
+    : filtered.slice(0, visible);
 
   return (
-    <section id="episodes" className="px-6 py-14 lg:px-20 lg:py-20">
-      <h2 className="text-center text-4xl font-bold text-aiesec-blue lg:text-5xl">
-        Our Blog
-      </h2>
-      <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-[165%] text-gray-600 lg:text-lg">
-        AIESEC has shaped countless young lives, and your story could be next.
-        Explore stories and experiences from our community as young people find
-        their voice, build confidence, and grow into leaders.
-      </p>
+    <section
+      id={embedded ? undefined : "episodes"}
+      className={embedded ? "" : "px-6 py-14 lg:px-20 lg:py-20"}
+    >
+      {!embedded && (
+        <>
+          <h2 className="text-center text-4xl font-bold text-aiesec-blue lg:text-5xl">
+            Our Blog
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-[165%] text-gray-600 lg:text-lg">
+            AIESEC has shaped countless young lives, and your story could be next.
+            Explore stories and experiences from our community as young people find
+            their voice, build confidence, and grow into leaders.
+          </p>
 
-      {/* Filters + search */}
-      <div className="mx-auto mt-10 max-w-[1300px]">
-        {/* Desktop: pill filters on the left, search on the right */}
-        <div className="hidden lg:flex lg:items-center lg:justify-between">
-          <div className="flex flex-wrap items-center gap-3">
-            {filters.map((name) => (
-              <button
-                key={name}
-                type="button"
-                onClick={() => selectFilter(name)}
-                className={`cursor-pointer rounded-full px-5 py-2.5 text-base font-medium transition-colors ${
-                  filter === name
-                    ? "bg-aiesec-blue text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {name}
-              </button>
-            ))}
-          </div>
+          {/* Filters + search */}
+          <div className="mx-auto mt-10 max-w-[1300px]">
+            {/* Desktop: pill filters on the left, search on the right */}
+            <div className="hidden lg:flex lg:items-center lg:justify-between">
+              <div className="flex flex-wrap items-center gap-3">
+                {filters.map((name) => (
+                  <button
+                    key={name}
+                    type="button"
+                    onClick={() => selectFilter(name)}
+                    className={`cursor-pointer rounded-full px-5 py-2.5 text-base font-medium transition-colors ${
+                      filter === name
+                        ? "bg-aiesec-blue text-white"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    }`}
+                  >
+                    {name}
+                  </button>
+                ))}
+              </div>
 
-          <SearchBox value={query} onChange={handleQuery} className="w-[320px]" />
-        </div>
-
-        {/* Mobile: search on the left, filter dropdown on the right */}
-        <div className="flex items-center gap-3 lg:hidden">
-          <SearchBox value={query} onChange={handleQuery} className="flex-1" />
-
-          <div className="relative shrink-0">
-            <button
-              type="button"
-              onClick={() => setFilterOpen((open) => !open)}
-              aria-haspopup="listbox"
-              aria-expanded={filterOpen}
-              className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700"
-            >
-              {filter === "All Articles" ? "All" : filter}
-              <ChevronDownIcon
-                className={`size-4 text-gray-500 transition-transform duration-200 ${
-                  filterOpen ? "rotate-180" : ""
-                }`}
+              <SearchBox
+                value={query}
+                onChange={handleQuery}
+                className="w-[320px]"
               />
-            </button>
+            </div>
 
-            {filterOpen && (
-              <>
+            {/* Mobile: search on the left, filter dropdown on the right */}
+            <div className="flex items-center gap-3 lg:hidden">
+              <SearchBox
+                value={query}
+                onChange={handleQuery}
+                className="flex-1"
+              />
+
+              <div className="relative shrink-0">
                 <button
                   type="button"
-                  aria-hidden="true"
-                  tabIndex={-1}
-                  onClick={() => setFilterOpen(false)}
-                  className="fixed inset-0 z-10 cursor-default"
-                />
-                <ul
-                  role="listbox"
-                  className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-2xl border border-gray-100 bg-white py-1 shadow-lg"
+                  onClick={() => setFilterOpen((open) => !open)}
+                  aria-haspopup="listbox"
+                  aria-expanded={filterOpen}
+                  className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700"
                 >
-                  {filters.map((name) => (
-                    <li key={name} role="option" aria-selected={filter === name}>
-                      <button
-                        type="button"
-                        onClick={() => selectFilter(name)}
-                        className={`block w-full px-5 py-2.5 text-left text-sm transition-colors ${
-                          filter === name
-                            ? "font-semibold text-aiesec-blue"
-                            : "text-gray-700 hover:bg-gray-50"
-                        }`}
-                      >
-                        {name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
+                  {filter === "All Articles" ? "All" : filter}
+                  <ChevronDownIcon
+                    className={`size-4 text-gray-500 transition-transform duration-200 ${
+                      filterOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {filterOpen && (
+                  <>
+                    <button
+                      type="button"
+                      aria-hidden="true"
+                      tabIndex={-1}
+                      onClick={() => setFilterOpen(false)}
+                      className="fixed inset-0 z-10 cursor-default"
+                    />
+                    <ul
+                      role="listbox"
+                      className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-2xl border border-gray-100 bg-white py-1 shadow-lg"
+                    >
+                      {filters.map((name) => (
+                        <li
+                          key={name}
+                          role="option"
+                          aria-selected={filter === name}
+                        >
+                          <button
+                            type="button"
+                            onClick={() => selectFilter(name)}
+                            className={`block w-full px-5 py-2.5 text-left text-sm transition-colors ${
+                              filter === name
+                                ? "font-semibold text-aiesec-blue"
+                                : "text-gray-700 hover:bg-gray-50"
+                            }`}
+                          >
+                            {name}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
 
       {/* Grid */}
-      <div className="mx-auto mt-10 grid max-w-[1300px] gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={`mx-auto grid max-w-[1300px] gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 ${
+          embedded ? "" : "mt-10"
+        }`}
+      >
         {shown.map((article, index) => (
           <article key={`${article.imageId}-${index}`}>
             <Link href={`/blog/${article.slug}`} className="group block">
@@ -239,7 +278,7 @@ export default function BlogGrid() {
         </p>
       )}
 
-      {visible < filtered.length && (
+      {!embedded && visible < filtered.length && (
         <div className="mt-12 flex justify-center">
           <button
             type="button"

@@ -38,9 +38,9 @@ const body: { type: "p" | "h"; text: string }[] = [
 ];
 
 const related = [
-  { imageId: "blog-1", title: "Interview with Henry Tabansi" },
-  { imageId: "blog-2", title: "Interview with Henry Tabansi" },
-  { imageId: "blog-3", title: "Interview with Henry Tabansi" },
+  { imageId: "stat-avatar-2", title: "Interview with Henry Tabansi" },
+  { imageId: "stat-avatar-2", title: "Interview with Henry Tabansi" },
+  { imageId: "stat-avatar-2", title: "Interview with Henry Tabansi" },
 ];
 
 const excerpt =

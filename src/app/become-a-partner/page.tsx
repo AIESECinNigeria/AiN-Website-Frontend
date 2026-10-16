@@ -3,12 +3,12 @@ import CloudImage from "@/components/CloudImage";
 import StatsArc from "@/components/home/StatsArc";
 
 const currentPartners = [
-  "partner-trailblaze",
-  "partner-sycamore",
-  "partner-cocreation",
-  "partner-timon",
-  "partner-drench",
-  "partner-nestle",
+  "partner-trailblaze.svg",
+  "partner-sycamore.svg",
+  "partner-cocreation.svg",
+  "partner-timon.svg",
+  "partner-drench.svg",
+  "partner-nestle.svg",
 ];
 
 const previousPartners = [

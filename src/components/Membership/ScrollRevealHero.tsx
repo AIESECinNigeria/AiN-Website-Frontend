@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   motion,
   MotionValue,
@@ -11,11 +10,12 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import CloudImage from "@/components/CloudImage";
 import { TypewriterText } from "../Typewriter";
 import type { HeroSegment, HeroCta } from "../Hero";
 
 export interface ScatteredPhoto {
-  src: string;
+  imageId: string;
   alt: string;
   top: string;
   left: string;
@@ -31,7 +31,7 @@ export interface ScrollRevealHeroProps {
 }
 
 // How long the section stays pinned before it releases and scrolls away
-// normally — this is scroll distance, not time.
+// normally. This is scroll distance, not time.
 const PINNED_HEIGHT_VH = 180;
 
 // How far (in px) a photo travels along its own exit direction by the time
@@ -65,7 +65,12 @@ export default function ScrollRevealHero({ photos, segments, cta }: ScrollReveal
     <div ref={containerRef} style={{ height: `${PINNED_HEIGHT_VH}vh` }} className="relative">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         {photos.map((photo, index) => (
-          <ScatteredPhotoItem key={photo.src} photo={photo} index={index} scrollYProgress={scrollYProgress} />
+          <ScatteredPhotoItem
+            key={photo.imageId}
+            photo={photo}
+            index={index}
+            scrollYProgress={scrollYProgress}
+          />
         ))}
 
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-6 px-6 text-center">
@@ -81,7 +86,7 @@ export default function ScrollRevealHero({ photos, segments, cta }: ScrollReveal
             ))}
           </h1>
 
-          {/* The button is intentionally NOT tied to scroll — it stays fully
+          {/* The button is intentionally NOT tied to scroll. It stays fully
               visible while the photos move away, and only leaves the screen
               when the pinned section itself releases and scrolls off. */}
           {cta && (
@@ -110,7 +115,7 @@ function HeadlineLine({
   scrollYProgress: MotionValue<number>;
 }) {
   // Each line fades out in its own scroll window, staggered so earlier
-  // lines finish fading before later ones start — pure opacity, no
+  // lines finish fading before later ones start. Pure opacity, no
   // movement, per spec ("fade away on their position").
   const windowSize = 0.55 / totalLines;
   const start = 0.08 + lineIndex * (0.35 / totalLines);
@@ -149,7 +154,7 @@ function ScatteredPhotoItem({
   const ref = useRef<HTMLDivElement>(null);
 
   // Direction this photo exits in, derived from where it actually sits
-  // relative to center — a top-left photo drifts further up-left, a
+  // relative to center. A top-left photo drifts further up-left, a
   // bottom-right photo further down-right, etc. Computed once from its
   // static position, not reactive.
   const leftPct = parseFloat(photo.left) || 50;
@@ -175,7 +180,7 @@ function ScatteredPhotoItem({
   const x = useTransform(() => exitX.get() + springX.get());
   const y = useTransform(() => exitY.get() + springY.get());
 
-  const MAX_OFFSET = 14; // px — hover nudge range, "just a little bit"
+  const MAX_OFFSET = 14; // px, hover nudge range, "just a little bit"
 
   function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
     const rect = ref.current?.getBoundingClientRect();
@@ -210,7 +215,12 @@ function ScatteredPhotoItem({
       }}
       className="cursor-pointer overflow-hidden"
     >
-      <Image src={photo.src} alt={photo.alt} fill sizes="20vw" className="object-cover" />
+      <CloudImage
+        id={photo.imageId}
+        alt={photo.alt}
+        priority
+        className="absolute inset-0 h-full w-full object-cover"
+      />
     </motion.div>
   );
 }

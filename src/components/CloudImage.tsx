@@ -5,6 +5,9 @@
  * exact aspect ratio of its slot (so uploads of any size match the design with
  * no distortion). `gravity` controls what the crop keeps (defaults to smart
  * `auto`); `grayscale` applies the black-and-white treatment server-side.
+ *
+ * SVG ids (ending in ".svg") are delivered untouched, since the photo
+ * transforms below can break vector files.
  */
 export default function CloudImage({
   id,
@@ -16,6 +19,7 @@ export default function CloudImage({
   gravity = "auto",
   grayscale = false,
   width = 1000,
+  priority = false,
 }: {
   id: string;
   alt: string;
@@ -31,8 +35,12 @@ export default function CloudImage({
   grayscale?: boolean;
   /** Source width Cloudinary renders at when cropping. */
   width?: number;
+  /** Load immediately instead of lazily. Use for above-the-fold images. */
+  priority?: boolean;
 }) {
   const cloud = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+  const isSvg = id.toLowerCase().endsWith(".svg");
 
   const parts: string[] = [format === "webp" ? "f_webp" : "f_auto", "q_auto"];
   if (crop) {
@@ -41,7 +49,7 @@ export default function CloudImage({
     parts.push(`g_${gravity}`);
   }
   if (grayscale) parts.push("e_grayscale");
-  const transform = parts.join(",");
+  const transform = isSvg ? "" : parts.join(",");
 
   if (!cloud) {
     return (
@@ -52,12 +60,16 @@ export default function CloudImage({
       />
     );
   }
+
+  const path = transform ? `${transform}/${id}` : id;
+
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`https://res.cloudinary.com/${cloud}/image/upload/${transform}/${id}`}
+      src={`https://res.cloudinary.com/${cloud}/image/upload/${path}`}
       alt={alt}
-      loading="lazy"
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "auto"}
       className={className}
     />
   );
