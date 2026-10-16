@@ -41,8 +41,8 @@ const reviews: Review[] = [
     color: "orange",
   },
   {
-    name: "Eniola Olakunle",
-    role: "AIESEC in Ibadan",
+    name: "Ubahakwe Chisom Favour",
+    role: "AIESEC in Enugu",
     quote:
       "AIESEC gave me my first experience of how a well-structured organisation works.",
     imageId: "review-4.png",
@@ -65,15 +65,14 @@ function ReviewCard({ review }: { review: Review }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative h-[70vh] md:h-[60vh] w-[68%] cursor-pointer flex-shrink-0 snap-start overflow-hidden rounded-2xl bg-black sm:w-[46%] sm:rounded-3xl lg:w-[calc((100%-4.5rem)/3.5)]"
+      className="relative h-[50vh] md:h-[60vh] w-[60%] md:w-[68%] cursor-pointer shrink-0 snap-start overflow-hidden rounded-2xl bg-black sm:w-[46%] sm:rounded-3xl lg:w-[calc((100%-4.5rem)/3.5)]"
     >
       <CloudImage
         id={review.imageId}
         alt={review.name}
         className="absolute inset-0 h-full w-full object-cover"
       />
-
-      {/* default state: name/role over a plain dark scrim, no color */}
+{/* default state */}
       <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-3 pb-3 pt-8 sm:px-5 sm:pb-5 sm:pt-12">
         <p className="text-xs font-bold text-white sm:text-base">
           {review.name}
@@ -81,7 +80,7 @@ function ReviewCard({ review }: { review: Review }) {
         <p className="text-[11px] text-white/80 sm:text-sm">{review.role}</p>
       </div>
 
-      {/* hover state: colored asset slides up from below, hidden entirely otherwise */}
+{/* hover state */}
       <div
         className={`absolute inset-x-0 bottom-0 z-20 transition-transform duration-500 ease-out ${
           hovered ? "translate-y-0" : "translate-y-full"

@@ -12,8 +12,7 @@ function useTypewriter(
   words: string[],
   { typingSpeedMs = 65, deletingSpeedMs = 35, pauseMs = 1600 }: UseTypewriterOptions = {}
 ) {
-  // Always start empty — the type-out animation is the point now, not
-  // something to avoid for a single word.
+  // animation always starts empty
   const [displayText, setDisplayText] = useState("");
 
   useEffect(() => {
@@ -23,7 +22,6 @@ function useTypewriter(
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      // Respect reduced-motion regardless: show the full word immediately.
       const timeoutId = setTimeout(() => setDisplayText(words[0]), 0);
       return () => clearTimeout(timeoutId);
     }
@@ -41,7 +39,7 @@ function useTypewriter(
       const targetWord = words[wordIndex % words.length];
 
       if (!isDeleting && current === targetWord) {
-        if (!canCycle) return; // single word: stop, cursor keeps blinking
+        if (!canCycle) return; 
         timeoutId = setTimeout(() => {
           isDeleting = true;
           tick();

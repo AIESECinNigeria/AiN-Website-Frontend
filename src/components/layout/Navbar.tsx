@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { navLinks, programLinks } from "./nav-data";
+import { navLinks, programLinks, transparentNavRoutes, isNavHiddenRoute } from "./nav-data";
 
 export interface NavLink {
   label: string;
@@ -18,10 +18,17 @@ export interface ProgramLink {
 }
 
 function NavbarContent() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
+  const isTransparentRoute = transparentNavRoutes.includes(pathname);
+  // The header stays see-through only while nothing is open over it — once the
+  // mobile menu or the desktop Programs dropdown opens, force the solid white
+  // bar so there's never a transparent/black strip sitting above a white panel.
+  const isMenuOpen = isMobileMenuOpen || isProgramsOpen;
+  const showOverlayStyle = isTransparentRoute && !isScrolled && !isMenuOpen;
 
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -139,14 +146,22 @@ function NavbarContent() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b bg-white backdrop-blur transition-shadow ${
-        isScrolled ? "border-gray-200 shadow-sm" : "border-transparent"
+      className={`z-50 w-full ${
+        isTransparentRoute
+          ? `fixed top-0 border-b transition-[background-color,border-color,box-shadow] duration-500 ease-in-out ${
+              showOverlayStyle
+                ? "border-transparent bg-transparent"
+                : "border-gray-200 bg-white shadow-sm"
+            }`
+          : `sticky top-0 border-b bg-white backdrop-blur transition-shadow ${
+              isScrolled ? "border-gray-200 shadow-sm" : "border-transparent"
+            }`
       }`}
     >
       <nav className="mx-auto flex h-18 items-center justify-between px-6 py-3 lg:px-20">
         <Link href="/" aria-label="Home" onClick={closeMobileMenu}>
           <Image
-            src="/svgs/logoBlack.svg"
+            src={showOverlayStyle ? "/svgs/logoWhite.svg" : "/svgs/logoBlack.svg"}
             alt="AIESEC in Nigeria"
             width={78}
             height={16}
@@ -156,15 +171,24 @@ function NavbarContent() {
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link: NavLink) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-lg font-medium text-[#5C5C5C] transition-colors hover:text-aiesec-blue leading-[150%]"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link: NavLink) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-lg leading-[150%] transition-colors duration-500 ease-in-out ${
+                  isActive ? "font-bold" : "font-medium"
+                } ${
+                  showOverlayStyle
+                    ? "text-white hover:text-white/80"
+                    : "text-[#5C5C5C] hover:text-aiesec-blue"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
 
           <div
             onMouseEnter={openPrograms}
@@ -182,7 +206,9 @@ function NavbarContent() {
               aria-haspopup="true"
               aria-expanded={isProgramsOpen}
               aria-controls="programs-menu"
-              className="flex items-center gap-1 text-lg font-medium text-[#5C5C5C] transition-colors cursor-pointer hover:text-aiesec-blue"
+              className={`flex items-center gap-1 text-lg font-medium transition-colors duration-500 ease-in-out cursor-pointer ${
+                showOverlayStyle ? "text-white hover:text-white/80" : "text-[#5C5C5C] hover:text-aiesec-blue"
+              }`}
             >
               Programs
               <ChevronIcon
@@ -196,13 +222,17 @@ function NavbarContent() {
 
           <Link
             href="/become-a-partner"
-            className="rounded-full border border-[#5C5C5C] px-5 py-2.5 text-base font-medium text-[#5C5C5C] transition-colors hover:bg-gray-900 hover:text-white leading-[150%] tracking-[-1%]"
+            className={`rounded-full border px-5 py-2.5 text-base font-medium leading-[150%] tracking-[-1%] transition-colors duration-500 ease-in-out ${
+              showOverlayStyle
+                ? "border-white text-white hover:bg-white hover:text-gray-900"
+                : "border-[#5C5C5C] text-[#5C5C5C] hover:bg-gray-900 hover:text-white"
+            }`}
           >
             Become a Partner
           </Link>
         </div>
 
-        {/* Mobile menu trigger — same button toggles hamburger/close */}
+        {/* Mobile menu */}
         <button
           ref={mobileTriggerRef}
           type="button"
@@ -213,12 +243,24 @@ function NavbarContent() {
           aria-controls="mobile-menu"
         >
           {isMobileMenuOpen ? (
-            <CloseIcon className="size-6 cursor-pointer text-aiesec-blue" />
+            <CloseIcon className="size-6 cursor-pointer text-black" />
           ) : (
-            <span className="flex flex-col items-center justify-center gap-1.5 cursor-pointer">
-              <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
-              <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
-              <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
+            <span className="flex cursor-pointer flex-col items-center justify-center gap-1.5">
+              <span
+                className={`block h-0.5 w-6 rounded-full transition-colors duration-500 ease-in-out ${
+                  showOverlayStyle ? "bg-white" : "bg-black"
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-6 rounded-full transition-colors duration-500 ease-in-out ${
+                  showOverlayStyle ? "bg-white" : "bg-black"
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-6 rounded-full transition-colors duration-500 ease-in-out ${
+                  showOverlayStyle ? "bg-white" : "bg-black"
+                }`}
+              />
             </span>
           )}
         </button>
@@ -274,13 +316,13 @@ function NavbarContent() {
             <button
               type="button"
               onClick={() => setIsMobileProgramsOpen((open) => !open)}
-              className="flex items-center justify-between rounded-lg px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 cursor-pointer"
+              className="flex cursor-pointer items-center justify-between rounded-lg px-3 py-3 text-base font-medium text-gray-800 hover:bg-gray-50"
               aria-expanded={isMobileProgramsOpen}
               aria-controls="mobile-programs-menu"
             >
               Programs
               <ChevronIcon
-                className={`size-4 transition-transform duration-200 cursor-pointer ${
+                className={`size-4 cursor-pointer transition-transform duration-200 ${
                   isMobileProgramsOpen ? "rotate-180" : ""
                 }`}
               />
@@ -309,7 +351,7 @@ function NavbarContent() {
             <Link
               href="/become-a-partner"
               onClick={closeMobileMenu}
-              className="mt-2 flex items-center justify-center rounded-full border border-gray-900 px-5 py-2.5 text-base font-medium text-gray-900 transition-colors hover:bg-gray-900 hover:text-white leading-[150%] tracking-[-1%]"
+              className="mt-2 flex items-center justify-center rounded-full border border-gray-900 px-5 py-2.5 text-base font-medium leading-[150%] tracking-[-1%] text-gray-900 transition-colors hover:bg-gray-900 hover:text-white"
             >
               Become a Partner
             </Link>
@@ -323,21 +365,17 @@ function NavbarContent() {
 export default function Navbar() {
   const pathname = usePathname();
 
-  // Remount the stateful nav when navigation changes instead of updating
-  // menu state synchronously inside an effect.
+  if (isNavHiddenRoute(pathname)) {
+    return null;
+  }
+
   return <NavbarContent key={pathname} />;
 }
 
 function ChevronIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M6 9l6 6 6-6"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -345,13 +383,7 @@ function ChevronIcon({ className }: { className?: string }) {
 function CloseIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <path
-        d="M6 6l12 12M18 6L6 18"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
