@@ -34,9 +34,6 @@ export interface ScrollRevealHeroProps {
 // normally. This is scroll distance, not time.
 const PINNED_HEIGHT_VH = 180;
 
-// How far (in px) a photo travels along its own exit direction by the time
-// the sequence completes. Generous on purpose so it clears the viewport
-// regardless of screen size.
 const EXIT_DISTANCE = 700;
 
 function groupIntoLines(segments: HeroSegment[]): HeroSegment[][] {
@@ -168,15 +165,13 @@ function ScatteredPhotoItem({
   const exitX = useTransform(scrollYProgress, [0.05, 0.85], [0, dirX * EXIT_DISTANCE]);
   const exitY = useTransform(scrollYProgress, [0.05, 0.85], [0, dirY * EXIT_DISTANCE]);
 
-  // Magnetic hover: nudges toward the cursor, springs back, clamped to a
-  // small range so it never drifts far from its resting position.
+  // Magnetic hover
   const hoverX = useMotionValue(0);
   const hoverY = useMotionValue(0);
   const springX = useSpring(hoverX, { stiffness: 200, damping: 18 });
   const springY = useSpring(hoverY, { stiffness: 200, damping: 18 });
 
-  // Combine the scroll-driven exit with the hover nudge into one final
-  // position, so both can apply to the same element at once.
+  // Combined scroll driven exit
   const x = useTransform(() => exitX.get() + springX.get());
   const y = useTransform(() => exitY.get() + springY.get());
 

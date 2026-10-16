@@ -1,3 +1,4 @@
+// components/Hero.tsx
 import Link from "next/link";
 import { TypewriterText } from "./Typewriter";
 
@@ -33,7 +34,7 @@ export default function Hero({
         centered ? "mx-auto max-w-4xl text-center" : "text-left"
       } ${className}`}
     >
-      <h1 className="text-3xl font-bold leading-[120%] tracking-[-1%] text-gray-900 sm:text-4xl lg:text-[3.25rem]">
+      <h1 className="text-3xl font-bold leading-[120%] tracking-[-1%] text-black sm:text-4xl lg:text-[3.25rem]">
         {segments.map((segment, index) => {
           if (segment.type === "break") return <br key={index} />;
           if (segment.type === "text") return <span key={index}>{segment.value}</span>;

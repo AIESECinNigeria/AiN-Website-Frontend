@@ -55,7 +55,7 @@ export default function Focus() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-2xl font-extrabold text-aiesec-blue sm:text-3xl lg:text-5xl leading-[120%] tracking-[-1%]"
+          className="text-[28px] font-extrabold text-aiesec-blue sm:text-4xl lg:text-5xl leading-[130%] tracking-[-1%]"
         >
           Our Focus
         </motion.h2>
