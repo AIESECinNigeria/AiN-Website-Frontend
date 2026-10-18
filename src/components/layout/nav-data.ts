@@ -38,10 +38,3 @@ export const programLinks = [
     description: "Celebrating young changemakers and the impact they create.",
   },
 ];
-
-export const transparentNavRoutes: string[] = ["/blog"];
-
-
-export function isNavHiddenRoute(pathname: string): boolean {
-  return pathname.startsWith("/blog/") && pathname !== "/blog/";
-}
