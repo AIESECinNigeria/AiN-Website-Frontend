@@ -103,8 +103,8 @@ const LeadershipWaitlist = () => {
         <div className="container mx-auto max-w-7xl px-6 xl:px-0 my-20 py-20 lg:my-24 z-[20] relative">
           <div className="relative max-w-3xl mx-auto">
             <h1 className="text-[43px] my-2 text-center max-w-lg mx-auto leading-none">
-              <span className="font-['Raleway',sans-serif] font-semibold">We're recruiting soon, and</span>{' '}
-              <span className="font-['Clash_Display',sans-serif] font-light">you can't miss out on it.</span>
+              <span className="font-['Raleway',sans-serif] font-semibold">We&apos;re recruiting soon, and</span>{' '}
+              <span className="font-['Clash_Display',sans-serif] font-light">you can&apos;t miss out on it.</span>
             </h1>
             <p className="font-light text-base font-['Clash_Display',sans-serif] text-center max-w-sm mx-auto">
               Join the mailing list to get more information immediately after it goes out.
@@ -137,7 +137,7 @@ const LeadershipWaitlist = () => {
                     ) : (
                       <>
                         Join Waitlist
-                        <CloudImage id="ain/ls/arrow" className="ml-1 lg:h-6" alt="Arrow" />
+                        <CloudImage id="arrow.svg" className="ml-1 lg:h-6" alt="Arrow" />
                       </>
                     )}
                   </button>
@@ -149,7 +149,7 @@ const LeadershipWaitlist = () => {
                   We promise not to <span className="font-['Clash_Display',sans-serif] text-[#5b57f4]">spam</span> you.
                 </p>
                 <CloudImage
-                  id="ain/ls/banner-star"
+                  id="banner-star.svg"
                   className="absolute -top-4 -left-6 h-auto w-10 z-[2]"
                   alt="Star"
                 />
@@ -158,12 +158,12 @@ const LeadershipWaitlist = () => {
           </div>
         </div>
         <CloudImage
-          id="ain/ls/OrangeStar"
+          id="OrangeStar.svg"
           className="absolute -top-2 -right-8 lg:-top-2 lg:-right-10 h-auto w-20 lg:w-40 z-[2]"
           alt="Orange Star"
         />
         <CloudImage
-          id="ain/ls/pStar"
+          id="pStar.svg"
           className="absolute bottom-0 -left-10 lg:-left-20 h-auto w-28 lg:w-60 z-[2]"
           alt="P Star"
         />

@@ -17,22 +17,22 @@ const LeadershipHomePageHero = () => {
                 <div className="flex justify-start">
                     <a href="/leadership-summit/register" className="flex primary-btn items-center lg:text-base text-black border-white border my-2">
                         Register for Leadership Summit
-                        <CloudImage id="ain/ls/arrow" className="ml-1 lg:h-6" alt="" />
+                        <CloudImage id="arrow.svg" className="ml-1 lg:h-6" alt="" />
                     </a>
                 </div>
-                <CloudImage id="ain/ls/YellowSTAR" className="absolute -top-14 -left-4 lg:-left-12 w-12 md:w-24 h-24 z-[2]" alt="" />
+                <CloudImage id="YellowSTAR.svg" className="absolute -top-14 -left-4 lg:-left-12 w-12 md:w-24 h-24 z-[2]" alt="" />
               </div>
               <div className="relative">
                 <div
                   className="bg-center bg-no-repeat bg-[length:auto_530px] max-[750px]:bg-[length:auto_320px] w-[260px] h-[260px] md:w-[435px] md:h-[435px] xl:w-[435px] xl:h-[435px] shadow-[8px_8px_2px_-4px_#5b57f4] relative"
-                  style={{ backgroundImage: `url(${cld('ain/ls/banner-img')})` }}
+                  style={{ backgroundImage: `url(${cld('banner-img.jpg')})` }}
                 >
-                    <CloudImage id="ain/ls/banner-star" className="absolute lg:-top-24 lg:-left-24 -top-16 -left-16 w-30 md:w-[200px] h-auto z-[2]" alt="" />
-                    <CloudImage id="ain/ls/tripleGlobe" className="absolute -top-8 -right-8 lg:-top-10 lg:-right-8 w-24 lg:w-40 h-auto z-[2]" alt="" />
+                    <CloudImage id="banner-star.svg" className="absolute lg:-top-24 lg:-left-24 -top-16 -left-16 w-30 md:w-[200px] h-auto z-[2]" alt="" />
+                    <CloudImage id="tripleGlobe.svg" className="absolute -top-8 -right-8 lg:-top-10 lg:-right-8 w-24 lg:w-40 h-auto z-[2]" alt="" />
                     <div className="absolute lg:-bottom-20 lg:-left-24 -bottom-10 -left-8 w-20 lg:w-40 h-auto z-[2] p-2 rounded-full bg-[#171616]">
-                      <CloudImage id="ain/ls/logo-circle" alt="" />
+                      <CloudImage id="logo-circle.svg" alt="" />
                     </div>
-                    <CloudImage id="ain/ls/greenEye" className="absolute -bottom-10 -right-14 w-28 lg:-bottom-16 lg:-right-24 lg:w-44 h-auto z-[2]" alt="" />
+                    <CloudImage id="greenEye.svg" className="absolute -bottom-10 -right-14 w-28 lg:-bottom-16 lg:-right-24 lg:w-44 h-auto z-[2]" alt="" />
                 </div>
               </div>
             </div>

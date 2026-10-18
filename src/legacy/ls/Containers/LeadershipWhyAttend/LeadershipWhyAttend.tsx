@@ -5,7 +5,7 @@ const LeadershipWhyAttend = () => {
   return (
     <section
       className="text-black overflow-hidden relative bg-cover bg-center bg-blend-multiply"
-      style={{ backgroundImage: `url(${cld('ain/ls/boxes')})` }}
+      style={{ backgroundImage: `url(${cld('boxes.png')})` }}
     >
       <div className="container mx-auto max-w-7xl px-6 xl:px-0 mt-10 pt-20 lg:my-24 relative">
         <div className="relative z-[10] mb-36">
@@ -54,12 +54,12 @@ const LeadershipWhyAttend = () => {
       </div>
 
       <CloudImage
-        id="ain/ls/Computer"
+        id="Computer.svg"
         className="absolute lg:top-8 top-2 -right-4 lg:-right-10 -rotate-[30deg] h-auto w-20 lg:w-44 z-[2]"
         alt="Computer"
       />
       <CloudImage
-        id="ain/ls/GlobeGreen"
+        id="GlobeGreen.svg"
         className="absolute lg:bottom-8 bottom-2 -right-4 lg:-right-20 rotate-[30deg] h-auto w-20 lg:w-44 z-[2]"
         alt="Globe"
       />

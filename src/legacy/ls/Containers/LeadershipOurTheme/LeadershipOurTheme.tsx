@@ -12,11 +12,11 @@ const LeadershipOurTheme = () => {
               <span className="font-light">Transforming Youths for a Sustainable Africa</span>
             </div>
             <div
-              className="border border-white rounded-lg my-1 bg-cover bg-center bg-no-repeat w-100 md:h-96 h-40 relative"
-              style={{ backgroundImage: `url(${cld('ain/ls/ourTheme')})` }}
+              className="border border-white rounded-lg my-1 bg-cover bg-center bg-no-repeat w-screen md:h-96 h-40 relative"
+              style={{ backgroundImage: `url(${cld('ourTheme.png')})` }}
             >
               <CloudImage
-                id="ain/ls/banner-star"
+                id="banner-star.svg"
                 className="absolute -bottom-6 -left-8 w-14 h-14 z-[12]"
                 alt="Banner Star"
               />
@@ -56,7 +56,7 @@ const LeadershipOurTheme = () => {
             </div>
           </div>
           <CloudImage
-            id="ain/ls/orangeStripe"
+            id="orangeStripe.svg"
             className="absolute top-32 lg:top-16 rotate-45 -right-14 lg:-right-36 h-auto w-40 lg:w-80 z-[20]"
             alt="Orange Stripe"
           />
@@ -73,7 +73,7 @@ const LeadershipOurTheme = () => {
               </div>
               <div className="my-3">
                 <p className="font-light text-base lg:text-xl max-w-2xl">
-                This year's Leadership Summit is anchored on four SDGs that are concerned with equipping youths like <span className="text-[#ffcc33] font-bold">YOU</span> with all that is required to create healthy, thriving communities, develop sustainable cities, boost economic growth through decent work, and strengthen collaboration for Africa's development.
+                This year&apos;s Leadership Summit is anchored on four SDGs that are concerned with equipping youths like <span className="text-[#ffcc33] font-bold">YOU</span> with all that is required to create healthy, thriving communities, develop sustainable cities, boost economic growth through decent work, and strengthen collaboration for Africa&apos;s development.
                 </p>
               </div>
               <div className="flex justify-start my-4">
@@ -109,7 +109,7 @@ const LeadershipOurTheme = () => {
               <div className="flex flex-col gap-y-24">
                 <div
                   className="w-full h-80 border-2 bg-cover bg-center bg-no-repeat border-apurple p-4 lg:p-6 rounded-[24px] relative overflow-hidden"
-                  style={{ backgroundImage: `url(${cld('ain/ls/sdg3-bg')})` }}
+                  style={{ backgroundImage: `url(${cld('sdg3-bg')})` }}
                 >
                   <div className="sdg-title px-3 py-2 rounded-lg z-10 bg-white text-black lg:w-fit">
                     <p className="font-bold text-center text-[14px]">
@@ -117,14 +117,14 @@ const LeadershipOurTheme = () => {
                     </p>
                   </div>
                   <CloudImage
-                    id="ain/ls/sdg3"
+                    id="sdg3"
                     className="absolute bottom-6 right-6 lg:-left-34 h-auto w-6 z-[2]"
                     alt="SDG 3"
                   />
                 </div>
                 <div
                   className="w-full h-80 border-2 bg-cover bg-center bg-no-repeat border-apurple p-4 lg:p-6 rounded-[24px] relative overflow-hidden"
-                  style={{ backgroundImage: `url(${cld('ain/ls/sdg8-bg')})` }}
+                  style={{ backgroundImage: `url(${cld('sdg8-bg')})` }}
                 >
                   <div className="sdg-title px-3 py-2 rounded-lg z-10 bg-white text-black lg:w-fit">
                     <p className="font-bold text-center text-[14px]">
@@ -132,14 +132,14 @@ const LeadershipOurTheme = () => {
                     </p>
                   </div>
                   <CloudImage
-                    id="ain/ls/sdg8"
+                    id="sdg8"
                     className="absolute bottom-6 right-6 lg:-left-34 h-auto w-6 z-[2]"
                     alt="SDG 8"
                   />
                 </div>
                 <div
                   className="w-full h-80 border-2 bg-cover bg-center bg-no-repeat border-apurple p-4 lg:p-6 rounded-[24px] relative overflow-hidden"
-                  style={{ backgroundImage: `url(${cld('ain/ls/sdg11-bg')})` }}
+                  style={{ backgroundImage: `url(${cld('sdg11-bg')})` }}
                 >
                   <div className="sdg-title px-3 py-2 rounded-lg z-10 bg-white text-black lg:w-fit">
                     <p className="font-bold text-center text-[14px]">
@@ -147,14 +147,14 @@ const LeadershipOurTheme = () => {
                     </p>
                   </div>
                   <CloudImage
-                    id="ain/ls/sdg11"
+                    id="sdg11"
                     className="absolute bottom-6 right-6 lg:-left-34 h-auto w-6 z-[2]"
                     alt="SDG 11"
                   />
                 </div>
                 <div
                   className="w-full h-80 border-2 bg-cover bg-center bg-no-repeat border-apurple p-4 lg:p-6 rounded-[24px] relative overflow-hidden"
-                  style={{ backgroundImage: `url(${cld('ain/ls/sdg17-bg')})` }}
+                  style={{ backgroundImage: `url(${cld('sdg17-bg')})` }}
                 >
                   <div className="sdg-title px-3 py-2 rounded-lg z-10 bg-white text-black lg:w-fit">
                     <p className="font-bold text-center text-[14px]">
@@ -162,7 +162,7 @@ const LeadershipOurTheme = () => {
                     </p>
                   </div>
                   <CloudImage
-                    id="ain/ls/sdg17"
+                    id="sdg17"
                     className="absolute bottom-6 right-6 lg:-left-34 h-auto w-6 z-[2]"
                     alt="SDG 17"
                   />
@@ -172,14 +172,14 @@ const LeadershipOurTheme = () => {
           </div>
         </div>
         <CloudImage
-          id="ain/ls/earthOrange"
+          id="earthOrange"
           className="absolute top-8 -left-16 lg:-left-34 h-auto w-20 lg:w-36 z-[2]"
           alt="Earth Orange"
         />
       </section>
 
       <CloudImage
-        id="ain/ls/goldenGlobe"
+        id="goldenGlobe"
         className="absolute top-[43%] lg:top-[51%] -right-5 lg:-right-10 h-auto w-20 lg:w-40"
         alt="Golden Globe"
       />

@@ -10,12 +10,12 @@ const OurWhatView = () => {
             Empowering Young Leaders
           </div>
           <div
-            className="bg-cover bg-no-repeat [background-position:top_-70px_center] max-[500px]:[background-position:top_center] border border-black rounded-lg my-1 our-what-img w-100 md:h-96 h-40 relative"
-            style={{ backgroundImage: `url(${cld('ain/ls/ourWHat')})` }}
+            className="bg-cover bg-no-repeat [background-position:top_-70px_center] max-[500px]:[background-position:top_center] border-y border-black my-1 our-what-img w-screen relative left-1/2 -translate-x-1/2 md:h-96 h-40"
+            style={{ backgroundImage: `url(${cld('ourWHat.jpg')})` }}
           >
             <CloudImage
-              id="ain/ls/starPurple"
-              className="absolute -bottom-6 -left-8 w-14 h-14 z-[12] hidden lg:block"
+              id="starPurple.svg"
+              className="absolute -bottom-6 left-4 lg:left-8 w-14 h-14 z-[12] hidden lg:block"
               alt="Purple Star"
             />
           </div>
@@ -33,13 +33,13 @@ const OurWhatView = () => {
               className="flex white-btn text-black items-center text-[12px] md:text-base border-black border shadow-[8px_8px_2px_-4px_#000]"
             >
               Register for Leadership Summit
-              <CloudImage id="ain/ls/arrow" className="ml-1 h-6" alt="Arrow" />
+              <CloudImage id="arrow.svg" className="ml-1 h-6" alt="Arrow" />
             </a>
           </div>
         </div>
       </div>
       <CloudImage
-        id="ain/ls/spiralImage"
+        id="spiralImage.svg"
         className="absolute bottom-20 rotate-45 -right-20 md:-right-28 h-auto w-40 md:w-80 z-[2]"
         alt="Spiral"
       />
