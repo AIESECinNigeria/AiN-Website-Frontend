@@ -11,7 +11,7 @@ interface ReviewItem {
 const reviewData: ReviewItem[] = [
   {
     id: 1,
-    image: 'ain/ysf/Review1',
+    image: 'Review1.svg',
     name: "Ebunoluwa",
     // role: "AIESEC Alumni",
 
@@ -21,7 +21,7 @@ const reviewData: ReviewItem[] = [
 
   {
     id: 2,
-    image: 'ain/ysf/Review2',
+    image: 'Review2.svg',
     name: "Shitta-Bey",
     // role: "AIESEC in Akure",
 
@@ -31,7 +31,7 @@ const reviewData: ReviewItem[] = [
 
   {
     id: 3,
-    image: 'ain/ysf/Review3',
+    image: 'Review3.svg',
     name: "Tofa",
     // role: "AIESEC in Akure",
 

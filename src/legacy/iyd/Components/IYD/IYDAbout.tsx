@@ -19,7 +19,7 @@ const IYDAbout = () => {
         <div className="order-2 flex justify-end md:order-none">
           <div className="relative aspect-square w-full overflow-hidden md:hidden -mt-32">
             <CloudImage
-              id="ain/iyd/IYDAboutImg"
+              id="IYDAboutImg.svg"
               alt=""
               className="absolute inset-0 h-full w-full -rotate-90 object-cover object-center"
             />
@@ -27,7 +27,7 @@ const IYDAbout = () => {
 
           {/* Desktop: no rotation, no mismatch to worry about */}
           <CloudImage
-            id="ain/iyd/IYDAboutImg"
+            id="IYDAboutImg.svg"
             alt=""
             className="hidden h-full w-full object-cover object-center md:block"
           />
@@ -39,11 +39,11 @@ const IYDAbout = () => {
           </h2>
           <div className="mt-1 md:mt-6 space-y-4 text-[#2A412A] w-[90%] md:w-[65%] text-xl md:text-[22px] lg:text-2xl leading-[150%] tracking-[-2%]">
             <p>
-              Future Forward is AIESEC in Nigeria's event marking International
+              Future Forward is AIESEC in Nigeria&apos;s event marking International
               Youth Day 2026.
             </p>
             <p>
-              It's a half-day of practical, experience-driven sessions designed
+              It&apos;s a half-day of practical, experience-driven sessions designed
               for the Nigerian youth — bringing together skill-building,
               financial empowerment, and an honest mental health conversation in
               one space.

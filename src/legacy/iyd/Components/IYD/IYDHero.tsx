@@ -21,7 +21,7 @@ const IYDHero = ({ onRegisterClick }: IYDHeroProps) => {
       {/* Full-bleed image wrapper, height controlled by aspect ratio instead of the raw image size */}
       <div className="relative left-1/2 min-h-screen w-screen -translate-x-1/2">
         <CloudImage
-          id="ain/iyd/IYDHeroImg"
+          id="IYDHeroImg.png"
           alt=""
           className="absolute inset-0 h-full w-full object-cover object-center"
         />

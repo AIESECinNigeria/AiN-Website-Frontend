@@ -1,7 +1,7 @@
 import CloudImage from "@/components/CloudImage";
 import { cld } from "@/lib/cloudinary";
 
-const heroImage = cld("ain/gmw/gmwHeroImage");
+const heroImage = cld("gmwHeroImage.jpg");
 
 const GmwHomePageHero = () => {
   return (
@@ -13,7 +13,7 @@ const GmwHomePageHero = () => {
     >
       <div className="pl-[40px] max-[767px]:pl-[20px]">
         <CloudImage
-          id="ain/gmw/gmwlogowhite"
+          id="gmwlogowhite.svg"
           alt="the gmw logo in white color"
           className="min-[768px]:max-[920px]:w-[100px]"
         />
@@ -24,7 +24,7 @@ const GmwHomePageHero = () => {
         </h3>
         <div className="bg-[#008F4F] w-full mt-[15px] px-5 py-12 md:p-12">
           <p className="w-[90%] lg:w-[80%] m-auto text-[20px] italic font-light text-[#FDEEB6]">
-            This year's theme aims to encourage young people to have open
+            This year&apos;s theme aims to encourage young people to have open
             conversations about financial topics in order to build confidence,
             financial literacy, and resilience. AIESEC in Nigeria, during the
             Global Money Week, is set to help young people identify financial

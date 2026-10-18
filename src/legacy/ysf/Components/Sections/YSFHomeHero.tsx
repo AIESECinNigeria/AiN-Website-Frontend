@@ -10,7 +10,7 @@ const YSFHomeHero = () => {
   return (
     <section className="relative overflow-hidden min-h-[70vh] md:min-h-screen bg-gradient-to-b from-[#6144B0] via-[55%] to-[#000000]">
       <CloudImage
-        id="ain/ysf/YSFHomeTexture"
+        id="YSFHomeTexture.svg"
         alt=""
         className="
           absolute
@@ -25,7 +25,7 @@ const YSFHomeHero = () => {
       />
 
       <CloudImage
-        id="ain/ysf/YSFHomePattern"
+        id="YSFHomePattern.svg"
         alt=""
         className="
 hidden
@@ -51,7 +51,7 @@ select-none
       />
 
       <CloudImage
-        id="ain/ysf/YSFHomePatternMobile"
+        id="YSFHomePatternMobile.svg"
         alt=""
         className="
 block
@@ -147,12 +147,12 @@ transition-all lg:hidden
           <div className="relative z-0 flex justify-center items-end self-end h-full">
             <div className="hidden lg:block relative w-[828px]">
               <CloudImage
-                id="ain/ysf/Circle-Effect"
+                id="Circle_Effect.svg"
                 alt=""
                 className="absolute inset-0 w-full h-full scale-[1.15] translate-y-[40px] object-contain pointer-events-none select-none"
               />
               <CloudImage
-                id="ain/ysf/ysfmic"
+                id="ysfmic"
                 alt="hero"
                 className="relative z-[1] w-full object-contain translate-y-[50px]"
               />
@@ -161,12 +161,12 @@ transition-all lg:hidden
             <div className="lg:hidden relative w-full flex justify-center items-end mt-2">
               <div className="relative flex justify-center">
                 <CloudImage
-                  id="ain/ysf/Circle-Effect"
+                  id="Circle_Effect.svg"
                   alt=""
                   className="relative z-0 w-[115%] -translate-y-[8px] object-contain pointer-events-none select-none"
                 />
                 <CloudImage
-                  id="ain/ysf/ysfmic"
+                  id="ysfmic.png"
                   alt="hero"
                   className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[8px] w-[88%] object-contain z-[1]"
                 />

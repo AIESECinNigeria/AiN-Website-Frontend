@@ -1,7 +1,7 @@
 import CloudImage from "@/components/CloudImage";
 import { cld } from "@/lib/cloudinary";
 
-const bgTexture = cld("ain/gmw/background-texture");
+const bgTexture = cld("background-texture.png");
 
 const GmwAboutPage = () => {
   return (
@@ -16,7 +16,7 @@ const GmwAboutPage = () => {
               Side gist : Joining the Smart Money Talk can help you become a
               Smart Money Master
             </p>
-            <CloudImage id="ain/gmw/ellipse-7" alt="a yellow ellipse" />
+            <CloudImage id="ellipse-7" alt="a yellow ellipse" />
             <p>
               Side gist : Joining the Smart Money Talk can help you become a
               Smart Money Master
@@ -54,22 +54,22 @@ const GmwAboutPage = () => {
       <div className="bg-[#CD7A34] p-1"></div>
       <div className="py-[12px] px-[48px] grid grid-cols-3 gap-5 max-[767px]:p-[20px] max-[767px]:grid-cols-2 max-[767px]:gap-5">
         <div>
-          <CloudImage id="ain/gmw/gmwImage3" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
+          <CloudImage id="gmwImage3.png" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
         </div>
         <div>
-          <CloudImage id="ain/gmw/gmwImage19" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
+          <CloudImage id="gmwImage19.png" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
         </div>
         <div>
-          <CloudImage id="ain/gmw/gmwImage6" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
+          <CloudImage id="gmwImage6.png" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
         </div>
         <div>
-          <CloudImage id="ain/gmw/gmwImage7" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
+          <CloudImage id="gmwImage7.png" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
         </div>
         <div>
-          <CloudImage id="ain/gmw/gmwImage18" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
+          <CloudImage id="gmwImage18.png" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
         </div>
         <div>
-          <CloudImage id="ain/gmw/gmwImage4" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
+          <CloudImage id="gmwImage4.png" alt="a young lady speaking" className="w-full h-[300px] object-cover min-[768px]:max-[920px]:h-[200px] min-[768px]:max-[920px]:border-2 min-[768px]:max-[920px]:border-black" />
         </div>
       </div>
       <div className="bg-[#CD7A34] p-1"></div>
@@ -88,16 +88,16 @@ const GmwAboutPage = () => {
         <div className="bg-[#08841B] p-1"></div>
         <div className="grid grid-cols-4 gap-5 py-[12px] px-0 max-[767px]:grid-cols-2 max-[767px]:gap-5">
           <div>
-            <CloudImage id="ain/gmw/gmwImage9" alt="a young lady speaking" />
+            <CloudImage id="gmwImage9.png" alt="a young lady speaking" />
           </div>
           <div>
-            <CloudImage id="ain/gmw/gmwImageX" alt="a young lady speaking" />
+            <CloudImage id="gmwImageX.png" alt="a young lady speaking" />
           </div>
           <div>
-            <CloudImage id="ain/gmw/gmwImageXI" alt="a young lady speaking" />
+            <CloudImage id="gmwImageXI.png" alt="a young lady speaking" />
           </div>
           <div>
-            <CloudImage id="ain/gmw/gmwImageXII" alt="a young lady speaking" />
+            <CloudImage id="gmwImageXII.png" alt="a young lady speaking" />
           </div>
         </div>
         <div className="bg-[#08841B] p-1"></div>

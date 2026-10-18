@@ -21,12 +21,12 @@ const IYDCta = ({ onRegisterClick }: IYDCtaProps) => {
       />
 
       <CloudImage
-        id="ain/iyd/IYDAboutImg"
+        id="IYDAboutImg.svg"
         alt=""
         className="absolute -left-8 -top-8 w-72 rotate-90 sm:-left-16 sm:-top-16 md:w-96 lg:w-[550px]"
       />
       <CloudImage
-        id="ain/iyd/IYDAboutImg"
+        id="IYDAboutImg.svg"
         alt=""
         className="absolute -right-8 -bottom-8 w-72 -rotate-90 sm:-right-16 sm:-bottom-16 md:w-96 lg:w-[550px]"
       />
