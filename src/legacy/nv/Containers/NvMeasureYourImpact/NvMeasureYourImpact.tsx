@@ -3,20 +3,13 @@ import { useRouter } from 'next/navigation';
 import HalfHighlight from '../../Components/HalfHighlight/HalfHighlight';
 import CloudImage from '@/components/CloudImage';
 import { cld } from '@/lib/cloudinary';
-const volunteer1 = cld('volunteer1');
-const volunteer2 = cld('volunteer2');
-const volunteer3 = cld('volunteer3');
-const volunteer4 = cld('volunteer4');
-const volunteer5 = cld('volunteer5');
-const volunteer6 = cld('volunteer6');
 
-// TODO: change images to cloudinary
-// let volunteer1 = 'https://res.cloudinary.com/dof4l5eul/image/upload/v1743762347/AIESEC/volunteer1_y8tbrd.png';
-// let volunteer2 = 'https://res.cloudinary.com/dof4l5eul/image/upload/v1743762345/AIESEC/volunteer2_zpfj6h.png';
-// let volunteer3 = 'https://res.cloudinary.com/dof4l5eul/image/upload/v1743762348/AIESEC/volunteer3_rhc8bf.png';
-// let volunteer4 = 'https://res.cloudinary.com/dof4l5eul/image/upload/v1743762346/AIESEC/volunteer4_dioynw.png';
-// let volunteer5 = 'https://res.cloudinary.com/dof4l5eul/image/upload/v1743762348/AIESEC/volunteer5_wkssds.png';
-// let volunteer6 = 'https://res.cloudinary.com/dof4l5eul/image/upload/v1743762346/AIESEC/volunteer6_mbaleu.png';
+const volunteer1 = cld('ain/nv/volunteer1.png');
+const volunteer2 = cld('ain/nv/volunteer2.png');
+const volunteer3 = cld('ain/nv/volunteer3.png');
+const volunteer4 = cld('ain/nv/volunteer4.png');
+const volunteer5 = cld('ain/nv/volunteer5.png');
+const volunteer6 = cld('ain/nv/volunteer6.png');
 
 interface WhyItem {
   text: string;

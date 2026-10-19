@@ -18,21 +18,21 @@ const NvHomeVolunteers = () => {
       name: 'Bright Uzosike',
       caption:
         'There is more happiness in giving than there is in receiving. No matter how small you give to those in need, it goes a long way to put a smile on their faces.',
-      image: 'testimonial1',
+      image: 'ain/nv/testimonial1',
     },
 
     {
       name: 'Deborah',
       caption:
         'Working and relating to the children. It was always exciting to see them work on projects independently and come out with excellent results.',
-      image: 'testimonial2',
+      image: 'ain/nv/testimonial2',
     },
 
     {
       name: 'Kashimana',
       caption:
         'My experience was one of the best I have ever had. From 100% support from the team to learning about a whole new diverse culture. ',
-      image: 'testimonial3',
+      image: 'ain/nv/testimonial3',
     },
   ];
 
