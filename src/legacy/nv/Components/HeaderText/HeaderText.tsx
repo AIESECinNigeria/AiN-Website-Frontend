@@ -1,13 +1,17 @@
+import type { CSSProperties, ReactNode } from 'react';
+
 interface HeaderTextProps {
-  title?: React.ReactNode;
-  caption?: React.ReactNode;
+  title?: ReactNode;
+  caption?: ReactNode;
   isCentered?: boolean;
   captionFirst?: boolean;
-  titleStyle?: React.CSSProperties;
+  titleStyle?: CSSProperties;
 }
 
-const h4Class =
-  "font-['Kunire_Grotesk',sans-serif] text-[56px] font-semibold leading-[1.02] text-[#2d2d2d] mt-0 uppercase min-[767px]:max-[1023px]:text-[32px] max-[767px]:text-[32px]";
+const H4 =
+  "font-['Kunire_Grotesk',sans-serif] text-[56px] max-[1023px]:text-[32px] font-semibold leading-[1.02] text-[#2d2d2d] mt-0 uppercase";
+const P_BASE =
+  "font-['Kind_Sans_Regular','Kind_Sans',sans-serif] text-[24px] max-[1023px]:text-[16px] font-light max-[1023px]:font-[275] leading-[23.04px] max-[1023px]:leading-[140%] text-[#808080]";
 
 const HeaderText = ({
   title,
@@ -16,24 +20,19 @@ const HeaderText = ({
   captionFirst = false,
   titleStyle,
 }: HeaderTextProps) => {
-  const pClass = `font-['Kind_Sans_Regular','Kind_Sans',sans-serif] text-[24px] font-light leading-[23.04px] text-[#808080] ${
-    captionFirst
-      ? 'mb-6 min-[767px]:max-[1023px]:mb-3 max-[767px]:mb-3'
-      : 'mb-4'
-  } min-[767px]:max-[1023px]:text-[16px] min-[767px]:max-[1023px]:font-[275] min-[767px]:max-[1023px]:leading-[140%] max-[767px]:text-[16px] max-[767px]:font-[275] max-[767px]:leading-[140%]`;
-
+  const pClass = `${P_BASE} ${captionFirst ? 'mb-6 max-[1023px]:mb-3' : 'mb-4'}`;
   return (
     <div style={isCentered ? { textAlign: 'center' } : { textAlign: 'left' }}>
       {captionFirst ? (
         <>
           <p className={pClass}>{caption}</p>
-          <h4 className={h4Class} style={titleStyle}>
+          <h4 className={H4} style={titleStyle}>
             {title}
           </h4>
         </>
       ) : (
         <>
-          <h4 className={h4Class} style={titleStyle}>
+          <h4 className={H4} style={titleStyle}>
             {title}
           </h4>
           <p className={pClass}>{caption}</p>

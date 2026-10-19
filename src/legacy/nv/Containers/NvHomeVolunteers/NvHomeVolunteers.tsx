@@ -2,8 +2,8 @@
 import HalfHighlight from '../../Components/HalfHighlight/HalfHighlight';
 import CloudImage from '@/components/CloudImage';
 import { cld } from '@/lib/cloudinary';
-const vector7 = cld('ain/nv/vector7');
-const vector8 = cld('ain/nv/vector8');
+const vector7 = cld('vector7');
+const vector8 = cld('vector8');
 
 interface Testimonial {
   name: string;
@@ -18,21 +18,21 @@ const NvHomeVolunteers = () => {
       name: 'Bright Uzosike',
       caption:
         'There is more happiness in giving than there is in receiving. No matter how small you give to those in need, it goes a long way to put a smile on their faces.',
-      image: 'ain/nv/testimonial1',
+      image: 'testimonial1',
     },
 
     {
       name: 'Deborah',
       caption:
         'Working and relating to the children. It was always exciting to see them work on projects independently and come out with excellent results.',
-      image: 'ain/nv/testimonial2',
+      image: 'testimonial2',
     },
 
     {
       name: 'Kashimana',
       caption:
         'My experience was one of the best I have ever had. From 100% support from the team to learning about a whole new diverse culture. ',
-      image: 'ain/nv/testimonial3',
+      image: 'testimonial3',
     },
   ];
 

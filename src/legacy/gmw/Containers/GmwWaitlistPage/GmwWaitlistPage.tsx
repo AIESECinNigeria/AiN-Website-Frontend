@@ -5,8 +5,8 @@ import CloudImage from "@/components/CloudImage";
 import Button from "../../Components/Button/Button";
 import GmwWaitlistForm from "./GmwWaitlistForm";
 
-const bgTexture = cld("ain/gmw/background-texture");
-const brownTexture = cld("ain/gmw/Texture-on-Brown");
+const bgTexture = cld("background-texture");
+const brownTexture = cld("Texture-on-Brown");
 
 const GmwWaitlistPage = () => {
   const [email, setEmail] = useState<string>("");
@@ -84,7 +84,7 @@ const GmwWaitlistPage = () => {
     >
       <div className="pt-[20px] pr-0 pb-[40px] pl-[50px] max-[767px]:pb-[50px] max-[767px]:pl-[20px]">
         <CloudImage
-          id="ain/gmw/black"
+          id="black"
           alt="the gmw logo in black color"
           className="max-[767px]:w-[100px]"
         />
@@ -108,13 +108,13 @@ const GmwWaitlistPage = () => {
         <div className="-mt-[190px] ml-auto max-[767px]:mt-0">
           <div className="hidden max-[767px]:block">
             <CloudImage
-              id="ain/gmw/colorblock2"
+              id="colorblock2"
               alt="a block of colors"
               className="max-[767px]:w-full"
             />
           </div>
           <div className="max-[767px]:hidden">
-            <CloudImage id="ain/gmw/colortower2" alt="a block of colors" />
+            <CloudImage id="colortower2" alt="a block of colors" />
           </div>
         </div>
       </div>
@@ -150,13 +150,13 @@ const GmwWaitlistPage = () => {
         <div className="flex justify-center items-center [grid-row:1/3] [grid-column:2/3] max-[767px]:mb-[70px]">
           <div className="flex items-center">
             <div className="bg-[#fcefef] pt-[2px] px-[2px] pb-[40px] w-[215px] min-[920px]:max-[1120px]:w-[155px] min-[767px]:max-[920px]:w-[130px] max-[767px]:w-[150px] max-[450px]:w-[120px] [transform:rotate(-20deg)_translateY(80px)] z-[1] relative shadow-[-4px_4px_0px_0px_#000] after:content-[''] after:absolute after:bottom-[2px] after:left-0 after:w-full after:h-[19%] after:bg-[#008f4f]">
-              <CloudImage id="ain/gmw/gambit" alt="a young man " />
+              <CloudImage id="gmwImage3" alt="a young man " />
             </div>
             <div className="bg-[#fcefef] pt-[2px] px-[2px] pb-[40px] w-[215px] min-[920px]:max-[1120px]:w-[155px] min-[767px]:max-[920px]:w-[130px] max-[767px]:w-[150px] max-[450px]:w-[120px] z-[1] relative shadow-[4px_4px_0px_0px_#000] after:content-[''] after:absolute after:bottom-[2px] after:left-0 after:w-full after:h-[19%] after:bg-aiesec-blue">
-              <CloudImage id="ain/gmw/jamal" alt="a young man " />
+              <CloudImage id="gmwImage5" alt="a young man " />
             </div>
             <div className="bg-[#fcefef] pt-[2px] px-[2px] pb-[40px] w-[215px] min-[920px]:max-[1120px]:w-[155px] min-[767px]:max-[920px]:w-[130px] max-[767px]:w-[150px] max-[450px]:w-[120px] [transform:rotate(10deg)_translateY(70px)] z-[10] shadow-[4px_4px_0px_0px_#000] after:content-[''] after:absolute after:bottom-[2px] after:left-0 after:w-full after:h-[19%] after:bg-[#ffde00]">
-              <CloudImage id="ain/gmw/selfiecam" alt="a young lady " />
+              <CloudImage id="gmwImage6" alt="a young lady " />
             </div>
           </div>
         </div>

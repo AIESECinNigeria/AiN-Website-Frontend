@@ -72,7 +72,7 @@ const NvHomeStates = () => {
   return (
     <div
       className="py-[72px] px-0 bg-center bg-no-repeat bg-cover text-white overflow-x-hidden min-[767px]:max-[1023px]:p-[22px] max-[767px]:p-[22px]"
-      style={{ backgroundImage: `url(${cld('ain/nv/vectorbg')})` }}
+      style={{ backgroundImage: `url(${cld('vectorbg')})` }}
     >
       <style>{`@keyframes scrollInfinity{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}@keyframes scrollInfinity2{0%{transform:translateX(0)}100%{transform:translateX(100%)}}`}</style>
       <div className="flex items-center py-0 px-[120px] min-[767px]:max-[1023px]:items-start min-[767px]:max-[1023px]:flex-col min-[767px]:max-[1023px]:gap-4 min-[767px]:max-[1023px]:p-0 max-[767px]:items-start max-[767px]:flex-col max-[767px]:gap-4 max-[767px]:p-0">

@@ -3,12 +3,12 @@ import { useRouter } from 'next/navigation';
 import HalfHighlight from '../../Components/HalfHighlight/HalfHighlight';
 import CloudImage from '@/components/CloudImage';
 import { cld } from '@/lib/cloudinary';
-const volunteer1 = cld('ain/nv/volunteer1');
-const volunteer2 = cld('ain/nv/volunteer2');
-const volunteer3 = cld('ain/nv/volunteer3');
-const volunteer4 = cld('ain/nv/volunteer4');
-const volunteer5 = cld('ain/nv/volunteer5');
-const volunteer6 = cld('ain/nv/volunteer6');
+const volunteer1 = cld('volunteer1');
+const volunteer2 = cld('volunteer2');
+const volunteer3 = cld('volunteer3');
+const volunteer4 = cld('volunteer4');
+const volunteer5 = cld('volunteer5');
+const volunteer6 = cld('volunteer6');
 
 // TODO: change images to cloudinary
 // let volunteer1 = 'https://res.cloudinary.com/dof4l5eul/image/upload/v1743762347/AIESEC/volunteer1_y8tbrd.png';
@@ -89,28 +89,28 @@ const NvMeasureYourImpact = () => {
             >
               {i === 0 ? (
                 <CloudImage
-                  id="ain/nv/vector3"
+                  id="vector3"
                   alt=""
                   className="absolute w-[180px] h-auto z-[2] pointer-events-none top-[-56px] left-[-88px] min-[767px]:max-[1023px]:w-[120px] min-[767px]:max-[1023px]:top-[-34px] min-[767px]:max-[1023px]:left-[-50px] max-[767px]:w-[90px] max-[767px]:top-[-24px] max-[767px]:left-auto max-[767px]:right-[-34px]"
                 />
               ) : null}
               {i === 3 ? (
                 <CloudImage
-                  id="ain/nv/vector5"
+                  id="vector5"
                   alt=""
                   className="absolute w-[180px] h-auto right-[-76px] bottom-[120px] transform-none z-[2] pointer-events-none min-[767px]:max-[1023px]:w-[120px] min-[767px]:max-[1023px]:right-[-48px] min-[767px]:max-[1023px]:bottom-[90px] max-[767px]:w-[90px] max-[767px]:right-[-34px] max-[767px]:bottom-[70px] max-[767px]:hidden"
                 />
               ) : null}
               {i === 4 ? (
                 <CloudImage
-                  id="ain/nv/vector5"
+                  id="vector5"
                   alt=""
                   className="hidden max-[767px]:block max-[767px]:absolute max-[767px]:w-[90px] max-[767px]:h-auto max-[767px]:right-[-22px] max-[767px]:top-[-42px] max-[767px]:z-[2] max-[767px]:pointer-events-none"
                 />
               ) : null}
               {i === 4 ? (
                 <CloudImage
-                  id="ain/nv/vector6"
+                  id="vector6"
                   alt=""
                   className="absolute w-[180px] h-auto left-[-144px] top-1/2 -translate-y-1/2 z-[2] pointer-events-none min-[767px]:max-[1023px]:w-[120px] min-[767px]:max-[1023px]:left-[-90px] max-[767px]:left-[-64px] max-[767px]:hidden"
                 />
@@ -128,21 +128,21 @@ const NvMeasureYourImpact = () => {
             <div key={i} className={wrapperClass}>
               {i === 1 ? (
                 <CloudImage
-                  id="ain/nv/vector4"
+                  id="vector4"
                   alt=""
                   className="absolute w-[180px] h-auto pointer-events-none top-[-62px] right-[12px] z-[-1] min-[767px]:max-[1023px]:w-[120px] min-[767px]:max-[1023px]:top-[-40px] min-[767px]:max-[1023px]:right-[10px] max-[767px]:w-[90px] max-[767px]:top-[-28px] max-[767px]:right-[8px] max-[767px]:hidden"
                 />
               ) : null}
               {i === 2 ? (
                 <CloudImage
-                  id="ain/nv/vector4"
+                  id="vector4"
                   alt=""
                   className="hidden max-[767px]:block max-[767px]:absolute max-[767px]:w-[90px] max-[767px]:h-auto max-[767px]:left-[-22px] max-[767px]:top-[-42px] max-[767px]:z-[2] max-[767px]:pointer-events-none"
                 />
               ) : null}
               {i === 5 ? (
                 <CloudImage
-                  id="ain/nv/vector6"
+                  id="vector6"
                   alt=""
                   className="hidden max-[767px]:block max-[767px]:absolute max-[767px]:w-[90px] max-[767px]:h-auto max-[767px]:left-[-64px] max-[767px]:top-1/2 max-[767px]:-translate-y-1/2 max-[767px]:z-[2] max-[767px]:pointer-events-none"
                 />

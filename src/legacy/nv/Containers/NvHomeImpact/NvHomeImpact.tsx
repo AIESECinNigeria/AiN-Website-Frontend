@@ -39,7 +39,7 @@ const NvHomeImpact = () => {
 
         <div
           className="flex justify-center rounded-[2rem] border-none font-['Kind_Sans_Regular','Kind_Sans',sans-serif] text-[24px] font-normal leading-[32px] text-left text-white flex-col py-4 px-16 flex-1 bg-center bg-no-repeat bg-cover min-[767px]:max-[1023px]:text-[16px] min-[767px]:max-[1023px]:leading-[150%] min-[767px]:max-[1023px]:p-4 max-[767px]:text-[16px] max-[767px]:leading-[150%] max-[767px]:p-4 [&>button]:w-[267px] [&>button]:bg-white [&>button]:text-[#007a33] min-[767px]:max-[1023px]:[&>button]:w-full max-[767px]:[&>button]:w-full"
-          style={{ backgroundImage: `url(${cld('ain/nv/vector2')})` }}
+          style={{ backgroundImage: `url(${cld('vector2')})` }}
         >
           <p className="mb-8">
             We may not be able to end wars, solve world hunger save the planet

@@ -11,7 +11,7 @@ const NvHomePageHero = () => {
   return (
     <div
       className="min-h-[calc(100vh-10vh)] bg-center bg-no-repeat bg-cover pt-[40px] pr-[119px] pb-[80px] pl-[119px] flex items-center justify-center min-[767px]:max-[1023px]:min-h-[auto] min-[767px]:max-[1023px]:py-5 min-[767px]:max-[1023px]:px-[67px] max-[767px]:min-h-[auto] max-[767px]:py-5 max-[767px]:px-[67px]"
-      style={{ backgroundImage: `url(${cld('ain/nv/vector2bg')})` }}
+      style={{ backgroundImage: `url(${cld('vector2bg')})` }}
     >
       <div className="flex flex-col items-center justify-center mb-0 w-full min-[767px]:max-[1023px]:gap-8 min-[767px]:max-[1023px]:mb-8 max-[767px]:gap-8 max-[767px]:mb-8">
         <div className="text-center">
