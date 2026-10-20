@@ -1,0 +1,58 @@
+.container > h4 {
+  font-family: 'Kunire Grotesk', sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.02;
+  color: #2d2d2d;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.container > p {
+  font-family: 'Kind Sans Regular', 'Kind Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 23.04px;
+  color: #808080;
+  margin-bottom: 1rem;
+}
+
+.captionFirst > p {
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .container > h4 {
+    font-size: 32px;
+    line-height: 1.02;
+    margin-top: 0;
+  }
+
+  .container > p {
+    font-size: 16px;
+    font-weight: 275;
+    line-height: 140%;
+  }
+
+  .captionFirst > p {
+    margin-bottom: 12px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container > h4 {
+    font-size: 32px;
+    line-height: 1.02;
+    margin-top: 0;
+  }
+
+  .container > p {
+    font-size: 16px;
+    font-weight: 275;
+    line-height: 140%;
+  }
+
+  .captionFirst > p {
+    margin-bottom: 12px;
+  }
+}

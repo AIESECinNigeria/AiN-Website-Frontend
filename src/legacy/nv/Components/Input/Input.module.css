@@ -1,0 +1,165 @@
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.container {
+  margin-bottom: 24px;
+}
+
+.container > label {
+  color: #000;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 28px;
+  display: block;
+}
+
+.input {
+  position: relative;
+  display: block;
+}
+
+.input > span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 20px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.input > input {
+  display: block;
+  width: 100%;
+  padding: 18px 2rem;
+  color: #caccd1;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px 0;
+  animation: appear 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #000;
+}
+
+.input input:focus {
+  outline: none;
+}
+
+.valid {
+  border: 1px solid #000;
+}
+
+.invalid {
+  border: 1px solid red;
+  color: var(--red);
+}
+
+.input > input::placeholder {
+  color: #caccd1;
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.errorMessage {
+  color: red;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  animation: appear 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.tip {
+  color: #000;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 200;
+  line-height: normal;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .input > input {
+    padding: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 23px;
+    border-radius: 5px;
+  }
+
+  .container > label {
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 14px;
+  }
+
+  .errorMessage {
+    font-size: 10px;
+    line-height: 18px;
+  }
+
+  .input > span {
+    right: 10px;
+  }
+
+  .input > input::placeholder {
+    padding: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 23px;
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 767px) and (max-width: 1023px) {
+  .input > input {
+    padding: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 23px;
+    border-radius: 5px;
+  }
+
+  .input > input::placeholder {
+    padding: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 23px;
+    border-radius: 5px;
+  }
+
+  .container > label {
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 14px;
+  }
+
+  .errorMessage {
+    font-size: 10px;
+    line-height: 18px;
+  }
+
+  .input > span {
+    right: 10px;
+  }
+}
