@@ -1,7 +1,7 @@
 import CloudImage from "@/components/CloudImage";
 import { cld } from "@/lib/cloudinary";
 
-const heroImage = cld("ain/gmw/gmwHeroImage");
+const heroImage = cld("gmwHeroImage");
 
 const GmwHomePageHero = () => {
   return (
@@ -13,7 +13,7 @@ const GmwHomePageHero = () => {
     >
       <div className="pl-[40px] max-[767px]:pl-[20px]">
         <CloudImage
-          id="ain/gmw/gmwlogowhite"
+          id="gmwlogowhite"
           alt="the gmw logo in white color"
           className="min-[768px]:max-[920px]:w-[100px]"
         />

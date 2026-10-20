@@ -13,21 +13,21 @@ const TESTIMONIALS: Testimonial[] = [
       "I had a phenomenal experience. I got to meet new people, gain new knowledge and receive real insight from professionals. If you're looking to partake in conversations that spark growth and change your perspective, IYD is definitely the event for you.",
     name: 'Feyi',
     role: 'Graphic Designer',
-    avatar: 'ain/iyd/IYDFeyi',
+    avatar: 'IYDFeyi',
   },
   {
     quote:
       'I had a great time at IYD. The sessions were incredibly engaging and gave me insights about how I wanted to contribute to a more sustainable world. I also got to connect with other driven young people, which was a massive plus!!!',
     name: 'Maroh',
     role: 'Product Designer',
-    avatar: 'ain/iyd/IYDMaroh',
+    avatar: 'IYDMaroh',
   },
   {
     quote:
       "One thing that really stuck with me was the idea that collaboration is the difference between a spark and a wildfire. We also talked about vertical networking, and it made me realize that networking isn't just about chasing people ahead of you. Sometimes, the best people to collaborate with you are already around you.",
     name: 'Niel',
     role: "Niel's Apparel",
-    avatar: 'ain/iyd/IYDNiel',
+    avatar: 'IYDNiel',
   },
 ];
 

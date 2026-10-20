@@ -146,7 +146,7 @@ const YSFFAQ = () => {
             </p>
 
             <CloudImage
-              id="ain/ysf/YSFQuestionCurve"
+              id="YSFQuestionCurve"
               alt=""
               className="
               absolute
@@ -197,7 +197,7 @@ const YSFFAQ = () => {
               </p>
 
               <CloudImage
-                id="ain/ysf/YSFAnswerCurve"
+                id="YSFAnswerCurve"
                 alt=""
                 className="
                 absolute

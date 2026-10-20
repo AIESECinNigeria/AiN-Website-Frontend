@@ -11,7 +11,7 @@ const YSFAbout = () => {
           {/* Left Illustration */}
           <div className="flex justify-center order-2 md:order-1">
             <CloudImage
-              id="ain/ysf/YSFAbout"
+              id="YSFAbout"
               alt="YouthSpeak Community"
               className="
                 w-full

@@ -19,7 +19,7 @@ const IYDAbout = () => {
         <div className="order-2 flex justify-end md:order-none">
           <div className="relative aspect-square w-full overflow-hidden md:hidden -mt-32">
             <CloudImage
-              id="ain/iyd/IYDAboutImg"
+              id="IYDAboutImg"
               alt=""
               className="absolute inset-0 h-full w-full -rotate-90 object-cover object-center"
             />
@@ -27,7 +27,7 @@ const IYDAbout = () => {
 
           {/* Desktop: no rotation, no mismatch to worry about */}
           <CloudImage
-            id="ain/iyd/IYDAboutImg"
+            id="IYDAboutImg"
             alt=""
             className="hidden h-full w-full object-cover object-center md:block"
           />

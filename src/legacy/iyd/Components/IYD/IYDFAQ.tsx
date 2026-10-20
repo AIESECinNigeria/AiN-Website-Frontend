@@ -89,7 +89,7 @@ const IYDFAQ = () => {
           <div className="flex items-center gap-3 px-5 py-4 bg-[#2A412A]/90">
             <div className="flex items-center justify-center rounded-full bg-[#B9FB02] p-1 md:p-2">
               <CloudImage
-                id="ain/iyd/FutureForwardIcon"
+                id="FutureForwardIcon"
                 alt=""
                 className="h-3 w-3 md:h-7 md:w-7"
               />
