@@ -9,6 +9,8 @@ interface Testimonial {
   name: string;
   caption: string;
   image: string;
+  imageClassName?: string;
+  grayscale?: boolean;
 }
 
 const NvHomeVolunteers = () => {
@@ -18,21 +20,25 @@ const NvHomeVolunteers = () => {
       name: 'Bright Uzosike',
       caption:
         'There is more happiness in giving than there is in receiving. No matter how small you give to those in need, it goes a long way to put a smile on their faces.',
-      image: 'ain/nv/testimonial1',
+      image: 'cc927596034f6921ec12757541a4e287d826394f',
+      imageClassName: 'object-cover object-right',
+      grayscale: true,
     },
 
     {
       name: 'Deborah',
       caption:
         'Working and relating to the children. It was always exciting to see them work on projects independently and come out with excellent results.',
-      image: 'ain/nv/testimonial2',
+      image: 'f225a129a60234f4fe2c9e7ae51393af9fea3480',
+      imageClassName: 'object-center',
     },
 
     {
       name: 'Kashimana',
       caption:
         'My experience was one of the best I have ever had. From 100% support from the team to learning about a whole new diverse culture. ',
-      image: 'ain/nv/testimonial3',
+      image: '3810acee3e54096ec39bbcca38a161405b2dcb02',
+      imageClassName: 'object-center',
     },
   ];
 
@@ -73,7 +79,8 @@ const NvHomeVolunteers = () => {
               <CloudImage
                 id={data.image}
                 alt={data.name}
-                className="w-[360px] h-[337.5px] rounded-[774.42px_774.42px_0px_774.42px] min-[767px]:max-[1023px]:w-[320px] min-[767px]:max-[1023px]:h-[317.5px] max-[767px]:w-[320px] max-[767px]:h-[317.5px]"
+                grayscale={data.grayscale}
+                className={`w-[360px] h-[337.5px] object-cover rounded-[774.42px_774.42px_0px_774.42px] min-[767px]:max-[1023px]:w-[320px] min-[767px]:max-[1023px]:h-[317.5px] max-[767px]:w-[320px] max-[767px]:h-[317.5px] ${data.imageClassName ?? ''}`}
               />
               <div
                 className={`p-[10px] rounded-[34px] border ${

@@ -32,7 +32,7 @@ const NvBecomeAVolunteer = () => {
       <div className="mt-[72px] relative flex items-stretch h-[605px] bg-transparent rounded-[32px_0px_0px_32px] overflow-hidden z-[1] min-[767px]:max-[1023px]:mt-8 min-[767px]:max-[1023px]:flex min-[767px]:max-[1023px]:flex-col min-[767px]:max-[1023px]:h-auto min-[767px]:max-[1023px]:gap-3 min-[767px]:max-[1023px]:p-0 max-[767px]:mt-8 max-[767px]:flex max-[767px]:flex-col max-[767px]:items-stretch max-[767px]:h-auto max-[767px]:gap-3">
         <div className="w-[42%] min-[767px]:max-[1023px]:w-full max-[767px]:w-full max-[767px]:basis-full">
           <CloudImage
-            id="ain/nv/member1"
+            id="ed4074ffe09fa1a0b7dda5c551fd526d745f14b8"
             alt="AIESEC Member"
             className="w-full h-full object-cover rounded-[32px_0px_0px_32px] min-[767px]:max-[1023px]:w-full min-[767px]:max-[1023px]:h-[360px] min-[767px]:max-[1023px]:rounded-[32px] min-[767px]:max-[1023px]:mb-0 max-[767px]:w-full max-[767px]:h-[280px] max-[767px]:rounded-[32px] max-[767px]:mb-0"
           />
