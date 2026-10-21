@@ -78,7 +78,7 @@ export default function OgxPage() {
             "You'll work in high-growth fields like tech, business, and marketing, build practical cross-border competence, and return with a globally competitive profile that sets you apart at home.",
           ]}
           detail={{
-            lead: "6-7 Weeks.",
+            lead: "6+ Weeks.",
             rest: "Teaching placement in a classroom abroad. Graduates only.",
           }}
           href="/ogx/apply"
@@ -98,7 +98,7 @@ export default function OgxPage() {
             "This experience gives you the opportunity to inspire others, grow professionally, and see the world from a completely different perspective.",
           ]}
           detail={{
-            lead: "6-7 Weeks.",
+            lead: "6+ Weeks.",
             rest: "Teaching placement in a classroom abroad. Graduates only.",
           }}
           href="/ogx/apply"

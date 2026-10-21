@@ -99,7 +99,7 @@ export function TypewriterText({
 
   if (highlight) {
     return (
-      <span className="inline-block rounded-md bg-aiesec-highlight px-2 py-0.5">
+      <span className="inline-block rounded-none bg-aiesec-highlight px-2 py-0.5">
         <span className={className}>{content}</span>
       </span>
     );
