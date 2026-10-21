@@ -32,8 +32,8 @@ const columns: Member[][] = [
     { name: "Favour Bassey", role: "Human Resource Manager", variant: "red", imageId: "team-8", ar: "1:1", aspect: "aspect-square" },
   ],
   [
-    { name: "Sabatha Joshua", role: "Expansions and PR Manager", variant: "red", imageId: "team-3", ar: "3:2", aspect: "aspect-[3/2]" },
-    { name: "Toluwalase Agbetuyi", role: "Product Operations Manager", variant: "blue", imageId: "team-6", ar: "6:9", aspect: "aspect-[3/4]" },
+    { name: "Toluwalase Agbetuyi", role: "Product Operations Manager", variant: "red", imageId: "team-3", ar: "3:2", aspect: "aspect-[3/2]" },
+    { name: "Sabatha Joshua", role: "Expansions and PR Manager", variant: "blue", imageId: "team-6", ar: "6:9", aspect: "aspect-[3/4]" },
   ],
   [
     { name: "Atiradeoluwa Olaoye", role: "Partnerships Manager", variant: "blue", imageId: "team-7", ar: "1:1", aspect: "aspect-square" },
@@ -61,6 +61,8 @@ const mobileOrder: Member[] = [
 function Photo({
   member,
   hover = false,
+  desktop = false,
+  desktopCompanion = false,
   active = false,
   hovered = false,
   onToggle,
@@ -69,6 +71,8 @@ function Photo({
 }: {
   member: Member;
   hover?: boolean;
+  desktop?: boolean;
+  desktopCompanion?: boolean;
   active?: boolean;
   hovered?: boolean;
   onToggle?: () => void;
@@ -85,7 +89,11 @@ function Photo({
       onClick={onToggle}
       onPointerEnter={(event) => onPointerEnter?.(event.pointerType)}
       onPointerLeave={onPointerLeave}
-      className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aiesec-blue"
+      className={`group relative block w-full cursor-pointer overflow-hidden rounded-2xl text-left transition-[aspect-ratio] duration-500 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aiesec-blue ${
+        desktop
+          ? `${desktopCompanion ? "aspect-[3/2]" : "aspect-square"} hover:z-20 hover:aspect-[3/4] focus-visible:z-20 focus-visible:aspect-[3/4]`
+          : ""
+      }`}
     >
       <CloudImage
         id={member.imageId}
@@ -93,7 +101,11 @@ function Photo({
         crop="fill"
         ar={member.ar}
         gravity="face"
-        className={`w-full object-cover ${member.aspect}`}
+        className={`w-full object-cover ${
+          desktop
+            ? "absolute inset-0 h-full aspect-[3/2] transition-transform duration-500 ease-out group-hover:scale-[1.02] group-focus-visible:scale-[1.02]"
+            : member.aspect
+        }`}
       />
       <div
         className={
@@ -141,6 +153,12 @@ export default function TeamGrid() {
                 key={member.imageId}
                 member={member}
                 hover
+                desktop
+                desktopCompanion={
+                  hoveredDesktopMember !== null &&
+                  col.some((columnMember) => columnMember.imageId === hoveredDesktopMember) &&
+                  member.imageId !== hoveredDesktopMember
+                }
                 active={activeDesktopMember === member.imageId}
                 hovered={hoveredDesktopMember === member.imageId}
                 onPointerEnter={(pointerType) => {
