@@ -100,7 +100,7 @@ export default function HomePage() {
       <FeatureBand
         variant="green"
         title="Volunteer in Nigeria with AIESEC"
-        href="/programs/national-volunteer"
+        href="/nv"
         imageId="volunteer-nigeria"
         imageFormat="webp"
         imageAlt="AIESEC in Nigeria volunteer speaking at a community event"
