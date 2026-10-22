@@ -142,7 +142,7 @@ function FooterColumn({
           <li key={link.label}>
             <Link
               href={link.href}
-              className="text-base text-white/70 transition-colors italic hover:text-white"
+              className="font-Lato text-base font-light italic leading-[150%] tracking-[-1%] text-white/70 transition-colors [font-variation-settings:'slnt'_-100] hover:text-white"
             >
               {link.label}
             </Link>
