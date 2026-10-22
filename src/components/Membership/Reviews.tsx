@@ -1,13 +1,13 @@
 // components/Membership/Reviews.tsx
 "use client";
 import { useState } from "react";
-import Image from "next/image";
+import CloudImage from "@/components/CloudImage";
 
 interface Review {
   name: string;
   role: string;
   quote: string;
-  photo: string;
+  photoId: string;
   color: "orange" | "blue";
 }
 
@@ -22,7 +22,7 @@ const reviews: Review[] = [
     role: "AIESEC in Ilorin",
     quote:
       "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
-    photo: "/reviews/fadlu.jpg",
+    photoId: "reviews/fadlu",
     color: "orange",
   },
   {
@@ -30,7 +30,7 @@ const reviews: Review[] = [
     role: "AIESEC in Akure",
     quote:
       "AIESEC gave me my first experience of how a well-structured organisation works. It taught me how to collaborate with people from different backgrounds and work towards shared goals.",
-    photo: "/reviews/eniola.jpg",
+    photoId: "reviews/eniola",
     color: "blue",
   },
   {
@@ -38,7 +38,7 @@ const reviews: Review[] = [
     role: "AIESEC in Benin",
     quote:
       "I joined AIESEC because I wanted to meet more people and do something outside of Statistics. Now, to me, AIESEC is not just an organisation, it’s community and growth.",
-    photo: "/reviews/fadlu.jpg",
+    photoId: "reviews/fadlu",
     color: "orange",
   },
   {
@@ -46,7 +46,7 @@ const reviews: Review[] = [
     role: "AIESEC in Ibadan",
     quote:
       "AIESEC gave me my first experience of how a well-structured organisation works.",
-    photo: "/reviews/eniola.jpg",
+    photoId: "reviews/eniola",
     color: "blue",
   },
   {
@@ -54,7 +54,7 @@ const reviews: Review[] = [
     role: "AIESEC in Ilorin",
     quote:
       "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
-    photo: "/reviews/fadlu.jpg",
+    photoId: "reviews/fadlu",
     color: "orange",
   },
 ];
@@ -68,12 +68,13 @@ function ReviewCard({ review }: { review: Review }) {
       onMouseLeave={() => setHovered(false)}
       className="relative h-[70vh] md:h-[60vh] w-[68%] cursor-pointer flex-shrink-0 snap-start overflow-hidden rounded-2xl bg-black sm:w-[46%] sm:rounded-3xl lg:w-[calc((100%-4.5rem)/3.5)]"
     >
-      <Image
-        src={review.photo}
+      <CloudImage
+        id={review.photoId}
         alt={review.name}
-        fill
-        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 46vw, 68vw"
-        className="object-cover"
+        crop="fill"
+        ar="3:4"
+        gravity="face"
+        className="absolute inset-0 h-full w-full object-cover"
       />
 
       {/* default state: name/role over a plain dark scrim, no color */}
@@ -111,7 +112,7 @@ export default function Reviews() {
       </h2>
 
       <div
-        className="flex touch-pan-x snap-x snap-mandatory gap-3 overflow-x-auto pb-4 sm:gap-6 sm:px-6 lg:px-20 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex touch-pan-x snap-x snap-mandatory gap-3 overflow-x-auto pb-4 pl-4 sm:gap-6 sm:pl-6 lg:pl-20 [scroll-padding-left:1rem] sm:[scroll-padding-left:1.5rem] lg:[scroll-padding-left:5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ overscrollBehaviorX: "contain" }}
       >
         {reviews.map((review, index) => (

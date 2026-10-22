@@ -298,7 +298,7 @@ function NavbarContent() {
                     key={program.label}
                     href={program.href}
                     onClick={closeMobileMenu}
-                    className="rounded-lg px-3 py-2.5 text-lg font-medium text-gray-600 hover:bg-gray-50"
+                    className="rounded-lg px-3 py-2.5 text-base font-medium text-gray-600 hover:bg-gray-50"
                   >
                     {program.label}
                   </Link>

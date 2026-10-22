@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import CloudImage from "@/components/CloudImage";
 import {
   motion,
   MotionValue,
@@ -15,13 +15,14 @@ import { TypewriterText } from "../Typewriter";
 import type { HeroSegment, HeroCta } from "../Hero";
 
 export interface ScatteredPhoto {
-  src: string;
+  id: string;
   alt: string;
   top: string;
   left: string;
   width: string;
   aspectRatio: string;
   delay?: number;
+  mobile?: { top: string; left: string; width: string };
 }
 
 export interface ScrollRevealHeroProps {
@@ -53,6 +54,15 @@ function groupIntoLines(segments: HeroSegment[]): HeroSegment[][] {
 
 export default function ScrollRevealHero({ photos, segments, cta }: ScrollRevealHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 639px)");
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -64,11 +74,11 @@ export default function ScrollRevealHero({ photos, segments, cta }: ScrollReveal
   return (
     <div ref={containerRef} style={{ height: `${PINNED_HEIGHT_VH}vh` }} className="relative">
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {photos.map((photo, index) => (
-          <ScatteredPhotoItem key={photo.src} photo={photo} index={index} scrollYProgress={scrollYProgress} />
+          {photos.map((photo, index) => (
+            <ScatteredPhotoItem key={photo.id} photo={photo} index={index} scrollYProgress={scrollYProgress} mobile={isMobile} />
         ))}
 
-        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-6 px-6 text-center">
+        <div className="pointer-events-none absolute inset-0 flex -translate-y-16 flex-col items-center justify-center gap-6 px-6 text-center sm:translate-y-0">
           <h1 className="text-3xl font-bold leading-[130%] tracking-[-1%] text-gray-900 sm:text-4xl lg:text-5xl">
             {lines.map((line, lineIndex) => (
               <HeadlineLine
@@ -141,10 +151,12 @@ function ScatteredPhotoItem({
   photo,
   index,
   scrollYProgress,
+  mobile,
 }: {
   photo: ScatteredPhoto;
   index: number;
   scrollYProgress: MotionValue<number>;
+  mobile: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -152,8 +164,9 @@ function ScatteredPhotoItem({
   // relative to center — a top-left photo drifts further up-left, a
   // bottom-right photo further down-right, etc. Computed once from its
   // static position, not reactive.
-  const leftPct = parseFloat(photo.left) || 50;
-  const topPct = parseFloat(photo.top) || 50;
+  const position = mobile && photo.mobile ? photo.mobile : photo;
+  const leftPct = parseFloat(position.left) || 50;
+  const topPct = parseFloat(position.top) || 50;
   let dirX = leftPct - 50;
   let dirY = topPct - 50;
   const magnitude = Math.sqrt(dirX * dirX + dirY * dirY) || 1;
@@ -201,16 +214,16 @@ function ScatteredPhotoItem({
       transition={{ duration: 0.6, delay: (photo.delay ?? index) * 0.08, ease: "easeOut" }}
       style={{
         position: "absolute",
-        top: photo.top,
-        left: photo.left,
-        width: photo.width,
+        top: position.top,
+        left: position.left,
+        width: position.width,
         aspectRatio: photo.aspectRatio,
         x,
         y,
       }}
       className="cursor-pointer overflow-hidden"
     >
-      <Image src={photo.src} alt={photo.alt} fill sizes="20vw" className="object-cover" />
+      <CloudImage id={photo.id} alt={photo.alt} crop="fill" ar={photo.aspectRatio.replace("/", ":")} gravity="auto" className="absolute inset-0 h-full w-full object-cover" />
     </motion.div>
   );
 }

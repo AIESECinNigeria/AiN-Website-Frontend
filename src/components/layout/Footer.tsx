@@ -44,7 +44,7 @@ export default function Footer() {
             >
               Enter email address
             </label>
-            <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-2 lg:gap-3">
+            <div className="flex flex-row items-center gap-4 sm:gap-2 lg:gap-3">
               <input
                 id="newsletter-email"
                 type="email"
