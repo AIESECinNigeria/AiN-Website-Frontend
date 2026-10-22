@@ -3,6 +3,7 @@ import CloudImage from "@/components/CloudImage";
 export interface Stat {
   value: string;
   label: string;
+  mobileLabel?: string;
 }
 
 export interface StatsArcProps {
@@ -11,28 +12,32 @@ export interface StatsArcProps {
 }
 
 const defaultStats: Stat[] = [
-  { value: "100,000+", label: "youths" },
-  { value: "1000+", label: "volunteers" },
+  { value: "100,000+", label: "youths impacted", mobileLabel: "youths" },
+  { value: "1000+", label: "active volunteers", mobileLabel: "volunteers" },
   { value: "15+", label: "cities" },
 ];
 
 // Avatar centres as a percentage of the dome box (1352 × 560), measured
 // directly from the design so the scatter matches exactly.
 const avatars = [
-  { id: "stat-avatar-1", left: 49.7, top: 7.3 },
-  { id: "stat-avatar-2", left: 35.4, top: 33.0 },
-  { id: "stat-avatar-3", left: 82.8, top: 32.3 },
-  { id: "stat-avatar-4", left: 9.2, top: 58.8 },
-  { id: "stat-avatar-5", left: 90.1, top: 81.6 },
+  // Centres aligned to the nearest of the two SVG arcs at each fixed x point.
+  { id: "stat-avatar-1", left: 49.7, top: 5.7 },
+  { id: "stat-avatar-2", left: 35.4, top: 23.6 },
+  { id: "stat-avatar-3", left: 82.8, top: 37.2 },
+  { id: "stat-avatar-4", left: 9.2, top: 60.9 },
+  { id: "stat-avatar-5", left: 90.1, top: 84.1 },
 ];
 
 function StatList({ stats, className = "" }: { stats: Stat[]; className?: string }) {
   return (
-    <div className={`flex justify-around gap-2 text-center sm:gap-12 lg:gap-16 ${className}`}>
+    <div className={`flex justify-around gap-2 text-center sm:gap-12 lg:justify-center lg:gap-16 ${className}`}>
       {stats.map((stat) => (
         <div key={stat.label}>
           <p className="text-[30px] font-bold leading-none text-aiesec-blue lg:text-4xl">{stat.value}</p>
-          <p className="mt-1 text-sm italic text-gray-500 lg:text-base">{stat.label}</p>
+          <p className="mt-1 text-sm italic text-gray-500 lg:text-base">
+            <span className="lg:hidden">{stat.mobileLabel ?? stat.label}</span>
+            <span className="hidden lg:inline">{stat.label}</span>
+          </p>
         </div>
       ))}
     </div>

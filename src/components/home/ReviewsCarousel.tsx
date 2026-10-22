@@ -22,7 +22,7 @@ export default function ReviewsCarousel() {
         <h2 className="text-3xl font-bold text-aiesec-blue lg:text-4xl">Reviews</h2>
       </div>
 
-      <div className="mt-8 flex snap-x gap-[25px] overflow-x-auto px-6 pb-4 lg:px-20 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mt-8 flex snap-x snap-mandatory gap-[25px] overflow-x-auto pb-4 pl-6 lg:pl-20 [scroll-padding-left:1.5rem] lg:[scroll-padding-left:5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {reviews.map((review, index) => (
           <article
             key={`${review.imageId}-${index}`}
