@@ -56,12 +56,12 @@ export default function HomePage() {
       <StatsArc />
 
       {/* Partner With Us */}
-      <section className="px-6 pb-12 lg:px-20">
+      <section className="px-6 pb-12 pt-12 lg:px-20 lg:pt-0">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-[-1%] text-gray-900 lg:text-4xl">
             Partner With Us
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-[150%] text-gray-500">
+          <p className="mx-auto mt-3 max-w-2xl text-[16px] leading-[150%] text-gray-500 md:mt-4 md:text-lg">
             Together, we can create opportunities that empower young people and drive
             meaningful change. Partner with AIESEC in Nigeria to support youth
             development, strengthen your organisation&rsquo;s impact, and build
@@ -69,7 +69,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/become-a-partner"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-aiesec-blue px-8 py-3.5 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90"
+            className="mt-4 inline-flex items-center justify-center rounded-full bg-aiesec-blue px-8 py-3.5 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90 lg:mt-8"
           >
             Become a Partner
           </Link>

@@ -11,8 +11,8 @@ export interface StatsArcProps {
 }
 
 const defaultStats: Stat[] = [
-  { value: "100,000+", label: "youths impacted" },
-  { value: "1000+", label: "active volunteers" },
+  { value: "100,000+", label: "youths" },
+  { value: "1000+", label: "volunteers" },
   { value: "15+", label: "cities" },
 ];
 
@@ -28,10 +28,10 @@ const avatars = [
 
 function StatList({ stats, className = "" }: { stats: Stat[]; className?: string }) {
   return (
-    <div className={`flex justify-center gap-8 text-center sm:gap-12 lg:gap-16 ${className}`}>
+    <div className={`flex justify-around gap-2 text-center sm:gap-12 lg:gap-16 ${className}`}>
       {stats.map((stat) => (
         <div key={stat.label}>
-          <p className="text-3xl font-bold text-aiesec-blue lg:text-4xl">{stat.value}</p>
+          <p className="text-[30px] font-bold leading-none text-aiesec-blue lg:text-4xl">{stat.value}</p>
           <p className="mt-1 text-sm italic text-gray-500 lg:text-base">{stat.label}</p>
         </div>
       ))}
@@ -74,8 +74,26 @@ export default function StatsArc({ stats = defaultStats }: StatsArcProps) {
         <StatList stats={stats} className="absolute inset-x-0 top-[79%]" />
       </div>
 
-      {/* Mobile: stats only */}
-      <StatList stats={stats} className="lg:hidden" />
+      {/* Mobile: cropped concentric arcs and four participant portraits */}
+      <div className="relative -mx-6 h-[250px] overflow-hidden lg:hidden">
+        <svg viewBox="0 0 390 250" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" fill="none" aria-hidden="true">
+          <path d="M-55 145 Q195 -25 445 145" stroke="#e3e3e3" strokeWidth="2" />
+          <path d="M-55 235 Q195 55 445 235" stroke="#e3e3e3" strokeWidth="2" />
+        </svg>
+        {[
+          { id: "stat-avatar-1", left: 42.5, top: 24.5 },
+          { id: "stat-avatar-2", left: 20, top: 66 },
+          { id: "stat-avatar-3", left: 78, top: 65 },
+          { id: "stat-avatar-4", left: 93, top: 39.5 },
+        ].map((avatar) => (
+          <div key={avatar.id} className="absolute size-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-aiesec-blue p-[2px]" style={{ left: `${avatar.left}%`, top: `${avatar.top}%` }}>
+            <div className="aspect-square overflow-hidden rounded-full bg-white p-px">
+              <CloudImage id={avatar.id} alt="AIESEC in Nigeria participant" className="h-full w-full rounded-full object-cover" />
+            </div>
+          </div>
+        ))}
+      </div>
+      <StatList stats={stats} className="mt-0 lg:hidden" />
     </section>
   );
 }
