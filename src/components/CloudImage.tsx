@@ -1,3 +1,5 @@
+import { CLOUDINARY_CLOUD } from "@/lib/cloudinary";
+
 /** Cloudinary image by public ID. Set NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME and
  * replace the IDs in each page with the IDs uploaded to your Cloudinary account.
  *
@@ -16,6 +18,7 @@ export default function CloudImage({
   gravity = "auto",
   grayscale = false,
   width = 1000,
+  loading = "lazy",
 }: {
   id: string;
   alt: string;
@@ -31,8 +34,9 @@ export default function CloudImage({
   grayscale?: boolean;
   /** Source width Cloudinary renders at when cropping. */
   width?: number;
+  loading?: "eager" | "lazy";
 }) {
-  const cloud = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const cloud = CLOUDINARY_CLOUD;
 
   const parts: string[] = [format === "webp" ? "f_webp" : "f_auto", "q_auto"];
   if (crop) {
@@ -57,8 +61,9 @@ export default function CloudImage({
     <img
       src={`https://res.cloudinary.com/${cloud}/image/upload/${transform}/${id}`}
       alt={alt}
-      loading="lazy"
+      loading={loading}
       className={className}
     />
   );
 }
+

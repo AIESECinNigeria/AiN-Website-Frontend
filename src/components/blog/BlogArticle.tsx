@@ -38,9 +38,9 @@ const body: { type: "p" | "h"; text: string }[] = [
 ];
 
 const related = [
-  { imageId: "blog-1", title: "Interview with Henry Tabansi" },
-  { imageId: "blog-2", title: "Interview with Henry Tabansi" },
-  { imageId: "blog-3", title: "Interview with Henry Tabansi" },
+  { imageId: "blogHero", title: "Interview with Henry Tabansi" },
+  { imageId: "blogHero", title: "Interview with Henry Tabansi" },
+  { imageId: "blogHero", title: "Interview with Henry Tabansi" },
 ];
 
 const excerpt =
@@ -85,7 +85,7 @@ export default function BlogArticle() {
         {/* Hero image */}
         <div className="mt-8 overflow-hidden rounded-2xl">
           <CloudImage
-            id="blog-article-hero"
+            id="blogHero"
             alt="AIESEC in Nigeria members at a gathering"
             className="aspect-[16/10] w-full object-cover"
           />
