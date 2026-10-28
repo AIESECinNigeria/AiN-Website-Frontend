@@ -18,6 +18,7 @@ export interface ProgramLink {
 }
 
 function NavbarContent() {
+  const isBlogLanding = usePathname() === "/blog";
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
@@ -28,6 +29,7 @@ function NavbarContent() {
   const programsTriggerRef = useRef<HTMLButtonElement>(null);
   const programsMenuRef = useRef<HTMLDivElement>(null);
   const programsCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isBlogHeroNav = isBlogLanding && !isMobileMenuOpen;
 
   // Throttle scroll state updates to one per animation frame.
   useEffect(() => {
@@ -139,17 +141,20 @@ function NavbarContent() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b bg-white backdrop-blur transition-shadow ${
-        isScrolled ? "border-gray-200 shadow-sm" : "border-transparent"
+      className={`${isBlogLanding ? "absolute inset-x-0" : "sticky"} top-0 z-50 w-full border-b backdrop-blur transition-colors transition-shadow ${
+        isBlogHeroNav
+          ? "border-white/30 bg-transparent"
+          : `bg-white ${isScrolled ? "border-gray-200 shadow-sm" : "border-transparent"}`
       }`}
     >
       <nav className="mx-auto flex h-18 items-center justify-between px-6 py-3 lg:px-20">
         <Link href="/" aria-label="Home" onClick={closeMobileMenu}>
           <Image
-            src="/svgs/logoBlack.svg"
+            src={isBlogHeroNav ? "/svgs/logoWhite.svg" : "/svgs/logoBlack.svg"}
             alt="AIESEC in Nigeria"
-            width={78}
-            height={16}
+            width={140}
+            height={29}
+            className="h-auto w-[108px] md:w-[124px] lg:w-[140px]"
             priority
           />
         </Link>
@@ -160,7 +165,11 @@ function NavbarContent() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-lg font-medium text-[#5C5C5C] transition-colors hover:text-aiesec-blue leading-[150%]"
+              className={`text-lg font-medium transition-colors leading-[150%] ${
+                isBlogLanding
+                  ? "text-white/90 hover:text-white"
+                  : "text-[#5C5C5C] hover:text-aiesec-blue"
+              }`}
             >
               {link.label}
             </Link>
@@ -182,7 +191,11 @@ function NavbarContent() {
               aria-haspopup="true"
               aria-expanded={isProgramsOpen}
               aria-controls="programs-menu"
-              className="flex items-center gap-1 text-lg font-medium text-[#5C5C5C] transition-colors cursor-pointer hover:text-aiesec-blue"
+              className={`flex cursor-pointer items-center gap-1 text-lg font-medium transition-colors ${
+                isBlogLanding
+                  ? "text-white/90 hover:text-white"
+                  : "text-[#5C5C5C] hover:text-aiesec-blue"
+              }`}
             >
               Programs
               <ChevronIcon
@@ -196,7 +209,11 @@ function NavbarContent() {
 
           <Link
             href="/become-a-partner"
-            className="rounded-full border border-[#5C5C5C] px-5 py-2.5 text-base font-medium text-[#5C5C5C] transition-colors hover:bg-gray-900 hover:text-white leading-[150%] tracking-[-1%]"
+            className={`rounded-full border px-5 py-2.5 text-base font-medium transition-colors leading-[150%] tracking-[-1%] ${
+              isBlogLanding
+                ? "border-white/80 text-white hover:bg-white hover:text-gray-900"
+                : "border-[#5C5C5C] text-[#5C5C5C] hover:bg-gray-900 hover:text-white"
+            }`}
           >
             Become a Partner
           </Link>
@@ -213,12 +230,12 @@ function NavbarContent() {
           aria-controls="mobile-menu"
         >
           {isMobileMenuOpen ? (
-            <CloseIcon className="size-6 cursor-pointer text-aiesec-blue" />
+            <CloseIcon className={`size-6 cursor-pointer ${isBlogHeroNav ? "text-white" : "text-aiesec-blue"}`} />
           ) : (
             <span className="flex flex-col items-center justify-center gap-1.5 cursor-pointer">
-              <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
-              <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
-              <span className="block h-0.5 w-6 rounded-full bg-aiesec-blue" />
+              <span className={`block h-0.5 w-6 rounded-full ${isBlogHeroNav ? "bg-white" : "bg-aiesec-blue"}`} />
+              <span className={`block h-0.5 w-6 rounded-full ${isBlogHeroNav ? "bg-white" : "bg-aiesec-blue"}`} />
+              <span className={`block h-0.5 w-6 rounded-full ${isBlogHeroNav ? "bg-white" : "bg-aiesec-blue"}`} />
             </span>
           )}
         </button>

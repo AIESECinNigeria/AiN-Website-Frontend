@@ -21,7 +21,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-1",
+    imageId: "blogHero",
     category: "Interview",
     slug: "interview-with-henry-tabansi",
   },
@@ -31,7 +31,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-2",
+    imageId: "blogHero",
     category: "Interview",
     slug: "interview-with-henry-tabansi",
   },
@@ -41,7 +41,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-3",
+    imageId: "blogHero",
     category: "Leadership",
     slug: "interview-with-henry-tabansi",
   },
@@ -51,7 +51,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-4",
+    imageId: "blogHero",
     category: "Leadership",
     slug: "interview-with-henry-tabansi",
   },
@@ -61,7 +61,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-5",
+    imageId: "blogHero",
     category: "Interview",
     slug: "interview-with-henry-tabansi",
   },
@@ -71,7 +71,7 @@ const articles: Article[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-6",
+    imageId: "blogHero",
     category: "Leadership",
     slug: "interview-with-henry-tabansi",
   },
@@ -115,10 +115,10 @@ export default function BlogGrid() {
 
   return (
     <section id="episodes" className="px-6 py-14 lg:px-20 lg:py-20">
-      <h2 className="text-center text-4xl font-bold text-aiesec-blue lg:text-5xl">
+      <h2 className="md:text-center text-[24px] md:text-4xl font-bold text-aiesec-blue lg:text-5xl">
         Our Blog
       </h2>
-      <p className="mx-auto mt-5 max-w-3xl text-center text-base leading-[165%] text-gray-600 lg:text-lg">
+      <p className="mx-auto mt-5 max-w-3xl text-[16px] md:text-center text-base leading-[165%] text-gray-600 lg:text-lg">
         AIESEC has shaped countless young lives, and your story could be next.
         Explore stories and experiences from our community as young people find
         their voice, build confidence, and grow into leaders.
@@ -212,6 +212,7 @@ export default function BlogGrid() {
                 <CloudImage
                   id={article.imageId}
                   alt={article.title}
+                  loading="eager"
                   className="aspect-[434/278] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                 />
                 <span className="absolute bottom-3 right-3 flex size-9 items-center justify-center rounded-full bg-white text-gray-900 opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
