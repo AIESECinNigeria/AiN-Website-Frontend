@@ -32,7 +32,7 @@ export default function FeatureBand({
     <section
       className={`relative left-1/2 w-screen -translate-x-1/2 overflow-hidden ${bgByVariant[variant]}`}
     >
-      <div className="mx-auto grid max-w-[1300px] grid-cols-1 gap-8 px-6 py-12 lg:min-h-[640px] lg:grid-cols-3 lg:items-center lg:gap-6 lg:px-20 lg:py-0">
+      <div className="mx-auto grid max-w-[1300px] grid-cols-1 gap-8 px-6 py-12 pb-0 md:pb-12 lg:min-h-[640px] lg:grid-cols-3 lg:items-center lg:gap-6 lg:px-20 lg:py-0">
         <div className="order-1 lg:py-16">
           <h2 className="text-2xl md:text-5xl font-bold leading-[115%] tracking-[-1%] text-aiesec-cream">
             {title}
@@ -47,7 +47,7 @@ export default function FeatureBand({
             id={imageId}
             alt={imageAlt}
             format={imageFormat}
-            className="h-[320px] w-[280px] object-contain object-bottom grayscale sm:h-[380px] sm:w-[320px] lg:h-[560px] lg:w-[360px]"
+            className="h-80 w-70 object-contain object-bottom grayscale lg:h-140 lg:w-90"
           />
         </div>
 

@@ -33,7 +33,7 @@ export default function Hero({
         centered ? "mx-auto max-w-4xl text-center" : "text-left"
       } ${className}`}
     >
-      <h1 className="text-3xl font-extrabold leading-[120%] tracking-[-1%] text-gray-900 sm:text-4xl lg:text-[3.25rem]">
+      <h1 className="text-2xl font-extrabold leading-[120%] tracking-[-1%] text-gray-900 md:text-5xl">
         {segments.map((segment, index) => {
           if (segment.type === "break") return <br key={index} />;
           if (segment.type === "text") return <span key={index}>{segment.value}</span>;

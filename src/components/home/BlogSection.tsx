@@ -17,7 +17,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-1",
+    imageId: "blogHero",
     href: "/blog",
   },
   {
@@ -26,7 +26,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-2",
+    imageId: "blogHero",
     href: "/blog",
   },
   {
@@ -35,7 +35,7 @@ const posts: Post[] = [
     date: "13 July, 2026",
     excerpt:
       "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blog-3",
+    imageId: "stat-avatar-5",
     href: "/blog",
   },
 ];
@@ -44,7 +44,7 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/blog"
-      className={`inline-flex items-center justify-center rounded-full bg-aiesec-blue px-7 py-3 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90 ${className}`}
+      className={`hidden md:inline-flex items-center justify-center rounded-full bg-aiesec-blue px-7 py-3 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90 ${className}`}
     >
       Read More
     </Link>
@@ -58,7 +58,7 @@ export default function BlogSection() {
         <h2 className="text-2xl md:text-5xl w-full font-bold text-aiesec-blue lg:w-auto text-left">
           Blog
         </h2>
-        <ReadMoreButton className="hidden lg:inline-flex" />
+        <ReadMoreButton />
       </div>
 
       <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

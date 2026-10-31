@@ -17,7 +17,7 @@ const categories: Category[] = [
 export default function CategoryCards() {
   return (
     <section className="py-6">
-      <div className="flex snap-x gap-4 overflow-x-auto px-6 pb-2 lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:px-20 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="flex snap-x gap-4 overflow-x-auto px-6 pb-2 [scroll-padding-left:1.5rem] lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:px-20 lg:[scroll-padding-left:0] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {categories.map((category) => (
           <article
             key={category.label}
