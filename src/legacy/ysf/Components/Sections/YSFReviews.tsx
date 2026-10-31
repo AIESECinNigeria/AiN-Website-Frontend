@@ -58,13 +58,7 @@ const YSFReviews = () => {
           <div className="">
 
             <h2
-              className="
-             text-[40px] md:text-[50px]
-              font-semibold
-              leading-[120%]
-              font-body
-              text-black
-            "
+              className="text-2xl md:text-5xl font-semibold leading-[120%] font-body text-black"
             >
               Reviews from
               <br />

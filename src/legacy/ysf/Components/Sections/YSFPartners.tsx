@@ -25,14 +25,7 @@ const YSFPartners = () => {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2
-            className="
-            text-white
-            text-[24px]
-            md:text-[28px]
-            font-semibold
-            font-body
-            leading-[120%]
-          "
+            className="text-2xl md:text-5xl text-white font-semibold font-body leading-[120%]"
           >
             Our Partners for 2026
           </h2>

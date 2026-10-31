@@ -47,7 +47,7 @@ const IYDTestimonials = () => {
       />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <h2 className="text-4xl md:text-[42px] lg:text-5xl text-white leading-[36px] md:leading-[72px] tracking-[-4%]">
+        <h2 className="text-2xl md:text-5xl text-white leading-[36px] md:leading-[72px] tracking-[-4%]">
           What past attendees{' '}
           <span className="italic font-bold text-[#B9FB02]">say</span>
         </h2>

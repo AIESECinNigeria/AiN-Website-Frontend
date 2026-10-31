@@ -115,7 +115,7 @@ export default function BlogGrid() {
 
   return (
     <section id="episodes" className="px-6 py-14 lg:px-20 lg:py-20">
-      <h2 className="md:text-center text-[24px] md:text-4xl font-bold text-aiesec-blue lg:text-5xl">
+      <h2 className="text-2xl md:text-5xl md:text-center font-bold text-aiesec-blue">
         Our Blog
       </h2>
       <p className="mx-auto mt-5 max-w-3xl text-[16px] md:text-center text-base leading-[165%] text-gray-600 lg:text-lg">

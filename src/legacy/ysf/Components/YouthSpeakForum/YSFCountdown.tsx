@@ -101,12 +101,7 @@ const YSFCountdown = () => {
         <div className="flex flex-col items-center">
 
           <h2
-            className="
-            text-white text-[40px]
-            md:text-[60px]
-            font-extrabold
-            leading-[150%]
-          "
+            className="text-2xl md:text-5xl text-white font-extrabold leading-[150%]"
           >
             {value}
           </h2>

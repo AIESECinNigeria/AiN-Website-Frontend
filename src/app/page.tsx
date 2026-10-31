@@ -58,7 +58,7 @@ export default function HomePage() {
       {/* Partner With Us */}
       <section className="px-6 pb-12 pt-12 lg:px-20 lg:pt-0">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-extrabold leading-[135%] tracking-[-1%] text-gray-900 lg:text-4xl">
+          <h2 className="text-2xl md:text-5xl font-extrabold leading-[135%] tracking-[-1%] text-gray-900">
             Partner With Us
           </h2>
           <p className="mx-auto font-medium mt-3 max-w-2xl text-[16px] leading-[150%] tracking-[-1%] text-gray-500 md:mt-4 md:text-lg">

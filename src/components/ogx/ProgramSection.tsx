@@ -53,7 +53,7 @@ export default function ProgramSection({
       <div className="mx-auto grid max-w-[1300px] items-start gap-8 px-6 py-14 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-20">
         <div>
           <h2
-            className="text-3xl font-bold tracking-[-1%] lg:text-[2.5rem]"
+            className="text-2xl md:text-5xl font-bold tracking-[-1%]"
             style={{ color: accent }}
           >
             {title}

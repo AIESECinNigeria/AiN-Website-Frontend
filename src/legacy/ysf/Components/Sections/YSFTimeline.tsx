@@ -51,14 +51,7 @@ const YSFTimeline = () => {
         {/* HEADING UNTOUCHED */}
 
         <h2
-          className="
-          text-[40px]
-          md:text-[56px]
-          leading-[120%]
-          font-semibold
-          font-body
-         mb-5 md:mb-20
-          "
+          className="text-2xl md:text-5xl leading-[120%] font-semibold font-body mb-5 md:mb-20"
         >
           YSF 2026{" "}
 

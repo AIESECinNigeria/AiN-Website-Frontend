@@ -33,7 +33,7 @@ const IYDCta = ({ onRegisterClick }: IYDCtaProps) => {
 
       <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-between px-6 py-32 md:py-48 text-center lg:justify-center lg:py-12">
         <div className="mt-14 md:mt-5">
-          <h2 className="text-[40px] md:text-5xl lg:text-6xl text-[#314C31] leading-[100%] lg:leading-[120%] tracking-[-7%]">
+          <h2 className="text-2xl md:text-5xl leading-[100%] lg:leading-[120%] tracking-[-7%]">
             Empowering Youth, <br />{' '}
             <span className="italic font-bold">Building Tomorrow.</span>
           </h2>

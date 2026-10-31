@@ -58,7 +58,7 @@ const ProjectModal = ({ isOpen, onClose, project }) => {
         {/* Title */}
         <div className="text-center mb-6">
           <h2
-            className="text-3xl font-bold"
+            className="text-2xl md:text-5xl font-bold"
             style={{
               ...titleStyle,
               textTransform: 'uppercase',

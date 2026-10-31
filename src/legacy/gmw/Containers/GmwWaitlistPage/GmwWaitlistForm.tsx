@@ -384,7 +384,7 @@ const GmwWaitlistForm = () => {
             className="flex flex-col gap-4 bg-white items-center justify-center p-8 rounded-lg shadow-lg w-[95%] sm:w-[70%] lg:w-[50%] h-[240px] sm:h-[200px] md:h-[300px] lg:h-[240px] xl:h-[200px] text-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <h2 className="text-2xl md:text-[30px] font-bold text-[#008F4F] leading-8 md:leading-9">
+            <h2 className="text-2xl md:text-5xl font-bold leading-8 md:leading-9">
               Thank you for your interest in attending Global Money Week!
             </h2>
             <p className="italic text-sm md:text-xl leading-6 md:leading-8 text-[#20252F]">
