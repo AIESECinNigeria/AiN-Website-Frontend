@@ -55,7 +55,7 @@ export default function BlogSection() {
   return (
     <section className="px-6 py-14 lg:px-20 lg:py-20">
       <div className="flex items-center justify-between">
-        <h2 className="w-full text-center text-3xl font-bold text-aiesec-blue lg:w-auto lg:text-left lg:text-4xl">
+        <h2 className="text-2xl md:text-5xl w-full font-bold text-aiesec-blue lg:w-auto text-left">
           Blog
         </h2>
         <ReadMoreButton className="hidden lg:inline-flex" />

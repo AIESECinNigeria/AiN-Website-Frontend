@@ -19,7 +19,7 @@ export default function ReviewsCarousel() {
   return (
     <section className="py-14 lg:py-20">
       <div className="px-6 lg:px-20">
-        <h2 className="text-3xl font-bold text-aiesec-blue lg:text-4xl">Reviews</h2>
+        <h2 className="text-2xl md:text-5xl font-bold text-aiesec-blue">Reviews</h2>
       </div>
 
       <div className="mt-8 flex snap-x snap-mandatory gap-[25px] overflow-x-auto pb-4 pl-6 lg:pl-20 [scroll-padding-left:1.5rem] lg:[scroll-padding-left:5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

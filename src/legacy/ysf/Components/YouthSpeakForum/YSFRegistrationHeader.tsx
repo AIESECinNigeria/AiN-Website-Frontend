@@ -99,28 +99,7 @@ const YSFRegistrationHeader = ({
       <div className="text-center mt-4">
 
         <h2
-          className="
-          italic
-
-          text-[40px]
-          md:text-[48px]
-
-          font-playfair
-
-          font-semibold
-
-          bg-gradient-to-r
-
-          from-[#7552CC]
-          via-[#0CB9C1]
-          to-[#00C16E]
-
-          bg-clip-text
-
-          text-transparent
-
-          leading-none
-          "
+          className="text-2xl md:text-5xl italic font-playfair font-semibold bg-gradient-to-r from-[#7552CC] via-[#0CB9C1] to-[#00C16E] bg-clip-text text-transparent leading-none"
         >
           Registration Form
         </h2>

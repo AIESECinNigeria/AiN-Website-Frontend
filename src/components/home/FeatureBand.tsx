@@ -34,7 +34,7 @@ export default function FeatureBand({
     >
       <div className="mx-auto grid max-w-[1300px] grid-cols-1 gap-8 px-6 py-12 lg:min-h-[640px] lg:grid-cols-3 lg:items-center lg:gap-6 lg:px-20 lg:py-0">
         <div className="order-1 lg:py-16">
-          <h2 className="text-3xl font-bold leading-[115%] tracking-[-1%] text-aiesec-cream lg:text-4xl">
+          <h2 className="text-2xl md:text-5xl font-bold leading-[115%] tracking-[-1%] text-aiesec-cream">
             {title}
           </h2>
           <ArrowLink href={href} className="mt-4 text-aiesec-cream">

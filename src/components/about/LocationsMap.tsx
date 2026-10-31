@@ -334,7 +334,7 @@ export default function LocationsMap() {
   });
   return (
     <section className="px-6 pb-0 pt-16 lg:px-20 lg:pb-24 lg:pt-24">
-      <h2 className="mx-auto max-w-2xl text-center text-2xl font-bold leading-[120%] tracking-[-1%] text-gray-900 lg:text-[2.5rem]">
+      <h2 className="text-2xl md:text-5xl mx-auto max-w-2xl text-center font-bold leading-[120%] tracking-[-1%] text-gray-900">
         AIESEC is present in all these locations within the country
       </h2>
 

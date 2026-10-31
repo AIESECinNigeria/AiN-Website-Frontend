@@ -23,7 +23,7 @@ export default function OgxPage() {
       {/* What is Outgoing Global Exchange? */}
       <section className="px-6 py-16 lg:px-20 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
-          <h2 className="text-3xl font-bold leading-[120%] tracking-[-1%] text-gray-900 lg:text-[2.5rem]">
+          <h2 className="text-2xl md:text-5xl font-bold leading-[120%] tracking-[-1%] text-gray-900">
             What is Outgoing Global Exchange?
           </h2>
           <div className="text-[15px] leading-[175%] text-gray-600 lg:text-base">

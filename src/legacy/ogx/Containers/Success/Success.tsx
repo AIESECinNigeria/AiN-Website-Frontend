@@ -23,7 +23,7 @@ function Success({ onDone }: SuccessProps) {
             <path d="M20 6 9 17l-5-5" />
           </svg>
         </div>
-        <h2 className="text-[26px] font-extrabold tracking-[0.04em] text-[var(--color-text)] m-0 mb-2.5">SUCCESSFUL</h2>
+        <h2 className="text-2xl md:text-5xl font-extrabold tracking-[0.04em] m-0 mb-2.5">SUCCESSFUL</h2>
         <p className="text-sm text-[var(--color-text-muted)] max-w-[380px] mx-auto mb-7 leading-[1.5]">
           Your application has been submitted. We'll review it and contact you via e-mail with the next steps.
         </p>

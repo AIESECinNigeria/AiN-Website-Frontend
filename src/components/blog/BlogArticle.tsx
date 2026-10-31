@@ -101,7 +101,7 @@ export default function BlogArticle() {
         <ShareRow />
 
         {/* Related */}
-        <h2 className="mt-14 text-3xl font-bold text-aiesec-blue lg:text-4xl">
+        <h2 className="text-2xl md:text-5xl mt-14 font-bold text-aiesec-blue">
           Related Articles
         </h2>
         <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

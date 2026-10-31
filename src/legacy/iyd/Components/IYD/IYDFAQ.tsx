@@ -77,7 +77,7 @@ const IYDFAQ = () => {
       />
 
       <div className="relative z-10 mx-auto px-6 md:px-12 lg:px-20">
-        <h2 className="text-4xl md:text-[42px] lg:text-5xl text-white">
+        <h2 className="text-2xl md:text-5xl text-white">
           Got questions?
           <br />
           We&apos;ve got{' '}

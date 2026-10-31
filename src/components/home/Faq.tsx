@@ -51,7 +51,7 @@ export default function Faq() {
   return (
     <section className="bg-[#fafafa] px-6 py-16 lg:px-20 lg:py-20">
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
-        <h2 className="text-3xl font-bold leading-[115%] text-aiesec-blue lg:text-[2.75rem]">
+        <h2 className="text-2xl md:text-5xl font-bold leading-[115%] text-aiesec-blue">
           Frequently Asked Questions (FAQs)
         </h2>
 

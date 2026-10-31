@@ -59,14 +59,7 @@ const YSFFAQ = () => {
         {/* Heading */}
 
         <h2
-          className="
-          text-white
-         text-[32px] md:text-[56px]
-          font-semibold
-          font-body
-          leading-[120%]
-          mb-4
-        "
+          className="text-2xl md:text-5xl text-white font-semibold font-body leading-[120%] mb-4"
         >
           Frequently asked questions
          <span className="font-playfair bg-gradient-to-r from-[#7552CC] via-[#0CB9C1] to-[#00C16E] text-transparent bg-clip-text italic"> (FAQs)</span>

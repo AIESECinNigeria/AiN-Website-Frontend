@@ -38,7 +38,7 @@ export default function BecomeAPartnerPage() {
       {/* Come Partner With Us */}
       <section className="px-6 pb-16 pt-4 lg:px-20">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold tracking-[-1%] text-gray-900 lg:text-5xl">
+          <h2 className="text-2xl md:text-5xl font-bold tracking-[-1%] text-gray-900">
             <span className="hidden lg:inline">Come </span>Partner With Us
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-[150%] text-gray-500">
@@ -58,7 +58,7 @@ export default function BecomeAPartnerPage() {
 
       {/* Current Partners */}
       <section className="px-6 pb-16 lg:px-20">
-        <h2 className="text-2xl font-bold text-gray-900 lg:text-3xl">Current Partners</h2>
+        <h2 className="text-2xl md:text-5xl font-bold text-gray-900">Current Partners</h2>
         <div className="mt-10 grid grid-cols-2 items-center justify-items-center gap-x-10 gap-y-12 lg:flex lg:flex-wrap lg:justify-between">
           {currentPartners.map((id) => (
             <CloudImage
@@ -73,7 +73,7 @@ export default function BecomeAPartnerPage() {
 
       {/* Previous Partners */}
       <section className="px-6 pb-20 lg:px-20">
-        <h2 className="text-2xl font-bold text-gray-900 lg:text-3xl">Previous Partners</h2>
+        <h2 className="text-2xl md:text-5xl font-bold text-gray-900">Previous Partners</h2>
         <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 items-center justify-items-center gap-x-10 gap-y-14 sm:grid-cols-3 lg:grid-cols-5">
           {previousPartners.map((id) => (
             <CloudImage

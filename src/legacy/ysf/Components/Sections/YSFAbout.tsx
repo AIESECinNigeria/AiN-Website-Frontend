@@ -25,14 +25,7 @@ const YSFAbout = () => {
           <div className="order-1 md:order-2">
 
             <h2
-              className="
-            text-[40px]  md:text-[64px]
-              font-semibold
-              leading-[110%]
-              text-black
-              font-body
-              mb-6
-            "
+              className="text-2xl md:text-5xl font-semibold leading-[110%] text-black font-body mb-6"
             >
               About <span className="font-playfair bg-gradient-to-r from-[#7552CC] via-[#0CB9C1] to-[#00C16E] text-transparent bg-clip-text italic">YSF</span>
             </h2>

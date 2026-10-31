@@ -129,7 +129,7 @@ const YSFRegistrationSuccessModal = ({ open, onClose }: YSFRegistrationSuccessMo
           text-center flex flex-col items-center gap-10
           "
         >
-          <h2 className="font-body text-black leading-[120%] tracking-[-2%] text-4xl md:text-6xl">
+          <h2 className="text-2xl md:text-5xl font-body text-black leading-[120%] tracking-[-2%]">
             Registration
             <br />
             <span

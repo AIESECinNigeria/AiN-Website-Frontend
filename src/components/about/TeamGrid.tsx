@@ -128,7 +128,7 @@ export default function TeamGrid() {
 
   return (
     <section className="px-6 py-16 lg:px-20 lg:py-20">
-      <h2 className="text-center text-3xl font-bold leading-[120%] tracking-[-1%] text-gray-900 lg:text-[2.5rem]">
+      <h2 className="text-2xl md:text-5xl text-center font-bold leading-[120%] tracking-[-1%] text-gray-900">
         We are led by the right people with the right skills
       </h2>
 

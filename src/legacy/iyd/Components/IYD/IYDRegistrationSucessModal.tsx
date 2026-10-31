@@ -12,7 +12,7 @@ const IYDRegistrationSuccessModal = ({ open, onClose }: IYDRegistrationSuccessMo
     <div className="font-sec fixed inset-0 z-[10000] flex items-center justify-center bg-black/80 px-5 py-8">
       <div className="w-full max-w-[350px] md:max-w-[450px] lg:max-w-[600px] bg-[#314C31] shadow-2xl">
         <div className="flex flex-col items-center gap-10 md:gap-6 px-8 py-12 md:px-12 text-center">
-          <h2 className="text-3xl md:text-[40px] lg:text-[55px] font-medium text-white leading-[36px] md:leading-[50px] lg:leading-[64px] tracking-[-2%]">
+          <h2 className="text-2xl md:text-5xl font-medium text-white leading-[36px] md:leading-[50px] lg:leading-[64px] tracking-[-2%]">
             Registration <br/> <span className="italic text-[#B9FB02]">successful!</span>
           </h2>
 

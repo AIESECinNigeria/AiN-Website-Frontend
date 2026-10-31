@@ -34,7 +34,7 @@ const IYDAbout = () => {
         </div>
 
         <div className="pt-8 md:pt-16 pb-16 px-6 md:px-0 order-1 md:order-none">
-          <h2 className="text-4xl md:text-[42px] lg:text-5xl text-[#2A412A] leading-[72px] tracking[-4%]">
+          <h2 className="text-2xl md:text-5xl leading-[72px] tracking[-4%]">
             About the <span className="font-bold italic">Event</span>
           </h2>
           <div className="mt-1 md:mt-6 space-y-4 text-[#2A412A] w-[90%] md:w-[65%] text-xl md:text-[22px] lg:text-2xl leading-[150%] tracking-[-2%]">

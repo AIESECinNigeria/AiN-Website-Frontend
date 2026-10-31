@@ -29,7 +29,7 @@ export default function Footer() {
       <div className="mx-auto bg-[#111111] px-4 pt-14 sm:px-6 sm:pt-16 lg:bg-[#030312] lg:px-20">
         <div className="flex flex-col justify-between gap-8 pb-14 lg:flex-row lg:items-end lg:pb-28">
           <div className="max-w-[360px] sm:max-w-[430px]">
-            <h2 className="text-[28px] font-bold leading-[125%] tracking-[-1%] sm:text-3xl lg:text-4xl">
+            <h2 className="text-2xl md:text-5xl font-bold leading-[125%] tracking-[-1%]">
               Sign up for our newsletter <br className="hidden lg:block" /> to stay updated
             </h2>
             <p className="mt-3 text-sm leading-6 tracking-[-1%] text-white sm:text-base lg:text-lg">
