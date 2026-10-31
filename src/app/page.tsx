@@ -38,7 +38,7 @@ export default function HomePage() {
 
       {/* Intro */}
       <section className="px-6 pt-16 lg:px-20 lg:pt-24">
-        <p className="mx-auto max-w-4xl text-center text-2xl font-bold leading-[135%] tracking-[-1%] text-gray-900 lg:text-[2rem]">
+        <p className="mx-auto max-w-4xl text-center text-2xl font-bold leading-[135%] tracking-[-1%] text-gray-900 lg:text-3xl">
           AIESEC is a global platform for young people to develop their leadership
           potential through international internships and volunteer opportunities.
           In Nigeria, we connect young Nigerians to local and global experiences that
