@@ -22,7 +22,7 @@ export interface ScatteredPhoto {
   width: string;
   aspectRatio: string;
   delay?: number;
-  mobile?: { top: string; left: string; width: string };
+  mobile?: { top: string; left: string; width: string; aspectRatio?: string; src?: string };
 }
 
 export interface ScrollRevealHeroProps {
@@ -33,12 +33,13 @@ export interface ScrollRevealHeroProps {
 
 // How long the section stays pinned before it releases and scrolls away
 // normally — this is scroll distance, not time.
-const PINNED_HEIGHT_VH = 180;
+const PINNED_HEIGHT_VH = 250;
 
-// How far (in px) a photo travels along its own exit direction by the time
-// the sequence completes. Generous on purpose so it clears the viewport
-// regardless of screen size.
-const EXIT_DISTANCE = 700;
+// Perspective depths from the scroll reference, normalized to viewport height.
+const EXIT_DEPTH_VH = 150;
+const MOBILE_EXIT_DEPTH_VH = 87.5;
+// Nearer photos pass faster; the order follows the eleven Figma photo slots.
+const PHOTO_DEPTHS = [1, 0.5, 0.75, 1.5, 1, 1.5, 0.75, 0.5, 0.5, 1, 1];
 
 function groupIntoLines(segments: HeroSegment[]): HeroSegment[][] {
   const lines: HeroSegment[][] = [[]];
@@ -73,35 +74,37 @@ export default function ScrollRevealHero({ photos, segments, cta }: ScrollReveal
 
   return (
     <div ref={containerRef} style={{ height: `${PINNED_HEIGHT_VH}vh` }} className="relative">
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="sticky top-0 h-screen w-full lg:pt-22.5">
+        <div className="relative mx-auto aspect-[390/651] w-full overflow-hidden perspective-[100vh] sm:aspect-[1512/982] sm:max-w-[1512px]">
           {photos.map((photo, index) => (
-            <ScatteredPhotoItem key={photo.id} photo={photo} index={index} scrollYProgress={scrollYProgress} mobile={isMobile} />
-        ))}
+            <ScatteredPhotoItem key={`${photo.id}-${index}`} photo={photo} index={index} scrollYProgress={scrollYProgress} mobile={isMobile} />
+          ))}
 
-        <div className="pointer-events-none absolute inset-0 flex -translate-y-16 flex-col items-center justify-center gap-6 px-6 text-center sm:translate-y-0">
-          <h1 className="text-3xl font-bold leading-[130%] tracking-[-1%] text-gray-900 sm:text-4xl lg:text-5xl">
-            {lines.map((line, lineIndex) => (
-              <HeadlineLine
-                key={lineIndex}
-                segments={line}
-                lineIndex={lineIndex}
-                totalLines={lines.length}
-                scrollYProgress={scrollYProgress}
-              />
-            ))}
-          </h1>
+          <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-7.5 px-4 pb-9 text-center lg:gap-10 lg:px-20 lg:pb-34.5">
+            <h1 className="w-full max-w-[291px] text-subheading text-aiesec-heading lg:max-w-[872px] lg:text-rd-heading-01 lg:[font-size:min(3.968254vw,var(--text-rd-heading-01))] [&_.bg-aiesec-highlight]:h-8 [&_.bg-aiesec-highlight]:bg-aiesec-blue/10 [&_.bg-aiesec-highlight]:py-0 [&_.bg-aiesec-highlight]:pl-1 [&_.bg-aiesec-highlight]:pr-0 lg:[&_.bg-aiesec-highlight]:h-[1.2em] lg:[&_.bg-aiesec-highlight]:pl-3 [&_span[aria-hidden]]:ml-0 [&_span[aria-hidden]]:h-8! [&_span[aria-hidden]]:w-1 [&_span[aria-hidden]]:align-top lg:[&_span[aria-hidden]]:h-[1.2em]! lg:[&_span[aria-hidden]]:w-1.5">
+              {lines.map((line, lineIndex) => (
+                <HeadlineLine
+                  key={lineIndex}
+                  segments={line}
+                  lineIndex={lineIndex}
+                  totalLines={lines.length}
+                  scrollYProgress={scrollYProgress}
+                />
+              ))}
+            </h1>
 
-          {/* The button is intentionally NOT tied to scroll — it stays fully
-              visible while the photos move away, and only leaves the screen
-              when the pinned section itself releases and scrolls off. */}
-          {cta && (
-            <Link
-              href={cta.href}
-              className="pointer-events-auto inline-flex items-center justify-center rounded-full bg-aiesec-blue px-6 py-3 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90"
-            >
-              {cta.label}
-            </Link>
-          )}
+            {/* The button is intentionally NOT tied to scroll — it stays fully
+                visible while the photos move away, and only leaves the screen
+                when the pinned section itself releases and scrolls off. */}
+            {cta && (
+              <Link
+                href={cta.href}
+                className="pointer-events-auto inline-flex h-[43px] min-w-[135px] items-center justify-center gap-2 rounded-pill bg-aiesec-blue px-6 py-3 text-base font-medium leading-[19px] text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:min-w-[191px] lg:px-8 lg:py-4 lg:text-rd-body-02 lg:leading-normal"
+              >
+                {cta.label}
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -128,7 +131,7 @@ function HeadlineLine({
   const opacity = useTransform(scrollYProgress, [start, end], [1, 0]);
 
   return (
-    <motion.span style={{ opacity }} className="block">
+    <motion.span style={{ opacity }} className="inline [&+span]:ml-1 lg:block lg:[&+span]:ml-0">
       {segments.map((segment, index) => {
         if (segment.type === "text") return <span key={index}>{segment.value}</span>;
         if (segment.type === "typewriter") {
@@ -160,21 +163,13 @@ function ScatteredPhotoItem({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // Direction this photo exits in, derived from where it actually sits
-  // relative to center — a top-left photo drifts further up-left, a
-  // bottom-right photo further down-right, etc. Computed once from its
-  // static position, not reactive.
   const position = mobile && photo.mobile ? photo.mobile : photo;
-  const leftPct = parseFloat(position.left) || 50;
-  const topPct = parseFloat(position.top) || 50;
-  let dirX = leftPct - 50;
-  let dirY = topPct - 50;
-  const magnitude = Math.sqrt(dirX * dirX + dirY * dirY) || 1;
-  dirX /= magnitude;
-  dirY /= magnitude;
-
-  const exitX = useTransform(scrollYProgress, [0.05, 0.85], [0, dirX * EXIT_DISTANCE]);
-  const exitY = useTransform(scrollYProgress, [0.05, 0.85], [0, dirY * EXIT_DISTANCE]);
+  const depth = PHOTO_DEPTHS[index] ?? 1;
+  const exitDepth = (mobile ? MOBILE_EXIT_DEPTH_VH : EXIT_DEPTH_VH) * depth;
+  const z = useTransform(scrollYProgress, [0, 1], ["0vh", `${exitDepth}vh`], {
+    ease: (progress) =>
+      progress < 0.5 ? 2 * progress ** 2 : 1 - (-2 * progress + 2) ** 2 / 2,
+  });
 
   // Magnetic hover: nudges toward the cursor, springs back, clamped to a
   // small range so it never drifts far from its resting position.
@@ -182,11 +177,6 @@ function ScatteredPhotoItem({
   const hoverY = useMotionValue(0);
   const springX = useSpring(hoverX, { stiffness: 200, damping: 18 });
   const springY = useSpring(hoverY, { stiffness: 200, damping: 18 });
-
-  // Combine the scroll-driven exit with the hover nudge into one final
-  // position, so both can apply to the same element at once.
-  const x = useTransform(() => exitX.get() + springX.get());
-  const y = useTransform(() => exitY.get() + springY.get());
 
   const MAX_OFFSET = 14; // px — hover nudge range, "just a little bit"
 
@@ -217,13 +207,17 @@ function ScatteredPhotoItem({
         top: position.top,
         left: position.left,
         width: position.width,
-        aspectRatio: photo.aspectRatio,
-        x,
-        y,
+        aspectRatio: position.aspectRatio ?? photo.aspectRatio,
+        x: springX,
+        y: springY,
+        z,
       }}
       className="cursor-pointer overflow-hidden"
     >
-      <CloudImage id={photo.id} alt={photo.alt} crop="fill" ar={photo.aspectRatio.replace("/", ":")} gravity="auto" className="absolute inset-0 h-full w-full object-cover" />
+      <picture>
+        <source media="(max-width: 639px)" srcSet={photo.mobile?.src} />
+        <CloudImage id={photo.id} alt={photo.alt} crop="fill" gravity="auto" className="absolute inset-0 h-full w-full object-fill" />
+      </picture>
     </motion.div>
   );
 }

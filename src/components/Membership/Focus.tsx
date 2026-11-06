@@ -48,19 +48,19 @@ const focusAreas: FocusArea[] = [
 
 export default function Focus() {
   return (
-    <section className="px-6 py-16 lg:px-20 lg:py-24">
-      <div className="mx-auto">
+    <section className="bg-white px-4 py-10 lg:px-20">
+      <div className="mx-auto max-w-[1352px]">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-2xl font-extrabold text-aiesec-blue sm:text-3xl lg:text-5xl leading-[120%] tracking-[-1%]"
+          className="text-subheading text-aiesec-blue lg:text-rd-heading-02"
         >
           Our Focus
         </motion.h2>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 gap-3.5 lg:mt-10 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
           {focusAreas.map((area, index) => (
             <motion.div
               key={area.title}
@@ -72,15 +72,17 @@ export default function Focus() {
                 ease: "easeOut",
                 delay: index * 0.2,
               }}
-              className="flex cursor-pointer flex-col gap-3 rounded-2xl bg-[#FAFAFA] p-6 lg:p-8"
+              className="flex cursor-pointer flex-col gap-4 rounded-2xl bg-aiesec-section p-4 [&:last-child>p]:text-[15px] lg:min-h-[205px] lg:[&:nth-child(3)]:w-[calc(100%+4px)] lg:[&:nth-child(5)]:mr-2 lg:[&:nth-child(6)]:ml-2 lg:[&:last-child>p]:text-xl"
             >
-              <h3 className="text-lg font-bold text-[#00000E] lg:text-xl">
-                {area.title}
-              </h3>
-              <p className="text-base leading-[150%] text-[#5C5C5C] lg:text-[17px]">
-                {area.description}
-              </p>
-              <p className="text-sm font-medium italic text-[#00000E] lg:text-[15px]">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-xl font-semibold leading-[120%] text-aiesec-heading lg:text-2xl lg:font-bold lg:tracking-[-0.03em]">
+                  {area.title}
+                </h3>
+                <p className="text-body text-aiesec-gray lg:text-xl lg:leading-normal">
+                  {area.description}
+                </p>
+              </div>
+              <p className="text-body font-normal italic text-aiesec-heading lg:text-xl lg:leading-normal">
                 {area.skills.join(" · ")}
               </p>
             </motion.div>
