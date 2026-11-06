@@ -33,12 +33,13 @@ export interface ScrollRevealHeroProps {
 
 // How long the section stays pinned before it releases and scrolls away
 // normally — this is scroll distance, not time.
-const PINNED_HEIGHT_VH = 180;
+const PINNED_HEIGHT_VH = 250;
 
-// How far (in px) a photo travels along its own exit direction by the time
-// the sequence completes. Generous on purpose so it clears the viewport
-// regardless of screen size.
-const EXIT_DISTANCE = 700;
+// Perspective depths from the scroll reference, normalized to viewport height.
+const EXIT_DEPTH_VH = 150;
+const MOBILE_EXIT_DEPTH_VH = 87.5;
+// Nearer photos pass faster; the order follows the eleven Figma photo slots.
+const PHOTO_DEPTHS = [1, 0.5, 0.75, 1.5, 1, 1.5, 0.75, 0.5, 0.5, 1, 1];
 
 function groupIntoLines(segments: HeroSegment[]): HeroSegment[][] {
   const lines: HeroSegment[][] = [[]];
@@ -74,7 +75,7 @@ export default function ScrollRevealHero({ photos, segments, cta }: ScrollReveal
   return (
     <div ref={containerRef} style={{ height: `${PINNED_HEIGHT_VH}vh` }} className="relative">
       <div className="sticky top-0 h-screen w-full lg:pt-22.5">
-        <div className="relative mx-auto aspect-[390/651] w-full overflow-hidden sm:aspect-[1512/982] sm:max-w-[1512px]">
+        <div className="relative mx-auto aspect-[390/651] w-full overflow-hidden perspective-[100vh] sm:aspect-[1512/982] sm:max-w-[1512px]">
           {photos.map((photo, index) => (
             <ScatteredPhotoItem key={`${photo.id}-${index}`} photo={photo} index={index} scrollYProgress={scrollYProgress} mobile={isMobile} />
           ))}
@@ -162,21 +163,13 @@ function ScatteredPhotoItem({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  // Direction this photo exits in, derived from where it actually sits
-  // relative to center — a top-left photo drifts further up-left, a
-  // bottom-right photo further down-right, etc. Computed once from its
-  // static position, not reactive.
   const position = mobile && photo.mobile ? photo.mobile : photo;
-  const leftPct = parseFloat(position.left) || 50;
-  const topPct = parseFloat(position.top) || 50;
-  let dirX = leftPct - 50;
-  let dirY = topPct - 50;
-  const magnitude = Math.sqrt(dirX * dirX + dirY * dirY) || 1;
-  dirX /= magnitude;
-  dirY /= magnitude;
-
-  const exitX = useTransform(scrollYProgress, [0.05, 0.85], [0, dirX * EXIT_DISTANCE]);
-  const exitY = useTransform(scrollYProgress, [0.05, 0.85], [0, dirY * EXIT_DISTANCE]);
+  const depth = PHOTO_DEPTHS[index] ?? 1;
+  const exitDepth = (mobile ? MOBILE_EXIT_DEPTH_VH : EXIT_DEPTH_VH) * depth;
+  const z = useTransform(scrollYProgress, [0, 1], ["0vh", `${exitDepth}vh`], {
+    ease: (progress) =>
+      progress < 0.5 ? 2 * progress ** 2 : 1 - (-2 * progress + 2) ** 2 / 2,
+  });
 
   // Magnetic hover: nudges toward the cursor, springs back, clamped to a
   // small range so it never drifts far from its resting position.
@@ -184,11 +177,6 @@ function ScatteredPhotoItem({
   const hoverY = useMotionValue(0);
   const springX = useSpring(hoverX, { stiffness: 200, damping: 18 });
   const springY = useSpring(hoverY, { stiffness: 200, damping: 18 });
-
-  // Combine the scroll-driven exit with the hover nudge into one final
-  // position, so both can apply to the same element at once.
-  const x = useTransform(() => exitX.get() + springX.get());
-  const y = useTransform(() => exitY.get() + springY.get());
 
   const MAX_OFFSET = 14; // px — hover nudge range, "just a little bit"
 
@@ -220,8 +208,9 @@ function ScatteredPhotoItem({
         left: position.left,
         width: position.width,
         aspectRatio: position.aspectRatio ?? photo.aspectRatio,
-        x,
-        y,
+        x: springX,
+        y: springY,
+        z,
       }}
       className="cursor-pointer overflow-hidden"
     >

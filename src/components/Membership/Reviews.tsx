@@ -74,7 +74,7 @@ function ReviewCard({ review }: { review: Review }) {
         crop="fill"
         ar="3:4"
         gravity="face"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover [&[src$='/team-1']]:origin-[28%_89%] [&[src$='/team-1']]:scale-119 [&[src$='/membership-2']]:brightness-80"
       />
 
       {/* default state: name/role over a plain dark scrim, no color */}
@@ -106,7 +106,7 @@ function ReviewCard({ review }: { review: Review }) {
 
 export default function Reviews() {
   return (
-    <section className="bg-aiesec-section py-10 lg:pt-[103px] lg:pb-[113px]">
+    <section className="bg-aiesec-section py-10 lg:mt-5.5 lg:pt-[103px] lg:pb-[113px]">
       <h2 className="mb-6 px-4 text-subheading text-aiesec-blue lg:mb-12 lg:px-20 lg:text-rd-heading-02">
         Reviews<span className="hidden lg:inline"> from Members</span>
       </h2>
