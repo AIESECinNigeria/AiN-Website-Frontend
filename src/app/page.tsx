@@ -31,7 +31,16 @@ export default function HomePage() {
         ]}
         description="Your journey to global leadership starts here."
         cta={{ label: "Volunteer with Us", href: "/ogx" }}
-        className="!py-10 lg:!py-14"
+        className="flex w-full max-w-none! flex-col items-center bg-aiesec-section px-4! py-6! lg:px-20! lg:pt-12.25! lg:pb-12.5!
+          [&>h1]:w-full [&>h1]:max-w-195.5 [&>h1]:text-subheading [&>h1]:font-extrabold [&>h1]:leading-[135%] [&>h1]:tracking-[-0.01em] [&>h1]:text-black
+          lg:[&>h1]:text-rd-heading-01 lg:[&>h1]:font-bold lg:[&>h1]:leading-[120%] lg:[&>h1]:tracking-[-0.02em]
+          [&>p]:mt-2 [&>p]:w-full [&>p]:max-w-195.5 [&>p]:text-body [&>p]:tracking-[-0.01em] [&>p]:text-aiesec-gray
+          lg:[&>p]:mt-4 lg:[&>p]:text-hero-subtitle lg:[&>p]:tracking-[-0.01em]
+          [&>a]:mt-5 [&>a]:h-10.25 [&>a]:w-43.75 [&>a]:gap-2 [&>a]:rounded-pill [&>a]:px-6 [&>a]:py-3 [&>a]:text-base [&>a]:leading-4.75 [&>a]:tracking-normal [&>a]:whitespace-nowrap
+          lg:[&>a]:mt-10 lg:[&>a]:h-17 lg:[&>a]:w-62.5 lg:[&>a]:px-8 lg:[&>a]:py-4 lg:[&>a]:text-rd-body-02 lg:[&>a]:leading-9 lg:[&>a]:tracking-[-0.01em]
+          [&_.bg-aiesec-highlight]:relative [&_.bg-aiesec-highlight]:h-7.5 [&_.bg-aiesec-highlight]:bg-[#E3EFFB] [&_.bg-aiesec-highlight]:py-0 [&_.bg-aiesec-highlight]:pl-1 [&_.bg-aiesec-highlight]:pr-2
+          lg:[&_.bg-aiesec-highlight]:h-18 lg:[&_.bg-aiesec-highlight]:bg-aiesec-blue/10 lg:[&_.bg-aiesec-highlight]:pl-4 lg:[&_.bg-aiesec-highlight]:pr-5.5
+          [&_.animate-pulse]:absolute [&_.animate-pulse]:inset-y-0 [&_.animate-pulse]:right-0 [&_.animate-pulse]:ml-0 [&_.animate-pulse]:h-full! [&_.animate-pulse]:w-1 lg:[&_.animate-pulse]:w-1.5"
       />
 
       <HeroBanner />

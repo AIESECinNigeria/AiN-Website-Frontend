@@ -24,37 +24,37 @@ const galleryPhotos: GalleryPhoto[] = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111111] text-white">
+    <footer className="bg-aiesec-neutral-950 text-white">
       {/* Newsletter */}
-      <div className="mx-auto bg-[#111111] px-4 pt-14 sm:px-6 sm:pt-16 lg:bg-[#030312] lg:px-20">
-        <div className="flex flex-col justify-between gap-8 pb-14 lg:flex-row lg:items-end lg:pb-28">
-          <div className="max-w-[360px] sm:max-w-[430px]">
-            <h2 className="text-2xl md:text-5xl font-bold leading-[125%] tracking-[-1%]">
+      <div className="mx-auto px-4 pt-12.5 lg:bg-aiesec-heading lg:px-20 lg:pt-15">
+        <div className="flex flex-col justify-between gap-5 pb-10 lg:flex-row lg:items-end lg:gap-8 lg:pb-30">
+          <div className="w-full lg:max-w-[435px]">
+            <h2 className="text-subheading lg:text-4xl lg:leading-[120%]">
               Sign up for our newsletter <br className="hidden lg:block" /> to stay updated
             </h2>
-            <p className="mt-3 text-sm leading-6 tracking-[-1%] text-white sm:text-base lg:text-lg">
-              Sign up to stay updated about news on our events,<br className="hidden sm:block" /> recruitment, partnerships, and more.
+            <p className="mt-2 text-body text-[#898989] lg:mt-3 lg:text-xl lg:leading-7.5 lg:text-white">
+              Sign up to stay updated about news on our events,<br className="hidden lg:block" /> recruitment, partnerships, and more.
             </p>
           </div>
 
-          <form className="w-full max-w-md lg:max-w-[653px]">
+          <form className="w-full lg:max-w-[653px]">
             <label
               htmlFor="newsletter-email"
-              className="mb-2 block text-base font-medium leading-[150%] tracking-[-1%] text-white sm:text-xl lg:text-2xl"
+              className="mb-2 block text-body text-white lg:mb-4 lg:text-rd-body-02"
             >
               Enter email address
             </label>
-            <div className="flex flex-row items-center gap-4 sm:gap-2 lg:gap-3">
+            <div className="flex items-center gap-2 lg:gap-3">
               <input
                 id="newsletter-email"
                 type="email"
                 required
                 placeholder="e.g johnemmanuel@gmail.com"
-                className="w-full min-w-0 flex-1 rounded-full bg-[#3A3A3A] px-6 py-4 text-base text-white placeholder-[#C0C0C0] outline-none sm:text-lg lg:px-6 lg:py-5 lg:text-2xl"
+                className="h-12.5 w-full min-w-0 flex-1 rounded-pill bg-aiesec-neutral-700 px-5 py-3.5 text-body text-white placeholder:text-aiesec-neutral-300 outline-none lg:h-19 lg:px-6 lg:py-5 lg:text-rd-body-02"
               />
               <button
                 type="submit"
-                className="shrink-0 self-center rounded-full bg-[#C0C0C0] px-6 py-4 text-base font-medium leading-[150%] tracking-[-1%] text-[#222222] transition-colors sm:self-auto sm:text-lg lg:px-8 lg:py-[18px] lg:text-2xl"
+                className="flex h-11.75 w-27.25 shrink-0 self-center items-center justify-center rounded-pill bg-aiesec-neutral-300 px-5 py-3.5 text-body leading-[19px] tracking-normal text-aiesec-heading transition-colors lg:h-17 lg:w-41.25 lg:px-8 lg:py-4 lg:text-rd-body-02 lg:text-aiesec-neutral-900"
               >
                 Subscribe
               </button>
@@ -63,28 +63,28 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-x-hidden bg-[#111111] lg:bg-[#030312]">
-        <div className="flex h-32 items-center justify-center gap-1 sm:h-72 sm:justify-normal sm:gap-0 lg:h-96">
+      <div className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-aiesec-neutral-950 lg:bg-aiesec-heading">
+        <div className="flex h-46.5 items-start justify-center gap-2 pt-3 lg:h-[417.87px] lg:justify-between lg:gap-0 lg:pt-6">
           {galleryPhotos.map((photo, index) => {
             const hiddenOnMobile = index === 0 || index > 3;
             const tilt =
               index === 1
-                ? "-rotate-3 sm:rotate-[4deg]"
+                ? "rotate-[3.36deg]"
                 : index === 2
-                  ? "rotate-[10deg]"
+                  ? "rotate-[12.09deg]"
                   : index === 4
-                    ? "rotate-[3deg]"
-                    : "-rotate-3";
+                    ? "rotate-[2.96deg]"
+                    : "-rotate-[3.86deg]";
 
             return (
               <div
                 key={photo.src}
-                className={`relative h-[118px] w-[32vw] max-w-[140px] shrink-0 bg-white p-1.5 shadow-sm sm:h-full sm:w-auto sm:max-w-none sm:flex-1 sm:p-2.5 sm:shadow-sm lg:h-[300px] lg:self-center ${
-                  hiddenOnMobile ? "hidden sm:block" : ""
+                className={`group relative h-[154.12px] w-31 shrink-0 border-[5.34599px] border-white bg-white first:-rotate-[5.37deg] nth-2:-translate-y-2 nth-4:translate-y-1 lg:h-[345.96px] lg:w-[278.34px] lg:border-12 lg:first:translate-y-1.5 lg:nth-2:-translate-y-4 lg:nth-4:translate-y-3 lg:last:translate-y-10 ${
+                  hiddenOnMobile ? "hidden lg:block" : ""
                 } ${tilt}`}
               >
-                <div className="relative h-full w-full overflow-hidden">
-                  <CloudImage id={photo.src} alt={photo.alt} className="absolute inset-0 h-full w-full object-cover" />
+                <div className="relative h-full w-full overflow-hidden group-last:after:pointer-events-none group-last:after:absolute group-last:after:inset-0 group-last:after:bg-aiesec-heading/20">
+                  <CloudImage id={photo.src} alt={photo.alt} className="absolute inset-0 h-full w-full object-cover group-last:origin-[50%_55%] group-last:scale-200" />
                 </div>
               </div>
             );
@@ -92,26 +92,28 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative z-10 -mt-3 bg-[#111111] pt-2 sm:-mt-28 sm:pt-4 lg:-mt-32 lg:pt-7">
-        <div className="mx-auto px-4 sm:px-6 lg:px-16">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-8 pb-8 sm:grid-cols-3 sm:gap-10 sm:py-14 lg:grid-cols-[1.35fr_0.95fr_0.95fr_1fr_0.75fr]">
-            <div className="col-span-2 sm:col-span-3 lg:col-span-1">
+      <div className="relative z-10 -mt-17.5 bg-aiesec-neutral-950 py-7.5 lg:-mt-[169.87px] lg:flex lg:min-h-83.75 lg:items-center">
+        <div className="mx-auto w-full px-4 lg:px-15">
+          <div className="flex flex-col gap-7.5 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
+            <div className="lg:w-[207px] lg:shrink-0">
               <Image
                 src="/svgs/logoWhite.svg"
                 alt="AIESEC in Nigeria"
                 width={145}
                 height={30}
-                className="h-[30px] w-[145px]"
+                className="h-7.5 w-36.25"
               />
-              <address className="mt-3 text-sm italic leading-relaxed text-white/60 sm:mt-4">
+              <address className="mt-4 text-footer-link text-white">
                 {officeAddress.line1}<br className="hidden lg:block" /> {officeAddress.line2}<br className="hidden lg:block" /> {officeAddress.line3}
               </address>
             </div>
 
-            <FooterColumn title="Company" links={companyLinks} />
-            <FooterColumn title="For Youths" links={forYouthsLinks} />
-            <FooterColumn title="Social" links={socialLinks} />
-            <FooterColumn title="Legal" links={legalLinks} />
+            <div className="grid grid-cols-[repeat(2,minmax(0,146px))] gap-10 lg:contents">
+              <FooterColumn title="Company" links={companyLinks} />
+              <FooterColumn title="For Youths" links={forYouthsLinks} />
+              <FooterColumn title="Social" links={socialLinks} />
+              <FooterColumn title="Legal" links={legalLinks} />
+            </div>
           </div>
         </div>
 
@@ -133,16 +135,16 @@ function FooterColumn({
   links: { label: string; href: string }[];
 }) {
   return (
-    <div>
-      <h3 className="text-[13px] font-bold uppercase text-white leading-[150%] tracking-[-1%]">
+    <div className="min-w-0 lg:shrink-0">
+      <h3 className="text-footer-heading text-white uppercase">
         {title}
       </h3>
-      <ul className="mt-2 flex flex-col gap-2 sm:mt-4 sm:gap-3">
+      <ul className="mt-2 flex flex-col gap-2">
         {links.map((link) => (
           <li key={link.label}>
             <Link
               href={link.href}
-              className="font-Lato text-base font-light italic leading-[150%] tracking-[-1%] text-white/70 transition-colors [font-variation-settings:'slnt'_-100] hover:text-white"
+              className="text-footer-link text-white transition-colors hover:text-white"
             >
               {link.label}
             </Link>
