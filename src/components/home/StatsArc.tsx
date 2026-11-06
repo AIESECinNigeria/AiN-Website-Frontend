@@ -30,11 +30,11 @@ const avatars = [
 
 function StatList({ stats, className = "" }: { stats: Stat[]; className?: string }) {
   return (
-    <div className={`flex justify-around gap-2 text-center sm:gap-12 lg:justify-center lg:gap-16 ${className}`}>
+    <div className={`flex justify-around gap-2 text-center sm:gap-12 lg:justify-center lg:gap-16 [.landing-impact_&]:mx-auto [.landing-impact_&]:w-full [.landing-impact_&]:max-w-83.75 [.landing-impact_&]:justify-between [.landing-impact_&]:gap-0 [.landing-impact_&>div]:min-w-20.75 [.landing-impact_&>div:first-child]:min-w-26.5 lg:[.landing-impact_&]:max-w-[733.27px] lg:[.landing-impact_&>div]:min-w-23.5 ${className}`}>
       {stats.map((stat) => (
         <div key={stat.label}>
-          <p className="text-[30px] font-bold leading-none text-aiesec-blue lg:text-4xl">{stat.value}</p>
-          <p className="mt-1 text-sm italic text-gray-500 lg:text-base">
+          <p className="text-[30px] font-bold leading-none text-aiesec-blue lg:text-4xl [.landing-impact_&]:text-2xl [.landing-impact_&]:leading-[140%] [.landing-impact_&]:tracking-[-0.01em] lg:[.landing-impact_&]:text-5xl lg:[.landing-impact_&]:leading-[150%]">{stat.value}</p>
+          <p className="mt-1 text-sm italic text-gray-500 lg:text-base [.landing-impact_&]:mt-0 [.landing-impact_&]:font-medium [.landing-impact_&]:leading-[120%] [.landing-impact_&]:tracking-[-0.01em] [.landing-impact_&]:text-aiesec-heading lg:[.landing-impact_&]:text-xl">
             <span className="lg:hidden">{stat.mobileLabel ?? stat.label}</span>
             <span className="hidden lg:inline">{stat.label}</span>
           </p>
@@ -46,9 +46,12 @@ function StatList({ stats, className = "" }: { stats: Stat[]; className?: string
 
 export default function StatsArc({ stats = defaultStats }: StatsArcProps) {
   return (
-    <section className="px-6 pb-16 pt-8 lg:px-20 lg:pt-10">
+    <section className="px-6 pb-16 pt-8 lg:px-20 lg:pt-10 [.landing-impact_&]:p-0">
       {/* Desktop: avatars scattered over a concentric-arc dome, stats at the base */}
-      <div className="relative mx-auto hidden aspect-[1352/560] w-full max-w-[1352px] lg:block">
+      <div className="relative mx-auto hidden aspect-[1352/560] w-full max-w-[1352px] lg:block
+        [.landing-impact_&]:block [.landing-impact_&]:aspect-auto [.landing-impact_&]:h-66.5 [.landing-impact_&]:max-w-none [.landing-impact_&]:overflow-hidden [.landing-impact_&>svg]:hidden lg:[.landing-impact_&]:h-117.25 lg:[.landing-impact_&]:overflow-visible
+        [.landing-impact_&]:before:absolute [.landing-impact_&]:before:top-20.75 [.landing-impact_&]:before:left-1/2 [.landing-impact_&]:before:aspect-[2/1] [.landing-impact_&]:before:w-172.5 [.landing-impact_&]:before:-translate-x-1/2 [.landing-impact_&]:before:rounded-t-full [.landing-impact_&]:before:border-2 [.landing-impact_&]:before:border-b-0 [.landing-impact_&]:before:border-[#E0E0E0] [.landing-impact_&]:before:[mask-image:linear-gradient(to_bottom,black_60%,transparent_98%)] lg:[.landing-impact_&]:before:top-12.75 lg:[.landing-impact_&]:before:w-[94.17%]
+        [.landing-impact_&]:after:absolute [.landing-impact_&]:after:top-40.75 [.landing-impact_&]:after:left-1/2 [.landing-impact_&]:after:aspect-[2/1] [.landing-impact_&]:after:w-147 [.landing-impact_&]:after:-translate-x-1/2 [.landing-impact_&]:after:rounded-t-full [.landing-impact_&]:after:border-2 [.landing-impact_&]:after:border-b-0 [.landing-impact_&]:after:border-[#E0E0E0] [.landing-impact_&]:after:[mask-image:linear-gradient(to_bottom,black_55%,transparent_98%)] lg:[.landing-impact_&]:after:top-[155.2px] lg:[.landing-impact_&]:after:w-[80.24%]">
         <svg
           viewBox="0 0 1352 560"
           preserveAspectRatio="none"
@@ -63,10 +66,16 @@ export default function StatsArc({ stats = defaultStats }: StatsArcProps) {
         {avatars.map((avatar) => (
           <div
             key={avatar.id}
-            className="absolute w-[6.3%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-aiesec-blue p-1 shadow-md"
+            className="absolute w-[6.3%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-aiesec-blue p-1 shadow-md
+              [.landing-impact_&]:z-10 [.landing-impact_&]:w-10 [.landing-impact_&]:p-0.5 [.landing-impact_&]:shadow-none lg:[.landing-impact_&]:w-[81.36px]
+              [.landing-impact_&:nth-of-type(1)]:-left-18.75! [.landing-impact_&:nth-of-type(1)]:top-61.25! lg:[.landing-impact_&:nth-of-type(1)]:left-[13.07%]! lg:[.landing-impact_&:nth-of-type(1)]:top-87.5!
+              [.landing-impact_&:nth-of-type(2)]:left-[20%]! [.landing-impact_&:nth-of-type(2)]:top-45.25! lg:[.landing-impact_&:nth-of-type(2)]:left-[36.43%]! lg:[.landing-impact_&:nth-of-type(2)]:top-41!
+              [.landing-impact_&:nth-of-type(3)]:left-[42.5%]! [.landing-impact_&:nth-of-type(3)]:top-20.25! lg:[.landing-impact_&:nth-of-type(3)]:left-[49.31%]! lg:[.landing-impact_&:nth-of-type(3)]:top-[40.68px]!
+              [.landing-impact_&:nth-of-type(4)]:left-[93.3%]! [.landing-impact_&:nth-of-type(4)]:top-32.75! lg:[.landing-impact_&:nth-of-type(4)]:left-[78.57%]! lg:[.landing-impact_&:nth-of-type(4)]:top-50!
+              [.landing-impact_&:nth-of-type(5)]:left-[78.2%]! [.landing-impact_&:nth-of-type(5)]:top-45.25! lg:[.landing-impact_&:nth-of-type(5)]:left-[85.05%]! lg:[.landing-impact_&:nth-of-type(5)]:top-108.25!"
             style={{ left: `${avatar.left}%`, top: `${avatar.top}%` }}
           >
-            <div className="aspect-square overflow-hidden rounded-full bg-white p-0.5">
+            <div className="aspect-square overflow-hidden rounded-full bg-white p-0.5 [.landing-impact_&]:p-0">
               <CloudImage
                 id={avatar.id}
                 alt="AIESEC in Nigeria participant"
@@ -76,11 +85,11 @@ export default function StatsArc({ stats = defaultStats }: StatsArcProps) {
           </div>
         ))}
 
-        <StatList stats={stats} className="absolute inset-x-0 top-[79%]" />
+        <StatList stats={stats} className="absolute inset-x-0 top-[79%] [.landing-impact_&]:top-78 [.landing-impact_&]:hidden lg:[.landing-impact_&]:flex" />
       </div>
 
       {/* Mobile: cropped concentric arcs and four participant portraits */}
-      <div className="relative -mx-6 h-[250px] overflow-hidden lg:hidden">
+      <div className="relative -mx-6 h-[250px] overflow-hidden lg:hidden [.landing-impact_&]:hidden">
         <svg viewBox="0 0 390 250" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" fill="none" aria-hidden="true">
           <path d="M-55 145 Q195 -25 445 145" stroke="#e3e3e3" strokeWidth="2" />
           <path d="M-55 235 Q195 55 445 235" stroke="#e3e3e3" strokeWidth="2" />

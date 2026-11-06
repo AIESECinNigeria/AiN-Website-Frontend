@@ -17,25 +17,25 @@ const reviews: Review[] = [
 
 export default function ReviewsCarousel() {
   return (
-    <section className="py-14 lg:py-20">
-      <div className="px-6 lg:px-20">
-        <h2 className="text-2xl md:text-5xl font-bold text-aiesec-blue">Reviews</h2>
+    <section className="bg-aiesec-section py-10 lg:pt-25.75 lg:pb-28.25">
+      <div className="px-4 lg:px-20">
+        <h2 className="text-subheading text-aiesec-blue lg:text-rd-heading-02">Reviews</h2>
       </div>
 
-      <div className="mt-8 flex snap-x snap-mandatory gap-[25px] overflow-x-auto pb-4 pl-6 lg:pl-20 [scroll-padding-left:1.5rem] lg:[scroll-padding-left:5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mt-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 lg:mt-12 lg:px-20 [scroll-padding-left:1rem] lg:[scroll-padding-left:5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {reviews.map((review, index) => (
           <article
             key={`${review.imageId}-${index}`}
-            className="relative h-[460px] w-[82vw] max-w-[416px] shrink-0 snap-start overflow-hidden rounded-[20px] sm:h-[500px] sm:w-[360px] lg:h-[528px] lg:w-[416px]"
+            className="relative h-100 w-77.5 shrink-0 snap-start overflow-hidden rounded-20 lg:h-134.75 lg:w-104.25"
           >
             <CloudImage
               id={review.imageId}
               alt={review.name}
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-6 pt-16">
-              <p className="text-xl font-bold text-white">{review.name}</p>
-              <p className="mt-0.5 text-sm text-white/85">{review.role}</p>
+            <div className="absolute inset-x-0 bottom-0 flex h-40.5 flex-col justify-end bg-linear-to-t from-black to-transparent p-5 lg:h-[179.67px] lg:from-black/75 lg:pb-5.25">
+              <p className="text-xl font-extrabold leading-7 tracking-[-0.01em] text-white">{review.name}</p>
+              <p className="text-body text-aiesec-neutral-100">{review.role}</p>
             </div>
           </article>
         ))}

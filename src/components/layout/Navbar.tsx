@@ -141,78 +141,80 @@ function NavbarContent() {
 
   return (
     <header
-      className={`${isBlogLanding ? "absolute inset-x-0" : "sticky"} top-0 z-50 w-full border-b backdrop-blur transition-colors transition-shadow ${
+      className={`${isBlogLanding ? "absolute inset-x-0" : "sticky"} top-0 z-50 w-full backdrop-blur transition-colors transition-shadow ${
         isBlogHeroNav
           ? "border-white/30 bg-transparent"
-          : `bg-white ${isScrolled ? "border-gray-200 shadow-sm" : "border-transparent"}`
+          : `bg-aiesec-section ${isScrolled ? "border-gray-200 shadow-sm" : "border-aiesec-neutral-300"}`
       }`}
     >
-      <nav className="mx-auto flex h-18 items-center justify-between px-6 py-3 lg:px-20">
-        <Link href="/" aria-label="Home" onClick={closeMobileMenu}>
+      <nav className="mx-4 flex h-16 items-center gap-8.25 border-b-[0.6px] border-inherit py-5 lg:mx-0 lg:h-26 lg:px-20 lg:py-7">
+        <Link href="/" aria-label="Home" onClick={closeMobileMenu} className="min-w-0 flex-1">
           <Image
             src={isBlogHeroNav ? "/svgs/logoWhite.svg" : "/svgs/logoBlack.svg"}
             alt="AIESEC in Nigeria"
-            width={140}
-            height={29}
-            className="h-auto w-[108px] md:w-[124px] lg:w-[140px]"
+            width={78}
+            height={16}
+            className="h-4 w-19.5"
             priority
           />
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link: NavLink) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-lg font-medium transition-colors leading-[150%] ${
-                isBlogLanding
-                  ? "text-white/90 hover:text-white"
-                  : "text-[#5C5C5C] hover:text-aiesec-blue"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          <div
-            onMouseEnter={openPrograms}
-            onMouseLeave={scheduleProgramsClose}
-            onFocus={openPrograms}
-            onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-                setIsProgramsOpen(false);
-              }
-            }}
-          >
-            <button
-              ref={programsTriggerRef}
-              type="button"
-              aria-haspopup="true"
-              aria-expanded={isProgramsOpen}
-              aria-controls="programs-menu"
-              className={`flex cursor-pointer items-center gap-1 text-lg font-medium transition-colors ${
-                isBlogLanding
-                  ? "text-white/90 hover:text-white"
-                  : "text-[#5C5C5C] hover:text-aiesec-blue"
-              }`}
-            >
-              Programs
-              <ChevronIcon
-                className={`size-4 transition-transform duration-200 cursor-pointer ${
-                  isProgramsOpen ? "rotate-180" : ""
+        <div className="hidden shrink-0 items-center gap-8.25 lg:flex">
+          <div className="flex items-center gap-8">
+            {navLinks.map((link: NavLink) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`p-1 text-xl leading-6 font-medium transition-colors ${
+                  isBlogLanding
+                    ? "text-white/90 hover:text-white"
+                    : "text-aiesec-gray hover:text-aiesec-blue"
                 }`}
-              />
-            </button>
+              >
+                {link.label}
+              </Link>
+            ))}
 
+            <div
+              onMouseEnter={openPrograms}
+              onMouseLeave={scheduleProgramsClose}
+              onFocus={openPrograms}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  setIsProgramsOpen(false);
+                }
+              }}
+            >
+              <button
+                ref={programsTriggerRef}
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={isProgramsOpen}
+                aria-controls="programs-menu"
+                className={`flex cursor-pointer items-center gap-1 p-1 text-xl leading-6 font-medium transition-colors ${
+                  isBlogLanding
+                    ? "text-white/90 hover:text-white"
+                    : "text-aiesec-gray hover:text-aiesec-blue"
+                }`}
+              >
+                Programs
+                <ChevronIcon
+                  className={`size-6 transition-transform duration-200 cursor-pointer ${
+                    isProgramsOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+            </div>
           </div>
 
           <Link
             href="/become-a-partner"
-            className={`rounded-full border px-5 py-2.5 text-base font-medium transition-colors leading-[150%] tracking-[-1%] ${
+            className={`flex h-12 w-43 shrink-0 items-center justify-center rounded-pill border-[1.2px] px-6 py-3 text-body whitespace-nowrap transition-colors ${
               isBlogLanding
                 ? "border-white/80 text-white hover:bg-white hover:text-gray-900"
-                : "border-[#5C5C5C] text-[#5C5C5C] hover:bg-gray-900 hover:text-white"
+                : "border-aiesec-gray text-aiesec-gray hover:bg-gray-900 hover:text-white"
             }`}
           >
             Become a Partner
@@ -224,7 +226,7 @@ function NavbarContent() {
           ref={mobileTriggerRef}
           type="button"
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="flex size-10 items-center justify-center rounded-lg lg:hidden"
+          className="flex size-6 shrink-0 items-center justify-center rounded-lg lg:hidden"
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
@@ -232,10 +234,10 @@ function NavbarContent() {
           {isMobileMenuOpen ? (
             <CloseIcon className={`size-6 cursor-pointer ${isBlogHeroNav ? "text-white" : "text-aiesec-blue"}`} />
           ) : (
-            <span className="flex flex-col items-center justify-center gap-1.5 cursor-pointer">
-              <span className={`block h-0.5 w-6 rounded-full ${isBlogHeroNav ? "bg-white" : "bg-aiesec-blue"}`} />
-              <span className={`block h-0.5 w-6 rounded-full ${isBlogHeroNav ? "bg-white" : "bg-aiesec-blue"}`} />
-              <span className={`block h-0.5 w-6 rounded-full ${isBlogHeroNav ? "bg-white" : "bg-aiesec-blue"}`} />
+            <span className="flex size-6 flex-col items-center justify-center gap-1 cursor-pointer">
+              <span className={`block h-0.5 w-4.5 ${isBlogHeroNav ? "bg-white" : "bg-aiesec-gray"}`} />
+              <span className={`block h-0.5 w-4.5 ${isBlogHeroNav ? "bg-white" : "bg-aiesec-gray"}`} />
+              <span className={`block h-0.5 w-4.5 ${isBlogHeroNav ? "bg-white" : "bg-aiesec-gray"}`} />
             </span>
           )}
         </button>
@@ -274,7 +276,7 @@ function NavbarContent() {
         <div
           id="mobile-menu"
           ref={mobileMenuRef}
-          className="absolute inset-x-0 top-full h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-gray-100 bg-white lg:hidden"
+          className="absolute inset-x-0 top-full h-[calc(100dvh-4rem)] overflow-y-auto border-t border-gray-100 bg-white lg:hidden"
         >
           <div className="flex flex-col gap-1 px-6 py-4">
             {navLinks.map((link: NavLink) => (

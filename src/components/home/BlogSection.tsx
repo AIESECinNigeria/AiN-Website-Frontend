@@ -44,7 +44,7 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/blog"
-      className={`hidden md:inline-flex items-center justify-center rounded-full bg-aiesec-blue px-7 py-3 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90 ${className}`}
+      className={`inline-flex h-11.75 w-29.25 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:w-44.5 lg:px-8 lg:py-4 lg:text-rd-body-02 ${className}`}
     >
       Read More
     </Link>
@@ -53,35 +53,35 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
 
 export default function BlogSection() {
   return (
-    <section className="px-6 py-14 lg:px-20 lg:py-20">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl md:text-5xl w-full font-bold text-aiesec-blue lg:w-auto text-left">
+    <section className="bg-white px-4 py-10 lg:px-20 lg:py-21">
+      <div className="flex items-center justify-between gap-4 [&>a]:hidden lg:[&>a]:inline-flex">
+        <h2 className="w-full text-left text-subheading text-aiesec-blue lg:w-auto lg:text-rd-heading-02">
           Blog
         </h2>
         <ReadMoreButton />
       </div>
 
-      <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid gap-x-6 gap-y-7.5 lg:mt-12 lg:grid-cols-3">
         {posts.map((post, index) => (
           <Link key={`${post.title}-${index}`} href={post.href} className="group block">
-            <div className="overflow-hidden rounded-xl">
+            <div className="overflow-hidden rounded-20">
               <CloudImage
                 id={post.imageId}
                 alt={post.title}
-                className="aspect-[434/278] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                className="h-57.5 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] lg:h-70.25"
               />
             </div>
-            <div className="mt-3 flex items-center justify-between text-sm italic text-gray-500">
+            <div className="mt-4 flex items-center justify-between gap-1.5 text-body text-aiesec-gray [&>span:first-child]:font-normal [&>span:first-child]:italic [&>span:last-child]:shrink-0">
               <span>{post.author}</span>
               <span>{post.date}</span>
             </div>
-            <h3 className="mt-2 text-xl font-bold text-gray-900">{post.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-gray-500">{post.excerpt}</p>
+            <h3 className="mt-2 text-xl font-semibold leading-6 text-aiesec-heading lg:text-2xl lg:font-bold lg:leading-8 lg:tracking-[-0.01em]">{post.title}</h3>
+            <p className="mt-2 line-clamp-3 text-body text-aiesec-gray">{post.excerpt}</p>
           </Link>
         ))}
       </div>
 
-      <div className="mt-10 flex justify-center lg:hidden">
+      <div className="mt-6 flex justify-center lg:hidden">
         <ReadMoreButton />
       </div>
     </section>
