@@ -54,7 +54,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="flex h-11.75 w-27.25 shrink-0 self-center items-center justify-center rounded-pill bg-aiesec-neutral-300 px-5 py-3.5 text-body leading-[19px] tracking-normal text-aiesec-heading transition-colors lg:h-17 lg:w-41.25 lg:px-8 lg:py-4 lg:text-rd-body-02 lg:text-aiesec-neutral-900"
+                className="flex h-11.75 w-27.25 shrink-0 self-center items-center justify-center rounded-pill bg-aiesec-neutral-300 px-5 py-3.5 text-body leading-[19px] tracking-normal text-aiesec-heading transition-colors lg:h-17 lg:w-41.25 lg:px-8 lg:py-4 lg:text-rd-body-02 lg:leading-9 lg:tracking-[-0.01em] lg:text-aiesec-neutral-900"
               >
                 Subscribe
               </button>

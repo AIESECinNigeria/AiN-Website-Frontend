@@ -8,7 +8,7 @@ export default function HeroBanner() {
         <CloudImage
           id="hero-group"
           alt="AIESEC in Nigeria members gathered together at an event"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full origin-[50%_40%] scale-[1.22] object-cover object-[65.8%_center] lg:origin-[50%_30%] lg:scale-[1.187] lg:object-center"
         />
 
         {/* The label stroke and existing tail form the flat blue tag. */}

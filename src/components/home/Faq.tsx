@@ -49,13 +49,13 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
-    <section className="bg-[#fafafa] px-6 py-16 lg:px-20 lg:py-20">
-      <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
-        <h2 className="text-2xl md:text-5xl font-bold leading-[115%] text-aiesec-blue">
+    <section className="bg-aiesec-section px-4 py-10 lg:px-20 lg:py-21">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,431px)_minmax(0,664px)] lg:justify-between lg:gap-13">
+        <h2 className="max-w-84.5 text-subheading text-aiesec-blue lg:max-w-none lg:text-rd-heading-02">
           Frequently Asked Questions (FAQs)
         </h2>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-6 bg-white lg:gap-4 lg:bg-transparent">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
@@ -63,20 +63,20 @@ export default function Faq() {
                 key={faq.question}
                 className={
                   isOpen
-                    ? "mb-2 rounded-2xl bg-aiesec-blue p-5 text-white"
-                    : "border-b border-gray-200"
+                    ? "rounded-2xl bg-aiesec-blue p-4 text-white lg:p-5"
+                    : "text-aiesec-neutral-950 lg:text-aiesec-heading"
                 }
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
                   aria-expanded={isOpen}
-                  className={`flex w-full cursor-pointer items-center justify-between gap-4 text-left ${
-                    isOpen ? "text-lg font-semibold" : "py-5 text-lg font-medium text-gray-900"
+                  className={`flex w-full cursor-pointer items-center justify-between gap-4 text-left text-xl font-semibold leading-6 lg:text-2xl lg:leading-8 lg:tracking-[-0.01em] ${
+                    isOpen ? "text-white" : "lg:min-h-16 lg:px-5 lg:py-4"
                   }`}
                 >
                   <span>{faq.question}</span>
-                  <span className="shrink-0">
+                  <span className="shrink-0 lg:[&>svg]:size-8">
                     {isOpen ? (
                       <svg viewBox="0 0 24 24" className="size-6" fill="none" aria-hidden="true">
                         <path d="M5 12h14" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
@@ -89,7 +89,7 @@ export default function Faq() {
                   </span>
                 </button>
                 {isOpen && (
-                  <p className="mt-3 text-[15px] leading-relaxed text-white/90">{faq.answer}</p>
+                  <p className="mt-4 text-body text-white">{faq.answer}</p>
                 )}
               </div>
             );

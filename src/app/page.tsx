@@ -38,16 +38,17 @@ export default function HomePage() {
           lg:[&>p]:mt-4 lg:[&>p]:text-hero-subtitle lg:[&>p]:tracking-[-0.01em]
           [&>a]:mt-5 [&>a]:h-10.25 [&>a]:w-43.75 [&>a]:gap-2 [&>a]:rounded-pill [&>a]:px-6 [&>a]:py-3 [&>a]:text-base [&>a]:leading-4.75 [&>a]:tracking-normal [&>a]:whitespace-nowrap
           lg:[&>a]:mt-10 lg:[&>a]:h-17 lg:[&>a]:w-62.5 lg:[&>a]:px-8 lg:[&>a]:py-4 lg:[&>a]:text-rd-body-02 lg:[&>a]:leading-9 lg:[&>a]:tracking-[-0.01em]
-          [&_.bg-aiesec-highlight]:relative [&_.bg-aiesec-highlight]:h-7.5 [&_.bg-aiesec-highlight]:bg-[#E3EFFB] [&_.bg-aiesec-highlight]:py-0 [&_.bg-aiesec-highlight]:pl-1 [&_.bg-aiesec-highlight]:pr-2
-          lg:[&_.bg-aiesec-highlight]:h-18 lg:[&_.bg-aiesec-highlight]:bg-aiesec-blue/10 lg:[&_.bg-aiesec-highlight]:pl-4 lg:[&_.bg-aiesec-highlight]:pr-5.5
-          [&_.animate-pulse]:absolute [&_.animate-pulse]:inset-y-0 [&_.animate-pulse]:right-0 [&_.animate-pulse]:ml-0 [&_.animate-pulse]:h-full! [&_.animate-pulse]:w-1 lg:[&_.animate-pulse]:w-1.5"
+          [&_.bg-aiesec-highlight]:relative [&_.bg-aiesec-highlight]:isolate [&_.bg-aiesec-highlight]:-mr-2 [&_.bg-aiesec-highlight]:h-7.5 [&_.bg-aiesec-highlight]:bg-transparent [&_.bg-aiesec-highlight]:py-0 [&_.bg-aiesec-highlight]:pl-0 [&_.bg-aiesec-highlight]:pr-1
+          [&_.bg-aiesec-highlight]:before:absolute [&_.bg-aiesec-highlight]:before:top-0.75 [&_.bg-aiesec-highlight]:before:right-0 [&_.bg-aiesec-highlight]:before:-left-1 [&_.bg-aiesec-highlight]:before:-z-10 [&_.bg-aiesec-highlight]:before:h-full [&_.bg-aiesec-highlight]:before:bg-[#E3EFFB]
+          lg:[&_.bg-aiesec-highlight]:-mr-6 lg:[&_.bg-aiesec-highlight]:h-18 lg:[&_.bg-aiesec-highlight]:pl-4 lg:[&_.bg-aiesec-highlight]:pr-4.5 lg:[&_.bg-aiesec-highlight]:before:top-0 lg:[&_.bg-aiesec-highlight]:before:left-0 lg:[&_.bg-aiesec-highlight]:before:bg-aiesec-blue/10
+          [&_.animate-pulse]:absolute [&_.animate-pulse]:top-0.75 [&_.animate-pulse]:right-0 [&_.animate-pulse]:ml-0 [&_.animate-pulse]:h-full! [&_.animate-pulse]:w-1 lg:[&_.animate-pulse]:top-0 lg:[&_.animate-pulse]:w-1.5"
       />
 
       <HeroBanner />
 
       {/* Intro */}
-      <section className="px-6 pt-16 lg:px-20 lg:pt-24">
-        <p className="mx-auto max-w-4xl text-center text-2xl font-bold leading-[135%] tracking-[-1%] text-gray-900 lg:text-3xl">
+      <section className="px-4 py-10 lg:p-20">
+        <p className="mx-auto max-w-256.5 text-center text-xl font-extrabold leading-[150%] tracking-[-0.01em] text-aiesec-neutral-900 lg:text-[40px]">
           AIESEC is a global platform for young people to develop their leadership
           potential through international internships and volunteer opportunities.
           In Nigeria, we connect young Nigerians to local and global experiences that
@@ -55,22 +56,23 @@ export default function HomePage() {
           create opportunities to make a positive impact through our International
           Exchange and Membership Program.
         </p>
-        <div className="mt-8 text-center">
-          <ArrowLink href="/about" className="text-aiesec-blue">
+        <div className="mt-6 flex justify-center lg:mt-10">
+          <ArrowLink href="/about" className="gap-1.5! text-body font-bold! text-aiesec-blue lg:gap-3! lg:text-rd-body-02 lg:leading-6 [&>svg]:size-5 [&>svg]:overflow-visible [&>svg>path]:origin-center [&>svg>path]:scale-[1.15] lg:[&>svg]:size-4 lg:[&>svg>path]:scale-[1.8]">
             Find Out More
           </ArrowLink>
         </div>
       </section>
 
-      <StatsArc />
+      <div className="landing-impact relative isolate overflow-hidden bg-white">
+        <StatsArc />
 
       {/* Partner With Us */}
-      <section className="px-6 pb-12 pt-12 lg:px-20 lg:pt-0">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl md:text-5xl font-extrabold leading-[135%] tracking-[-1%] text-gray-900">
+      <section className="relative px-4 pt-10 pb-25 lg:px-20 lg:pt-0 lg:pb-19">
+        <div className="mx-auto max-w-202.25 text-center">
+          <h2 className="text-subheading text-aiesec-heading lg:text-rd-heading-02">
             Partner With Us
           </h2>
-          <p className="mx-auto font-medium mt-3 max-w-2xl text-[16px] leading-[150%] tracking-[-1%] text-gray-500 md:mt-4 md:text-lg">
+          <p className="mt-2 text-body text-aiesec-gray lg:mt-3 lg:text-rd-body-02">
             Together, we can create opportunities that empower young people and drive
             meaningful change. Partner with AIESEC in Nigeria to support youth
             development, strengthen your organisation&rsquo;s impact, and build
@@ -78,24 +80,25 @@ export default function HomePage() {
           </p>
           <Link
             href="/become-a-partner"
-            className="mt-4 inline-flex items-center justify-center rounded-full bg-aiesec-blue px-8 py-3.5 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90 lg:mt-8"
+            className="mt-4 inline-flex h-11.75 w-41.5 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 whitespace-nowrap text-white transition-colors hover:bg-aiesec-blue/90 lg:mt-6 lg:h-15.5 lg:w-54.5 lg:px-8 lg:py-5 lg:text-xl lg:font-normal lg:leading-5.5 lg:tracking-[-0.01em]"
           >
             Become a Partner
           </Link>
         </div>
 
         {/* Partner logos */}
-        <div className="mx-auto mt-14 hidden max-w-5xl flex-wrap items-center justify-center gap-x-12 gap-y-8 lg:flex lg:justify-between">
+        <div className="mx-auto mt-10 hidden h-20 max-w-331.75 items-center justify-between gap-6 lg:flex [&>img:nth-child(5)]:w-[178.8px]">
           {partners.map((id) => (
             <CloudImage
               key={id}
               id={id}
               alt="Partner logo"
-              className="h-9 w-28 object-contain opacity-70 grayscale"
+              className="h-auto w-[119.2px] object-contain grayscale"
             />
           ))}
         </div>
       </section>
+      </div>
 
       <FeatureBand
         variant="coral"
