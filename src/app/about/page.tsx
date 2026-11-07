@@ -14,14 +14,14 @@ export default function AboutPage() {
           { type: "typewriter", words: ["on a mission."], highlight: true },
         ]}
         description="Imagine a community where young Nigerians lead, grow, and create impact through meaningful experiences. That's AIESEC in Nigeria."
-        className="!py-12 lg:!py-16"
+        className="!py-10 lg:!py-20"
       />
 
       <CategoryCards />
 
       {/* Intro */}
-      <section className="mt-6 bg-[#fafafa] px-6 py-16 lg:py-24">
-        <p className="mx-auto max-w-4xl text-center text-2xl font-bold leading-[140%] tracking-[-1%] text-gray-900 lg:text-[2rem]">
+      <section className="mt-0 bg-[#fcfcfc] px-4 py-10 lg:px-20 lg:py-20">
+        <p className="mx-auto max-w-[960px] text-center text-2xl font-extrabold leading-[135%] tracking-[-1%] text-gray-900 lg:text-[2rem] lg:leading-[150%]">
           AIESEC is a global platform for young people to develop their
           leadership potential through international internships and volunteer
           opportunities. In Nigeria, we connect young Nigerians to local and

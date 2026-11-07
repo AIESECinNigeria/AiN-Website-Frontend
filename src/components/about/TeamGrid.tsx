@@ -92,7 +92,7 @@ function Photo({
       className={`group relative block w-full cursor-pointer overflow-hidden rounded-2xl text-left transition-[aspect-ratio] duration-500 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aiesec-blue ${
         desktop
           ? `${desktopCompanion ? "aspect-[3/2]" : "aspect-square"} hover:z-20 hover:aspect-[3/4] focus-visible:z-20 focus-visible:aspect-[3/4]`
-          : ""
+          : "aspect-[310/330]"
       }`}
     >
       <CloudImage
@@ -127,13 +127,13 @@ export default function TeamGrid() {
   const [hoveredDesktopMember, setHoveredDesktopMember] = useState<string | null>(null);
 
   return (
-    <section className="px-6 py-16 lg:px-20 lg:py-20">
-      <h2 className="text-2xl md:text-5xl text-center font-bold leading-[120%] tracking-[-1%] text-gray-900">
+    <section className="bg-white px-4 py-10 lg:px-20 lg:py-20">
+      <h2 className="text-center text-2xl font-extrabold leading-[135%] tracking-[-1%] text-gray-900 md:text-5xl">
         We are led by the right people with the right skills
       </h2>
 
       {/* Mobile: tap a portrait to raise its plate; tap it again to lower it. */}
-      <div className="mx-auto mt-10 flex max-w-md flex-col gap-5 lg:hidden">
+      <div className="mx-auto mt-6 flex w-full max-w-[310px] flex-col gap-[25px] lg:hidden">
         {mobileOrder.map((member) => (
           <Photo
             key={member.imageId}
@@ -145,7 +145,7 @@ export default function TeamGrid() {
       </div>
 
       {/* Desktop: staggered bento, plates reveal on hover */}
-      <div className="mx-auto mt-12 hidden max-w-[1300px] grid-cols-4 gap-5 lg:grid lg:items-start">
+      <div className="mx-auto mt-12 hidden max-w-[1180px] grid-cols-4 gap-5 lg:grid lg:items-start">
         {columns.map((col, i) => (
           <div key={i} className="flex flex-col gap-5">
             {col.map((member) => (

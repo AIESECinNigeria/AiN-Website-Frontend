@@ -114,30 +114,30 @@ export default function BlogGrid() {
   const shown = filtered.slice(0, visible);
 
   return (
-    <section id="episodes" className="px-6 py-14 lg:px-20 lg:py-20">
-      <h2 className="text-2xl md:text-5xl md:text-center font-bold text-aiesec-blue">
+    <section id="episodes" className="bg-[#FCFCFC] px-4 py-10 lg:px-20 lg:py-[70px]">
+      <h2 className="text-2xl font-extrabold text-aiesec-blue lg:text-center lg:text-[60px] lg:leading-[72px] lg:font-bold">
         Our Blog
       </h2>
-      <p className="mx-auto mt-5 max-w-3xl text-[16px] md:text-center text-base leading-[165%] text-gray-600 lg:text-lg">
+      <p className="mx-auto mt-[25px] max-w-3xl text-base leading-6 font-medium text-aiesec-gray lg:mt-[15px] lg:max-w-[960px] lg:text-center lg:text-xl lg:leading-[30px]">
         AIESEC has shaped countless young lives, and your story could be next.
         Explore stories and experiences from our community as young people find
         their voice, build confidence, and grow into leaders.
       </p>
 
       {/* Filters + search */}
-      <div className="mx-auto mt-10 max-w-[1300px]">
+      <div className="mx-auto mt-6 max-w-[1352px] lg:mt-[45px]">
         {/* Desktop: pill filters on the left, search on the right */}
         <div className="hidden lg:flex lg:items-center lg:justify-between">
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-[15px]">
             {filters.map((name) => (
               <button
                 key={name}
                 type="button"
                 onClick={() => selectFilter(name)}
-                className={`cursor-pointer rounded-full px-5 py-2.5 text-base font-medium transition-colors ${
+                className={`h-[50px] cursor-pointer rounded-full px-[22px] text-xl font-medium transition-colors ${
                   filter === name
                     ? "bg-aiesec-blue text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    : "bg-[#F4F4F4] text-aiesec-gray hover:bg-gray-200"
                 }`}
               >
                 {name}
@@ -145,11 +145,11 @@ export default function BlogGrid() {
             ))}
           </div>
 
-          <SearchBox value={query} onChange={handleQuery} className="w-[320px]" />
+          <SearchBox value={query} onChange={handleQuery} className="w-[400px]" />
         </div>
 
         {/* Mobile: search on the left, filter dropdown on the right */}
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex h-[50px] items-center gap-[10px] lg:hidden">
           <SearchBox value={query} onChange={handleQuery} className="flex-1" />
 
           <div className="relative shrink-0">
@@ -158,7 +158,7 @@ export default function BlogGrid() {
               onClick={() => setFilterOpen((open) => !open)}
               aria-haspopup="listbox"
               aria-expanded={filterOpen}
-              className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-3 text-sm font-medium text-gray-700"
+              className="flex h-[50px] items-center gap-2 rounded-full bg-[#F4F4F4] px-5 text-sm font-medium text-aiesec-gray"
             >
               {filter === "All Articles" ? "All" : filter}
               <ChevronDownIcon
@@ -204,29 +204,29 @@ export default function BlogGrid() {
       </div>
 
       {/* Grid */}
-      <div className="mx-auto mt-10 grid max-w-[1300px] gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto mt-[30px] grid max-w-[1352px] gap-x-6 gap-y-5 sm:grid-cols-2 lg:mt-[45px] lg:grid-cols-3 lg:gap-y-[45px]">
         {shown.map((article, index) => (
           <article key={`${article.imageId}-${index}`}>
             <Link href={`/blog/${article.slug}`} className="group block">
-              <div className="relative overflow-hidden rounded-2xl">
+              <div className="relative overflow-hidden rounded-[20px]">
                 <CloudImage
                   id={article.imageId}
                   alt={article.title}
                   loading="eager"
-                  className="aspect-[434/278] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  className="h-[200px] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] lg:aspect-[434.67/281] lg:h-auto"
                 />
                 <span className="absolute bottom-3 right-3 flex size-9 items-center justify-center rounded-full bg-white text-gray-900 opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
                   <ArrowUpRightIcon className="size-4" />
                 </span>
               </div>
-              <div className="mt-3 flex items-center justify-between text-sm italic text-gray-500">
+              <div className="mt-4 flex items-center justify-between text-[14px] italic text-aiesec-gray lg:text-base">
                 <span>{article.author}</span>
                 <span>{article.date}</span>
               </div>
-              <h3 className="mt-2 text-xl font-bold text-gray-900 lg:text-2xl">
+              <h3 className="mt-2 text-xl font-semibold leading-6 text-[#00000E] lg:text-2xl lg:leading-8 lg:font-bold">
                 {article.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-gray-500 lg:text-base">
+              <p className="mt-2 text-base leading-6 font-medium text-aiesec-gray">
                 {article.excerpt}
               </p>
             </Link>
@@ -241,11 +241,11 @@ export default function BlogGrid() {
       )}
 
       {visible < filtered.length && (
-        <div className="mt-12 flex justify-center">
+        <div className="mt-[30px] flex justify-center lg:mt-[45px]">
           <button
             type="button"
             onClick={() => setVisible((count) => count + 6)}
-            className="cursor-pointer rounded-full bg-aiesec-blue px-8 py-3.5 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90 lg:text-lg"
+            className="h-[47px] cursor-pointer rounded-full bg-aiesec-blue px-5 text-base font-bold text-white transition-colors hover:bg-aiesec-blue/90 lg:h-[68px] lg:px-8 lg:text-2xl"
           >
             Load More
           </button>
@@ -273,7 +273,7 @@ function SearchBox({
         onChange={(event) => onChange(event.target.value)}
         placeholder="Search"
         aria-label="Search articles"
-        className="w-full rounded-full bg-gray-100 py-3 pl-11 pr-5 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
+      className="h-[50px] w-full rounded-full bg-[#F0F0F0] py-3 pl-11 pr-5 text-sm text-aiesec-gray placeholder-aiesec-gray outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
       />
     </div>
   );
