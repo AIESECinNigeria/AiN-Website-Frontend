@@ -27,7 +27,7 @@ export default function WavyLabel({
         width="100%"
         height="18"
         aria-hidden="true"
-        className="-mb-px block"
+        className="-mb-[11px] block lg:-mb-[12px]"
         preserveAspectRatio="none"
       >
         <defs>
