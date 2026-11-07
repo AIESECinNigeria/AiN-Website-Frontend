@@ -339,7 +339,7 @@ export default function LocationsMap() {
       </h2>
 
       <div className="flex w-full flex-col gap-8 lg:gap-0">
-        <div className="order-2 mx-auto mt-0 grid w-full max-w-[393px] grid-flow-col grid-cols-2 grid-rows-8 gap-0 [&>button:nth-child(-n+8)]:border-r-4 [&>button:nth-child(8)]:border-b-0 [&>button:nth-child(16)]:border-b-0 sm:grid-flow-row sm:grid-cols-4 sm:grid-rows-4 sm:[&>button:nth-child(n+1)]:border-r-4 sm:[&>button:nth-child(4n)]:border-r-0 sm:[&>button:nth-child(8)]:border-b-4 sm:[&>button:nth-child(n+13)]:border-b-0 lg:order-1 lg:mx-auto lg:mt-0 lg:w-full lg:max-w-[1200px] lg:grid-cols-8 lg:grid-rows-2 lg:gap-y-3 lg:[&>button:nth-child(4n):not(:nth-child(8n))]:border-r-[6px] lg:[&>button:nth-child(8n)]:border-r-0 lg:[&>button:nth-child(n+1)]:border-b-0">
+        <div className="order-2 mx-auto mt-0 grid w-full max-w-[393px] grid-flow-col grid-cols-2 grid-rows-8 gap-0 [&>button:nth-child(-n+8)]:border-r-4 [&>button:nth-child(8)]:border-b-0 [&>button:nth-child(16)]:border-b-0 sm:grid-flow-row sm:grid-cols-4 sm:grid-rows-4 sm:[&>button:nth-child(n+1)]:border-r-4 sm:[&>button:nth-child(4n)]:border-r-0 sm:[&>button:nth-child(8)]:border-b-4 sm:[&>button:nth-child(n+13)]:border-b-0 lg:order-1 lg:mx-auto lg:mt-0 lg:w-full lg:max-w-[1200px] lg:grid-cols-8 lg:grid-rows-2 lg:gap-y-3 lg:[&>button:not(:nth-child(8n))]:border-r-4 lg:[&>button:nth-child(8n)]:!border-r-0 lg:[&>button:nth-child(n+1)]:border-b-0">
           {locations.map(({ city, state }) => {
             const selected = selectedState !== null && cleanStateName(selectedState) === cleanStateName(state);
             return (

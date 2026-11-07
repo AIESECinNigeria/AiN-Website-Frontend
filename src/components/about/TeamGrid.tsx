@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CloudImage from "@/components/CloudImage";
 import WavyLabel from "@/components/ui/WavyLabel";
 
@@ -63,9 +63,8 @@ function Photo({
   hover = false,
   desktop = false,
   desktopCompanion = false,
-  active = false,
+  revealOnScroll = false,
   hovered = false,
-  onToggle,
   onPointerEnter,
   onPointerLeave,
 }: {
@@ -73,23 +72,43 @@ function Photo({
   hover?: boolean;
   desktop?: boolean;
   desktopCompanion?: boolean;
-  active?: boolean;
+  revealOnScroll?: boolean;
   hovered?: boolean;
-  onToggle?: () => void;
   onPointerEnter?: (pointerType: string) => void;
   onPointerLeave?: () => void;
 }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [centeredInViewport, setCenteredInViewport] = useState(false);
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!revealOnScroll || !card) return;
+
+    const updateVisibility = () => {
+      const bounds = card.getBoundingClientRect();
+      const fullyVisible = bounds.top >= 0 && bounds.bottom <= window.innerHeight;
+      const cardCenter = bounds.top + bounds.height / 2;
+      const screenCenter = window.innerHeight / 2;
+      setCenteredInViewport(fullyVisible && Math.abs(cardCenter - screenCenter) <= 48);
+    };
+
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility);
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+    };
+  }, [revealOnScroll]);
+
+  const active = revealOnScroll && centeredInViewport;
   const plateVisible = active || hovered;
 
   return (
-    <button
-      type="button"
-      aria-label={`${plateVisible ? "Hide" : "Show"} ${member.name}'s details`}
-      aria-expanded={plateVisible}
-      onClick={onToggle}
+    <div
+      ref={cardRef}
       onPointerEnter={(event) => onPointerEnter?.(event.pointerType)}
       onPointerLeave={onPointerLeave}
-      className={`group relative block w-full cursor-pointer overflow-hidden rounded-2xl text-left transition-[aspect-ratio] duration-500 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aiesec-blue ${
+      className={`group relative block w-full overflow-hidden rounded-2xl text-left transition-[aspect-ratio] duration-500 ease-out ${
         desktop
           ? `${desktopCompanion ? "z-0" : ""} ${member.aspect} hover:z-20 focus-visible:z-20`
           : "aspect-[310/330]"
@@ -111,19 +130,17 @@ function Photo({
         className={
           hover
             ? `absolute inset-x-0 bottom-0 transition-all duration-300 ease-out ${plateVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"}`
-            : "absolute inset-x-0 bottom-0 translate-y-0 transition-transform duration-300 ease-out"
+            : `absolute inset-x-0 bottom-0 transition-transform duration-300 ease-out ${active ? "translate-y-0" : "translate-y-full"}`
         }
       >
         <WavyLabel name={member.name} role={member.role} variant={member.variant} className="[&>svg]:h-[24.64px] [&>div]:h-[79.86px] [&_p:first-child]:text-xl [&_p:first-child]:font-bold [&_p:first-child]:leading-8 [&_p:last-child]:font-medium lg:[&>svg]:h-[29px] lg:[&>div]:h-[94px] lg:[&_p:first-child]:text-2xl" />
       </div>
-    </button>
+    </div>
   );
 }
 
 /** "We are led by the right people" — the staggered team photo grid. */
 export default function TeamGrid() {
-  const [activeMobileMember, setActiveMobileMember] = useState<string | null>(null);
-  const [activeDesktopMember, setActiveDesktopMember] = useState<string | null>(null);
   const [hoveredDesktopMember, setHoveredDesktopMember] = useState<string | null>(null);
 
   return (
@@ -132,14 +149,13 @@ export default function TeamGrid() {
         We are led by the right people with the right skills
       </h2>
 
-      {/* Mobile: tap a portrait to raise its plate; tap it again to lower it. */}
+      {/* Mobile: reveal each plate when its full portrait reaches the screen center. */}
       <div className="mx-auto mt-6 flex w-full max-w-[310px] flex-col gap-[25px] lg:hidden">
         {mobileOrder.map((member) => (
           <Photo
             key={member.imageId}
             member={member}
-            active={activeMobileMember === member.imageId}
-            onToggle={() => setActiveMobileMember((current) => current === member.imageId ? null : member.imageId)}
+            revealOnScroll
           />
         ))}
       </div>
@@ -159,7 +175,6 @@ export default function TeamGrid() {
                   col.some((columnMember) => columnMember.imageId === hoveredDesktopMember) &&
                   member.imageId !== hoveredDesktopMember
                 }
-                active={activeDesktopMember === member.imageId}
                 hovered={hoveredDesktopMember === member.imageId}
                 onPointerEnter={(pointerType) => {
                   if (pointerType !== "touch") setHoveredDesktopMember(member.imageId);
@@ -167,7 +182,6 @@ export default function TeamGrid() {
                 onPointerLeave={() => {
                   setHoveredDesktopMember((current) => current === member.imageId ? null : current);
                 }}
-                onToggle={() => setActiveDesktopMember((current) => current === member.imageId ? null : member.imageId)}
               />
             ))}
           </div>
