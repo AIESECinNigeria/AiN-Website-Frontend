@@ -333,8 +333,8 @@ export default function LocationsMap() {
     return priority(a) - priority(b);
   });
   return (
-    <section className="flex flex-col items-center gap-8 px-0 pb-0 pt-0 lg:gap-[46px] lg:px-20 lg:pt-[70px] lg:pb-[130px]">
-      <h2 className="mx-auto max-w-[357px] text-center text-2xl font-extrabold leading-[120%] tracking-[-0.01em] text-[#00000e] lg:max-w-[821px] lg:text-5xl">
+    <section className="flex flex-col items-center gap-8 px-0 pb-0 pt-0 lg:gap-10 lg:px-20 lg:pt-24 lg:pb-24">
+      <h2 className="mx-auto max-w-[357px] text-center text-2xl font-extrabold leading-[120%] tracking-[-1%] text-[#00000e] lg:max-w-[821px] lg:text-5xl">
         AIESEC is present in all these locations within the country
       </h2>
 
@@ -354,7 +354,7 @@ export default function LocationsMap() {
                   }
                 }}
                 onPointerLeave={() => setHoveredState(null)}
-                className="h-12 min-h-12 border-b-4 border-r-0 border-[#00000e] bg-aiesec-blue px-4 text-center text-base font-semibold text-white transition-colors hover:bg-[#006edb] focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111827] sm:text-lg lg:h-[62px] lg:min-h-[62px] lg:border-r-[6px] lg:border-b-0 lg:text-xl lg:leading-[150%]"
+                className="h-12 min-h-12 border-b-4 border-r-0 border-[#00000e] bg-aiesec-blue px-4 text-center text-base font-semibold text-white transition-colors hover:bg-[#006edb] focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111827] sm:text-lg lg:h-[62px] lg:min-h-[62px] lg:border-r-[6px] lg:border-b-0 lg:px-[10px] lg:text-xl lg:leading-[150%] lg:whitespace-nowrap"
               >
                 {city}
               </button>
@@ -362,7 +362,7 @@ export default function LocationsMap() {
           })}
         </div>
 
-        <div className="order-1 relative mx-auto mt-0 w-[min(360px,100%)] max-w-[1002px] lg:order-2 lg:mx-auto lg:mt-[61.5px] lg:w-full">
+        <div className="order-1 relative mx-auto mt-0 w-[min(360px,100%)] max-w-[1002px] lg:order-2 lg:mx-auto lg:mt-0 lg:w-full">
           <div className="relative aspect-[360/292.84] w-full lg:aspect-[1002/815.08]">
           {boundaryData ? (
             <svg
