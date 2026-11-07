@@ -16,12 +16,12 @@ const categories: Category[] = [
  *  mobile, a four-up row on desktop. */
 export default function CategoryCards() {
   return (
-    <section className="py-6 lg:py-0">
-      <div className="flex snap-x gap-5 overflow-x-auto px-4 pb-2 [scroll-padding-left:1rem] lg:grid lg:grid-cols-4 lg:gap-5 lg:overflow-visible lg:px-20 lg:[scroll-padding-left:0] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <section className="pt-8 pb-0 lg:pt-0 lg:pb-20">
+      <div className="flex snap-x gap-5 overflow-x-auto px-4 pb-0 [scroll-padding-left:1rem] lg:grid lg:grid-cols-4 lg:gap-5 lg:overflow-visible lg:px-20 lg:[scroll-padding-left:0] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {categories.map((category) => (
           <article
             key={category.label}
-            className="relative h-[340px] w-[280px] shrink-0 snap-start overflow-hidden rounded-2xl lg:h-[340px] lg:w-auto"
+            className="relative h-[340px] w-[280px] shrink-0 snap-start overflow-hidden rounded-2xl lg:h-[400px] lg:w-auto"
           >
             <CloudImage
               id={category.imageId}
@@ -30,8 +30,8 @@ export default function CategoryCards() {
               ar="4:5"
               className="h-full w-full object-cover"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent p-5 pt-16">
-              <p className="text-2xl font-extrabold leading-[135%] text-white">{category.label}</p>
+            <div className="absolute inset-x-0 bottom-0 h-[120px] bg-gradient-to-t from-black/75 to-transparent px-5 pb-[18px] pt-[70px] lg:pb-5 lg:pt-[57px]">
+              <p className="w-fit text-2xl font-extrabold leading-[135%] tracking-[-0.01em] text-white lg:text-4xl lg:leading-[120%]">{category.label}</p>
             </div>
           </article>
         ))}

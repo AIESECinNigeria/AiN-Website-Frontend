@@ -333,13 +333,13 @@ export default function LocationsMap() {
     return priority(a) - priority(b);
   });
   return (
-    <section className="px-6 pb-0 pt-16 lg:px-20 lg:pb-24 lg:pt-24">
-      <h2 className="text-2xl md:text-5xl mx-auto max-w-2xl text-center font-bold leading-[120%] tracking-[-1%] text-gray-900">
+    <section className="flex flex-col items-center gap-8 overflow-x-clip px-0 pb-0 pt-0 lg:mb-[11px] lg:gap-[46px] lg:px-20 lg:pt-[70px] lg:pb-[130.46px]">
+      <h2 className="mx-auto h-[58px] max-w-[357px] text-center text-2xl font-extrabold leading-[120%] tracking-[-0.01em] text-[#000000] lg:h-[116px] lg:max-w-[821px] lg:text-5xl">
         AIESEC is present in all these locations within the country
       </h2>
 
-      <div className="flex flex-col">
-        <div className="order-2 -mx-6 mt-6 grid w-[calc(100%_+_3rem)] max-w-[1200px] grid-flow-col grid-cols-2 grid-rows-8 gap-0 [&>button:nth-child(-n+8)]:border-r-2 [&>button:nth-child(8)]:border-b-0 [&>button:nth-child(16)]:border-b-0 sm:grid-flow-row sm:grid-cols-4 sm:grid-rows-4 sm:[&>button:nth-child(n+1)]:border-r-2 sm:[&>button:nth-child(4n)]:border-r-0 sm:[&>button:nth-child(8)]:border-b-2 sm:[&>button:nth-child(n+13)]:border-b-0 lg:order-1 lg:mx-auto lg:mt-10 lg:w-full lg:grid-cols-8 lg:grid-rows-2 lg:gap-y-3 lg:[&>button:nth-child(4n):not(:nth-child(8n))]:border-r-[3px] lg:[&>button:nth-child(8n)]:border-r-0 lg:[&>button:nth-child(n+1)]:border-b-0">
+      <div className="flex w-full flex-col gap-8 lg:gap-[61.46px]">
+        <div className="relative left-1/2 order-2 mx-auto mt-0 grid w-[393px] max-w-none -translate-x-1/2 grid-flow-col grid-cols-2 grid-rows-8 gap-0 [&>button:nth-child(-n+8)]:border-r-4 [&>button:nth-child(8)]:border-b-0 [&>button:nth-child(16)]:border-b-0 sm:grid-flow-row sm:grid-cols-4 sm:grid-rows-4 sm:[&>button:nth-child(n+1)]:border-r-4 sm:[&>button:nth-child(4n)]:border-r-0 sm:[&>button:nth-child(8)]:border-b-4 sm:[&>button:nth-child(n+13)]:border-b-0 lg:relative lg:left-auto lg:order-1 lg:mx-auto lg:mt-0 lg:w-full lg:max-w-[1200px] lg:translate-x-0 lg:grid-cols-8 lg:grid-rows-2 lg:gap-y-3 lg:[&>button:nth-child(4n):not(:nth-child(8n))]:border-r-[6px] lg:[&>button:nth-child(8n)]:border-r-0 lg:[&>button:nth-child(n+1)]:border-b-0">
           {locations.map(({ city, state }) => {
             const selected = selectedState !== null && cleanStateName(selectedState) === cleanStateName(state);
             return (
@@ -354,7 +354,7 @@ export default function LocationsMap() {
                   }
                 }}
                 onPointerLeave={() => setHoveredState(null)}
-                className="min-h-12 border-b-2 border-r-0 border-[#111827] bg-aiesec-blue px-2 text-center text-base font-semibold text-white transition-colors hover:bg-[#006edb] focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111827] sm:text-lg lg:min-h-16 lg:border-r-[3px] lg:border-b-0"
+                className="h-12 min-h-12 border-b-4 border-r-0 border-[#00000e] bg-aiesec-blue px-4 text-center text-base font-semibold text-white transition-colors hover:bg-[#006edb] focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111827] sm:text-lg lg:h-[62px] lg:min-h-[62px] lg:border-r-[6px] lg:border-b-0 lg:text-xl lg:font-bold lg:leading-[150%]"
               >
                 {city}
               </button>
@@ -362,8 +362,8 @@ export default function LocationsMap() {
           })}
         </div>
 
-        <div className="order-1 relative -mx-2 mt-6 w-[calc(100%_+_1rem)] max-w-[820px] lg:order-2 lg:mx-auto lg:mt-12 lg:w-full">
-          <div className="relative aspect-[5/4] w-full">
+        <div className="order-1 relative mx-auto mt-0 w-[min(360px,100%)] max-w-[1002px] lg:order-2 lg:mx-auto lg:mt-0 lg:w-full">
+          <div className="relative aspect-[360/292.84] w-full lg:aspect-[1002/815.08]">
           {boundaryData ? (
             <svg
               viewBox={`0 0 ${WIDTH} ${HEIGHT}`}

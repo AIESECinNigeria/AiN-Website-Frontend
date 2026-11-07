@@ -91,7 +91,7 @@ function Photo({
       onPointerLeave={onPointerLeave}
       className={`group relative block w-full cursor-pointer overflow-hidden rounded-2xl text-left transition-[aspect-ratio] duration-500 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-aiesec-blue ${
         desktop
-          ? `${desktopCompanion ? "aspect-[3/2]" : "aspect-square"} hover:z-20 hover:aspect-[3/4] focus-visible:z-20 focus-visible:aspect-[3/4]`
+          ? `${desktopCompanion ? "aspect-[323/219]" : member.imageId === "team-1" || member.imageId === "team-6" ? "aspect-[323/427]" : member.imageId === "team-2" || member.imageId === "team-3" ? "aspect-[323/219]" : "aspect-square"} hover:z-20 hover:aspect-[323/427] focus-visible:z-20 focus-visible:aspect-[323/427]`
           : "aspect-[310/330]"
       }`}
     >
@@ -114,7 +114,7 @@ function Photo({
             : `absolute inset-x-0 bottom-0 transition-transform duration-300 ease-out ${active ? "translate-y-0" : "translate-y-full"}`
         }
       >
-        <WavyLabel name={member.name} role={member.role} variant={member.variant} />
+        <WavyLabel name={member.name} role={member.role} variant={member.variant} className="[&>svg]:-mb-[6px] [&>svg]:h-[24.64px] [&>div]:h-[79.86px] [&>div]:justify-start [&>div]:pt-[2px] [&_p:first-child]:text-xl [&_p:first-child]:font-bold [&_p:first-child]:leading-8 [&_p:first-child]:tracking-[-0.01em] [&_p:last-child]:mt-0 [&_p:last-child]:font-medium [&_p:last-child]:tracking-[-0.01em] [&_p:last-child]:text-[#eeeeee] lg:[&>svg]:-mb-[7px] lg:[&>svg]:h-[29px] lg:[&>div]:h-[94px] lg:[&>div]:pt-3 lg:[&_p:first-child]:text-2xl" />
       </div>
     </button>
   );
@@ -127,8 +127,8 @@ export default function TeamGrid() {
   const [hoveredDesktopMember, setHoveredDesktopMember] = useState<string | null>(null);
 
   return (
-    <section className="bg-white px-4 py-10 lg:px-20 lg:py-20">
-      <h2 className="text-center text-2xl font-extrabold leading-[135%] tracking-[-1%] text-gray-900 md:text-5xl">
+    <section className="bg-white px-4 py-10 lg:px-20 lg:pt-5 lg:pb-20">
+      <h2 className="text-center text-2xl font-extrabold leading-[135%] tracking-[-0.01em] text-[#00000e] md:text-5xl md:leading-[120%]">
         We are led by the right people with the right skills
       </h2>
 
@@ -145,7 +145,7 @@ export default function TeamGrid() {
       </div>
 
       {/* Desktop: staggered bento, plates reveal on hover */}
-      <div className="mx-auto mt-12 hidden max-w-[1180px] grid-cols-4 gap-5 lg:grid lg:items-start">
+      <div className="mx-auto mt-12 hidden max-w-[1352px] grid-cols-4 gap-5 lg:grid lg:items-start">
         {columns.map((col, i) => (
           <div key={i} className="flex flex-col gap-5">
             {col.map((member) => (
