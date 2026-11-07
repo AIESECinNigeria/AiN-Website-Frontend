@@ -48,98 +48,104 @@ const excerpt =
 
 export default function BlogArticle() {
   return (
-    <article className="px-6 py-10 lg:px-20 lg:py-16">
-      <div className="mx-auto max-w-[760px]">
-        {/* Back */}
+    <article className="bg-white px-4 pt-[50px] pb-10 lg:bg-aiesec-section lg:px-20 lg:pt-[60px] lg:pb-0">
+      <div className="mx-auto w-full max-w-[1352px]">
         <Link
           href="/blog"
           aria-label="Back to blog"
-          className="flex w-max py-2 px-3 gap-2 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-colors hover:bg-gray-200"
+          className="mb-5 flex h-11 w-11 items-center justify-center gap-[5px] rounded-[40px] bg-[#F0F0F0] text-aiesec-gray transition-colors hover:bg-gray-200 lg:mb-[30px] lg:w-[93px] lg:border lg:border-[#CCCCCC] lg:px-[15px] lg:text-aiesec-heading"
         >
-          <ChevronLeftIcon className="size-5" />
-
-          <span> Back </span>
+          <ChevronLeftIcon className="size-6 shrink-0" />
+          <span className="hidden lg:inline">Back</span>
         </Link>
 
-        {/* Meta */}
-        <p className="mt-8 text-base text-gray-500">
-          Published 4th July 2026&nbsp;&nbsp;<span className="text-gray-400">~</span>&nbsp;&nbsp;5 mins read
-        </p>
+        <div className="flex flex-col items-start gap-5 lg:flex-row lg:items-end lg:gap-16">
+          <div className="flex w-full flex-col items-start gap-[10px] lg:flex-1 lg:gap-[15px]">
+            <p className="flex flex-wrap items-center gap-[5px] text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-base">
+              <span>Published 4th July 2026</span><span className="hidden lg:inline">~</span><span>5 mins read</span>
+            </p>
 
-        <h1 className="mt-4 text-3xl font-bold leading-[120%] tracking-[-1%] text-gray-900 lg:text-[2.75rem]">
-          Interview with Henry Tabansi
-        </h1>
+            <div className="flex w-full flex-col items-start gap-[5px] lg:gap-[15px]">
+              <h1 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-heading lg:text-[60px] lg:font-bold lg:leading-[72px] lg:tracking-[-0.02em]">
+                Interview with Henry Tabansi
+              </h1>
 
-        <p className="mt-5 text-base leading-[170%] text-gray-700 lg:text-lg">
-          AIESEC has impacted lives; and if you give AIESEC a chance, it can
-          impact yours too. AIESEC has taken shy young people who once struggled
-          to introduce themselves and turned them into leaders confidently.
-        </p>
+              <p className="text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-[20px]">
+                AIESEC has impacted lives; and if you give AIESEC a chance, it can
+                impact yours too. AIESEC has taken shy young people who once struggled
+                to introduce themselves and turned them into leaders confidently.
+              </p>
 
-        <p className="mt-4 text-base italic text-gray-500 lg:text-lg">
-          Written by Mary and Eniola
-        </p>
+              <p className="text-[14px] font-semibold italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:text-lg lg:leading-6">
+                Written by Mary and Eniola
+              </p>
+            </div>
+          </div>
+          <div className="w-full lg:w-[326px] lg:shrink-0">
+            <ShareRow />
+          </div>
+        </div>
 
-        <ShareRow />
-
-        {/* Hero image */}
-        <div className="mt-8 overflow-hidden rounded-2xl">
+        <div className="mt-6 overflow-hidden rounded-[20px] lg:mt-10">
           <CloudImage
             id="blogHero"
             alt="AIESEC in Nigeria members at a gathering"
-            className="aspect-[16/10] w-full object-cover"
+            className="aspect-[358/220] w-full object-cover lg:aspect-[1352/500]"
           />
         </div>
 
-        {/* Body */}
-        <div className="mt-8 flex flex-col gap-6 text-base leading-[180%] text-gray-700 lg:text-lg">
+        <div className="mt-[14px] flex flex-col gap-6 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-neutral-800 lg:mt-10 lg:gap-8 lg:text-[20px] lg:leading-[170%]">
           {body.map((block, index) => (
             <p key={index}>{block.text}</p>
           ))}
         </div>
 
-        <ShareRow />
+        <div className="mt-10 lg:hidden">
+          <ShareRow />
+        </div>
+      </div>
 
-        {/* Related */}
-        <h2 className="text-2xl md:text-5xl mt-14 font-bold text-aiesec-blue">
+      <section className="-mx-4 mt-[30px] flex flex-col gap-6 bg-white px-4 py-0 lg:mx-0 lg:mt-[72px] lg:gap-12 lg:px-0 lg:py-[84px]">
+        <h2 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-blue lg:text-[48px] lg:leading-[120%]">
           Related Articles
         </h2>
-        <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
           {related.map((post, index) => (
-            <Link key={index} href="/blog/interview-with-henry-tabansi" className="group block">
-              <div className="overflow-hidden rounded-2xl">
+            <Link key={index} href="/blog/interview-with-henry-tabansi" className="group block pb-[5px] lg:pb-0">
+              <div className="overflow-hidden rounded-[20px]">
                 <CloudImage
                   id={post.imageId}
                   alt={post.title}
-                  className="aspect-[16/10] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  className="aspect-[358/200] w-full object-cover lg:aspect-[434.67/281]"
                 />
               </div>
-              <div className="mt-3 flex items-center justify-between text-sm italic text-gray-500">
-                <span>Written by Mary and Eniola</span>
-                <span>13 July, 2026</span>
+              <div className="mt-4 flex items-center justify-between gap-[6px] text-[14px] italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:mt-4 lg:text-base lg:leading-6">
+                <span className="flex-1 font-normal">Written by Mary and Eniola</span>
+                <span className="shrink-0 font-medium not-italic">13 July, 2026</span>
               </div>
-              <h3 className="mt-2 text-xl font-bold text-gray-900">{post.title}</h3>
-              <p className="mt-2 text-base leading-relaxed text-gray-500">{excerpt}</p>
+              <h3 className="mt-2 text-[20px] font-semibold leading-[120%] text-aiesec-heading lg:text-2xl lg:font-bold lg:leading-8">{post.title}</h3>
+              <p className="mt-2 line-clamp-3 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray">{excerpt}</p>
             </Link>
           ))}
         </div>
-      </div>
+      </section>
     </article>
   );
 }
 
 function ShareRow() {
   return (
-    <div className="mt-8">
-      <p className="text-lg font-semibold text-gray-900">Share this blog</p>
-      <div className="mt-4 flex flex-wrap items-center gap-3">
+    <div className="flex flex-col items-start gap-[10px] lg:items-end lg:gap-4">
+      <p className="w-full text-base font-medium leading-6 tracking-[-0.01em] text-aiesec-heading lg:text-right lg:text-xl lg:font-semibold lg:leading-[120%]">Share this blog</p>
+      <div className="flex flex-wrap items-center gap-6">
         <button
           type="button"
-          className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-gray-200 px-4 py-2.5 text-sm font-medium text-aiesec-blue transition-colors hover:bg-gray-50"
+          className="inline-flex h-[38px] cursor-pointer items-center justify-center gap-[10px] rounded-[25px] border border-[#D9D9D9] bg-[#F9F9F9] px-3 text-[14px] font-bold leading-[128%] tracking-[-0.01em] text-aiesec-blue transition-colors hover:bg-gray-50 lg:h-[50px] lg:w-[146px] lg:border-[#CCCCCC] lg:px-5 lg:text-base"
         >
           Copy Link
-          <CopyIcon className="size-4" />
+          <CopyIcon className="size-5 lg:size-6" />
         </button>
+        <div className="flex items-center gap-3">
         <ShareIcon href="#" label="Share on Instagram" className="bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]">
           <InstagramIcon />
         </ShareIcon>
@@ -152,6 +158,7 @@ function ShareRow() {
         <ShareIcon href="#" label="Share on LinkedIn" className="bg-[#0a66c2]">
           <LinkedInIcon />
         </ShareIcon>
+        </div>
       </div>
     </div>
   );
@@ -172,7 +179,7 @@ function ShareIcon({
     <a
       href={href}
       aria-label={label}
-      className={`flex size-11 items-center justify-center rounded-xl text-white transition-opacity hover:opacity-90 ${className}`}
+      className={`flex size-[30px] items-center justify-center rounded-lg text-white transition-opacity hover:opacity-90 ${className}`}
     >
       {children}
     </a>
