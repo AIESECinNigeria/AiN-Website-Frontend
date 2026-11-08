@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CloudImage from "@/components/CloudImage";
+import CopyLinkButton from "@/components/blog/CopyLinkButton";
 
 const body: { type: "p" | "h"; text: string }[] = [
   {
@@ -138,13 +139,9 @@ function ShareRow() {
     <div className="flex flex-col items-start gap-[10px] lg:items-end lg:gap-4">
       <p className="w-full text-base font-medium leading-6 tracking-[-0.01em] text-aiesec-heading lg:text-right lg:text-xl lg:font-semibold lg:leading-[120%]">Share this blog</p>
       <div className="flex flex-wrap items-center gap-6">
-        <button
-          type="button"
+        <CopyLinkButton
           className="inline-flex h-[38px] cursor-pointer items-center justify-center gap-[10px] rounded-[25px] border border-[#D9D9D9] bg-[#F9F9F9] px-3 text-[14px] font-bold leading-[128%] tracking-[-0.01em] text-aiesec-blue transition-colors hover:bg-gray-50 lg:h-[50px] lg:w-[146px] lg:border-[#CCCCCC] lg:px-5 lg:text-base"
-        >
-          Copy Link
-          <CopyIcon className="size-5 lg:size-6" />
-        </button>
+        />
         <div className="flex items-center gap-3">
         <ShareIcon href="#" label="Share on Instagram" className="bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]">
           <InstagramIcon />
@@ -190,15 +187,6 @@ function ChevronLeftIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
       <path d="M15 6l-6 6 6 6" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function CopyIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" strokeWidth={1.8} />
-      <path d="M5 15V6a2 2 0 0 1 2-2h9" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" />
     </svg>
   );
 }

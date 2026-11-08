@@ -5,7 +5,7 @@ const LeadershipAboutAIESEC = () => {
   return (
     <section
       className="text-white overflow-hidden relative h-[1000px] md:h-auto [background-color:lightgray] bg-no-repeat bg-cover [background-position:center_right] max-[500px]:[background-position:bottom_center] max-[500px]:bg-[length:500px_auto]"
-      style={{ backgroundImage: `url(${cld('ain/ls/aboutA')})` }}
+      style={{ backgroundImage: `url(${cld('aboutA')})` }}
     >
       <div className="container mx-auto max-w-7xl px-6 xl:px-0 mb-20 py-20 lg:my-24 z-[20] relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-24">
@@ -37,12 +37,12 @@ const LeadershipAboutAIESEC = () => {
       </div>
 
       <CloudImage
-        id="ain/ls/earthOrange"
-        className="absolute -top-6 -left-28 lg:top-2 lg:-left-32 h-auto w-30 lg:w-60 z-[2]"
+        id="earthOrange"
+        className="absolute -top-6 lg:top-2 -left-28 lg:-left-32 h-auto w-30 lg:w-60 z-[2]"
         alt="Earth Orange"
       />
       <CloudImage
-        id="ain/ls/Track"
+        id="Track"
         className="absolute -bottom-20 -right-28 lg:bottom-2 lg:-right-10 h-auto w-30 lg:w-60 z-[2]"
         alt="Track"
       />
