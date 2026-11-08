@@ -141,7 +141,7 @@ function NavbarContent() {
 
   return (
     <header
-      className={`${isBlogLanding ? "absolute inset-x-0" : "sticky"} top-0 z-50 w-full backdrop-blur transition-colors transition-shadow ${
+      className={`${isBlogLanding ? "absolute inset-x-0" : "sticky"} top-0 z-50 w-full ${isBlogLanding ? "" : "backdrop-blur"} transition-colors transition-shadow ${
         isBlogHeroNav
           ? "border-white/30 bg-transparent"
           : `bg-aiesec-section ${isScrolled ? "border-gray-200 shadow-sm" : "border-aiesec-neutral-300"}`
@@ -152,9 +152,9 @@ function NavbarContent() {
           <Image
             src={isBlogHeroNav ? "/svgs/logoWhite.svg" : "/svgs/logoBlack.svg"}
             alt="AIESEC in Nigeria"
-            width={78}
-            height={16}
-            className="h-4 w-19.5"
+            width={145}
+            height={30}
+            className="h-4 w-19.5 lg:h-[30px] lg:w-[145px]"
             priority
           />
         </Link>
