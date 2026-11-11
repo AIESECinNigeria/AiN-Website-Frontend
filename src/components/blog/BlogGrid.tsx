@@ -115,10 +115,10 @@ export default function BlogGrid() {
 
   return (
     <section id="episodes" className="bg-[#FCFCFC] px-4 py-10 lg:px-20 lg:py-[70px]">
-      <h2 className="text-2xl font-extrabold text-aiesec-blue lg:text-center lg:text-[60px] lg:leading-[72px] lg:font-bold">
+      <h2 className="text-2xl font-extrabold text-aiesec-blue lg:text-center lg:text-fluid-60 lg:leading-[1.2] lg:font-bold">
         Our Blog
       </h2>
-      <p className="mx-auto mt-[25px] max-w-3xl text-base leading-6 font-medium text-aiesec-gray lg:mt-[15px] lg:max-w-[960px] lg:text-center lg:text-xl lg:leading-[30px]">
+      <p className="mx-auto mt-[25px] max-w-3xl text-base leading-6 font-medium text-aiesec-gray lg:mt-[15px] lg:max-w-[960px] lg:text-center lg:text-fluid-20 lg:leading-[1.5]">
         AIESEC has shaped countless young lives, and your story could be next.
         Explore stories and experiences from our community as young people find
         their voice, build confidence, and grow into leaders.
@@ -223,7 +223,7 @@ export default function BlogGrid() {
                 <span>{article.author}</span>
                 <span>{article.date}</span>
               </div>
-              <h3 className="mt-2 text-xl font-semibold leading-6 text-[#00000E] lg:text-2xl lg:leading-8 lg:font-bold">
+              <h3 className="mt-2 text-xl font-semibold leading-6 text-[#00000E] lg:text-fluid-24 lg:leading-[1.333] lg:font-bold">
                 {article.title}
               </h3>
               <p className="mt-2 text-base leading-6 font-medium text-aiesec-gray">
@@ -245,7 +245,7 @@ export default function BlogGrid() {
           <button
             type="button"
             onClick={() => setVisible((count) => count + 6)}
-            className="h-[47px] cursor-pointer rounded-full bg-aiesec-blue px-5 text-base font-bold text-white transition-colors hover:bg-aiesec-blue/90 lg:h-[68px] lg:px-8 lg:text-2xl"
+            className="h-[47px] cursor-pointer rounded-full bg-aiesec-blue px-5 text-base font-bold text-white transition-colors hover:bg-aiesec-blue/90 lg:h-[68px] lg:px-8 lg:text-fluid-24 lg:leading-[1.5]"
           >
             Load More
           </button>
@@ -273,7 +273,7 @@ function SearchBox({
         onChange={(event) => onChange(event.target.value)}
         placeholder="Search"
         aria-label="Search articles"
-      className="h-[50px] w-full rounded-full bg-[#F0F0F0] py-3 pl-11 pr-5 text-sm text-aiesec-gray placeholder-aiesec-gray outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
+      className="h-[50px] w-full rounded-full bg-[#F0F0F0] py-3 pl-11 pr-5 text-sm text-aiesec-gray placeholder-aiesec-gray outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-fluid-16 lg:leading-[1.5]"
       />
     </div>
   );
