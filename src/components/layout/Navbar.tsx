@@ -166,7 +166,7 @@ function NavbarContent() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`p-1 text-xl leading-6 font-medium transition-colors ${
+                className={`p-1 text-fluid-20 leading-[1.2] font-medium transition-colors ${
                   isBlogLanding
                     ? "text-white/90 hover:text-white"
                     : "text-aiesec-gray hover:text-aiesec-blue"
@@ -192,7 +192,7 @@ function NavbarContent() {
                 aria-haspopup="true"
                 aria-expanded={isProgramsOpen}
                 aria-controls="programs-menu"
-                className={`flex cursor-pointer items-center gap-1 p-1 text-xl leading-6 font-medium transition-colors ${
+                className={`flex cursor-pointer items-center gap-1 p-1 text-fluid-20 leading-[1.2] font-medium transition-colors ${
                   isBlogLanding
                     ? "text-white/90 hover:text-white"
                     : "text-aiesec-gray hover:text-aiesec-blue"
