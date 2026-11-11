@@ -34,10 +34,10 @@ export default function FeatureBand({
     >
       <div className="mx-auto grid grid-cols-1 px-4 pt-10 lg:h-167.25 lg:grid-cols-[438fr_437fr_429fr] lg:items-center lg:gap-x-6 lg:px-20 lg:pt-0">
         <div className="contents lg:order-1 lg:flex lg:flex-col lg:items-start">
-          <h2 className="order-1 text-subheading text-aiesec-cream lg:text-rd-heading-02">
+          <h2 className="order-1 text-subheading text-aiesec-cream lg:text-fluid-48 lg:leading-[1.2] lg:tracking-[-0.01em]">
             {title}
           </h2>
-          <ArrowLink href={href} className="order-3 mt-3 w-fit gap-1.5! text-body font-bold! text-white lg:mt-4 lg:gap-3! lg:text-rd-body-02 lg:leading-6 lg:text-aiesec-cream [&>svg]:size-5 [&>svg]:overflow-visible [&>svg>path]:origin-center [&>svg>path]:scale-[1.15] lg:[&>svg]:size-4 lg:[&>svg>path]:scale-[1.8]">
+          <ArrowLink href={href} className="order-3 mt-3 w-fit gap-1.5! text-body font-bold! text-white lg:mt-4 lg:gap-3! lg:text-fluid-24 lg:leading-[1] lg:tracking-[-0.01em] lg:text-aiesec-cream [&>svg]:size-5 [&>svg]:overflow-visible [&>svg>path]:origin-center [&>svg>path]:scale-[1.15] lg:[&>svg]:size-4 lg:[&>svg>path]:scale-[1.8]">
             Learn More
           </ArrowLink>
         </div>
@@ -51,7 +51,7 @@ export default function FeatureBand({
           />
         </div>
 
-        <p className="order-2 mt-2 min-h-30 text-body text-aiesec-cream lg:order-3 lg:mt-0 lg:min-h-0 lg:text-rd-body-02">
+        <p className="order-2 mt-2 min-h-30 text-body text-aiesec-cream lg:order-3 lg:mt-0 lg:min-h-0 lg:text-fluid-24 lg:leading-[1.5] lg:tracking-[-0.01em]">
           {description}
         </p>
       </div>

@@ -33,8 +33,8 @@ function StatList({ stats, className = "" }: { stats: Stat[]; className?: string
     <div className={`flex justify-around gap-2 text-center sm:gap-12 lg:justify-center lg:gap-16 [.landing-impact_&]:mx-auto [.landing-impact_&]:w-full [.landing-impact_&]:max-w-83.75 [.landing-impact_&]:justify-between [.landing-impact_&]:gap-0 [.landing-impact_&>div]:min-w-20.75 [.landing-impact_&>div:first-child]:min-w-26.5 lg:[.landing-impact_&]:max-w-[733.27px] lg:[.landing-impact_&>div]:min-w-23.5 ${className}`}>
       {stats.map((stat) => (
         <div key={stat.label}>
-          <p className="text-[30px] font-bold leading-none text-aiesec-blue lg:text-4xl [.landing-impact_&]:text-2xl [.landing-impact_&]:leading-[140%] [.landing-impact_&]:tracking-[-0.01em] lg:[.landing-impact_&]:text-5xl lg:[.landing-impact_&]:leading-[150%]">{stat.value}</p>
-          <p className="mt-1 text-sm italic text-gray-500 lg:text-base [.landing-impact_&]:mt-0 [.landing-impact_&]:font-medium [.landing-impact_&]:leading-[120%] [.landing-impact_&]:tracking-[-0.01em] [.landing-impact_&]:text-aiesec-heading lg:[.landing-impact_&]:text-xl">
+          <p className="text-[30px] font-bold leading-none text-aiesec-blue lg:text-fluid-36 [.landing-impact_&]:text-fluid-24 [.landing-impact_&]:leading-[1.4] [.landing-impact_&]:tracking-[-0.01em] lg:[.landing-impact_&]:text-fluid-48 lg:[.landing-impact_&]:leading-[1.5]">{stat.value}</p>
+          <p className="mt-1 text-sm italic text-gray-500 lg:text-fluid-16 [.landing-impact_&]:mt-0 [.landing-impact_&]:font-medium [.landing-impact_&]:leading-[1.2] [.landing-impact_&]:tracking-[-0.01em] [.landing-impact_&]:text-aiesec-heading lg:[.landing-impact_&]:text-fluid-20">
             <span className="lg:hidden">{stat.mobileLabel ?? stat.label}</span>
             <span className="hidden lg:inline">{stat.label}</span>
           </p>

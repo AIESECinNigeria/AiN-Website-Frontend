@@ -50,7 +50,7 @@ export default function Hero({
 
       {description && (
         <p
-          className={`mt-5 max-w-2xl text-lg text-gray-500 lg:text-xl ${
+          className={`mt-5 max-w-2xl text-lg text-gray-500 lg:text-fluid-20 ${
             centered ? "mx-auto" : ""
           }`}
         >

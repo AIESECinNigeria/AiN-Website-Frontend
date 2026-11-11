@@ -19,7 +19,7 @@ export default function ReviewsCarousel() {
   return (
     <section className="bg-aiesec-section py-10 lg:pt-25.75 lg:pb-28.25">
       <div className="px-4 lg:px-20">
-        <h2 className="text-subheading text-aiesec-blue lg:text-rd-heading-02">Reviews</h2>
+        <h2 className="text-subheading text-aiesec-blue lg:text-fluid-48 lg:leading-[1.2] lg:tracking-[-0.01em]">Reviews</h2>
       </div>
 
       <div className="mt-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 lg:mt-12 lg:px-20 [scroll-padding-left:1rem] lg:[scroll-padding-left:5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
