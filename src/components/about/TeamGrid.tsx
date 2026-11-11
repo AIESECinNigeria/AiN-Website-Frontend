@@ -133,7 +133,7 @@ function Photo({
             : `absolute inset-x-0 bottom-0 transition-transform duration-300 ease-out ${active ? "translate-y-0" : "translate-y-full"}`
         }
       >
-        <WavyLabel name={member.name} role={member.role} variant={member.variant} className="[&>svg]:h-[24.64px] [&>div]:h-[79.86px] [&_p:first-child]:text-xl [&_p:first-child]:font-bold [&_p:first-child]:leading-8 [&_p:last-child]:font-medium lg:[&>svg]:h-[29px] lg:[&>div]:h-[94px] lg:[&_p:first-child]:text-2xl" />
+        <WavyLabel name={member.name} role={member.role} variant={member.variant} className="[&>svg]:h-[24.64px] [&>div]:h-[79.86px] [&_p:first-child]:text-xl [&_p:first-child]:font-bold [&_p:first-child]:leading-8 [&_p:last-child]:font-medium lg:[&>svg]:h-[29px] lg:[&>div]:h-[94px] lg:[&_p:first-child]:text-fluid-24 lg:[&_p:first-child]:leading-[1.2]" />
       </div>
     </div>
   );
@@ -216,7 +216,7 @@ export default function TeamGrid() {
 
   return (
     <section className="bg-white px-4 py-10 lg:px-20 lg:pt-5 lg:pb-20">
-      <h2 className="text-center text-2xl font-extrabold leading-[135%] tracking-[-1%] text-[#00000e] md:text-5xl md:leading-[120%]">
+      <h2 className="text-center text-2xl font-extrabold leading-[135%] tracking-[-1%] text-[#00000e] lg:text-fluid-48 lg:leading-[1.2]">
         We are led by the right people with the right skills
       </h2>
 

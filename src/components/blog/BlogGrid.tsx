@@ -219,7 +219,7 @@ export default function BlogGrid() {
                   <ArrowUpRightIcon className="size-4" />
                 </span>
               </div>
-              <div className="mt-4 flex items-center justify-between text-[14px] italic text-aiesec-gray lg:text-base">
+              <div className="mt-4 flex items-center justify-between text-[14px] italic text-aiesec-gray lg:text-fluid-16 lg:leading-[1.5]">
                 <span>{article.author}</span>
                 <span>{article.date}</span>
               </div>
