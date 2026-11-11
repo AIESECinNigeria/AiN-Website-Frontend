@@ -35,7 +35,7 @@ export default function HomePage() {
           [&>h1]:w-full [&>h1]:max-w-195.5 [&>h1]:text-subheading [&>h1]:font-extrabold [&>h1]:leading-[135%] [&>h1]:tracking-[-0.01em] [&>h1]:text-black
           lg:[&>h1]:text-fluid-60 lg:[&>h1]:font-bold lg:[&>h1]:leading-[1.2] lg:[&>h1]:tracking-[-0.02em]
           [&>p]:mt-2 [&>p]:w-full [&>p]:max-w-195.5 [&>p]:text-body [&>p]:tracking-[-0.01em] [&>p]:text-aiesec-gray
-          lg:[&>p]:mt-4 lg:[&>p]:text-hero-subtitle lg:[&>p]:tracking-[-0.01em]
+          lg:[&>p]:mt-4 lg:[&>p]:text-fluid-32 lg:[&>p]:leading-[1.3] lg:[&>p]:tracking-[-0.01em]
           [&>a]:mt-5 [&>a]:h-10.25 [&>a]:w-43.75 [&>a]:gap-2 [&>a]:rounded-pill [&>a]:px-6 [&>a]:py-3 [&>a]:text-base [&>a]:leading-4.75 [&>a]:tracking-normal [&>a]:whitespace-nowrap
           lg:[&>a]:mt-10 lg:[&>a]:h-17 lg:[&>a]:w-62.5 lg:[&>a]:px-8 lg:[&>a]:py-4 lg:[&>a]:text-rd-body-02 lg:[&>a]:leading-9 lg:[&>a]:tracking-[-0.01em]
           [&_.bg-aiesec-highlight]:relative [&_.bg-aiesec-highlight]:isolate [&_.bg-aiesec-highlight]:-mr-2 [&_.bg-aiesec-highlight]:h-7.5 [&_.bg-aiesec-highlight]:bg-transparent [&_.bg-aiesec-highlight]:py-0 [&_.bg-aiesec-highlight]:pl-0 [&_.bg-aiesec-highlight]:pr-1
