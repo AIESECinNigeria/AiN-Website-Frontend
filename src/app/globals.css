@@ -121,6 +121,19 @@
   --text-hero-subtitle--letter-spacing: -0.03em;
   --text-hero-subtitle--font-weight: 500;
 
+  /* Adaptive desktop typography: Figma size at 1512px, minimum at 1280px. */
+  --text-fluid-16: clamp(0.8125rem, calc(0.8125rem + 0.012931 * (100vw - 1280px)), 1rem);
+  --text-fluid-18: clamp(0.875rem, calc(0.875rem + 0.017241 * (100vw - 1280px)), 1.125rem);
+  --text-fluid-20: clamp(1rem, calc(1rem + 0.017241 * (100vw - 1280px)), 1.25rem);
+  --text-fluid-22: clamp(1.125rem, calc(1.125rem + 0.017241 * (100vw - 1280px)), 1.375rem);
+  --text-fluid-24: clamp(1.1875rem, calc(1.1875rem + 0.021552 * (100vw - 1280px)), 1.5rem);
+  --text-fluid-30: clamp(1.5rem, calc(1.5rem + 0.025862 * (100vw - 1280px)), 1.875rem);
+  --text-fluid-32: clamp(1.625rem, calc(1.625rem + 0.025862 * (100vw - 1280px)), 2rem);
+  --text-fluid-36: clamp(1.8125rem, calc(1.8125rem + 0.030172 * (100vw - 1280px)), 2.25rem);
+  --text-fluid-40: clamp(2rem, calc(2rem + 0.034483 * (100vw - 1280px)), 2.5rem);
+  --text-fluid-48: clamp(2.375rem, calc(2.375rem + 0.043103 * (100vw - 1280px)), 3rem);
+  --text-fluid-60: clamp(3rem, calc(3rem + 0.051724 * (100vw - 1280px)), 3.75rem);
+
   /* Rd Heading 03 and Rd Body 03/04 await Figma values.
      Lato on Google Fonts has no native 500 or 800 weights; retain the
      specified CSS weights until matching font assets are available. */
