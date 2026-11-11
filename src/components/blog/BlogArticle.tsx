@@ -62,22 +62,22 @@ export default function BlogArticle() {
 
         <div className="flex flex-col items-start gap-5 lg:flex-row lg:items-end lg:gap-16">
           <div className="flex w-full flex-col items-start gap-[10px] lg:flex-1 lg:gap-[15px]">
-            <p className="flex flex-wrap items-center gap-[5px] text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-base">
+            <p className="flex flex-wrap items-center gap-[5px] text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-fluid-16 lg:leading-[1.5]">
               <span>Published 4th July 2026</span><span className="hidden lg:inline">~</span><span>5 mins read</span>
             </p>
 
             <div className="flex w-full flex-col items-start gap-[5px] lg:gap-[15px]">
-              <h1 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-heading lg:text-[60px] lg:font-bold lg:leading-[72px] lg:tracking-[-0.02em]">
+              <h1 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-heading lg:text-fluid-60 lg:font-bold lg:leading-[1.2] lg:tracking-[-0.02em]">
                 Interview with Henry Tabansi
               </h1>
 
-              <p className="text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-[20px]">
+              <p className="text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-fluid-20 lg:leading-[1.5]">
                 AIESEC has impacted lives; and if you give AIESEC a chance, it can
                 impact yours too. AIESEC has taken shy young people who once struggled
                 to introduce themselves and turned them into leaders confidently.
               </p>
 
-              <p className="text-[14px] font-semibold italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:text-lg lg:leading-6">
+              <p className="text-[14px] font-semibold italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:text-fluid-18 lg:leading-[1.333]">
                 Written by Mary and Eniola
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function BlogArticle() {
           />
         </div>
 
-        <div className="mt-[14px] flex flex-col gap-6 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-neutral-800 lg:mt-10 lg:gap-8 lg:text-[20px] lg:leading-[170%]">
+        <div className="mt-[14px] flex flex-col gap-6 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-neutral-800 lg:mt-10 lg:gap-8 lg:text-fluid-20 lg:leading-[1.7]">
           {body.map((block, index) => (
             <p key={index}>{block.text}</p>
           ))}
@@ -107,7 +107,7 @@ export default function BlogArticle() {
       </div>
 
       <section className="-mx-4 mt-[30px] flex flex-col gap-6 bg-white px-4 py-0 lg:mx-0 lg:mt-[72px] lg:gap-12 lg:px-0 lg:py-[84px]">
-        <h2 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-blue lg:text-[48px] lg:leading-[120%]">
+        <h2 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-blue lg:text-fluid-48 lg:leading-[1.2]">
           Related Articles
         </h2>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
@@ -120,11 +120,11 @@ export default function BlogArticle() {
                   className="aspect-[358/200] w-full object-cover lg:aspect-[434.67/281]"
                 />
               </div>
-              <div className="mt-4 flex items-center justify-between gap-[6px] text-[14px] italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:mt-4 lg:text-base lg:leading-6">
+              <div className="mt-4 flex items-center justify-between gap-[6px] text-[14px] italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:mt-4 lg:text-fluid-16 lg:leading-[1.5]">
                 <span className="flex-1 font-normal">Written by Mary and Eniola</span>
                 <span className="shrink-0 font-medium not-italic">13 July, 2026</span>
               </div>
-              <h3 className="mt-2 text-[20px] font-semibold leading-[120%] text-aiesec-heading lg:text-2xl lg:font-bold lg:leading-8">{post.title}</h3>
+              <h3 className="mt-2 text-[20px] font-semibold leading-[120%] text-aiesec-heading lg:text-fluid-24 lg:font-bold lg:leading-[1.333]">{post.title}</h3>
               <p className="mt-2 line-clamp-3 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray">{excerpt}</p>
             </Link>
           ))}
@@ -137,10 +137,10 @@ export default function BlogArticle() {
 function ShareRow() {
   return (
     <div className="flex flex-col items-start gap-[10px] lg:items-end lg:gap-4">
-      <p className="w-full text-base font-medium leading-6 tracking-[-0.01em] text-aiesec-heading lg:text-right lg:text-xl lg:font-semibold lg:leading-[120%]">Share this blog</p>
+      <p className="w-full text-base font-medium leading-6 tracking-[-0.01em] text-aiesec-heading lg:text-right lg:text-fluid-20 lg:font-semibold lg:leading-[1.2]">Share this blog</p>
       <div className="flex flex-wrap items-center gap-6">
         <CopyLinkButton
-          className="inline-flex h-[38px] cursor-pointer items-center justify-center gap-[10px] rounded-[25px] border border-[#D9D9D9] bg-[#F9F9F9] px-3 text-[14px] font-bold leading-[128%] tracking-[-0.01em] text-aiesec-blue transition-colors hover:bg-gray-50 lg:h-[50px] lg:w-[146px] lg:border-[#CCCCCC] lg:px-5 lg:text-base"
+          className="inline-flex h-[38px] cursor-pointer items-center justify-center gap-[10px] rounded-[25px] border border-[#D9D9D9] bg-[#F9F9F9] px-3 text-[14px] font-bold leading-[128%] tracking-[-0.01em] text-aiesec-blue transition-colors hover:bg-gray-50 lg:h-[50px] lg:w-[146px] lg:border-[#CCCCCC] lg:px-5 lg:text-fluid-16 lg:leading-[1.5]"
         />
         <div className="flex items-center gap-3">
         <ShareIcon href="#" label="Share on Instagram" className="bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]">
