@@ -14,7 +14,7 @@ export default function AboutPage() {
           { type: "typewriter", words: ["on a mission."], highlight: true },
         ]}
         description="Imagine a community where young Nigerians lead, grow, and create impact through meaningful experiences. That's AIESEC in Nigeria."
-        className="w-full !max-w-none !px-4 !pt-6 !pb-0 [&>h1]:mx-auto [&>h1]:max-w-[222px] [&>h1]:text-2xl [&>h1]:leading-[135%] [&>h1]:tracking-[-0.01em] [&>h1]:text-[#00000e] [&>h1>span:first-child]:whitespace-nowrap [&>h1>span.inline-block]:py-0 [&>p]:mt-4 [&>p]:w-full [&>p]:max-w-[358px] [&>p]:text-center [&>p]:text-base [&>p]:font-medium [&>p]:leading-6 [&>p]:tracking-[-0.01em] [&>p]:text-[#5c5c5c] lg:!px-20 lg:!pt-20 lg:!pb-[53px] lg:[&>h1]:max-w-[1030px] lg:[&>h1]:text-[60px] lg:[&>h1]:font-bold lg:[&>h1]:leading-[120%] lg:[&>h1]:tracking-[-0.02em] lg:[&>p]:mt-4 lg:[&>p]:max-w-[1008px] lg:[&>p]:text-[32px] lg:[&>p]:leading-[130%]"
+        className="w-full !max-w-none !px-4 !pt-6 !pb-0 [&>h1]:mx-auto [&>h1]:max-w-[222px] [&>h1]:text-2xl [&>h1]:leading-[135%] [&>h1]:tracking-[-0.01em] [&>h1]:text-[#00000e] [&>h1>span:first-child]:whitespace-nowrap [&>h1>span.inline-block]:py-0 [&>p]:mt-4 [&>p]:w-full [&>p]:max-w-[358px] [&>p]:text-center [&>p]:text-base [&>p]:font-medium [&>p]:leading-6 [&>p]:tracking-[-0.01em] [&>p]:text-[#5c5c5c] lg:!px-20 lg:!pt-20 lg:!pb-[53px] lg:[&>h1]:max-w-[1030px] lg:[&>h1]:text-fluid-60 lg:[&>h1]:font-bold lg:[&>h1]:leading-[1.2] lg:[&>h1]:tracking-[-0.02em] lg:[&>p]:mt-4 lg:[&>p]:max-w-[1008px] lg:[&>p]:text-fluid-32 lg:[&>p]:leading-[1.3]"
       />
 
       <CategoryCards />

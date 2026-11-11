@@ -44,7 +44,7 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/blog"
-      className={`inline-flex h-11.75 w-29.25 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:w-44.5 lg:px-8 lg:py-4 lg:text-rd-body-02 ${className}`}
+      className={`inline-flex h-11.75 w-29.25 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:w-44.5 lg:px-8 lg:py-4 lg:text-fluid-24 lg:leading-[1.5] ${className}`}
     >
       Read More
     </Link>
@@ -55,7 +55,7 @@ export default function BlogSection() {
   return (
     <section className="bg-white px-4 py-10 lg:px-20 lg:py-21">
       <div className="flex items-center justify-between gap-4 [&>a]:hidden lg:[&>a]:inline-flex">
-        <h2 className="w-full text-left text-subheading text-aiesec-blue lg:w-auto lg:text-rd-heading-02">
+        <h2 className="w-full text-left text-subheading text-aiesec-blue lg:w-auto lg:text-fluid-48 lg:leading-[1.2]">
           Blog
         </h2>
         <ReadMoreButton />
@@ -75,7 +75,7 @@ export default function BlogSection() {
               <span>{post.author}</span>
               <span>{post.date}</span>
             </div>
-            <h3 className="mt-2 text-xl font-semibold leading-6 text-aiesec-heading lg:text-2xl lg:font-bold lg:leading-8 lg:tracking-[-0.01em]">{post.title}</h3>
+            <h3 className="mt-2 text-xl font-semibold leading-6 text-aiesec-heading lg:text-fluid-24 lg:font-bold lg:leading-[1.333] lg:tracking-[-0.01em]">{post.title}</h3>
             <p className="mt-2 line-clamp-3 text-body text-aiesec-gray">{post.excerpt}</p>
           </Link>
         ))}
