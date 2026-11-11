@@ -2,7 +2,7 @@
  *  Sits at the very top of the Membership page. */
 export default function RecruitmentTicker() {
   const message = (
-    <span className="mx-2 inline-flex items-center gap-4 text-base font-bold leading-normal tracking-[-0.01em] lg:text-xl">
+    <span className="mx-2 inline-flex items-center gap-4 text-base font-bold leading-normal tracking-[-0.01em] lg:text-fluid-20 lg:leading-[1.5]">
       <span>
         Recruitment does not start till{" "}
         <span className="italic text-aiesec-yellow">December</span>. Join the

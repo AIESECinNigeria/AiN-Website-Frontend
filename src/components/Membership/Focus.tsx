@@ -55,7 +55,7 @@ export default function Focus() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-subheading text-aiesec-blue lg:text-rd-heading-02"
+          className="text-subheading text-aiesec-blue lg:text-fluid-48 lg:leading-[1.2]"
         >
           Our Focus
         </motion.h2>
@@ -75,14 +75,14 @@ export default function Focus() {
               className="flex cursor-pointer flex-col gap-4 rounded-2xl bg-aiesec-section p-4 [&:last-child>p]:text-[15px] lg:min-h-[205px] lg:[&:nth-child(3)]:w-[calc(100%+4px)] lg:[&:nth-child(5)]:mr-2 lg:[&:nth-child(6)]:ml-2 lg:[&:last-child>p]:text-xl"
             >
               <div className="flex flex-col gap-2">
-                <h3 className="text-xl font-semibold leading-[120%] text-aiesec-heading lg:text-2xl lg:font-bold lg:tracking-[-0.03em]">
+                <h3 className="text-xl font-semibold leading-[120%] text-aiesec-heading lg:text-fluid-24 lg:leading-[1.2] lg:font-bold lg:tracking-[-0.03em]">
                   {area.title}
                 </h3>
-                <p className="text-body text-aiesec-gray lg:text-xl lg:leading-normal">
+                <p className="text-body text-aiesec-gray lg:text-fluid-20 lg:leading-[1.5]">
                   {area.description}
                 </p>
               </div>
-              <p className="text-body font-normal italic text-aiesec-heading lg:text-xl lg:leading-normal">
+              <p className="text-body font-normal italic text-aiesec-heading lg:text-fluid-20 lg:leading-[1.5]">
                 {area.skills.join(" · ")}
               </p>
             </motion.div>
