@@ -4,7 +4,7 @@ import CloudImage from "@/components/CloudImage";
 /** Full-bleed photographic hero for the blog / podcast landing. */
 export default function BlogHero() {
   return (
-    <section className="relative isolate h-[620px] overflow-hidden lg:h-[680px]">
+    <section className="relative isolate h-[620px] overflow-hidden lg:h-[600px]">
       <CloudImage
         id="blogHero"
         alt="AIESEC in Nigeria members at a leadership event"
@@ -13,7 +13,7 @@ export default function BlogHero() {
       {/* darken the photo so the white text stays legible */}
       <div className="absolute inset-0 bg-[#DB9620]/5" />
 
-      <div className="relative mx-auto flex h-full max-w-378 flex-col items-center justify-center px-6 pt-[72px] text-center lg:pt-[88px]">
+      <div className="relative mx-auto flex h-full max-w-378 flex-col items-center justify-center px-6 pt-[72px] text-center lg:pt-[88px] lg:mt-2">
         {/* Podcast pill */}
         <span className="mt-0 inline-flex items-center gap-2 rounded-full border border-[#E2E2E2] bg-[#F6F6F6] px-[10px] py-[10px] text-sm font-semibold text-gray-900 lg:px-5 lg:text-lg">
           <span className="size-2.5 rounded-full bg-aiesec-yellow" />

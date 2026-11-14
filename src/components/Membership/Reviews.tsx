@@ -7,7 +7,10 @@ interface Review {
   name: string;
   role: string;
   quote: string;
+  /** Cloudinary public id. */
   photoId: string;
+  /** Cloudinary target ratio for the crop. The card is close to 3:4, so that is the default. */
+  ar: string;
   color: "orange" | "blue";
 }
 
@@ -22,7 +25,8 @@ const reviews: Review[] = [
     role: "AIESEC in Ilorin",
     quote:
       "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
-    photoId: "team-1",
+    photoId: "reviews-fadlu",
+    ar: "3:4",
     color: "orange",
   },
   {
@@ -30,7 +34,8 @@ const reviews: Review[] = [
     role: "AIESEC in Akure",
     quote:
       "AIESEC gave me my first experience of how a well-structured organisation works. It taught me how to collaborate with people from different backgrounds and work towards shared goals.",
-    photoId: "membership-2",
+    photoId: "reviews-chinazam",
+    ar: "3:4",
     color: "blue",
   },
   {
@@ -38,24 +43,19 @@ const reviews: Review[] = [
     role: "AIESEC in Benin",
     quote:
       "I joined AIESEC because I wanted to meet more people and do something outside of Statistics. Now, to me, AIESEC is not just an organisation, it’s community and growth.",
-    photoId: "team-1",
+    photoId: "reviews-edith",
+    ar: "3:4",
     color: "orange",
   },
   {
-    name: "Eniola Olakunle",
-    role: "AIESEC in Ibadan",
+    // Placeholder role and quote: replace with Chisom's real details.
+    name: "Chisom",
+    role: "AIESEC in Nigeria",
     quote:
       "AIESEC gave me my first experience of how a well-structured organisation works.",
-    photoId: "membership-2",
+    photoId: "reviews-chisom",
+    ar: "3:4",
     color: "blue",
-  },
-  {
-    name: "Fadlu",
-    role: "AIESEC in Ilorin",
-    quote:
-      "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
-    photoId: "fadlu",
-    color: "orange",
   },
 ];
 
@@ -72,9 +72,9 @@ function ReviewCard({ review }: { review: Review }) {
         id={review.photoId}
         alt={review.name}
         crop="fill"
-        ar="3:4"
+        ar={review.ar}
         gravity="face"
-        className="absolute inset-0 h-full w-full object-cover [&[src$='/team-1']]:origin-[28%_89%] [&[src$='/team-1']]:scale-119 [&[src$='/membership-2']]:brightness-80"
+        className="absolute inset-0 h-full w-full object-cover"
       />
 
       {/* default state: name/role over a plain dark scrim, no color */}

@@ -56,31 +56,31 @@ export default function BecomeAPartnerPage() {
         </div>
       </section>
 
-      {/* Current Partners */}
+      {/* Current Partners: one row of six, smaller logos */}
       <section className="px-6 pb-16 lg:px-20">
         <h2 className="text-2xl md:text-5xl font-bold text-gray-900">Current Partners</h2>
-        <div className="mt-10 grid grid-cols-2 items-center justify-items-center gap-x-10 gap-y-12 lg:flex lg:flex-wrap lg:justify-between">
+        <div className="mt-10 grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-10 lg:grid-cols-6">
           {currentPartners.map((id) => (
             <CloudImage
               key={id}
               id={id}
               alt="Current partner logo"
-              className="h-11 w-32 object-contain lg:h-14 lg:w-40"
+              className="h-11 w-full max-w-32 object-contain lg:h-14 lg:max-w-40"
             />
           ))}
         </div>
       </section>
 
-      {/* Previous Partners */}
+      {/* Previous Partners: two rows of five, larger logos */}
       <section className="px-6 pb-20 lg:px-20">
         <h2 className="text-2xl md:text-5xl font-bold text-gray-900">Previous Partners</h2>
-        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 items-center justify-items-center gap-x-10 gap-y-14 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-10 grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-12 lg:grid-cols-5 lg:gap-y-16">
           {previousPartners.map((id) => (
             <CloudImage
               key={id}
               id={id}
               alt="Previous partner logo"
-              className="h-11 w-28 object-contain lg:h-12 lg:w-32"
+              className="h-36 w-full max-w-36 object-contain lg:h-20 lg:max-w-48"
             />
           ))}
         </div>

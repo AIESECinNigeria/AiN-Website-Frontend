@@ -7,7 +7,7 @@ import WavyLabel from "@/components/ui/WavyLabel";
 interface Member {
   name: string;
   role: string;
-  variant: "red" | "blue";
+  variant: "blue";
   imageId: string;
   /** Cloudinary target ratio for the crop. */
   ar: string;
@@ -24,20 +24,20 @@ interface Member {
  * Every column sums to the same height, so the row stays flush. */
 const columns: Member[][] = [
   [
-    { name: "Eniola Olakunle", role: "Country Director", variant: "red", imageId: "team-1", ar: "5:8", aspect: "aspect-[3/4]" },
+    { name: "Eniola Olakunle", role: "Country Director", variant: "blue", imageId: "team-1", ar: "5:8", aspect: "aspect-[3/4]" },
     { name: "Adeola Adedara", role: "Finance Manager", variant: "blue", imageId: "team-2", ar: "10:9", aspect: "aspect-[3/2]" },
   ],
   [
     { name: "Demilade Adekunle", role: "Marketing Manager", variant: "blue", imageId: "team-5", ar: "4:5", aspect: "aspect-square" },
-    { name: "Favour Bassey", role: "Human Resource Manager", variant: "red", imageId: "team-8", ar: "1:1", aspect: "aspect-square" },
+    { name: "Favour Bassey", role: "Human Resource Manager", variant: "blue", imageId: "team-8", ar: "1:1", aspect: "aspect-square" },
   ],
   [
-    { name: "Toluwalase Agbetuyi", role: "Product Operations Manager", variant: "red", imageId: "team-3", ar: "3:2", aspect: "aspect-[3/2]" },
+    { name: "Toluwalase Agbetuyi", role: "Product Operations Manager", variant: "blue", imageId: "team-3", ar: "3:2", aspect: "aspect-[3/2]" },
     { name: "Sabatha Joshua", role: "Expansions and PR Manager", variant: "blue", imageId: "team-6", ar: "6:9", aspect: "aspect-[3/4]" },
   ],
   [
     { name: "Atiradeoluwa Olaoye", role: "Partnerships Manager", variant: "blue", imageId: "team-7", ar: "1:1", aspect: "aspect-square" },
-    { name: "Ajayi Israel", role: "Programs Manager", variant: "red", imageId: "team-4", ar: "4:6", aspect: "aspect-square" },
+    { name: "Ajayi Israel", role: "Programs Manager", variant: "blue", imageId: "team-4", ar: "4:6", aspect: "aspect-square" },
   ],
 ];
 
@@ -46,13 +46,13 @@ const columns: Member[][] = [
  * column. Plates stay visible (touch has no hover). Job titles are kept
  * consistent with the desktop design. */
 const mobileOrder: Member[] = [
-  { name: "Eniola Olakunle", role: "Country Director", variant: "red", imageId: "team-1", ar: "7:11", aspect: "aspect-[9/10]" },
+  { name: "Eniola Olakunle", role: "Country Director", variant: "blue", imageId: "team-1", ar: "7:11", aspect: "aspect-[9/10]" },
   { name: "Adeola Adedara", role: "Finance Manager", variant: "blue", imageId: "team-2", ar: "11:10", aspect: "aspect-[9/10]" },
-  { name: "Toluwalase Agbetuyi", role: "Product Operations Manager", variant: "red", imageId: "team-3", ar: "11:10", aspect: "aspect-[9/10]" },
+  { name: "Toluwalase Agbetuyi", role: "Product Operations Manager", variant: "blue", imageId: "team-3", ar: "11:10", aspect: "aspect-[9/10]" },
   { name: "Ajayi Israel", role: "Programs Manager", variant: "blue", imageId: "team-4", ar: "3:5", aspect: "aspect-[9/10]" },
-  { name: "Demilade Adekunle", role: "Marketing Manager", variant: "red", imageId: "team-5", ar: "6:10", aspect: "aspect-[9/10]" },
+  { name: "Demilade Adekunle", role: "Marketing Manager", variant: "blue", imageId: "team-5", ar: "6:10", aspect: "aspect-[9/10]" },
   { name: "Sabatha Joshua", role: "Expansions and PR Manager", variant: "blue", imageId: "team-6", ar: "7:10", aspect: "aspect-[9/10]" },
-  { name: "Atiradeoluwa Olaoye", role: "Partnerships Manager", variant: "red", imageId: "team-7", ar: "11:10", aspect: "aspect-[9/10]" },
+  { name: "Atiradeoluwa Olaoye", role: "Partnerships Manager", variant: "blue", imageId: "team-7", ar: "11:10", aspect: "aspect-[9/10]" },
   { name: "Favour Bassey", role: "Human Resource Manager", variant: "blue", imageId: "team-8", ar: "8:10", aspect: "aspect-[9/10]" },
 ];
 

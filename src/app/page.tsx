@@ -8,6 +8,7 @@ import FeatureBand from "@/components/home/FeatureBand";
 import ReviewsCarousel from "@/components/home/ReviewsCarousel";
 import BlogSection from "@/components/home/BlogSection";
 import Faq from "@/components/home/Faq";
+import ScrollTypedText from "@/components/ScrollTypedText";
 
 const partners = [
   "partner-nestle",
@@ -17,6 +18,10 @@ const partners = [
   "partner-cocreation",
   "partner-drench",
 ];
+
+const introText =
+  "AIESEC is a global platform for young people to develop their leadership potential through international internships and volunteer opportunities. In Nigeria, we connect young Nigerians to local and global experiences that promote cultural understanding, develop socially responsible leaders, and create opportunities to make a positive impact through our International Exchange and Membership Program.";
+
 
 export default function HomePage() {
   return (
@@ -48,14 +53,10 @@ export default function HomePage() {
 
       {/* Intro */}
       <section className="px-4 py-10 lg:p-20">
-        <p className="mx-auto max-w-256.5 text-center text-xl font-extrabold leading-[150%] tracking-[-0.01em] text-aiesec-neutral-900 lg:text-[40px]">
-          AIESEC is a global platform for young people to develop their leadership
-          potential through international internships and volunteer opportunities.
-          In Nigeria, we connect young Nigerians to local and global experiences that
-          promote cultural understanding, develop socially responsible leaders, and
-          create opportunities to make a positive impact through our International
-          Exchange and Membership Program.
-        </p>
+        <ScrollTypedText
+          text={introText}
+          className="mx-auto max-w-256.5 text-center text-xl font-extrabold leading-[150%] tracking-[-0.01em] text-aiesec-neutral-900 lg:text-[40px]"
+        />
         <div className="mt-6 flex justify-center lg:mt-10">
           <ArrowLink href="/about" className="gap-1.5! text-body font-bold! text-aiesec-blue lg:gap-3! lg:text-rd-body-02 lg:leading-6 [&>svg]:size-5 [&>svg]:overflow-visible [&>svg>path]:origin-center [&>svg>path]:scale-[1.15] lg:[&>svg]:size-4 lg:[&>svg>path]:scale-[1.8]">
             Find Out More
