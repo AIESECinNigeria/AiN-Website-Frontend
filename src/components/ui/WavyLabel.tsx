@@ -1,15 +1,5 @@
 import { useId } from "react";
 
-/** Team-member name plate with a scalloped ("wavy") top edge that bites into
- *  the photo above it, matching the AIESEC review-card shape. Colour alternates
- *  red / blue across the team grid. Pass `quote` to render a taller, left-aligned
- *  body with the quote above the name and role (used by the member reviews),
- *  which also switches on the deeper, rounder wave. */
-
-/* Wave shapes. Each tile repeats across the width of the plate.
- * To tune the review wave: raise DEEP.height for taller bumps, lower DEEP.width
- * for more of them, and move the 7 / 36 control points in DEEP.path for rounder
- * or pointier crests. */
 const SOFT = {
   width: 44,
   height: 18,
@@ -24,6 +14,12 @@ const DEEP = {
   svgClass: "-mb-px block",
 };
 
+const FILLS = {
+  red: "#f94141",
+  blue: "#037ef3",
+  orange: "#F15A29",
+} as const;
+
 export default function WavyLabel({
   name,
   role,
@@ -33,11 +29,11 @@ export default function WavyLabel({
 }: {
   name: string;
   role: string;
-  variant: "red" | "blue";
+  variant: keyof typeof FILLS;
   quote?: string;
   className?: string;
 }) {
-  const fill = variant === "red" ? "#f94141" : "#037ef3";
+  const fill = FILLS[variant];
   // Both responsive card layouts render in the DOM, so each SVG needs its own
   // pattern ID. Shared IDs can make desktop waves resolve to the hidden mobile
   // SVG's pattern and render as a flat edge.
@@ -73,7 +69,7 @@ export default function WavyLabel({
 
       <div className={bodyClass} style={{ backgroundColor: fill }}>
         {quote && (
-          <p className="text-xs font-medium leading-snug tracking-[-0.01em] lg:text-xl lg:leading-normal">
+          <p className="text-lg font-medium leading-snug tracking-[-0.01em] lg:text-xl lg:leading-normal">
             {quote}
           </p>
         )}

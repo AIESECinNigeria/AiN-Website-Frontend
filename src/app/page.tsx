@@ -10,6 +10,7 @@ import BlogSection from "@/components/home/BlogSection";
 import Faq from "@/components/home/Faq";
 import ScrollTypedText from "@/components/ScrollTypedText";
 import Reviews from "@/components/Membership/Reviews";
+import { homeReviews } from "@/components/Membership/review-data";
 
 const partners = [
   "partner-nestle",
@@ -122,7 +123,7 @@ export default function HomePage() {
       />
 
       {/* <ReviewsCarousel /> */}
-      <Reviews />
+      <Reviews reviews={homeReviews} titleSuffix="" />
 
       <BlogSection />
 

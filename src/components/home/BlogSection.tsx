@@ -44,7 +44,7 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/blog"
-      className={`inline-flex h-11.75 w-29.25 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:w-44.5 lg:px-8 lg:py-4 lg:text-rd-body-02 ${className}`}
+      className={`inline-flex h-11.75 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:w-44.5 lg:px-8 lg:py-4 lg:text-rd-body-02 ${className}`}
     >
       Read More
     </Link>
