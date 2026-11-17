@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import CloudImage from "@/components/CloudImage";
 import { navLinks, programLinks } from "./nav-data";
 
 export interface NavLink {
@@ -149,13 +149,10 @@ function NavbarContent() {
     >
       <nav className="mx-4 flex h-16 items-center gap-8.25 border-b-[0.6px] border-inherit py-5 lg:mx-0 lg:h-26 lg:px-20 lg:py-7">
         <Link href="/" aria-label="Home" onClick={closeMobileMenu} className="min-w-0 flex-1">
-          <Image
-            src={isBlogHeroNav ? "/svgs/logoWhite.svg" : "/svgs/logoBlack.svg"}
+          <CloudImage
+            id={isBlogHeroNav ? "logoWhite" : "logoBlack"}
             alt="AIESEC in Nigeria"
-            width={145}
-            height={30}
-            className="h-4 w-19.5 lg:h-[30px] lg:w-[145px]"
-            priority
+            className="h-4 w-19.5 object-contain object-left lg:h-[30px] lg:w-[145px]"
           />
         </Link>
 
@@ -221,7 +218,7 @@ function NavbarContent() {
           </Link>
         </div>
 
-        {/* Mobile menu trigger — same button toggles hamburger/close */}
+        {/* Mobile menu trigger. The same button toggles hamburger and close. */}
         <button
           ref={mobileTriggerRef}
           type="button"

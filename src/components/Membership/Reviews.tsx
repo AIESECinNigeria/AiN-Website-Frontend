@@ -2,6 +2,7 @@
 "use client";
 import { useState } from "react";
 import CloudImage from "@/components/CloudImage";
+import WavyLabel from "@/components/ui/WavyLabel";
 
 interface Review {
   name: string;
@@ -11,13 +12,9 @@ interface Review {
   photoId: string;
   /** Cloudinary target ratio for the crop. The card is close to 3:4, so that is the default. */
   ar: string;
-  color: "orange" | "blue";
+  /** Plate colour, passed straight to WavyLabel. */
+  color: "red" | "blue";
 }
-
-const ReviewBg = {
-  blue: "/svgs/ReviewBgBlue.svg",
-  orange: "/svgs/ReviewBgOrange.svg",
-};
 
 const reviews: Review[] = [
   {
@@ -27,7 +24,7 @@ const reviews: Review[] = [
       "AIESEC is easily one of the best decisions I have made and I regret not joining earlier. I found a family that I wasn't looking for and I didn't know I needed.",
     photoId: "reviews-fadlu",
     ar: "3:4",
-    color: "orange",
+    color: "red",
   },
   {
     name: "Chinazam Ikechukwu",
@@ -45,14 +42,14 @@ const reviews: Review[] = [
       "I joined AIESEC because I wanted to meet more people and do something outside of Statistics. Now, to me, AIESEC is not just an organisation, it’s community and growth.",
     photoId: "reviews-edith",
     ar: "3:4",
-    color: "orange",
+    color: "red",
   },
   {
     // Placeholder role and quote: replace with Chisom's real details.
     name: "Chisom",
     role: "AIESEC in Nigeria",
     quote:
-      "AIESEC gave me my first experience of how a well-structured organisation works.",
+      "I joined AIESEC with beginner level skills and left with experiences that helped me land internships, a job, and helped me have a softer transition to the corporate world.",
     photoId: "reviews-chisom",
     ar: "3:4",
     color: "blue",
@@ -83,22 +80,18 @@ function ReviewCard({ review }: { review: Review }) {
         <p className="text-body text-aiesec-neutral-100">{review.role}</p>
       </div>
 
-      {/* hover state: colored asset slides up from below, hidden entirely otherwise */}
+      {/* hover state: wavy plate with the quote slides up from below, hidden entirely otherwise */}
       <div
         className={`absolute inset-x-0 bottom-0 z-20 transition-transform duration-500 ease-out ${
           hovered ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <img src={ReviewBg[review.color]} alt="" className="block h-auto w-full" />
-        <div className="absolute inset-0 flex flex-col justify-end gap-1.5 px-5 pb-5 pt-5 lg:gap-4 lg:pb-[21px] lg:pt-8">
-          <p className="text-xs font-medium leading-snug tracking-[-0.01em] text-white lg:text-xl lg:leading-normal">
-            {review.quote}
-          </p>
-          <div>
-            <p className="text-xl font-extrabold leading-7 tracking-[-0.01em] text-white">{review.name}</p>
-            <p className="text-body text-aiesec-neutral-100">{review.role}</p>
-          </div>
-        </div>
+        <WavyLabel
+          name={review.name}
+          role={review.role}
+          variant={review.color}
+          quote={review.quote}
+        />
       </div>
     </div>
   );
@@ -106,7 +99,7 @@ function ReviewCard({ review }: { review: Review }) {
 
 export default function Reviews() {
   return (
-    <section className="bg-aiesec-section py-10 lg:mt-5.5 lg:pt-[103px] lg:pb-[113px]">
+    <section className="bg-aiesec-section py-10 lg:mt-5.5 lg:pt-20 lg:pb-28.25">
       <h2 className="mb-6 px-4 text-subheading text-aiesec-blue lg:mb-12 lg:px-20 lg:text-rd-heading-02">
         Reviews<span className="hidden lg:inline"> from Members</span>
       </h2>

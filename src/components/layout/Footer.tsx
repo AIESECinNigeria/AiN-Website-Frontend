@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import CloudImage from "@/components/CloudImage";
 import {
   companyLinks,
@@ -96,12 +95,10 @@ export default function Footer() {
         <div className="mx-auto w-full px-4 lg:px-15">
           <div className="flex flex-col gap-7.5 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
             <div className="lg:w-[207px] lg:shrink-0">
-              <Image
-                src="/svgs/logoWhite.svg"
+              <CloudImage
+                id="logoWhite"
                 alt="AIESEC in Nigeria"
-                width={145}
-                height={30}
-                className="h-7.5 w-36.25"
+                className="h-7.5 w-36.25 object-contain object-left"
               />
               <address className="mt-4 text-footer-link text-white">
                 {officeAddress.line1}<br className="hidden lg:block" /> {officeAddress.line2}<br className="hidden lg:block" /> {officeAddress.line3}

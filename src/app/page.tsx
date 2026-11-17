@@ -9,6 +9,7 @@ import ReviewsCarousel from "@/components/home/ReviewsCarousel";
 import BlogSection from "@/components/home/BlogSection";
 import Faq from "@/components/home/Faq";
 import ScrollTypedText from "@/components/ScrollTypedText";
+import Reviews from "@/components/Membership/Reviews";
 
 const partners = [
   "partner-nestle",
@@ -120,7 +121,8 @@ export default function HomePage() {
         description="Step beyond your city and make an impact where it matters. Volunteer in communities across Nigeria, gain meaningful experience, meet people from different backgrounds, and contribute to causes that matter."
       />
 
-      <ReviewsCarousel />
+      {/* <ReviewsCarousel /> */}
+      <Reviews />
 
       <BlogSection />
 

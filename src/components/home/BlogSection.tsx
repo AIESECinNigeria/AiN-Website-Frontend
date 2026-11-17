@@ -53,7 +53,7 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
 
 export default function BlogSection() {
   return (
-    <section className="bg-white px-4 py-10 lg:px-20 lg:py-21">
+    <section className="bg-white px-4 pb-10 lg:pb-18.25 lg:px-20">
       <div className="flex items-center justify-between gap-4 [&>a]:hidden lg:[&>a]:inline-flex">
         <h2 className="w-full text-left text-subheading text-aiesec-blue lg:w-auto lg:text-rd-heading-02">
           Blog

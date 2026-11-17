@@ -129,8 +129,8 @@ function Photo({
       <div
         className={
           hover
-            ? `absolute inset-x-0 bottom-0 transition-all duration-300 ease-out ${plateVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"}`
-            : `absolute inset-x-0 bottom-0 transition-transform duration-300 ease-out ${active ? "translate-y-0" : "translate-y-full"}`
+            ? `absolute inset-x-0 bottom-0 transition-all duration-500 ease-out ${plateVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"}`
+            : `absolute inset-x-0 bottom-0 transition-transform duration-500 ease-out ${active ? "translate-y-0" : "translate-y-full"}`
         }
       >
         <WavyLabel name={member.name} role={member.role} variant={member.variant} className="[&>svg]:h-[24.64px] [&>div]:h-[79.86px] [&_p:first-child]:text-xl [&_p:first-child]:font-bold [&_p:first-child]:leading-8 [&_p:last-child]:font-medium lg:[&>svg]:h-[29px] lg:[&>div]:h-[94px] lg:[&_p:first-child]:text-2xl" />
