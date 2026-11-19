@@ -1,44 +1,6 @@
 import Link from "next/link";
-import CloudImage from "@/components/CloudImage";
-
-interface Post {
-  title: string;
-  author: string;
-  date: string;
-  excerpt: string;
-  imageId: string;
-  href: string;
-}
-
-const posts: Post[] = [
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    href: "/blog",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    href: "/blog",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "stat-avatar-5",
-    href: "/blog",
-  },
-];
+import BlogImage from "@/components/blog/BlogImage";
+import { getAllArticles } from "@/lib/sanity/blog";
 
 function ReadMoreButton({ className = "" }: { className?: string }) {
   return (
@@ -51,7 +13,13 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
   );
 }
 
-export default function BlogSection() {
+/** Home page blog teaser: the three most recent posts from Sanity. */
+export default async function BlogSection() {
+  const posts = (await getAllArticles()).slice(0, 3);
+
+  // Nothing to show yet, so skip the whole section instead of rendering an empty one.
+  if (posts.length === 0) return null;
+
   return (
     <section className="bg-white px-4 pb-10 lg:pb-18.25 lg:px-20">
       <div className="flex items-center justify-between gap-4 [&>a]:hidden lg:[&>a]:inline-flex">
@@ -62,12 +30,13 @@ export default function BlogSection() {
       </div>
 
       <div className="mt-6 grid gap-x-6 gap-y-7.5 lg:mt-12 lg:grid-cols-3">
-        {posts.map((post, index) => (
-          <Link key={`${post.title}-${index}`} href={post.href} className="group block">
+        {posts.map((post) => (
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
             <div className="overflow-hidden rounded-20">
-              <CloudImage
-                id={post.imageId}
+              <BlogImage
+                src={post.coverImage}
                 alt={post.title}
+                width={900}
                 className="h-57.5 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] lg:h-70.25"
               />
             </div>

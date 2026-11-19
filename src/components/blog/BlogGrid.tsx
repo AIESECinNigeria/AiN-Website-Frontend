@@ -2,92 +2,29 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import CloudImage from "@/components/CloudImage";
+import BlogImage from "@/components/blog/BlogImage";
+import type { BlogListItem } from "@/lib/blog-types";
 
-interface Article {
-  title: string;
-  author: string;
-  date: string;
-  excerpt: string;
-  imageId: string;
-  category: "Leadership" | "Interview";
-  slug: string;
-}
-
-const articles: Article[] = [
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Interview",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Interview",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Leadership",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Leadership",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Interview",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Leadership",
-    slug: "interview-with-henry-tabansi",
-  },
-];
-
-const filters = ["All Articles", "Leadership", "Interview"] as const;
-type Filter = (typeof filters)[number];
+const ALL = "All Articles";
 
 /** The "Our Blog" listing: heading, filters, search, and the article grid. */
-export default function BlogGrid() {
-  const [filter, setFilter] = useState<Filter>("All Articles");
+export default function BlogGrid({ articles }: { articles: BlogListItem[] }) {
+  const [filter, setFilter] = useState<string>(ALL);
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(6);
   const [filterOpen, setFilterOpen] = useState(false);
 
-  const selectFilter = (name: Filter) => {
+  // "All Articles" plus every category that actually exists in the posts.
+  const filters = useMemo(() => {
+    const categories = Array.from(
+      new Set(articles.map((article) => article.category).filter(Boolean)),
+    );
+    return [ALL, ...categories];
+  }, [articles]);
+
+  const hasCategories = filters.length > 1;
+
+  const selectFilter = (name: string) => {
     setFilter(name);
     setVisible(6);
     setFilterOpen(false);
@@ -101,15 +38,14 @@ export default function BlogGrid() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return articles.filter((article) => {
-      const matchesFilter =
-        filter === "All Articles" || article.category === filter;
+      const matchesFilter = filter === ALL || article.category === filter;
       const matchesQuery =
         !q ||
         article.title.toLowerCase().includes(q) ||
         article.excerpt.toLowerCase().includes(q);
       return matchesFilter && matchesQuery;
     });
-  }, [filter, query]);
+  }, [articles, filter, query]);
 
   const shown = filtered.slice(0, visible);
 
@@ -126,93 +62,98 @@ export default function BlogGrid() {
 
       {/* Filters + search */}
       <div className="mx-auto mt-6 max-w-[1352px] lg:mt-[45px]">
-        {/* Desktop: pill filters on the left, search on the right */}
+        {/* Desktop: pill filters on the left (only when categories exist), search on the right */}
         <div className="hidden lg:flex lg:items-center lg:justify-between">
-          <div className="flex flex-wrap items-center gap-[15px]">
-            {filters.map((name) => (
-              <button
-                key={name}
-                type="button"
-                onClick={() => selectFilter(name)}
-                className={`h-[50px] cursor-pointer rounded-full px-[22px] text-xl font-medium transition-colors ${
-                  filter === name
-                    ? "bg-aiesec-blue text-white"
-                    : "bg-[#F4F4F4] text-aiesec-gray hover:bg-gray-200"
-                }`}
-              >
-                {name}
-              </button>
-            ))}
-          </div>
+          {hasCategories && (
+            <div className="flex flex-wrap items-center gap-[15px]">
+              {filters.map((name) => (
+                <button
+                  key={name}
+                  type="button"
+                  onClick={() => selectFilter(name)}
+                  className={`h-[50px] cursor-pointer rounded-full px-[22px] text-xl font-medium transition-colors ${
+                    filter === name
+                      ? "bg-aiesec-blue text-white"
+                      : "bg-[#F4F4F4] text-aiesec-gray hover:bg-gray-200"
+                  }`}
+                >
+                  {name}
+                </button>
+              ))}
+            </div>
+          )}
 
-          <SearchBox value={query} onChange={handleQuery} className="w-[400px]" />
+          <SearchBox value={query} onChange={handleQuery} className="ml-auto w-[400px]" />
         </div>
 
         {/* Mobile: search on the left, filter dropdown on the right */}
         <div className="flex h-[50px] items-center gap-[10px] lg:hidden">
           <SearchBox value={query} onChange={handleQuery} className="flex-1" />
 
-          <div className="relative shrink-0">
-            <button
-              type="button"
-              onClick={() => setFilterOpen((open) => !open)}
-              aria-haspopup="listbox"
-              aria-expanded={filterOpen}
-              className="flex h-[50px] items-center gap-2 rounded-full bg-[#F4F4F4] px-5 text-sm font-medium text-aiesec-gray"
-            >
-              {filter === "All Articles" ? "All" : filter}
-              <ChevronDownIcon
-                className={`size-4 text-gray-500 transition-transform duration-200 ${
-                  filterOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            {filterOpen && (
-              <>
-                <button
-                  type="button"
-                  aria-hidden="true"
-                  tabIndex={-1}
-                  onClick={() => setFilterOpen(false)}
-                  className="fixed inset-0 z-10 cursor-default"
+          {hasCategories && (
+            <div className="relative shrink-0">
+              <button
+                type="button"
+                onClick={() => setFilterOpen((open) => !open)}
+                aria-haspopup="listbox"
+                aria-expanded={filterOpen}
+                className="flex h-[50px] items-center gap-2 rounded-full bg-[#F4F4F4] px-5 text-sm font-medium text-aiesec-gray"
+              >
+                {filter === ALL ? "All" : filter}
+                <ChevronDownIcon
+                  className={`size-4 text-gray-500 transition-transform duration-200 ${
+                    filterOpen ? "rotate-180" : ""
+                  }`}
                 />
-                <ul
-                  role="listbox"
-                  className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-2xl border border-gray-100 bg-white py-1 shadow-lg"
-                >
-                  {filters.map((name) => (
-                    <li key={name} role="option" aria-selected={filter === name}>
-                      <button
-                        type="button"
-                        onClick={() => selectFilter(name)}
-                        className={`block w-full px-5 py-2.5 text-left text-sm transition-colors ${
-                          filter === name
-                            ? "font-semibold text-aiesec-blue"
-                            : "text-gray-700 hover:bg-gray-50"
-                        }`}
-                      >
-                        {name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </div>
+              </button>
+
+              {filterOpen && (
+                <>
+                  <button
+                    type="button"
+                    aria-hidden="true"
+                    tabIndex={-1}
+                    onClick={() => setFilterOpen(false)}
+                    className="fixed inset-0 z-10 cursor-default"
+                  />
+                  <ul
+                    role="listbox"
+                    className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-2xl border border-gray-100 bg-white py-1 shadow-lg"
+                  >
+                    {filters.map((name) => (
+                      <li key={name} role="option" aria-selected={filter === name}>
+                        <button
+                          type="button"
+                          onClick={() => selectFilter(name)}
+                          className={`block w-full px-5 py-2.5 text-left text-sm transition-colors ${
+                            filter === name
+                              ? "font-semibold text-aiesec-blue"
+                              : "text-gray-700 hover:bg-gray-50"
+                          }`}
+                        >
+                          {name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
       {/* Grid */}
       <div className="mx-auto mt-[30px] grid max-w-[1352px] gap-x-6 gap-y-5 sm:grid-cols-2 lg:mt-[45px] lg:grid-cols-3 lg:gap-y-[45px]">
-        {shown.map((article, index) => (
-          <article key={`${article.imageId}-${index}`}>
+        {shown.map((article) => (
+          <article key={article.slug}>
             <Link href={`/blog/${article.slug}`} className="group block">
               <div className="relative overflow-hidden rounded-[20px]">
-                <CloudImage
-                  id={article.imageId}
+                <BlogImage
+                  src={article.coverImage}
                   alt={article.title}
                   loading="eager"
+                  width={900}
                   className="h-[200px] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] lg:aspect-[434.67/281] lg:h-auto"
                 />
                 <span className="absolute bottom-3 right-3 flex size-9 items-center justify-center rounded-full bg-white text-gray-900 opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
@@ -236,7 +177,9 @@ export default function BlogGrid() {
 
       {filtered.length === 0 && (
         <p className="mt-12 text-center text-base text-gray-500">
-          No articles match your search.
+          {articles.length === 0
+            ? "No articles yet. Check back soon."
+            : "No articles match your search."}
         </p>
       )}
 
@@ -273,7 +216,7 @@ function SearchBox({
         onChange={(event) => onChange(event.target.value)}
         placeholder="Search"
         aria-label="Search articles"
-      className="h-[50px] w-full rounded-full bg-[#F0F0F0] py-3 pl-11 pr-5 text-sm text-aiesec-gray placeholder-aiesec-gray outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
+        className="h-[50px] w-full rounded-full bg-[#F0F0F0] py-3 pl-11 pr-5 text-sm text-aiesec-gray placeholder-aiesec-gray outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
       />
     </div>
   );

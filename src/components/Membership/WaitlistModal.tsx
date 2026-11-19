@@ -10,6 +10,7 @@ interface FormState {
   lastName: string;
   email: string;
   phone: string;
+  /** Typed as DD/MM/YYYY. */
   dob: string;
   academicType: string;
   institution: string;
@@ -144,13 +145,39 @@ async function submitWaitlist(data: FormState): Promise<void> {
   await new Promise((resolve) => setTimeout(resolve, 700));
 }
 
+/** Keeps only digits and inserts the slashes while typing: 12052001 becomes 12/05/2001. */
+function formatDob(raw: string): string {
+  const digits = raw.replace(/\D/g, "").slice(0, 8);
+  let out = digits.slice(0, 2);
+  if (digits.length > 2) out += "/" + digits.slice(2, 4);
+  if (digits.length > 4) out += "/" + digits.slice(4, 8);
+  return out;
+}
+
+/** A complete, real calendar date (no 31/02) between 1900 and today. */
+function isValidDob(value: string): boolean {
+  const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(value);
+  if (!match) return false;
+
+  const day = Number(match[1]);
+  const month = Number(match[2]);
+  const year = Number(match[3]);
+  if (year < 1900) return false;
+
+  const date = new Date(year, month - 1, day);
+  const isRealDate =
+    date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+
+  return isRealDate && date <= new Date();
+}
+
 function isValid(form: FormState): boolean {
   return (
     form.firstName.trim() !== "" &&
     form.lastName.trim() !== "" &&
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()) &&
     /^[+\d][\d\s-]{6,}$/.test(form.phone.trim()) &&
-    form.dob !== "" &&
+    isValidDob(form.dob) &&
     form.academicType !== "" &&
     form.institution !== "" &&
     form.level !== "" &&
@@ -194,7 +221,9 @@ function TextInput({
   type = "text",
   autoComplete,
   inputRef,
-  max,
+  inputMode,
+  maxLength,
+  ariaLabel,
 }: {
   value: string;
   onChange: (value: string) => void;
@@ -202,16 +231,19 @@ function TextInput({
   type?: string;
   autoComplete?: string;
   inputRef?: React.Ref<HTMLInputElement>;
-  max?: string;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
+  maxLength?: number;
+  ariaLabel?: string;
 }) {
   return (
     <input
       ref={inputRef}
       type={type}
       value={value}
-      max={max}
+      inputMode={inputMode}
+      maxLength={maxLength}
       autoComplete={autoComplete}
-      aria-label={placeholder}
+      aria-label={ariaLabel ?? placeholder}
       placeholder={placeholder}
       onChange={(event) => onChange(event.target.value)}
       className={fieldClass}
@@ -522,8 +554,6 @@ export default function WaitlistModal({ onClose }: { onClose: () => void }) {
     setDone(true);
   };
 
-  const today = new Date().toISOString().split("T")[0];
-
   return createPortal(
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4"
@@ -603,11 +633,12 @@ export default function WaitlistModal({ onClose }: { onClose: () => void }) {
               autoComplete="tel"
             />
             <TextInput
-              type="date"
-              max={today}
               value={form.dob}
-              onChange={(value) => update("dob", value)}
+              onChange={(value) => update("dob", formatDob(value))}
               placeholder="Date of Birth"
+              ariaLabel="Date of Birth (day, month, year)"
+              inputMode="numeric"
+              maxLength={10}
               autoComplete="bday"
             />
 
