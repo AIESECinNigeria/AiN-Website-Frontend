@@ -2,86 +2,14 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import CloudImage from "@/components/CloudImage";
+import BlogImage from "@/components/blog/BlogImage";
+import type { BlogPost } from "@/lib/blog/types";
 
-interface Article {
-  title: string;
-  author: string;
-  date: string;
-  excerpt: string;
-  imageId: string;
-  category: "Leadership" | "Interview";
-  slug: string;
-}
-
-const articles: Article[] = [
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Interview",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Interview",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Leadership",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Leadership",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Interview",
-    slug: "interview-with-henry-tabansi",
-  },
-  {
-    title: "Interview with Henry Tabansi",
-    author: "Written by Mary and Eniola",
-    date: "13 July, 2026",
-    excerpt:
-      "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…",
-    imageId: "blogHero",
-    category: "Leadership",
-    slug: "interview-with-henry-tabansi",
-  },
-];
-
-const filters = ["All Articles", "Leadership", "Interview"] as const;
-type Filter = (typeof filters)[number];
+type Filter = string;
 
 /** The "Our Blog" listing: heading, filters, search, and the article grid. */
-export default function BlogGrid() {
+export default function BlogGrid({ articles }: { articles: BlogPost[] }) {
+  const filters = ["All Articles", ...new Set(articles.flatMap((article) => article.categories))];
   const [filter, setFilter] = useState<Filter>("All Articles");
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(6);
@@ -102,14 +30,14 @@ export default function BlogGrid() {
     const q = query.trim().toLowerCase();
     return articles.filter((article) => {
       const matchesFilter =
-        filter === "All Articles" || article.category === filter;
+        filter === "All Articles" || article.categories.includes(filter);
       const matchesQuery =
         !q ||
         article.title.toLowerCase().includes(q) ||
         article.excerpt.toLowerCase().includes(q);
       return matchesFilter && matchesQuery;
     });
-  }, [filter, query]);
+  }, [articles, filter, query]);
 
   const shown = filtered.slice(0, visible);
 
@@ -205,12 +133,12 @@ export default function BlogGrid() {
 
       {/* Grid */}
       <div className="mx-auto mt-[30px] grid max-w-[1352px] gap-x-6 gap-y-5 sm:grid-cols-2 lg:mt-[45px] lg:grid-cols-3 lg:gap-y-[45px]">
-        {shown.map((article, index) => (
-          <article key={`${article.imageId}-${index}`}>
+        {shown.map((article) => (
+          <article key={article.id}>
             <Link href={`/blog/${article.slug}`} className="group block">
               <div className="relative overflow-hidden rounded-[20px]">
-                <CloudImage
-                  id={article.imageId}
+                <BlogImage
+                  image={article.coverImage}
                   alt={article.title}
                   loading="eager"
                   className="h-[200px] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] lg:aspect-[434.67/281] lg:h-auto"

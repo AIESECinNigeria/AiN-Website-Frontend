@@ -1,53 +1,11 @@
 import Link from "next/link";
-import CloudImage from "@/components/CloudImage";
+import BlogImage from "@/components/blog/BlogImage";
+import BlogRichText from "@/components/blog/BlogRichText";
+import { youtubeEmbedUrl } from "@/lib/blog/content";
+import type { BlogContentSection, BlogPost } from "@/lib/blog/types";
 import CopyLinkButton from "@/components/blog/CopyLinkButton";
 
-const body: { type: "p" | "h"; text: string }[] = [
-  {
-    type: "p",
-    text: "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too.",
-  },
-  {
-    type: "p",
-    text: "AIESEC has taken shy young people who once struggled to introduce themselves and turned them into leaders confidently addressing thousands of people.",
-  },
-  { type: "p", text: "There are real stories and this is one of them." },
-  {
-    type: "p",
-    text: "We were recently opportuned to interview Henry Tabansi, a fellow AIESECer, about his time in AIESEC and his experiences blew my mind. Henry is a one time Vice President for the Human resource team in AIESEC, where he oversaw the activities of over 150 Human resources managers across 120 countries. Mind blowing!",
-  },
-  {
-    type: "p",
-    text: "Prior to this, Henry had held several positions on different teams in AIESEC, his most memorable being the time he was on the planning team for a conference in Kano. The team was at the extreme end of planning, and had no money to pull things out. All options from reaching out to potential sponsors, partners had been exhausted. So they did something crazy:",
-  },
-  {
-    type: "p",
-    text: "Henry and his team mates decided to go around the streets of Kano to sell AIESEC and tell people about this conference, also asking them to support in any way they could. Before you wonder what makes this interesting, I'll tell you.",
-  },
-  {
-    type: "p",
-    text: "I have to say, there is something about AIESEC that just makes you find your way around every obstacle. AIESEC gives youths the platform to not just lead, but to lead with impact.",
-  },
-  {
-    type: "p",
-    text: "We are never looking at the past, we are looking at the future. When you join AIESEC, you don't just join an organisation, you join a global network of young people who are ready to change the world, one project at a time.",
-  },
-  {
-    type: "p",
-    text: "And so, we say to every young Nigerian out there: AIESEC is the place for you to discover your potential, develop as a leader, and create the kind of impact that outlives you.",
-  },
-];
-
-const related = [
-  { imageId: "blogHero", title: "Interview with Henry Tabansi" },
-  { imageId: "blogHero", title: "Interview with Henry Tabansi" },
-  { imageId: "blogHero", title: "Interview with Henry Tabansi" },
-];
-
-const excerpt =
-  "AIESEC has impacted lives; and if you give AIESEC a chance, it can impact yours too. AIESEC has taken shy young people who once struggled to introduce themselves and turned them into…";
-
-export default function BlogArticle() {
+export default function BlogArticle({ article, related }: { article: BlogPost; related: BlogPost[] }) {
   return (
     <article className="bg-white px-4 pt-[50px] pb-10 lg:bg-aiesec-section lg:px-20 lg:pt-[60px] lg:pb-0">
       <div className="mx-auto w-full max-w-[1352px]">
@@ -63,22 +21,20 @@ export default function BlogArticle() {
         <div className="flex flex-col items-start gap-5 lg:flex-row lg:items-end lg:gap-16">
           <div className="flex w-full flex-col items-start gap-[10px] lg:flex-1 lg:gap-[15px]">
             <p className="flex flex-wrap items-center gap-[5px] text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-fluid-16 lg:leading-[1.5]">
-              <span>Published 4th July 2026</span><span className="hidden lg:inline">~</span><span>5 mins read</span>
+              {article.publishedDate && <><span>Published {article.publishedDate}</span><span className="hidden lg:inline">~</span></>}<span>{article.readingMinutes} mins read</span>
             </p>
 
             <div className="flex w-full flex-col items-start gap-[5px] lg:gap-[15px]">
               <h1 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-heading lg:text-fluid-60 lg:font-bold lg:leading-[1.2] lg:tracking-[-0.02em]">
-                Interview with Henry Tabansi
+                {article.title}
               </h1>
 
-              <p className="text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-fluid-20 lg:leading-[1.5]">
-                AIESEC has impacted lives; and if you give AIESEC a chance, it can
-                impact yours too. AIESEC has taken shy young people who once struggled
-                to introduce themselves and turned them into leaders confidently.
-              </p>
+              <div className="text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-fluid-20 lg:leading-[1.5]">
+                {article.caption.length > 0 ? <BlogRichText value={article.caption} /> : <p>{article.excerpt}</p>}
+              </div>
 
               <p className="text-[14px] font-semibold italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:text-fluid-18 lg:leading-[1.333]">
-                Written by Mary and Eniola
+                {article.author}
               </p>
             </div>
           </div>
@@ -88,16 +44,18 @@ export default function BlogArticle() {
         </div>
 
         <div className="mt-6 overflow-hidden rounded-[20px] lg:mt-10">
-          <CloudImage
-            id="blogHero"
-            alt="AIESEC in Nigeria members at a gathering"
+          <BlogImage
+            image={article.coverImage}
+            alt={article.title}
+            sizes="(max-width: 1023px) calc(100vw - 32px), calc(100vw - 160px)"
+            loading="eager"
             className="aspect-[358/220] w-full object-cover lg:aspect-[1352/500]"
           />
         </div>
 
         <div className="mt-[14px] flex flex-col gap-6 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-neutral-800 lg:mt-10 lg:gap-8 lg:text-fluid-20 lg:leading-[1.7]">
-          {body.map((block, index) => (
-            <p key={index}>{block.text}</p>
+          {article.content.map((section, index) => (
+            <ContentSection key={section._key ?? index} section={section} />
           ))}
         </div>
 
@@ -106,32 +64,62 @@ export default function BlogArticle() {
         </div>
       </div>
 
-      <section className="-mx-4 mt-[30px] flex flex-col gap-6 bg-white px-4 py-0 lg:mx-0 lg:mt-[72px] lg:gap-12 lg:px-0 lg:py-[84px]">
+      {related.length > 0 && <section className="-mx-4 mt-[30px] flex flex-col gap-6 bg-white px-4 py-0 lg:mx-0 lg:mt-[72px] lg:gap-12 lg:px-0 lg:py-[84px]">
         <h2 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-blue lg:text-fluid-48 lg:leading-[1.2]">
           Related Articles
         </h2>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
-          {related.map((post, index) => (
-            <Link key={index} href="/blog/interview-with-henry-tabansi" className="group block pb-[5px] lg:pb-0">
+          {related.map((post) => (
+            <Link key={post.id} href={`/blog/${post.slug}`} className="group block pb-[5px] lg:pb-0">
               <div className="overflow-hidden rounded-[20px]">
-                <CloudImage
-                  id={post.imageId}
+                <BlogImage
+                  image={post.coverImage}
                   alt={post.title}
                   className="aspect-[358/200] w-full object-cover lg:aspect-[434.67/281]"
                 />
               </div>
               <div className="mt-4 flex items-center justify-between gap-[6px] text-[14px] italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:mt-4 lg:text-fluid-16 lg:leading-[1.5]">
-                <span className="flex-1 font-normal">Written by Mary and Eniola</span>
-                <span className="shrink-0 font-medium not-italic">13 July, 2026</span>
+                <span className="flex-1 font-normal">{post.author}</span>
+                <span className="shrink-0 font-medium not-italic">{post.date}</span>
               </div>
               <h3 className="mt-2 text-[20px] font-semibold leading-[120%] text-aiesec-heading lg:text-fluid-24 lg:font-bold lg:leading-[1.333]">{post.title}</h3>
-              <p className="mt-2 line-clamp-3 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray">{excerpt}</p>
+              <p className="mt-2 line-clamp-3 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray">{post.excerpt}</p>
             </Link>
           ))}
         </div>
-      </section>
+      </section>}
     </article>
   );
+}
+
+function ContentSection({ section }: { section: BlogContentSection }) {
+  switch (section._type) {
+    case "paragraph":
+      return <div className="flex flex-col gap-6 lg:gap-8"><BlogRichText value={section.text ?? []} /></div>;
+    case "subtitle":
+      return <h3 className="text-xl font-bold leading-[1.333] lg:text-2xl">{section.subtitle}</h3>;
+    case "imageSection":
+      return (
+        <figure>
+          <BlogImage image={section.image} alt={section.caption ?? ""} sizes="(max-width: 1023px) calc(100vw - 32px), calc(100vw - 160px)" className="h-auto w-full rounded-[20px]" />
+          {section.caption && <figcaption className="mt-2 text-sm italic text-aiesec-gray">{section.caption}</figcaption>}
+        </figure>
+      );
+    case "youtubeVideo": {
+      const src = youtubeEmbedUrl(section.videoId);
+      return src ? (
+        <iframe
+          src={src}
+          title={section.title || section.caption || "YouTube video"}
+          className="aspect-video w-full rounded-[20px] border-0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      ) : null;
+    }
+    default:
+      return null;
+  }
 }
 
 function ShareRow() {

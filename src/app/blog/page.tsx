@@ -1,11 +1,13 @@
 import BlogHero from "@/components/blog/BlogHero";
 import BlogGrid from "@/components/blog/BlogGrid";
+import { getBlogArticles } from "@/lib/blog/sanity";
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const articles = await getBlogArticles();
   return (
     <>
       <BlogHero />
-      <BlogGrid />
+      <BlogGrid articles={articles} />
     </>
   );
 }
