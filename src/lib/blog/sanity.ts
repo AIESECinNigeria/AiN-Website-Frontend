@@ -1,5 +1,6 @@
 import "server-only";
 import { toBlogPost } from "./content";
+import { requestSanityJson } from "./request";
 import type { SanityBlogArticle } from "./types";
 
 const projectId = process.env.SANITY_PROJECT_ID || "vs95itr3";
@@ -30,12 +31,7 @@ async function query<T>(groq: string, params: Record<string, string | number> = 
     url.searchParams.set(`$${name}`, JSON.stringify(value));
   }
   const token = process.env.SANITY_API_TOKEN || process.env.AIESEC_SANITY_TOKEN;
-  const response = await fetch(url, {
-    cache: "no-store",
-    headers: token ? { Authorization: `Bearer ${token}` } : undefined,
-  });
-  if (!response.ok) throw new Error(`Sanity blog request failed (${response.status}).`);
-  const data: { result: T; error?: unknown } = await response.json();
+  const data = await requestSanityJson<{ result: T; error?: unknown }>(url, token);
   if (data.error || !("result" in data)) throw new Error("Sanity returned an invalid blog response.");
   return data.result;
 }
