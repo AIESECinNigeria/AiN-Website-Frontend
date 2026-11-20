@@ -4,7 +4,7 @@ import CloudImage from "@/components/CloudImage";
 export default function HeroBanner() {
   return (
     <section className="relative w-full overflow-hidden bg-aiesec-section">
-      <div className="relative h-90 lg:h-147.75">
+      <div className="relative h-95 lg:h-147.75">
         <CloudImage
           id="hero-group"
           alt="AIESEC in Nigeria members gathered together at an event"

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import CloudImage from "@/components/CloudImage";
 import {
   motion,
@@ -13,6 +12,7 @@ import {
 } from "framer-motion";
 import { TypewriterText } from "../Typewriter";
 import type { HeroSegment, HeroCta } from "../Hero";
+import WaitlistModal from "./WaitlistModal";
 
 export interface ScatteredPhoto {
   id: string;
@@ -32,7 +32,7 @@ export interface ScrollRevealHeroProps {
 }
 
 // How long the section stays pinned before it releases and scrolls away
-// normally — this is scroll distance, not time.
+// normally. This is scroll distance, not time.
 const PINNED_HEIGHT_VH = 250;
 
 // Perspective depths from the scroll reference, normalized to viewport height.
@@ -56,6 +56,7 @@ function groupIntoLines(segments: HeroSegment[]): HeroSegment[][] {
 export default function ScrollRevealHero({ photos, segments, cta }: ScrollRevealHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 639px)");
@@ -93,20 +94,24 @@ export default function ScrollRevealHero({ photos, segments, cta }: ScrollReveal
               ))}
             </h1>
 
-            {/* The button is intentionally NOT tied to scroll — it stays fully
+            {/* The button is intentionally NOT tied to scroll. It stays fully
                 visible while the photos move away, and only leaves the screen
-                when the pinned section itself releases and scrolls off. */}
+                when the pinned section itself releases and scrolls off. It
+                opens the waitlist form in a modal instead of navigating. */}
             {cta && (
-              <Link
-                href={cta.href}
-                className="pointer-events-auto inline-flex h-[43px] min-w-[135px] items-center justify-center gap-2 rounded-pill bg-aiesec-blue px-6 py-3 text-base font-medium leading-[19px] text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:min-w-[191px] lg:px-8 lg:py-4 lg:text-rd-body-02 lg:leading-normal"
+              <button
+                type="button"
+                onClick={() => setWaitlistOpen(true)}
+                className="pointer-events-auto inline-flex h-[43px] min-w-[135px] cursor-pointer items-center justify-center gap-2 rounded-pill bg-aiesec-blue px-6 py-3 text-base font-medium leading-[19px] text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:min-w-[191px] lg:px-8 lg:py-4 lg:text-rd-body-02 lg:leading-normal"
               >
                 {cta.label}
-              </Link>
+              </button>
             )}
           </div>
         </div>
       </div>
+
+      {waitlistOpen && <WaitlistModal onClose={() => setWaitlistOpen(false)} />}
     </div>
   );
 }
@@ -123,7 +128,7 @@ function HeadlineLine({
   scrollYProgress: MotionValue<number>;
 }) {
   // Each line fades out in its own scroll window, staggered so earlier
-  // lines finish fading before later ones start — pure opacity, no
+  // lines finish fading before later ones start. Pure opacity, no
   // movement, per spec ("fade away on their position").
   const windowSize = 0.55 / totalLines;
   const start = 0.08 + lineIndex * (0.35 / totalLines);
@@ -178,7 +183,7 @@ function ScatteredPhotoItem({
   const springX = useSpring(hoverX, { stiffness: 200, damping: 18 });
   const springY = useSpring(hoverY, { stiffness: 200, damping: 18 });
 
-  const MAX_OFFSET = 14; // px — hover nudge range, "just a little bit"
+  const MAX_OFFSET = 14; // px, hover nudge range, "just a little bit"
 
   function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
     const rect = ref.current?.getBoundingClientRect();

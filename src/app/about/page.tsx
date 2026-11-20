@@ -2,6 +2,10 @@ import Hero from "@/components/Hero";
 import CategoryCards from "@/components/about/CategoryCards";
 import TeamGrid from "@/components/about/TeamGrid";
 import LocationsMap from "@/components/about/LocationsMap";
+import ScrollTypedText from "@/components/ScrollTypedText";
+
+const introText =
+  "AIESEC is a global platform for young people to develop their leadership potential through international internships and volunteer opportunities. In Nigeria, we connect young Nigerians to local and global experiences that promote cultural understanding, develop socially responsible leaders, and create opportunities to make a positive impact through our International Exchange and Membership Program.";
 
 export default function AboutPage() {
   return (
@@ -21,15 +25,10 @@ export default function AboutPage() {
 
       {/* Intro */}
       <section className="mt-0 bg-[#fcfcfc] px-4 py-10 lg:px-20 lg:py-20">
-        <p className="mx-auto max-w-[358px] text-center text-xl font-extrabold leading-[150%] tracking-[-0.01em] text-[#222222] lg:max-w-[1026px] lg:text-[40px] lg:leading-[150%] lg:text-[#1D2129]">
-          AIESEC is a global platform for young people to develop their
-          leadership potential through international internships and volunteer
-          opportunities. In Nigeria, we connect young Nigerians to local and
-          global experiences that promote cultural understanding, develop
-          socially responsible leaders, and create opportunities to make a
-          positive impact through our International Exchange and Membership
-          Program.
-        </p>
+        <ScrollTypedText
+          text={introText}
+          className="mx-auto max-w-[358px] text-center text-xl font-extrabold leading-[150%] tracking-[-0.01em] text-[#222222] lg:max-w-[1026px] lg:text-[40px] lg:leading-[150%] lg:text-[#1D2129]"
+        />
       </section>
 
       <TeamGrid />

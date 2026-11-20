@@ -9,9 +9,9 @@ export const companyLinks = [
 export const forYouthsLinks = [
   { label: "Global Exchange", href: "/ogx" },
   { label: "National Volunteer", href: "/nv" },
-  { label: "Leadership Summit", href: "/leadership-summit" },
+  // { label: "Leadership Summit", href: "/leadership-summit" },
   { label: "YouthSpeak Forum", href: "/ysf" },
-  { label: "Global Money Week", href: "/gmw" },
+  // { label: "Global Money Week", href: "/gmw" },
   { label: "International Youth Day", href: "/iyd" },
   { label: "Become a Member", href: "/membership" },
 ];

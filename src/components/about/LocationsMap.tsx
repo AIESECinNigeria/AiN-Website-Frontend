@@ -277,6 +277,12 @@ async function loadBoundaries(signal: AbortSignal): Promise<BoundaryData> {
 export default function LocationsMap() {
   const [boundaryData, setBoundaryData] = useState<BoundaryData | null>(null);
   const [hoveredState, setHoveredState] = useState<string | null>(null);
+  // Tracks hover on states with no local committee, so they can turn light gray
+  // without touching the tooltip or info card logic that depends on hoveredState.
+  const [hoveredOtherState, setHoveredOtherState] = useState<string | null>(null);
+  // A clicked state with no local committee stays gray until clicked again or
+  // until something else is selected.
+  const [selectedOtherState, setSelectedOtherState] = useState<string | null>(null);
   const [selectedState, setSelectedState] = useState<string | null>(null);
   const [loadError, setLoadError] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
@@ -319,9 +325,14 @@ export default function LocationsMap() {
     ? locations.find(({ state }) => cleanStateName(state) === cleanStateName(selectedState))
     : undefined;
   const toggleSelectedState = (state: string) => {
+    setSelectedOtherState(null);
     setSelectedState((current) =>
       current && cleanStateName(current) === cleanStateName(state) ? null : state,
     );
+  };
+  const toggleSelectedOtherState = (state: string) => {
+    setSelectedState(null);
+    setSelectedOtherState((current) => (current === state ? null : state));
   };
   const activeStateFeature = activeState ? states.find((state) => state.name === activeState) : undefined;
   const tooltipPlacement = activeStateFeature
@@ -376,6 +387,9 @@ export default function LocationsMap() {
                 const hasCommittee = stateCommittees.length > 0;
                 const isSelected = selectedState !== null && cleanStateName(selectedState) === state.name;
                 const isHovered = hoveredState === state.name && !isSelected;
+                const isOtherGray =
+                  !hasCommittee &&
+                  (hoveredOtherState === state.name || selectedOtherState === state.name);
                 return (
                   <g
                     key={state.name}
@@ -384,12 +398,22 @@ export default function LocationsMap() {
                     aria-label={hasCommittee ? `${state.name}, ${stateCommittees.join(", ")}` : state.name}
                     aria-pressed={hasCommittee ? isSelected : undefined}
                     onPointerEnter={(event) => {
-                      if (hasCommittee && event.pointerType !== "touch") {
+                      if (event.pointerType === "touch") return;
+                      if (hasCommittee) {
                         setHoveredState(state.name);
+                      } else {
+                        setHoveredOtherState(state.name);
                       }
                     }}
-                    onPointerLeave={() => setHoveredState(null)}
-                    onClick={() => hasCommittee && toggleSelectedState(state.name)}
+                    onPointerLeave={() => {
+                      setHoveredState(null);
+                      setHoveredOtherState(null);
+                    }}
+                    onClick={() =>
+                      hasCommittee
+                        ? toggleSelectedState(state.name)
+                        : toggleSelectedOtherState(state.name)
+                    }
                     onKeyDown={(event) => {
                       if (hasCommittee && (event.key === "Enter" || event.key === " ")) {
                         event.preventDefault();
@@ -397,13 +421,13 @@ export default function LocationsMap() {
                       }
                     }}
                     className="outline-none transition-colors duration-150 focus:outline-none focus-visible:outline-none"
-                    style={{ cursor: hasCommittee ? "pointer" : "default", outline: "none" }}
+                    style={{ cursor: "pointer", outline: "none" }}
                   >
                     {state.polygons.map((points, index) => (
                       <polygon
                         key={`${state.name}-${index}`}
                         points={points}
-                        fill={isSelected ? "#037ef3" : "#ffffff"}
+                        fill={isSelected ? "#037ef3" : isOtherGray ? "#E2E8F0" : "#ffffff"}
                         stroke={isHovered ? "#7bbcff" : "#c4c9ce"}
                         strokeWidth={isHovered ? 2 : 1.5}
                         vectorEffect="non-scaling-stroke"
