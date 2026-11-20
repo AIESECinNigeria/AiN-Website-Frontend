@@ -51,7 +51,7 @@ export default function Faq() {
   return (
     <section className="bg-aiesec-section px-4 py-10 lg:px-20 lg:py-21">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,431px)_minmax(0,664px)] lg:justify-between lg:gap-13">
-        <h2 className="max-w-84.5 text-subheading text-aiesec-blue lg:max-w-none lg:text-rd-heading-02">
+        <h2 className="max-w-84.5 text-subheading text-aiesec-blue lg:max-w-none lg:text-fluid-48 lg:leading-[1.2] lg:tracking-[-0.01em]">
           Frequently Asked Questions (FAQs)
         </h2>
 
@@ -71,7 +71,7 @@ export default function Faq() {
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
                   aria-expanded={isOpen}
-                  className={`flex w-full cursor-pointer items-center justify-between gap-4 text-left text-xl font-semibold leading-6 lg:text-2xl lg:leading-8 lg:tracking-[-0.01em] ${
+                  className={`flex w-full cursor-pointer items-center justify-between gap-4 text-left text-xl font-semibold leading-6 lg:text-fluid-24 lg:leading-[1.3333] lg:tracking-[-0.01em] ${
                     isOpen ? "text-white" : "lg:min-h-16 lg:px-5 lg:py-4"
                   }`}
                 >

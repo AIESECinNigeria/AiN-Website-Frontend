@@ -1,12 +1,9 @@
 import BlogHero from "@/components/blog/BlogHero";
 import BlogGrid from "@/components/blog/BlogGrid";
-import { getAllArticles } from "@/lib/sanity/blog";
-
-export const revalidate = 60;
+import { getBlogArticles } from "@/lib/blog/sanity";
 
 export default async function BlogPage() {
-  const articles = await getAllArticles();
-
+  const articles = await getBlogArticles();
   return (
     <>
       <BlogHero />

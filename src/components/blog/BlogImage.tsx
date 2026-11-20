@@ -1,28 +1,29 @@
-import CloudImage from "@/components/CloudImage";
+import Image from "next/image";
+import type { BlogImageData } from "@/lib/blog/types";
 
-/** Shows a Sanity-hosted image, or the default blog hero when there is none.
- *  Sanity's CDN resizes on request, so `width` keeps the download small. */
 export default function BlogImage({
-  src,
+  image,
   alt,
   className,
-  loading,
-  width = 1200,
+  sizes = "(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 50vw, 33vw",
+  loading = "lazy",
 }: {
-  src: string | null;
+  image: BlogImageData | null | undefined;
   alt: string;
   className?: string;
+  sizes?: string;
   loading?: "eager" | "lazy";
-  width?: number;
 }) {
-  if (!src) {
-    return <CloudImage id="blogHero" alt={alt} className={className} loading={loading} />;
-  }
-
-  const sized = `${src}${src.includes("?") ? "&" : "?"}w=${width}&auto=format&fit=max`;
-
+  if (!image?.url) return null;
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img src={sized} alt={alt} loading={loading ?? "lazy"} className={className} />
+    <Image
+      src={image.url}
+      alt={image.alt || alt}
+      width={image.width || 1352}
+      height={image.height || 900}
+      sizes={sizes}
+      loading={loading}
+      className={className}
+    />
   );
 }

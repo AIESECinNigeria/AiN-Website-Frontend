@@ -32,7 +32,7 @@ export default function CategoryCards() {
             />
             <div className="absolute inset-x-0 bottom-0 flex h-[120px] items-end bg-gradient-to-t from-black/75 to-transparent p-5">
               <p
-                className="whitespace-nowrap text-2xl font-extrabold leading-[135%] text-white lg:text-3xl lg:leading-[120%] lg:tracking-[-0.01em] @min-[346px]:text-4xl"
+                className="whitespace-nowrap text-2xl font-extrabold leading-[135%] text-white lg:text-fluid-32 lg:leading-[1.2] lg:tracking-[-0.01em] @min-[346px]:text-4xl"
               >
                 {category.label}
               </p>
