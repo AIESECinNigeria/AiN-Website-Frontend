@@ -1,14 +1,7 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import BlogArticle from "@/components/blog/BlogArticle";
-import { getAllArticles, getArticle, pickRelated } from "@/lib/sanity/blog";
-
-export const revalidate = 60;
-
-export async function generateStaticParams() {
-  const articles = await getAllArticles();
-  return articles.map((article) => ({ slug: article.slug }));
-}
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { getBlogArticleBySlug, getRelatedBlogArticles } from "@/lib/blog/sanity";
 
 export async function generateMetadata({
   params,
@@ -16,11 +9,18 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = await getArticle(slug);
-  if (!article) return {};
+  const article = await getBlogArticleBySlug(slug);
+  if (!article) notFound();
   return {
-    title: `${article.title} | AIESEC in Nigeria`,
+    title: article.title,
     description: article.excerpt,
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description: article.excerpt,
+      publishedTime: article.postedDate ?? undefined,
+      images: article.coverImage ? [{ url: article.coverImage.url, alt: article.title }] : [],
+    },
   };
 }
 
@@ -30,10 +30,8 @@ export default async function BlogArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = await getArticle(slug);
+  const article = await getBlogArticleBySlug(slug);
   if (!article) notFound();
-
-  const related = pickRelated(await getAllArticles(), article);
-
+  const related = await getRelatedBlogArticles(slug);
   return <BlogArticle article={article} related={related} />;
 }

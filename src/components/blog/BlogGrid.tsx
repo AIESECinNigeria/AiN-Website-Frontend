@@ -3,28 +3,19 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import BlogImage from "@/components/blog/BlogImage";
-import type { BlogListItem } from "@/lib/blog-types";
+import type { BlogPost } from "@/lib/blog/types";
 
-const ALL = "All Articles";
+type Filter = string;
 
 /** The "Our Blog" listing: heading, filters, search, and the article grid. */
-export default function BlogGrid({ articles }: { articles: BlogListItem[] }) {
-  const [filter, setFilter] = useState<string>(ALL);
+export default function BlogGrid({ articles }: { articles: BlogPost[] }) {
+  const filters = ["All Articles", ...new Set(articles.flatMap((article) => article.categories))];
+  const [filter, setFilter] = useState<Filter>("All Articles");
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(6);
   const [filterOpen, setFilterOpen] = useState(false);
 
-  // "All Articles" plus every category that actually exists in the posts.
-  const filters = useMemo(() => {
-    const categories = Array.from(
-      new Set(articles.map((article) => article.category).filter(Boolean)),
-    );
-    return [ALL, ...categories];
-  }, [articles]);
-
-  const hasCategories = filters.length > 1;
-
-  const selectFilter = (name: string) => {
+  const selectFilter = (name: Filter) => {
     setFilter(name);
     setVisible(6);
     setFilterOpen(false);
@@ -38,7 +29,8 @@ export default function BlogGrid({ articles }: { articles: BlogListItem[] }) {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return articles.filter((article) => {
-      const matchesFilter = filter === ALL || article.category === filter;
+      const matchesFilter =
+        filter === "All Articles" || article.categories.includes(filter);
       const matchesQuery =
         !q ||
         article.title.toLowerCase().includes(q) ||
@@ -51,10 +43,10 @@ export default function BlogGrid({ articles }: { articles: BlogListItem[] }) {
 
   return (
     <section id="episodes" className="bg-[#FCFCFC] px-4 py-10 lg:px-20 lg:py-[70px]">
-      <h2 className="text-2xl font-extrabold text-aiesec-blue lg:text-center lg:text-[60px] lg:leading-[72px] lg:font-bold">
+      <h2 className="text-2xl font-extrabold text-aiesec-blue lg:text-center lg:text-fluid-60 lg:leading-[1.2] lg:font-bold">
         Our Blog
       </h2>
-      <p className="mx-auto mt-[25px] max-w-3xl text-base leading-6 font-medium text-aiesec-gray lg:mt-[15px] lg:max-w-[960px] lg:text-center lg:text-xl lg:leading-[30px]">
+      <p className="mx-auto mt-[25px] max-w-3xl text-base leading-6 font-medium text-aiesec-gray lg:mt-[15px] lg:max-w-[960px] lg:text-center lg:text-fluid-20 lg:leading-[1.5]">
         AIESEC has shaped countless young lives, and your story could be next.
         Explore stories and experiences from our community as young people find
         their voice, build confidence, and grow into leaders.
@@ -62,109 +54,104 @@ export default function BlogGrid({ articles }: { articles: BlogListItem[] }) {
 
       {/* Filters + search */}
       <div className="mx-auto mt-6 max-w-[1352px] lg:mt-[45px]">
-        {/* Desktop: pill filters on the left (only when categories exist), search on the right */}
+        {/* Desktop: pill filters on the left, search on the right */}
         <div className="hidden lg:flex lg:items-center lg:justify-between">
-          {hasCategories && (
-            <div className="flex flex-wrap items-center gap-[15px]">
-              {filters.map((name) => (
-                <button
-                  key={name}
-                  type="button"
-                  onClick={() => selectFilter(name)}
-                  className={`h-[50px] cursor-pointer rounded-full px-[22px] text-xl font-medium transition-colors ${
-                    filter === name
-                      ? "bg-aiesec-blue text-white"
-                      : "bg-[#F4F4F4] text-aiesec-gray hover:bg-gray-200"
-                  }`}
-                >
-                  {name}
-                </button>
-              ))}
-            </div>
-          )}
+          <div className="flex flex-wrap items-center gap-[15px]">
+            {filters.map((name) => (
+              <button
+                key={name}
+                type="button"
+                onClick={() => selectFilter(name)}
+                className={`h-[50px] cursor-pointer rounded-full px-[22px] text-xl font-medium transition-colors ${
+                  filter === name
+                    ? "bg-aiesec-blue text-white"
+                    : "bg-[#F4F4F4] text-aiesec-gray hover:bg-gray-200"
+                }`}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
 
-          <SearchBox value={query} onChange={handleQuery} className="ml-auto w-[400px]" />
+          <SearchBox value={query} onChange={handleQuery} className="w-[400px]" />
         </div>
 
         {/* Mobile: search on the left, filter dropdown on the right */}
         <div className="flex h-[50px] items-center gap-[10px] lg:hidden">
           <SearchBox value={query} onChange={handleQuery} className="flex-1" />
 
-          {hasCategories && (
-            <div className="relative shrink-0">
-              <button
-                type="button"
-                onClick={() => setFilterOpen((open) => !open)}
-                aria-haspopup="listbox"
-                aria-expanded={filterOpen}
-                className="flex h-[50px] items-center gap-2 rounded-full bg-[#F4F4F4] px-5 text-sm font-medium text-aiesec-gray"
-              >
-                {filter === ALL ? "All" : filter}
-                <ChevronDownIcon
-                  className={`size-4 text-gray-500 transition-transform duration-200 ${
-                    filterOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+          <div className="relative shrink-0">
+            <button
+              type="button"
+              onClick={() => setFilterOpen((open) => !open)}
+              aria-haspopup="listbox"
+              aria-expanded={filterOpen}
+              className="flex h-[50px] items-center gap-2 rounded-full bg-[#F4F4F4] px-5 text-sm font-medium text-aiesec-gray"
+            >
+              {filter === "All Articles" ? "All" : filter}
+              <ChevronDownIcon
+                className={`size-4 text-gray-500 transition-transform duration-200 ${
+                  filterOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
-              {filterOpen && (
-                <>
-                  <button
-                    type="button"
-                    aria-hidden="true"
-                    tabIndex={-1}
-                    onClick={() => setFilterOpen(false)}
-                    className="fixed inset-0 z-10 cursor-default"
-                  />
-                  <ul
-                    role="listbox"
-                    className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-2xl border border-gray-100 bg-white py-1 shadow-lg"
-                  >
-                    {filters.map((name) => (
-                      <li key={name} role="option" aria-selected={filter === name}>
-                        <button
-                          type="button"
-                          onClick={() => selectFilter(name)}
-                          className={`block w-full px-5 py-2.5 text-left text-sm transition-colors ${
-                            filter === name
-                              ? "font-semibold text-aiesec-blue"
-                              : "text-gray-700 hover:bg-gray-50"
-                          }`}
-                        >
-                          {name}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          )}
+            {filterOpen && (
+              <>
+                <button
+                  type="button"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  onClick={() => setFilterOpen(false)}
+                  className="fixed inset-0 z-10 cursor-default"
+                />
+                <ul
+                  role="listbox"
+                  className="absolute right-0 z-20 mt-2 w-44 overflow-hidden rounded-2xl border border-gray-100 bg-white py-1 shadow-lg"
+                >
+                  {filters.map((name) => (
+                    <li key={name} role="option" aria-selected={filter === name}>
+                      <button
+                        type="button"
+                        onClick={() => selectFilter(name)}
+                        className={`block w-full px-5 py-2.5 text-left text-sm transition-colors ${
+                          filter === name
+                            ? "font-semibold text-aiesec-blue"
+                            : "text-gray-700 hover:bg-gray-50"
+                        }`}
+                      >
+                        {name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Grid */}
       <div className="mx-auto mt-[30px] grid max-w-[1352px] gap-x-6 gap-y-5 sm:grid-cols-2 lg:mt-[45px] lg:grid-cols-3 lg:gap-y-[45px]">
         {shown.map((article) => (
-          <article key={article.slug}>
+          <article key={article.id}>
             <Link href={`/blog/${article.slug}`} className="group block">
               <div className="relative overflow-hidden rounded-[20px]">
                 <BlogImage
-                  src={article.coverImage}
+                  image={article.coverImage}
                   alt={article.title}
                   loading="eager"
-                  width={900}
                   className="h-[200px] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] lg:aspect-[434.67/281] lg:h-auto"
                 />
                 <span className="absolute bottom-3 right-3 flex size-9 items-center justify-center rounded-full bg-white text-gray-900 opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100">
                   <ArrowUpRightIcon className="size-4" />
                 </span>
               </div>
-              <div className="mt-4 flex items-center justify-between text-[14px] italic text-aiesec-gray lg:text-base">
+              <div className="mt-4 flex items-center justify-between text-[14px] italic text-aiesec-gray lg:text-fluid-16 lg:leading-[1.5]">
                 <span>{article.author}</span>
                 <span>{article.date}</span>
               </div>
-              <h3 className="mt-2 text-xl font-semibold leading-6 text-[#00000E] lg:text-2xl lg:leading-8 lg:font-bold">
+              <h3 className="mt-2 text-xl font-semibold leading-6 text-[#00000E] lg:text-fluid-24 lg:leading-[1.333] lg:font-bold">
                 {article.title}
               </h3>
               <p className="mt-2 text-base leading-6 font-medium text-aiesec-gray">
@@ -177,9 +164,7 @@ export default function BlogGrid({ articles }: { articles: BlogListItem[] }) {
 
       {filtered.length === 0 && (
         <p className="mt-12 text-center text-base text-gray-500">
-          {articles.length === 0
-            ? "No articles yet. Check back soon."
-            : "No articles match your search."}
+          No articles match your search.
         </p>
       )}
 
@@ -188,7 +173,7 @@ export default function BlogGrid({ articles }: { articles: BlogListItem[] }) {
           <button
             type="button"
             onClick={() => setVisible((count) => count + 6)}
-            className="h-[47px] cursor-pointer rounded-full bg-aiesec-blue px-5 text-base font-bold text-white transition-colors hover:bg-aiesec-blue/90 lg:h-[68px] lg:px-8 lg:text-2xl"
+            className="h-[47px] cursor-pointer rounded-full bg-aiesec-blue px-5 text-base font-bold text-white transition-colors hover:bg-aiesec-blue/90 lg:h-[68px] lg:px-8 lg:text-fluid-24 lg:leading-[1.5]"
           >
             Load More
           </button>
@@ -216,7 +201,7 @@ function SearchBox({
         onChange={(event) => onChange(event.target.value)}
         placeholder="Search"
         aria-label="Search articles"
-        className="h-[50px] w-full rounded-full bg-[#F0F0F0] py-3 pl-11 pr-5 text-sm text-aiesec-gray placeholder-aiesec-gray outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-base"
+      className="h-[50px] w-full rounded-full bg-[#F0F0F0] py-3 pl-11 pr-5 text-sm text-aiesec-gray placeholder-aiesec-gray outline-none focus:ring-2 focus:ring-aiesec-blue/40 lg:text-fluid-16 lg:leading-[1.5]"
       />
     </div>
   );

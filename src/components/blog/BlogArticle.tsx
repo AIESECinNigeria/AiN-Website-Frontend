@@ -1,15 +1,11 @@
 import Link from "next/link";
 import BlogImage from "@/components/blog/BlogImage";
+import BlogRichText from "@/components/blog/BlogRichText";
+import { youtubeEmbedUrl } from "@/lib/blog/content";
+import type { BlogContentSection, BlogPost } from "@/lib/blog/types";
 import CopyLinkButton from "@/components/blog/CopyLinkButton";
-import type { BlogArticleData, BlogListItem } from "@/lib/blog-types";
 
-export default function BlogArticle({
-  article,
-  related,
-}: {
-  article: BlogArticleData;
-  related: BlogListItem[];
-}) {
+export default function BlogArticle({ article, related }: { article: BlogPost; related: BlogPost[] }) {
   return (
     <article className="bg-white px-4 pt-[50px] pb-10 lg:bg-aiesec-section lg:px-20 lg:pt-[60px] lg:pb-0">
       <div className="mx-auto w-full max-w-[1352px]">
@@ -24,28 +20,22 @@ export default function BlogArticle({
 
         <div className="flex flex-col items-start gap-5 lg:flex-row lg:items-end lg:gap-16">
           <div className="flex w-full flex-col items-start gap-[10px] lg:flex-1 lg:gap-[15px]">
-            <p className="flex flex-wrap items-center gap-[5px] text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-base">
-              {article.publishedLabel && <span>Published {article.publishedLabel}</span>}
-              {article.publishedLabel && <span className="hidden lg:inline">~</span>}
-              <span>{article.readTime}</span>
+            <p className="flex flex-wrap items-center gap-[5px] text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-fluid-16 lg:leading-[1.5]">
+              {article.publishedDate && <><span>Published {article.publishedDate}</span><span className="hidden lg:inline">~</span></>}<span>{article.readingMinutes} mins read</span>
             </p>
 
             <div className="flex w-full flex-col items-start gap-[5px] lg:gap-[15px]">
-              <h1 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-heading lg:text-[60px] lg:font-bold lg:leading-[72px] lg:tracking-[-0.02em]">
+              <h1 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-heading lg:text-fluid-60 lg:font-bold lg:leading-[1.2] lg:tracking-[-0.02em]">
                 {article.title}
               </h1>
 
-              {article.excerpt && (
-                <p className="text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-[20px]">
-                  {article.excerpt}
-                </p>
-              )}
+              <div className="text-[14px] font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray lg:text-fluid-20 lg:leading-[1.5]">
+                {article.caption.length > 0 ? <BlogRichText value={article.caption} /> : <p>{article.excerpt}</p>}
+              </div>
 
-              {article.author && (
-                <p className="text-[14px] font-semibold italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:text-lg lg:leading-6">
-                  {article.author}
-                </p>
-              )}
+              <p className="text-[14px] font-semibold italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:text-fluid-18 lg:leading-[1.333]">
+                {article.author}
+              </p>
             </div>
           </div>
           <div className="w-full lg:w-[326px] lg:shrink-0">
@@ -55,52 +45,18 @@ export default function BlogArticle({
 
         <div className="mt-6 overflow-hidden rounded-[20px] lg:mt-10">
           <BlogImage
-            src={article.coverImage}
+            image={article.coverImage}
             alt={article.title}
-            width={1600}
+            sizes="(max-width: 1023px) calc(100vw - 32px), calc(100vw - 160px)"
             loading="eager"
             className="aspect-[358/220] w-full object-cover lg:aspect-[1352/500]"
           />
         </div>
 
-        <div className="mt-[14px] flex flex-col gap-6 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-neutral-800 lg:mt-10 lg:gap-8 lg:text-[20px] lg:leading-[170%]">
-          {article.body.map((block, index) => {
-            if (block.type === "h") {
-              return (
-                <h2
-                  key={index}
-                  className="text-xl font-bold leading-[130%] text-aiesec-heading lg:text-[32px]"
-                >
-                  {block.text}
-                </h2>
-              );
-            }
-            if (block.type === "img") {
-              return (
-                <div key={index} className="overflow-hidden rounded-[20px]">
-                  <BlogImage
-                    src={block.src}
-                    alt={block.alt}
-                    width={1600}
-                    className="aspect-[358/220] w-full object-cover lg:aspect-[1352/500]"
-                  />
-                </div>
-              );
-            }
-            return (
-              <p key={index}>
-                {block.parts.map((part, partIndex) =>
-                  part.bold ? (
-                    <strong key={partIndex} className="font-bold">
-                      {part.text}
-                    </strong>
-                  ) : (
-                    <span key={partIndex}>{part.text}</span>
-                  ),
-                )}
-              </p>
-            );
-          })}
+        <div className="mt-[14px] flex flex-col gap-6 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-neutral-800 lg:mt-10 lg:gap-8 lg:text-fluid-20 lg:leading-[1.7]">
+          {article.content.map((section, index) => (
+            <ContentSection key={section._key ?? index} section={section} />
+          ))}
         </div>
 
         <div className="mt-10 lg:hidden">
@@ -108,44 +64,71 @@ export default function BlogArticle({
         </div>
       </div>
 
-      {related.length > 0 && (
-        <section className="-mx-4 mt-[30px] flex flex-col gap-6 bg-white px-4 py-0 lg:mx-0 lg:mt-[72px] lg:gap-12 lg:px-0 lg:py-[84px]">
-          <h2 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-blue lg:text-[48px] lg:leading-[120%]">
-            Related Articles
-          </h2>
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
-            {related.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="group block pb-[5px] lg:pb-0">
-                <div className="overflow-hidden rounded-[20px]">
-                  <BlogImage
-                    src={post.coverImage}
-                    alt={post.title}
-                    width={900}
-                    className="aspect-[358/200] w-full object-cover lg:aspect-[434.67/281]"
-                  />
-                </div>
-                <div className="mt-4 flex items-center justify-between gap-[6px] text-[14px] italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:mt-4 lg:text-base lg:leading-6">
-                  <span className="flex-1 font-normal">{post.author}</span>
-                  <span className="shrink-0 font-medium not-italic">{post.date}</span>
-                </div>
-                <h3 className="mt-2 text-[20px] font-semibold leading-[120%] text-aiesec-heading lg:text-2xl lg:font-bold lg:leading-8">{post.title}</h3>
-                <p className="mt-2 line-clamp-3 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray">{post.excerpt}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+      {related.length > 0 && <section className="-mx-4 mt-[30px] flex flex-col gap-6 bg-white px-4 py-0 lg:mx-0 lg:mt-[72px] lg:gap-12 lg:px-0 lg:py-[84px]">
+        <h2 className="text-[24px] font-extrabold leading-[135%] tracking-[-0.01em] text-aiesec-blue lg:text-fluid-48 lg:leading-[1.2]">
+          Related Articles
+        </h2>
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+          {related.map((post) => (
+            <Link key={post.id} href={`/blog/${post.slug}`} className="group block pb-[5px] lg:pb-0">
+              <div className="overflow-hidden rounded-[20px]">
+                <BlogImage
+                  image={post.coverImage}
+                  alt={post.title}
+                  className="aspect-[358/200] w-full object-cover lg:aspect-[434.67/281]"
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-between gap-[6px] text-[14px] italic leading-5 tracking-[-0.01em] text-aiesec-gray lg:mt-4 lg:text-fluid-16 lg:leading-[1.5]">
+                <span className="flex-1 font-normal">{post.author}</span>
+                <span className="shrink-0 font-medium not-italic">{post.date}</span>
+              </div>
+              <h3 className="mt-2 text-[20px] font-semibold leading-[120%] text-aiesec-heading lg:text-fluid-24 lg:font-bold lg:leading-[1.333]">{post.title}</h3>
+              <p className="mt-2 line-clamp-3 text-base font-medium leading-[150%] tracking-[-0.01em] text-aiesec-gray">{post.excerpt}</p>
+            </Link>
+          ))}
+        </div>
+      </section>}
     </article>
   );
+}
+
+function ContentSection({ section }: { section: BlogContentSection }) {
+  switch (section._type) {
+    case "paragraph":
+      return <div className="flex flex-col gap-6 lg:gap-8"><BlogRichText value={section.text ?? []} /></div>;
+    case "subtitle":
+      return <h3 className="text-xl font-bold leading-[1.333] lg:text-2xl">{section.subtitle}</h3>;
+    case "imageSection":
+      return (
+        <figure>
+          <BlogImage image={section.image} alt={section.caption ?? ""} sizes="(max-width: 1023px) calc(100vw - 32px), calc(100vw - 160px)" className="h-auto w-full rounded-[20px]" />
+          {section.caption && <figcaption className="mt-2 text-sm italic text-aiesec-gray">{section.caption}</figcaption>}
+        </figure>
+      );
+    case "youtubeVideo": {
+      const src = youtubeEmbedUrl(section.videoId);
+      return src ? (
+        <iframe
+          src={src}
+          title={section.title || section.caption || "YouTube video"}
+          className="aspect-video w-full rounded-[20px] border-0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      ) : null;
+    }
+    default:
+      return null;
+  }
 }
 
 function ShareRow() {
   return (
     <div className="flex flex-col items-start gap-[10px] lg:items-end lg:gap-4">
-      <p className="w-full text-base font-medium leading-6 tracking-[-0.01em] text-aiesec-heading lg:text-right lg:text-xl lg:font-semibold lg:leading-[120%]">Share this blog</p>
+      <p className="w-full text-base font-medium leading-6 tracking-[-0.01em] text-aiesec-heading lg:text-right lg:text-fluid-20 lg:font-semibold lg:leading-[1.2]">Share this blog</p>
       <div className="flex flex-wrap items-center gap-6">
         <CopyLinkButton
-          className="inline-flex h-[38px] cursor-pointer items-center justify-center gap-[10px] rounded-[25px] border border-[#D9D9D9] bg-[#F9F9F9] px-3 text-[14px] font-bold leading-[128%] tracking-[-0.01em] text-aiesec-blue transition-colors hover:bg-gray-50 lg:h-[50px] lg:w-[146px] lg:border-[#CCCCCC] lg:px-5 lg:text-base"
+          className="inline-flex h-[38px] cursor-pointer items-center justify-center gap-[10px] rounded-[25px] border border-[#D9D9D9] bg-[#F9F9F9] px-3 text-[14px] font-bold leading-[128%] tracking-[-0.01em] text-aiesec-blue transition-colors hover:bg-gray-50 lg:h-[50px] lg:w-[146px] lg:border-[#CCCCCC] lg:px-5 lg:text-fluid-16 lg:leading-[1.5]"
         />
         <div className="flex items-center gap-3">
         <ShareIcon href="#" label="Share on Instagram" className="bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]">
