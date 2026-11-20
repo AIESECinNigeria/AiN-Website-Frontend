@@ -28,10 +28,10 @@ export default function Footer() {
       <div className="mx-auto px-4 pt-12.5 lg:bg-aiesec-heading lg:px-20 lg:pt-15">
         <div className="flex flex-col justify-between gap-5 pb-10 lg:flex-row lg:items-end lg:gap-8 lg:pb-30">
           <div className="w-full lg:max-w-[435px]">
-            <h2 className="text-subheading lg:text-fluid-36 lg:leading-[1.2] adaptive-shell:lg:text-adaptive-36 adaptive-shell:lg:leading-[1.2]">
+            <h2 className="text-subheading lg:text-4xl lg:leading-[1.2] adaptive-shell:lg:text-adaptive-36 adaptive-shell:lg:leading-[1.2]">
               Sign up for our newsletter <br className="hidden lg:block" /> to stay updated
             </h2>
-            <p className="mt-2 text-body text-[#898989] lg:mt-3 lg:text-fluid-20 lg:leading-[1.5] lg:text-white adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.5]">
+            <p className="mt-2 text-body text-[#898989] lg:mt-3 lg:text-xl lg:leading-[1.5] lg:text-white adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.5]">
               Sign up to stay updated about news on our events,<br className="hidden lg:block" /> recruitment, partnerships, and more.
             </p>
           </div>
@@ -100,7 +100,7 @@ export default function Footer() {
                 alt="AIESEC in Nigeria"
                 className="h-7.5 w-36.25 object-contain object-left"
               />
-              <address className="mt-4 text-footer-link text-white lg:text-fluid-16 lg:leading-[1.5] adaptive-shell:lg:text-adaptive-16 adaptive-shell:lg:leading-[1.5]">
+              <address className="mt-4 text-footer-link text-white adaptive-shell:lg:text-adaptive-16 adaptive-shell:lg:leading-[1.5]">
                 {officeAddress.line1}<br className="hidden lg:block" /> {officeAddress.line2}<br className="hidden lg:block" /> {officeAddress.line3}
               </address>
             </div>
@@ -141,7 +141,7 @@ function FooterColumn({
           <li key={link.label}>
             <Link
               href={link.href}
-              className="text-footer-link text-white transition-colors hover:text-white lg:text-fluid-16 lg:leading-[1.5] adaptive-shell:lg:text-adaptive-16 adaptive-shell:lg:leading-[1.5]"
+              className="text-footer-link text-white transition-colors hover:text-white adaptive-shell:lg:text-adaptive-16 adaptive-shell:lg:leading-[1.5]"
             >
               {link.label}
             </Link>
