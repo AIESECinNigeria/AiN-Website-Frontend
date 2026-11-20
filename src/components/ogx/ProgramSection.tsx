@@ -1,5 +1,9 @@
 import CloudImage from "@/components/CloudImage";
 import ArrowLink from "@/components/ui/ArrowLink";
+import Image, { type StaticImageData } from "next/image";
+import gvLogo from "../../../public/images/ogx/gv.png";
+import gtaLogo from "../../../public/images/ogx/gta.png";
+import gteLogo from "../../../public/images/ogx/gte.png";
 
 export interface ProgramSectionProps {
   id: string;
@@ -15,6 +19,12 @@ export interface ProgramSectionProps {
   imageId: string;
   imageAlt: string;
 }
+
+const programLogos: Record<string, StaticImageData> = {
+  "global-volunteer": gvLogo,
+  "global-talent": gtaLogo,
+  "global-teacher": gteLogo,
+};
 
 /** AIESEC-style swirl mark used inside the programme badge. */
 function SwirlMark({ color }: { color: string }) {
@@ -47,13 +57,13 @@ export default function ProgramSection({
   return (
     <section
       id={id}
-      className="relative left-1/2 w-screen -translate-x-1/2"
+      className="relative w-full border-t-4!"
       style={{ backgroundColor: tint, borderTop: `3px solid ${accent}` }}
     >
-      <div className="mx-auto grid max-w-[1300px] items-start gap-8 px-6 py-14 lg:grid-cols-2 lg:gap-16 lg:px-20 lg:py-20">
+      <div className="mx-auto grid max-w-[1512px] items-start gap-6 px-4 py-10 lg:grid-cols-2 lg:gap-8 lg:px-20 lg:py-15">
         <div>
           <h2
-            className="text-2xl md:text-5xl font-bold tracking-[-1%]"
+            className="text-subheading leading-[1.35] tracking-[-0.01em] lg:text-adaptive-48 lg:leading-[1.2]"
             style={{ color: accent }}
           >
             {title}
@@ -62,31 +72,31 @@ export default function ProgramSection({
           {paragraphs.map((paragraph, index) => (
             <p
               key={index}
-              className="mt-5 text-[15px] leading-[170%] text-gray-600 lg:text-base"
+              className="mt-2.5 text-body leading-[1.5] text-aiesec-gray lg:mt-6 lg:text-adaptive-24 lg:leading-[1.5] [#global-volunteer_&]:lg:leading-[1.3333333]"
             >
               {paragraph}
             </p>
           ))}
 
-          <p className="mt-6 text-[15px] leading-[170%] text-gray-600 lg:text-base">
-            <span className="font-bold text-gray-900">{detail.lead}</span>{" "}
+          <p className="mt-4 text-body leading-[1.5] text-aiesec-gray lg:mt-12 lg:max-w-116.25 lg:text-adaptive-24 lg:leading-[1.5] lg:text-aiesec-heading">
+            <span className="font-medium text-aiesec-heading">{detail.lead}</span>{" "}
             {detail.rest}
           </p>
 
-          <ArrowLink href={href} className="mt-6 text-gray-900">
+          <ArrowLink href={href} className="mt-4 gap-1.5! text-base font-bold! leading-[1.5] text-aiesec-heading [&>svg]:size-5 lg:mt-12 lg:gap-2! lg:text-adaptive-24 lg:leading-[1] lg:[&>svg]:size-6">
             Apply Now
           </ArrowLink>
         </div>
 
-        <div className="relative">
+        <div className="relative h-87.5 overflow-hidden rounded-2xl lg:h-[690px] [#global-talent_&]:lg:h-[634px] [#global-teacher_&]:lg:h-[670px]">
           <CloudImage
             id={imageId}
             alt={imageAlt}
             crop="fill"
             ar="1:1"
-            className="aspect-square w-full rounded-2xl object-cover"
+            className="h-full w-full object-cover"
           />
-          <div className="absolute right-4 top-0 pt-8 flex items-center gap-2 rounded-b-lg bg-white px-3 py-2 shadow-sm">
+          <div className="absolute right-[23.5px] top-0 flex h-[44.4px] w-[76.8px] items-center justify-center gap-1.5 bg-white px-[7.2px] py-3 [&>svg]:hidden [&>div]:hidden lg:right-8.25 lg:h-[74.51px] lg:w-31.75 lg:gap-2.5 lg:px-3 lg:pt-9 lg:pb-3">
             <SwirlMark color={accent} />
             <div>
               <p
@@ -102,6 +112,13 @@ export default function ProgramSection({
                 {badgeBottom}
               </p>
             </div>
+            <Image
+              src={programLogos[id]}
+              alt={`Global ${badgeBottom}`}
+              width={100}
+              height={42}
+              className="h-auto max-h-11 w-full object-contain"
+            />
           </div>
         </div>
       </div>

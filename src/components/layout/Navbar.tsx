@@ -21,7 +21,7 @@ function NavbarContent() {
   const pathname = usePathname();
   const isBlogLanding = pathname === "/blog";
   const isAdaptiveShell =
-    ["/", "/about", "/blog", "/become-a-partner", "/membership"].includes(pathname) ||
+    ["/", "/about", "/blog", "/become-a-partner", "/membership", "/ogx"].includes(pathname) ||
     pathname.startsWith("/blog/");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -167,7 +167,7 @@ function NavbarContent() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`p-1 text-fluid-20 leading-[1.2] font-medium transition-colors adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.2] ${
+                className={`p-1 text-xl leading-6 font-medium transition-colors adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.2] ${
                   isBlogLanding
                     ? "text-white/90 hover:text-white"
                     : "text-aiesec-gray hover:text-aiesec-blue"
@@ -193,7 +193,7 @@ function NavbarContent() {
                 aria-haspopup="true"
                 aria-expanded={isProgramsOpen}
                 aria-controls="programs-menu"
-                className={`flex cursor-pointer items-center gap-1 p-1 text-fluid-20 leading-[1.2] font-medium transition-colors adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.2] ${
+                className={`flex cursor-pointer items-center gap-1 p-1 text-xl leading-6 font-medium transition-colors adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.2] ${
                   isBlogLanding
                     ? "text-white/90 hover:text-white"
                     : "text-aiesec-gray hover:text-aiesec-blue"

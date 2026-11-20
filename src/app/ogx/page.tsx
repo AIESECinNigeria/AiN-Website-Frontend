@@ -15,26 +15,33 @@ export default function OgxPage() {
         ]}
         description="Find verified internships, teaching placements, and social impact projects abroad with AIESEC in Nigeria"
         cta={{ label: "Get Started", href: "/ogx/apply" }}
-        className="!py-12 lg:!py-16"
+        className="flex w-full max-w-none! flex-col items-center bg-aiesec-section px-4! pt-6! pb-10! lg:px-20! lg:pt-15! lg:pb-8.75!
+          [&>h1]:mx-auto [&>h1]:w-full [&>h1]:max-w-89.5 [&>h1]:text-subheading! [&>h1]:leading-[1.35] [&>h1]:tracking-[-0.01em] [&>h1]:text-aiesec-heading
+          lg:[&>h1]:max-w-257.5 lg:[&>h1]:text-adaptive-60! lg:[&>h1]:font-bold lg:[&>h1]:leading-[1.2] lg:[&>h1]:tracking-[-0.02em]
+          [&_.bg-aiesec-highlight]:bg-aiesec-blue/10 [&_.bg-aiesec-highlight]:px-0 [&_.bg-aiesec-highlight]:py-0
+          [&>p]:mt-2 [&>p]:min-h-18 [&>p]:w-full [&>p]:max-w-89.5 [&>p]:text-body! [&>p]:leading-[1.5] [&>p]:tracking-[-0.01em] [&>p]:text-aiesec-gray
+          lg:[&>p]:mt-4 lg:[&>p]:min-h-21 lg:[&>p]:max-w-225 lg:[&>p]:text-hero-subtitle lg:[&>p]:text-adaptive-32! lg:[&>p]:leading-[1.3] lg:[&>p]:tracking-[-0.03em]
+          [&>a]:mt-5 [&>a]:h-10.75 [&>a]:w-32.5 [&>a]:gap-2 [&>a]:rounded-pill [&>a]:px-6 [&>a]:py-3 [&>a]:text-base [&>a]:leading-[1.1875]
+          lg:[&>a]:mt-10 lg:[&>a]:h-17 lg:[&>a]:w-46 lg:[&>a]:px-8 lg:[&>a]:py-4 lg:[&>a]:text-adaptive-24 lg:[&>a]:leading-[1.5] lg:[&>a]:tracking-[-0.01em]"
       />
 
       <OgxBanner />
 
       {/* What is Outgoing Global Exchange? */}
-      <section className="px-6 py-16 lg:px-20 lg:py-24">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
-          <h2 className="text-2xl md:text-5xl font-bold leading-[120%] tracking-[-1%] text-gray-900">
+      <section className="bg-aiesec-section px-4 py-12.5 lg:px-20 lg:py-21">
+        <div className="mx-auto grid max-w-338 items-start gap-5 lg:grid-cols-[551px_minmax(0,1fr)] lg:gap-6">
+          <h2 className="text-subheading leading-[1.35] tracking-[-0.01em] text-aiesec-heading lg:text-adaptive-48 lg:leading-[1.2]">
             What is Outgoing Global Exchange?
           </h2>
-          <div className="text-[15px] leading-[175%] text-gray-600 lg:text-base">
+          <div className="text-body leading-[1.5] text-aiesec-gray lg:text-adaptive-24 lg:leading-[1.5]">
             <p>
               Outgoing Global Exchange (OGX) is an AIESEC experience that gives
               young people the opportunity to travel abroad, gain practical
               experience, develop new skills, and experience different cultures.
             </p>
-            <p className="mt-6">
+            <p className="mt-1.25 lg:mt-9">
               Through opportunities such as{" "}
-              <span className="font-bold text-gray-900">
+              <span className="font-bold text-aiesec-heading">
                 Global Volunteer, Global Talent, and Global Teacher,
               </span>{" "}
               you can step outside your comfort zone, connect with people from
