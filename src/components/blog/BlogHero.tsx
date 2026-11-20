@@ -35,7 +35,7 @@ export default function BlogHero() {
         </p>
 
         <Link
-          href="#episodes"
+          href="https://open.spotify.com/show/033IJ5Wfi50VBbUpcC2pSw?si=3d08c11c2332463b"
           className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-[#00000E] px-7 text-base font-medium text-[#F4BE60] transition-colors hover:bg-black/80 lg:h-[72px] lg:min-w-[218px] lg:justify-center lg:px-5 lg:text-adaptive-22 lg:leading-[1.1]"
         >
           <PlayIcon className="size-4 fill-current lg:size-6" />
