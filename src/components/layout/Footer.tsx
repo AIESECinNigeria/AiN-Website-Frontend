@@ -28,10 +28,10 @@ export default function Footer() {
       <div className="mx-auto px-4 pt-12.5 lg:bg-aiesec-heading lg:px-20 lg:pt-15">
         <div className="flex flex-col justify-between gap-5 pb-10 lg:flex-row lg:items-end lg:gap-8 lg:pb-30">
           <div className="w-full lg:max-w-[435px]">
-            <h2 className="text-subheading lg:text-fluid-36 lg:leading-[1.2]">
+            <h2 className="text-subheading lg:text-4xl lg:leading-[1.2] adaptive-shell:lg:text-adaptive-36 adaptive-shell:lg:leading-[1.2]">
               Sign up for our newsletter <br className="hidden lg:block" /> to stay updated
             </h2>
-            <p className="mt-2 text-body text-[#898989] lg:mt-3 lg:text-fluid-20 lg:leading-[1.5] lg:text-white">
+            <p className="mt-2 text-body text-[#898989] lg:mt-3 lg:text-xl lg:leading-[1.5] lg:text-white adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.5]">
               Sign up to stay updated about news on our events,<br className="hidden lg:block" /> recruitment, partnerships, and more.
             </p>
           </div>
@@ -39,7 +39,7 @@ export default function Footer() {
           <form className="w-full lg:max-w-[653px]">
             <label
               htmlFor="newsletter-email"
-              className="mb-2 block text-body text-white lg:mb-4 lg:text-rd-body-02"
+              className="mb-2 block text-body text-white lg:mb-4 lg:text-rd-body-02 adaptive-shell:lg:text-adaptive-24 adaptive-shell:lg:leading-[1.5]"
             >
               Enter email address
             </label>
@@ -49,11 +49,11 @@ export default function Footer() {
                 type="email"
                 required
                 placeholder="e.g johnemmanuel@gmail.com"
-                className="h-12.5 w-full min-w-0 flex-1 rounded-pill bg-aiesec-neutral-700 px-5 py-3.5 text-body text-white placeholder:text-aiesec-neutral-300 outline-none lg:h-19 lg:px-6 lg:py-5 lg:text-rd-body-02"
+                className="h-12.5 w-full min-w-0 flex-1 rounded-pill bg-aiesec-neutral-700 px-5 py-3.5 text-body text-white placeholder:text-aiesec-neutral-300 outline-none lg:h-19 lg:px-6 lg:py-5 lg:text-rd-body-02 adaptive-shell:lg:text-adaptive-24 adaptive-shell:lg:leading-[1.5]"
               />
               <button
                 type="submit"
-                className="flex h-11.75 w-27.25 shrink-0 self-center items-center justify-center rounded-pill bg-aiesec-neutral-300 px-5 py-3.5 text-body leading-[19px] tracking-normal text-aiesec-heading transition-colors lg:h-17 lg:w-41.25 lg:px-8 lg:py-4 lg:text-rd-body-02 lg:leading-9 lg:tracking-[-0.01em] lg:text-aiesec-neutral-900"
+                className="flex h-11.75 w-27.25 shrink-0 self-center items-center justify-center rounded-pill bg-aiesec-neutral-300 px-5 py-3.5 text-body leading-[19px] tracking-normal text-aiesec-heading transition-colors lg:h-17 lg:w-41.25 lg:px-8 lg:py-4 lg:text-rd-body-02 lg:leading-9 lg:tracking-[-0.01em] lg:text-aiesec-neutral-900 adaptive-shell:lg:text-adaptive-24 adaptive-shell:lg:leading-[1.5]"
               >
                 Subscribe
               </button>
@@ -100,7 +100,7 @@ export default function Footer() {
                 alt="AIESEC in Nigeria"
                 className="h-7.5 w-36.25 object-contain object-left"
               />
-              <address className="mt-4 text-footer-link text-white lg:text-fluid-16 lg:leading-[1.5]">
+              <address className="mt-4 text-footer-link text-white adaptive-shell:lg:text-adaptive-16 adaptive-shell:lg:leading-[1.5]">
                 {officeAddress.line1}<br className="hidden lg:block" /> {officeAddress.line2}<br className="hidden lg:block" /> {officeAddress.line3}
               </address>
             </div>
@@ -141,7 +141,7 @@ function FooterColumn({
           <li key={link.label}>
             <Link
               href={link.href}
-              className="text-footer-link text-white transition-colors hover:text-white lg:text-fluid-16 lg:leading-[1.5]"
+              className="text-footer-link text-white transition-colors hover:text-white adaptive-shell:lg:text-adaptive-16 adaptive-shell:lg:leading-[1.5]"
             >
               {link.label}
             </Link>

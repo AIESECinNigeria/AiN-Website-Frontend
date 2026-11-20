@@ -48,7 +48,7 @@ export default function BecomeAPartnerPage() {
             initiatives that leave a lasting legacy across Nigeria and beyond.
           </p>
           <Link
-            href="/contact"
+            href="mailto:nigeria@aiesec.net"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-aiesec-blue px-8 py-3.5 text-base font-medium text-white transition-colors hover:bg-aiesec-blue/90"
           >
             Become a Partner

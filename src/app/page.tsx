@@ -38,17 +38,7 @@ export default function HomePage() {
         ]}
         description="Your journey to global leadership starts here."
         cta={{ label: "Volunteer with Us", href: "/ogx" }}
-        className="flex w-full max-w-none! flex-col items-center bg-aiesec-section px-4! py-6! lg:px-20! lg:pt-12.25! lg:pb-12.5!
-          [&>h1]:w-full [&>h1]:max-w-195.5 [&>h1]:text-subheading [&>h1]:font-extrabold [&>h1]:leading-[135%] [&>h1]:tracking-[-0.01em] [&>h1]:text-black
-          lg:[&>h1]:text-fluid-60 lg:[&>h1]:font-bold lg:[&>h1]:leading-[1.2] lg:[&>h1]:tracking-[-0.02em]
-          [&>p]:mt-2 [&>p]:w-full [&>p]:max-w-195.5 [&>p]:text-body [&>p]:tracking-[-0.01em] [&>p]:text-aiesec-gray
-          lg:[&>p]:mt-4 lg:[&>p]:text-fluid-32 lg:[&>p]:leading-[1.3] lg:[&>p]:tracking-[-0.01em]
-          [&>a]:mt-5 [&>a]:h-10.25 [&>a]:w-43.75 [&>a]:gap-2 [&>a]:rounded-pill [&>a]:px-6 [&>a]:py-3 [&>a]:text-base [&>a]:leading-4.75 [&>a]:tracking-normal [&>a]:whitespace-nowrap
-          lg:[&>a]:mt-10 lg:[&>a]:h-17 lg:[&>a]:w-62.5 lg:[&>a]:px-8 lg:[&>a]:py-4 lg:[&>a]:text-rd-body-02 lg:[&>a]:leading-9 lg:[&>a]:tracking-[-0.01em]
-          [&_.bg-aiesec-highlight]:relative [&_.bg-aiesec-highlight]:isolate [&_.bg-aiesec-highlight]:-mr-2 [&_.bg-aiesec-highlight]:h-7.5 [&_.bg-aiesec-highlight]:bg-transparent [&_.bg-aiesec-highlight]:py-0 [&_.bg-aiesec-highlight]:pl-0 [&_.bg-aiesec-highlight]:pr-1
-          [&_.bg-aiesec-highlight]:before:absolute [&_.bg-aiesec-highlight]:before:top-0.75 [&_.bg-aiesec-highlight]:before:right-0 [&_.bg-aiesec-highlight]:before:-left-1 [&_.bg-aiesec-highlight]:before:-z-10 [&_.bg-aiesec-highlight]:before:h-full [&_.bg-aiesec-highlight]:before:bg-[#E3EFFB]
-          lg:[&_.bg-aiesec-highlight]:-mr-6 lg:[&_.bg-aiesec-highlight]:h-18 lg:[&_.bg-aiesec-highlight]:pl-4 lg:[&_.bg-aiesec-highlight]:pr-4.5 lg:[&_.bg-aiesec-highlight]:before:top-0 lg:[&_.bg-aiesec-highlight]:before:left-0 lg:[&_.bg-aiesec-highlight]:before:bg-aiesec-blue/10
-          [&_.animate-pulse]:absolute [&_.animate-pulse]:top-0.75 [&_.animate-pulse]:right-0 [&_.animate-pulse]:ml-0 [&_.animate-pulse]:h-full! [&_.animate-pulse]:w-1 lg:[&_.animate-pulse]:top-0 lg:[&_.animate-pulse]:w-1.5"
+        className="flex w-full max-w-none! flex-col items-center bg-aiesec-section px-4! py-6! lg:px-20! lg:pt-12.25! lg:pb-12.5! [&>h1]:w-full [&>h1]:max-w-195.5 [&>h1]:text-subheading [&>h1]:font-extrabold [&>h1]:leading-[135%] [&>h1]:tracking-[-0.01em] [&>h1]:text-black lg:[&>h1]:font-bold lg:[&>h1]:tracking-[-0.02em] [&>p]:mt-2 [&>p]:w-full [&>p]:max-w-195.5 [&>p]:text-body [&>p]:tracking-[-0.01em] [&>p]:text-aiesec-gray lg:[&>p]:mt-4 lg:[&>p]:tracking-[-0.01em] [&>a]:mt-5 [&>a]:h-10.25 [&>a]:w-43.75 [&>a]:gap-2 [&>a]:rounded-pill [&>a]:px-6 [&>a]:py-3 [&>a]:text-base [&>a]:leading-4.75 [&>a]:tracking-normal [&>a]:whitespace-nowrap lg:[&>a]:mt-10 lg:[&>a]:h-17 lg:[&>a]:w-62.5 lg:[&>a]:px-8 lg:[&>a]:py-4 lg:[&>a]:text-rd-body-02 lg:[&>a]:tracking-[-0.01em] [&_.bg-aiesec-highlight]:relative [&_.bg-aiesec-highlight]:isolate [&_.bg-aiesec-highlight]:-mr-2 [&_.bg-aiesec-highlight]:h-7.5 [&_.bg-aiesec-highlight]:bg-transparent [&_.bg-aiesec-highlight]:py-0 [&_.bg-aiesec-highlight]:pl-0 [&_.bg-aiesec-highlight]:pr-1 [&_.bg-aiesec-highlight]:before:absolute [&_.bg-aiesec-highlight]:before:top-0.75 [&_.bg-aiesec-highlight]:before:right-0 [&_.bg-aiesec-highlight]:before:-left-1 [&_.bg-aiesec-highlight]:before:-z-10 [&_.bg-aiesec-highlight]:before:h-full [&_.bg-aiesec-highlight]:before:bg-[#E3EFFB] lg:[&_.bg-aiesec-highlight]:-mr-6 lg:[&_.bg-aiesec-highlight]:h-18 lg:[&_.bg-aiesec-highlight]:pl-4 lg:[&_.bg-aiesec-highlight]:pr-4.5 lg:[&_.bg-aiesec-highlight]:before:top-0 lg:[&_.bg-aiesec-highlight]:before:left-0 lg:[&_.bg-aiesec-highlight]:before:bg-aiesec-blue/10 [&_.animate-pulse]:absolute [&_.animate-pulse]:top-0.75 [&_.animate-pulse]:right-0 [&_.animate-pulse]:ml-0 [&_.animate-pulse]:h-full! [&_.animate-pulse]:w-1 lg:[&_.animate-pulse]:top-0 lg:[&_.animate-pulse]:w-1.5 lg:[&>h1]:text-rd-heading-01 lg:[&>h1]:text-adaptive-60! lg:[&>p]:text-hero-subtitle lg:[&>p]:text-adaptive-32! lg:[&>a]:text-adaptive-24! lg:[&>h1]:leading-[120%] lg:[&>p]:leading-[1.3] lg:[&>a]:leading-[1.5]"
       />
 
       <HeroBanner />
@@ -57,10 +47,10 @@ export default function HomePage() {
       <section className="px-4 py-10 lg:p-20">
         <ScrollTypedText
           text={introText}
-          className="mx-auto max-w-256.5 text-center text-xl font-extrabold leading-[150%] tracking-[-0.01em] text-aiesec-neutral-900 lg:text-[40px]"
+          className="mx-auto max-w-256.5 text-center text-xl font-extrabold leading-[150%] tracking-[-0.01em] text-aiesec-neutral-900 lg:text-adaptive-40 lg:leading-[1.5]"
         />
         <div className="mt-6 flex justify-center lg:mt-10">
-          <ArrowLink href="/about" className="gap-1.5! text-body font-bold! text-aiesec-blue lg:gap-3! lg:text-rd-body-02 lg:leading-6 [&>svg]:size-5 [&>svg]:overflow-visible [&>svg>path]:origin-center [&>svg>path]:scale-[1.15] lg:[&>svg]:size-4 lg:[&>svg>path]:scale-[1.8]">
+          <ArrowLink href="/about" className="gap-1.5! text-body font-bold! text-aiesec-blue lg:gap-3! [&>svg]:size-5 [&>svg]:overflow-visible [&>svg>path]:origin-center [&>svg>path]:scale-[1.15] lg:[&>svg]:size-4 lg:[&>svg>path]:scale-[1.8] lg:text-rd-body-02 lg:text-adaptive-24! lg:leading-[1]">
             Find Out More
           </ArrowLink>
         </div>
@@ -72,10 +62,10 @@ export default function HomePage() {
       {/* Partner With Us */}
       <section className="relative px-4 pt-10 pb-25 lg:px-20 lg:pt-0 lg:pb-19">
         <div className="mx-auto max-w-202.25 text-center">
-          <h2 className="text-subheading text-aiesec-heading lg:text-rd-heading-02">
+          <h2 className="text-subheading text-aiesec-heading lg:text-rd-heading-02 lg:text-adaptive-48! lg:leading-[1.2]">
             Partner With Us
           </h2>
-          <p className="mt-2 text-body text-aiesec-gray lg:mt-3 lg:text-rd-body-02">
+          <p className="mt-2 text-body text-aiesec-gray lg:mt-3 lg:text-rd-body-02 lg:text-adaptive-24! lg:leading-[1.5]">
             Together, we can create opportunities that empower young people and drive
             meaningful change. Partner with AIESEC in Nigeria to support youth
             development, strengthen your organisation&rsquo;s impact, and build
@@ -83,7 +73,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/become-a-partner"
-            className="mt-4 inline-flex h-11.75 w-41.5 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 whitespace-nowrap text-white transition-colors hover:bg-aiesec-blue/90 lg:mt-6 lg:h-15.5 lg:w-54.5 lg:px-8 lg:py-5 lg:text-xl lg:font-normal lg:leading-5.5 lg:tracking-[-0.01em]"
+            className="mt-4 inline-flex h-11.75 w-41.5 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 whitespace-nowrap text-white transition-colors hover:bg-aiesec-blue/90 lg:mt-6 lg:h-15.5 lg:w-54.5 lg:px-8 lg:py-5 lg:font-normal lg:tracking-[-0.01em] lg:text-adaptive-20 lg:leading-[1.1]"
           >
             Become a Partner
           </Link>

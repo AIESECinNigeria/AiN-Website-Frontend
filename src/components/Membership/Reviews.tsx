@@ -20,7 +20,7 @@ function ReviewCard({ review }: { review: Review }) {
         crop="fill"
         ar={review.ar}
         gravity="face"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover [&[src$='/team-1']]:origin-[28%_89%] [&[src$='/team-1']]:scale-119 [&[src$='/membership-2']]:brightness-80"
       />
 
       {/* default state: name/role over a plain dark scrim, no color */}
