@@ -345,7 +345,7 @@ export default function LocationsMap() {
   });
   return (
     <section className="flex flex-col items-center gap-8 px-0 pb-0 pt-0 lg:gap-10 lg:px-20 lg:pt-24 lg:pb-24">
-      <h2 className="mx-auto max-w-[357px] text-center text-2xl font-extrabold leading-[120%] tracking-[-1%] text-[#00000e] lg:max-w-[821px] lg:text-5xl">
+      <h2 className="mx-auto max-w-[357px] text-center text-2xl font-extrabold leading-[120%] tracking-[-1%] text-[#00000e] lg:max-w-[821px] lg:text-adaptive-48 lg:leading-[1.2]">
         AIESEC is present in all these locations within the country
       </h2>
 
@@ -365,7 +365,7 @@ export default function LocationsMap() {
                   }
                 }}
                 onPointerLeave={() => setHoveredState(null)}
-                className="h-12 min-h-12 border-b-4 border-r-0 border-[#00000e] bg-aiesec-blue px-4 text-center text-base font-semibold text-white transition-colors hover:bg-[#006edb] focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111827] sm:text-lg lg:h-[62px] lg:min-h-[62px] lg:border-r-[6px] lg:border-b-0 lg:px-[10px] lg:text-xl lg:leading-[150%] lg:whitespace-nowrap"
+                className="h-12 min-h-12 border-b-4 border-r-0 border-[#00000e] bg-aiesec-blue px-4 text-center text-base font-semibold text-white transition-colors hover:bg-[#006edb] focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111827] lg:h-[62px] lg:min-h-[62px] lg:border-r-[6px] lg:border-b-0 lg:px-[10px] lg:whitespace-nowrap lg:text-adaptive-20 lg:leading-[1.5]"
               >
                 {city}
               </button>
@@ -484,7 +484,7 @@ export default function LocationsMap() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <h3 className="mt-1.5 pt-2 pb-1 text-base font-extrabold leading-tight text-aiesec-blue sm:text-xl">
+            <h3 className="mt-1.5 pt-2 pb-1 text-base font-extrabold leading-tight text-aiesec-blue lg:text-adaptive-20 lg:leading-[1.25]">
               AIESEC in {selectedLocation.city}
             </h3>
             <p className="mt-1 text-[11px] leading-[1.5] text-[#929292] sm:text-xs">
