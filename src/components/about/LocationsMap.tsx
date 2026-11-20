@@ -30,7 +30,6 @@ const locations: Location[] = [
   { city: "Lagos", state: "Lagos" },
   { city: "Enugu", state: "Enugu" },
   { city: "Calabar", state: "Cross River" },
-  { city: "Benue", state: "Benue" },
   { city: "Ibadan", state: "Oyo" },
   { city: "Port Harcourt", state: "Rivers" },
   { city: "Zaria", state: "Kaduna" },
@@ -68,8 +67,6 @@ const locationDescriptions: Record<string, string> = {
     "AIESEC in Jos takes young people beyond the classroom with hands-on community projects and life-changing international volunteer experiences.",
   Kano:
     "AIESEC in Kano helps young people practise leadership, make a difference in their community, and explore international opportunities.",
-  Benue:
-    "In Makurdi, AIESEC in Benue gives students a place to practise leadership, solve local problems, and access international volunteer and teaching opportunities.",
 };
 
 const BOUNDARY_SOURCES = [
@@ -350,7 +347,7 @@ export default function LocationsMap() {
       </h2>
 
       <div className="flex w-full flex-col gap-8 lg:gap-0">
-        <div className="order-2 mx-auto mt-0 grid w-full max-w-[393px] grid-flow-col grid-cols-2 grid-rows-8 gap-0 [&>button:nth-child(-n+8)]:border-r-4 [&>button:nth-child(8)]:border-b-0 [&>button:nth-child(16)]:border-b-0 sm:grid-flow-row sm:grid-cols-4 sm:grid-rows-4 sm:[&>button:nth-child(n+1)]:border-r-4 sm:[&>button:nth-child(4n)]:border-r-0 sm:[&>button:nth-child(8)]:border-b-4 sm:[&>button:nth-child(n+13)]:border-b-0 lg:order-1 lg:mx-auto lg:mt-0 lg:w-full lg:max-w-[1200px] lg:grid-cols-8 lg:grid-rows-2 lg:gap-y-3 lg:[&>button:not(:nth-child(8n))]:border-r-4 lg:[&>button:nth-child(8n)]:!border-r-0 lg:[&>button:nth-child(n+1)]:border-b-0">
+        <div className="order-2 mx-auto mt-0 flex w-full max-w-[393px] flex-wrap justify-center gap-0 [&>button:nth-child(odd)]:border-r-4 [&>button:last-child]:border-b-0 [&>button:last-child]:!border-r-0 sm:[&>button:nth-child(n+1)]:border-r-4 sm:[&>button:nth-child(4n)]:border-r-0 sm:[&>button:nth-child(n+13)]:border-b-0 lg:order-1 lg:mx-auto lg:mt-0 lg:w-full lg:max-w-[1200px] lg:gap-y-3 lg:[&>button:not(:nth-child(8))]:border-r-4 lg:[&>button:nth-child(8)]:!border-r-0 lg:[&>button:nth-child(n+1)]:border-b-0">
           {locations.map(({ city, state }) => {
             const selected = selectedState !== null && cleanStateName(selectedState) === cleanStateName(state);
             return (
@@ -365,7 +362,7 @@ export default function LocationsMap() {
                   }
                 }}
                 onPointerLeave={() => setHoveredState(null)}
-                className="h-12 min-h-12 border-b-4 border-r-0 border-[#00000e] bg-aiesec-blue px-4 text-center text-base font-semibold text-white transition-colors hover:bg-[#006edb] focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111827] sm:text-lg lg:h-[62px] lg:min-h-[62px] lg:border-r-[6px] lg:border-b-0 lg:px-[10px] lg:text-xl lg:leading-[150%] lg:whitespace-nowrap"
+                className="h-12 min-h-12 w-1/2 border-b-4 border-r-0 border-[#00000e] bg-aiesec-blue px-4 text-center text-base font-semibold text-white transition-colors hover:bg-[#006edb] focus-visible:relative focus-visible:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111827] sm:w-1/4 sm:text-lg lg:h-[62px] lg:min-h-[62px] lg:w-[12.5%] lg:border-r-[6px] lg:border-b-0 lg:px-[10px] lg:text-xl lg:leading-[150%] lg:whitespace-nowrap"
               >
                 {city}
               </button>

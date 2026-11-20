@@ -93,9 +93,9 @@ const LOCAL_COMMITTEE_SCHOOLS = [
   // Calabar
   "university of calabar",
   "cross river state university of science &technology, calabar",
-  // Benue
-  "benue state university, makurdi",
-  "university of agriculture, makurdi",
+  // // Benue
+  // "benue state university, makurdi",
+  // "university of agriculture, makurdi",
   // Ibadan
   "university of ibadan",
   "lead city university, ibadan",
@@ -138,11 +138,56 @@ const INTERESTS = [
 
 const SOURCES = ["Social Media", "Friend or Referral", "Campus Event", "AIESEC Website", "Other"];
 
-/** Stand-in for the real request. Replace the body once the backend exists,
- *  for example: await fetch("/api/waitlist", { method: "POST", body: JSON.stringify(data) }) */
-async function submitWaitlist(data: FormState): Promise<void> {
-  void data;
-  await new Promise((resolve) => setTimeout(resolve, 700));
+const WAITLIST_ENDPOINT =
+  "https://ain-backend.fastapicloud.dev/api/member-recruitment-waitlist/register";
+
+/** Turns the form into the JSON body the backend expects. */
+function toPayload(form: FormState) {
+  // The form holds the date as DD/MM/YYYY, the backend wants YYYY-MM-DD.
+  const [day, month, year] = form.dob.split("/");
+
+  return {
+    first_name: form.firstName.trim(),
+    last_name: form.lastName.trim(),
+    email: form.email.trim(),
+    phone: form.phone.replace(/[\s-]/g, ""),
+    date_of_birth: `${year}-${month}-${day}`,
+    academic_type: form.academicType,
+    academic_institution: form.institution,
+    level_of_study: form.level.replace(/ level$/i, " Level"),
+    course_of_study: form.course.trim(),
+    events_participated: form.event.trim(),
+    areas_of_interest: form.interests,
+    skills: form.skills.trim(),
+    motivation: form.motivation.trim(),
+    how_hear_about_recruitment: form.source,
+  };
+}
+
+/** Sends the sign-up to the backend. Throws an Error with a message that is
+ *  safe to show the person if anything goes wrong. */
+async function submitWaitlist(form: FormState): Promise<void> {
+  let response: Response;
+  try {
+    response = await fetch(WAITLIST_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(toPayload(form)),
+    });
+  } catch {
+    throw new Error("We could not reach the server. Check your connection and try again.");
+  }
+
+  if (response.ok) return;
+
+  let message = "Something went wrong. Please try again.";
+  try {
+    const data = await response.json();
+    if (typeof data?.detail === "string") message = data.detail;
+  } catch {
+    // The response was not JSON, so keep the default message.
+  }
+  throw new Error(message);
 }
 
 /** Keeps only digits and inserts the slashes while typing: 12052001 becomes 12/05/2001. */
@@ -511,12 +556,13 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 /** Waitlist sign-up form in a modal. Mount it only while it should be open so
- *  the form resets each time. There is no backend yet: submitting runs the
- *  submitWaitlist stub above and shows the confirmation. */
+ *  the form resets each time. Submitting posts the form to the backend and
+ *  shows the confirmation once the server accepts it. */
 export default function WaitlistModal({ onClose }: { onClose: () => void }) {
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) =>
@@ -549,9 +595,15 @@ export default function WaitlistModal({ onClose }: { onClose: () => void }) {
     event.preventDefault();
     if (!valid || submitting) return;
     setSubmitting(true);
-    await submitWaitlist(form);
-    setSubmitting(false);
-    setDone(true);
+    setError("");
+    try {
+      await submitWaitlist(form);
+      setDone(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return createPortal(
@@ -697,6 +749,12 @@ export default function WaitlistModal({ onClose }: { onClose: () => void }) {
               value={form.source}
               onChange={(value) => update("source", value)}
             />
+
+            {error && (
+              <p role="alert" className="text-sm font-medium text-red-600">
+                {error}
+              </p>
+            )}
 
             <button
               type="submit"
