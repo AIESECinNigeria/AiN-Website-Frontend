@@ -3,12 +3,13 @@ import ArrowLink from "@/components/ui/ArrowLink";
 
 export interface ProgramSectionProps {
   id: string;
-  /** Accent colour (heading, top border, badge). */
+  /** Accent colour (heading and top border). */
   accent: string;
   /** Section background tint. */
   tint: string;
   title: string;
-  badgeBottom: string;
+  /** Cloudinary public id of the programme logo shown in the badge: "gte", "gta" or "gv". */
+  badgeId: string;
   paragraphs: string[];
   detail: { lead: string; rest: string };
   href: string;
@@ -16,28 +17,14 @@ export interface ProgramSectionProps {
   imageAlt: string;
 }
 
-/** AIESEC-style swirl mark used inside the programme badge. */
-function SwirlMark({ color }: { color: string }) {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" className="size-6">
-      <path
-        d="M27 16c0 6.1-4.9 11-11 11S5 22.1 5 16 9.9 5 16 5c4.1 0 7.5 2.9 7.5 6.6 0 3.1-2.5 5.6-5.6 5.6-2.1 0-3.9-1.7-3.9-3.8"
-        stroke={color}
-        strokeWidth={3.4}
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 /** A single OGX programme band: text on the left, photo with a white
- *  programme badge on the right, a coloured top border and tinted bg. */
+ *  programme logo badge on the right, a coloured top border and tinted bg. */
 export default function ProgramSection({
   id,
   accent,
   tint,
   title,
-  badgeBottom,
+  badgeId,
   paragraphs,
   detail,
   href,
@@ -86,22 +73,12 @@ export default function ProgramSection({
             ar="1:1"
             className="aspect-square w-full rounded-2xl object-cover"
           />
-          <div className="absolute right-4 top-0 pt-8 flex items-center gap-2 rounded-b-lg bg-white px-3 py-2 shadow-sm">
-            <SwirlMark color={accent} />
-            <div>
-              <p
-                className="text-base font-medium leading-none"
-                style={{ color: accent }}
-              >
-                Global
-              </p>
-              <p
-                className="text-lg font-extrabold leading-tight"
-                style={{ color: accent }}
-              >
-                {badgeBottom}
-              </p>
-            </div>
+          <div className="absolute right-4 top-0 bg-white px-3 py-3 shadow-sm">
+            <CloudImage
+              id={badgeId}
+              alt={title}
+              className="h-10 w-28 object-contain object-center lg:h-12 lg:w-32"
+            />
           </div>
         </div>
       </div>

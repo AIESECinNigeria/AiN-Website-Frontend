@@ -51,7 +51,7 @@ export default function OgxPage() {
           accent="#f85a40"
           tint="#ffefec"
           title="Global Volunteer"
-          badgeBottom="Volunteer"
+          badgeId="gv"
           paragraphs={[
             "Global Volunteer gives you the opportunity to step out of Nigeria and lead change on a global scale by connecting you to vetted social impact projects abroad.",
             "You get to join a social impact project, work alongside people from different backgrounds, and address real community needs, from education and sustainability to inclusion and youth development.",
@@ -71,7 +71,7 @@ export default function OgxPage() {
           accent="#0cb9c1"
           tint="#e7f8f9"
           title="Global Talent"
-          badgeBottom="Talent"
+          badgeId="gta"
           paragraphs={[
             "Global Talent is an international work experience designed for young Nigerians ready to take their career beyond borders.",
             "Through AIESEC in Nigeria, graduates, NYSC members, and early-career professionals access paid internships in leading global companies and startups.",
@@ -91,7 +91,7 @@ export default function OgxPage() {
           accent="#f48924"
           tint="#fef4ea"
           title="Global Teacher"
-          badgeBottom="Teacher"
+          badgeId="gte"
           paragraphs={[
             "Global Teacher is an international teaching experience for young people who want to share their knowledge and get paid while doing that.",
             "Through AIESEC in Nigeria, Global Teacher offers young Nigerian educators and graduates paid placements in schools abroad.",
