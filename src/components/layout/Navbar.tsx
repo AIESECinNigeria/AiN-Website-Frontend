@@ -152,11 +152,11 @@ function NavbarContent() {
       }`}
     >
       <nav className="mx-4 flex h-16 items-center gap-8.25 border-b-[0.6px] border-inherit py-5 lg:mx-0 lg:h-26 lg:px-20 lg:py-7">
-        <Link href="/" aria-label="Home" onClick={closeMobileMenu} className="min-w-0 flex-1">
+        <Link href="/" aria-label="Home" onClick={closeMobileMenu} className="min-w-0 flex-1 adaptive-shell:flex adaptive-shell:min-h-11 adaptive-shell:items-center">
           <CloudImage
             id={isBlogHeroNav ? "logoWhite" : "logoBlack"}
             alt="AIESEC in Nigeria"
-            className="h-4 w-19.5 object-contain object-left lg:h-[30px] lg:w-[145px] adaptive-shell:lg:h-4 adaptive-shell:lg:w-19.5"
+            className="h-4 w-19.5 object-contain object-left lg:h-[30px] lg:w-[145px] adaptive-shell:h-5 adaptive-shell:w-auto adaptive-shell:lg:h-6"
           />
         </Link>
 
