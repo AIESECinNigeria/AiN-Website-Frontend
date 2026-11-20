@@ -18,7 +18,11 @@ export interface ProgramLink {
 }
 
 function NavbarContent() {
-  const isBlogLanding = usePathname() === "/blog";
+  const pathname = usePathname();
+  const isBlogLanding = pathname === "/blog";
+  const isAdaptiveShell =
+    ["/", "/about", "/blog", "/become-a-partner", "/membership"].includes(pathname) ||
+    pathname.startsWith("/blog/");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProgramsOpen, setIsMobileProgramsOpen] = useState(false);
@@ -141,7 +145,7 @@ function NavbarContent() {
 
   return (
     <header
-      className={`${isBlogLanding ? "absolute inset-x-0" : "sticky"} top-0 z-50 w-full ${isBlogLanding ? "" : "backdrop-blur"} transition-colors transition-shadow ${
+      className={`${isAdaptiveShell ? "ui-adaptive-shell" : ""} ${isBlogLanding ? "absolute inset-x-0" : "sticky"} top-0 z-50 w-full ${isBlogLanding ? "" : "backdrop-blur"} transition-colors transition-shadow ${
         isBlogHeroNav
           ? "border-white/30 bg-transparent"
           : `bg-aiesec-section ${isScrolled ? "border-gray-200 shadow-sm" : "border-aiesec-neutral-300"}`
@@ -152,7 +156,7 @@ function NavbarContent() {
           <CloudImage
             id={isBlogHeroNav ? "logoWhite" : "logoBlack"}
             alt="AIESEC in Nigeria"
-            className="h-4 w-19.5 object-contain object-left lg:h-[30px] lg:w-[145px]"
+            className="h-4 w-19.5 object-contain object-left lg:h-[30px] lg:w-[145px] adaptive-shell:lg:h-4 adaptive-shell:lg:w-19.5"
           />
         </Link>
 
@@ -163,7 +167,7 @@ function NavbarContent() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`p-1 text-fluid-20 leading-[1.2] font-medium transition-colors ${
+                className={`p-1 text-fluid-20 leading-[1.2] font-medium transition-colors adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.2] ${
                   isBlogLanding
                     ? "text-white/90 hover:text-white"
                     : "text-aiesec-gray hover:text-aiesec-blue"
@@ -189,7 +193,7 @@ function NavbarContent() {
                 aria-haspopup="true"
                 aria-expanded={isProgramsOpen}
                 aria-controls="programs-menu"
-                className={`flex cursor-pointer items-center gap-1 p-1 text-fluid-20 leading-[1.2] font-medium transition-colors ${
+                className={`flex cursor-pointer items-center gap-1 p-1 text-fluid-20 leading-[1.2] font-medium transition-colors adaptive-shell:lg:text-adaptive-20 adaptive-shell:lg:leading-[1.2] ${
                   isBlogLanding
                     ? "text-white/90 hover:text-white"
                     : "text-aiesec-gray hover:text-aiesec-blue"
@@ -208,7 +212,7 @@ function NavbarContent() {
 
           <Link
             href="/become-a-partner"
-            className={`flex h-12 w-43 shrink-0 items-center justify-center rounded-pill border-[1.2px] px-6 py-3 text-body whitespace-nowrap transition-colors ${
+            className={`flex h-12 w-43 shrink-0 items-center justify-center rounded-pill border-[1.2px] px-6 py-3 text-body whitespace-nowrap transition-colors adaptive-shell:lg:text-adaptive-16 adaptive-shell:lg:leading-[1.5] ${
               isBlogLanding
                 ? "border-white/80 text-white hover:bg-white hover:text-gray-900"
                 : "border-aiesec-gray text-aiesec-gray hover:bg-gray-900 hover:text-white"
@@ -259,7 +263,7 @@ function NavbarContent() {
                 onClick={closePrograms}
                 className="rounded-xl p-3 transition-colors hover:bg-gray-50"
               >
-                <p className="text-lg font-medium text-black">{program.label}</p>
+                <p className="text-lg font-medium text-black adaptive-shell:lg:text-adaptive-18 adaptive-shell:lg:leading-[1.5555556]">{program.label}</p>
                 <p className="mt-1 text-xs leading-snug text-[#5C5C5C]">
                   {program.description}
                 </p>
