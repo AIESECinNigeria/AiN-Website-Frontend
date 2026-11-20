@@ -6,7 +6,7 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/blog"
-      className={`inline-flex h-11.75 w-29.25 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:w-44.5 lg:px-8 lg:py-4 lg:text-fluid-24 lg:leading-[1.5] ${className}`}
+      className={`inline-flex h-11.75 w-29.25 items-center justify-center rounded-pill bg-aiesec-blue px-5 py-3.5 text-base font-medium leading-4.75 text-white transition-colors hover:bg-aiesec-blue/90 lg:h-17 lg:w-44.5 lg:px-8 lg:py-4 lg:text-rd-body-02 lg:text-adaptive-24! lg:leading-[1.5] ${className}`}
     >
       Read More
     </Link>
@@ -18,7 +18,7 @@ export default async function BlogSection() {
   return (
     <section className="bg-white px-4 py-10 lg:px-20 lg:py-21">
       <div className="flex items-center justify-between gap-4 [&>a]:hidden lg:[&>a]:inline-flex">
-        <h2 className="w-full text-left text-subheading text-aiesec-blue lg:w-auto lg:text-fluid-48 lg:leading-[1.2]">
+        <h2 className="w-full text-left text-subheading text-aiesec-blue lg:w-auto lg:text-rd-heading-02 lg:text-adaptive-48! lg:leading-[1.2]">
           Blog
         </h2>
         <ReadMoreButton />
@@ -34,12 +34,12 @@ export default async function BlogSection() {
                 className="h-57.5 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] lg:h-70.25"
               />
             </div>
-            <div className="mt-4 flex items-center justify-between gap-1.5 text-body text-aiesec-gray [&>span:first-child]:font-normal [&>span:first-child]:italic [&>span:last-child]:shrink-0">
+            <div className="mt-4 flex items-center justify-between gap-1.5 text-body text-aiesec-gray [&>span:first-child]:font-normal [&>span:first-child]:italic [&>span:last-child]:shrink-0 lg:text-adaptive-16 lg:leading-[1.5]">
               <span>{post.author}</span>
               <span>{post.date}</span>
             </div>
-            <h3 className="mt-2 text-xl font-semibold leading-6 text-aiesec-heading lg:text-fluid-24 lg:font-bold lg:leading-[1.333] lg:tracking-[-0.01em]">{post.title}</h3>
-            <p className="mt-2 line-clamp-3 text-body text-aiesec-gray">{post.excerpt}</p>
+            <h3 className="mt-2 text-xl font-semibold leading-6 text-aiesec-heading lg:font-bold lg:tracking-[-0.01em] lg:text-adaptive-24 lg:leading-[1.3333333]">{post.title}</h3>
+            <p className="mt-2 line-clamp-3 text-body text-aiesec-gray lg:text-adaptive-16 lg:leading-[1.5]">{post.excerpt}</p>
           </Link>
         ))}
       </div>

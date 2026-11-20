@@ -19,7 +19,7 @@ export default function ReviewsCarousel() {
   return (
     <section className="bg-aiesec-section py-10 lg:pt-25.75 lg:pb-28.25">
       <div className="px-4 lg:px-20">
-        <h2 className="text-subheading text-aiesec-blue lg:text-fluid-48 lg:leading-[1.2] lg:tracking-[-0.01em]">Reviews</h2>
+        <h2 className="text-subheading text-aiesec-blue lg:tracking-[-0.01em] lg:text-rd-heading-02 lg:text-adaptive-48! lg:leading-[1.2]">Reviews</h2>
       </div>
 
       <div className="mt-6 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 lg:mt-12 lg:px-20 [scroll-padding-left:1rem] lg:[scroll-padding-left:5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -34,8 +34,8 @@ export default function ReviewsCarousel() {
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-x-0 bottom-0 flex h-40.5 flex-col justify-end bg-linear-to-t from-black to-transparent p-5 lg:h-[179.67px] lg:from-black/75 lg:pb-5.25">
-              <p className="text-xl font-extrabold leading-7 tracking-[-0.01em] text-white">{review.name}</p>
-              <p className="text-body text-aiesec-neutral-100">{review.role}</p>
+              <p className="text-xl font-extrabold leading-7 tracking-[-0.01em] text-white lg:text-adaptive-20 lg:leading-[1.4]">{review.name}</p>
+              <p className="text-body text-aiesec-neutral-100 lg:text-adaptive-16 lg:leading-[1.5]">{review.role}</p>
             </div>
           </article>
         ))}
