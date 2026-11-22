@@ -21,10 +21,10 @@ const LeadershipWhyAttend = () => {
 
           <div className="flex justify-start my-4">
             <a
-              href="/leadership-summit/register"
+              href=""
               className="white-btn text-black text-[12px] md:text-base items-center border-black border shadow-[8px_8px_2px_-4px_#000]"
             >
-              Register for Leadership Summit
+              Registration for Leadership Summit has ended
               <svg
                 width="20"
                 height="20"

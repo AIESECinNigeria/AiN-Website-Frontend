@@ -6,6 +6,8 @@ import CloudImage from "@/components/CloudImage";
 interface Location {
   city: string;
   state: string;
+  /** Cloudinary id of the city's photo. Falls back to a shared photo when missing. */
+  imageId?: string;
 }
 
 type BoundaryData = { name: string; rings: [number, number][][] }[];
@@ -17,21 +19,25 @@ type ProjectedState = {
 };
 type TooltipPlacement = "left" | "right" | "above" | "below";
 
+/** Shown for any committee that does not have its own photo yet. */
+const FALLBACK_IMAGE_ID = "gallery-1";
+
 // The local committees listed in the design and the Nigerian states they serve.
+// To add a photo for a city, upload it to Cloudinary and add its id as imageId.
 const locations: Location[] = [
-  { city: "Akure", state: "Ondo" },
-  { city: "Abeokuta", state: "Ogun" },
-  { city: "Abuja", state: "Federal Capital Territory" },
-  { city: "Benin", state: "Edo" },
+  { city: "Akure", state: "Ondo", imageId: "akure" },
+  { city: "Abeokuta", state: "Ogun", imageId: "beks" },
+  { city: "Abuja", state: "Federal Capital Territory", imageId: "abuja" },
+  { city: "Benin", state: "Edo", imageId: "benin" },
   { city: "Ife", state: "Osun" },
-  { city: "Ilorin", state: "Kwara" },
+  { city: "Ilorin", state: "Kwara", imageId: "ilorin" },
   { city: "Kano", state: "Kano" },
-  { city: "Jos", state: "Plateau" },
-  { city: "Lagos", state: "Lagos" },
+  { city: "Jos", state: "Plateau", imageId: "jos" },
+  { city: "Lagos", state: "Lagos", imageId: "lagos" },
   { city: "Enugu", state: "Enugu" },
-  { city: "Calabar", state: "Cross River" },
-  { city: "Ibadan", state: "Oyo" },
-  { city: "Port Harcourt", state: "Rivers" },
+  { city: "Calabar", state: "Cross River", imageId: "calabar" },
+  { city: "Ibadan", state: "Oyo", imageId: "ibadan" },
+  { city: "Port Harcourt", state: "Rivers", imageId: "ph" },
   { city: "Zaria", state: "Kaduna" },
   { city: "Ekiti", state: "Ekiti" },
 ];
@@ -476,8 +482,9 @@ export default function LocationsMap() {
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden">
               <CloudImage
-                id="gallery-1"
-                alt="AIESEC members together at a local committee event"
+                key={selectedLocation.imageId ?? FALLBACK_IMAGE_ID}
+                id={selectedLocation.imageId ?? FALLBACK_IMAGE_ID}
+                alt={`AIESEC members in ${selectedLocation.city}`}
                 className="h-full w-full object-cover"
               />
             </div>

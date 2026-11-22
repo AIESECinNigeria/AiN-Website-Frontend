@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import CloudImage from "@/components/CloudImage";
 
 export interface Stat {
@@ -17,16 +18,89 @@ const defaultStats: Stat[] = [
   { value: "15+", label: "cities" },
 ];
 
-// Avatar centres as a percentage of the dome box (1352 × 560), measured
-// directly from the design so the scatter matches exactly.
+/* Each avatar rides one of the two arcs. Outer-arc avatars travel left to
+ * right and inner-arc avatars travel right to left, so the dome always has
+ * motion in both directions. `phase` is where along the arc the avatar starts
+ * (0 = left end, 0.5 = top, 1 = right end). Spacing the phases evenly keeps
+ * the avatars from bunching up as they loop. */
 const avatars = [
-  // Centres aligned to the nearest of the two SVG arcs at each fixed x point.
-  { id: "stat-avatar-1", left: 49.7, top: 5.7 },
-  { id: "stat-avatar-2", left: 35.4, top: 23.6 },
-  { id: "stat-avatar-3", left: 82.8, top: 37.2 },
-  { id: "stat-avatar-4", left: 9.2, top: 60.9 },
-  { id: "stat-avatar-5", left: 90.1, top: 84.1 },
-];
+  { id: "stat-avatar-1", arc: "outer", phase: 0.5 },
+  { id: "stat-avatar-2", arc: "inner", phase: 0.25 },
+  { id: "stat-avatar-3", arc: "outer", phase: 0.83 },
+  { id: "stat-avatar-4", arc: "outer", phase: 0.17 },
+  { id: "stat-avatar-5", arc: "inner", phase: 0.75 },
+] as const;
+
+/* Seconds for one avatar to travel the whole arc. Lower is faster. */
+const ORBIT_SECONDS = { outer: 60, inner: 50 };
+
+/* The invisible box each avatar orbits in. It matches the arc it follows:
+ * the default values match the SVG arcs, the landing-impact values match the
+ * two border arcs drawn by the ::before and ::after pieces. */
+const ORBIT_FRAME = {
+  outer:
+    "top-[5.68%] w-[95.7%] [.landing-impact_&]:top-20.75 [.landing-impact_&]:w-172.5 lg:[.landing-impact_&]:top-12.75 lg:[.landing-impact_&]:w-[94.17%]",
+  inner:
+    "top-[17.39%] w-[85.8%] [.landing-impact_&]:top-40.75 [.landing-impact_&]:w-147 lg:[.landing-impact_&]:top-[155.2px] lg:[.landing-impact_&]:w-[80.24%]",
+};
+
+function orbitVars(arc: "outer" | "inner", phase: number): CSSProperties {
+  const duration = ORBIT_SECONDS[arc];
+  const reverse = arc === "inner";
+  // A negative delay starts the animation part of the way through its loop.
+  const delay = reverse ? -(1 - phase) * duration : -phase * duration;
+  return {
+    "--orbit-dur": `${duration}s`,
+    "--orbit-delay": `${delay}s`,
+    "--orbit-dir": reverse ? "reverse" : "normal",
+  } as CSSProperties;
+}
+
+const orbitCss = `
+@keyframes stats-spin {
+  from { transform: rotate(-90deg); }
+  to { transform: rotate(90deg); }
+}
+@keyframes stats-counter {
+  from { transform: rotate(90deg); }
+  to { transform: rotate(-90deg); }
+}
+@keyframes stats-fade {
+  0%, 6% { opacity: 0; }
+  17% { opacity: 1; }
+  83% { opacity: 1; }
+  94%, 100% { opacity: 0; }
+}
+@keyframes stats-fade-landing {
+  0%, 2% { opacity: 0; }
+  13% { opacity: 1; }
+  87% { opacity: 1; }
+  98%, 100% { opacity: 0; }
+}
+.stats-orbit {
+  transform-origin: 50% 100%;
+  will-change: transform;
+  animation: stats-spin var(--orbit-dur) linear infinite;
+  animation-delay: var(--orbit-delay);
+  animation-direction: var(--orbit-dir);
+}
+.stats-orbit-avatar {
+  animation:
+    stats-counter var(--orbit-dur) linear infinite,
+    stats-fade var(--orbit-dur) linear infinite;
+  animation-delay: var(--orbit-delay);
+  animation-direction: var(--orbit-dir);
+}
+.landing-impact .stats-orbit-avatar {
+  animation-name: stats-counter, stats-fade-landing;
+}
+@media (prefers-reduced-motion: reduce) {
+  .stats-orbit,
+  .stats-orbit-avatar {
+    animation-play-state: paused;
+  }
+}
+`;
 
 function StatList({ stats, className = "" }: { stats: Stat[]; className?: string }) {
   return (
@@ -47,8 +121,10 @@ function StatList({ stats, className = "" }: { stats: Stat[]; className?: string
 export default function StatsArc({ stats = defaultStats }: StatsArcProps) {
   return (
     <section className="px-6 pb-16 pt-8 lg:px-20 lg:pt-10 [.landing-impact_&]:p-0">
-      {/* Desktop: avatars scattered over a concentric-arc dome, stats at the base */}
-      <div className="relative mx-auto hidden aspect-[1352/560] w-full max-w-[1352px] lg:block
+      <style>{orbitCss}</style>
+
+      {/* Desktop: avatars gliding along a concentric-arc dome, stats at the base */}
+      <div className="@container relative mx-auto hidden aspect-[1352/560] w-full max-w-[1352px] lg:block
         [.landing-impact_&]:block [.landing-impact_&]:aspect-auto [.landing-impact_&]:h-66.5 [.landing-impact_&]:max-w-none [.landing-impact_&]:overflow-hidden [.landing-impact_&>svg]:hidden lg:[.landing-impact_&]:h-117.25 lg:[.landing-impact_&]:overflow-visible
         [.landing-impact_&]:before:absolute [.landing-impact_&]:before:top-20.75 [.landing-impact_&]:before:left-1/2 [.landing-impact_&]:before:aspect-[2/1] [.landing-impact_&]:before:w-172.5 [.landing-impact_&]:before:-translate-x-1/2 [.landing-impact_&]:before:rounded-t-full [.landing-impact_&]:before:border-2 [.landing-impact_&]:before:border-b-0 [.landing-impact_&]:before:border-[#E0E0E0] [.landing-impact_&]:before:[mask-image:linear-gradient(to_bottom,black_60%,transparent_98%)] lg:[.landing-impact_&]:before:top-12.75 lg:[.landing-impact_&]:before:w-[94.17%]
         [.landing-impact_&]:after:absolute [.landing-impact_&]:after:top-40.75 [.landing-impact_&]:after:left-1/2 [.landing-impact_&]:after:aspect-[2/1] [.landing-impact_&]:after:w-147 [.landing-impact_&]:after:-translate-x-1/2 [.landing-impact_&]:after:rounded-t-full [.landing-impact_&]:after:border-2 [.landing-impact_&]:after:border-b-0 [.landing-impact_&]:after:border-[#E0E0E0] [.landing-impact_&]:after:[mask-image:linear-gradient(to_bottom,black_55%,transparent_98%)] lg:[.landing-impact_&]:after:top-[155.2px] lg:[.landing-impact_&]:after:w-[80.24%]">
@@ -63,27 +139,35 @@ export default function StatsArc({ stats = defaultStats }: StatsArcProps) {
           <path d="M108 560 A 580 580 0 0 1 1244 560" stroke="#eef0f2" strokeWidth="1.5" />
         </svg>
 
-        {avatars.map((avatar) => (
-          <div
-            key={avatar.id}
-            className="absolute w-[6.3%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-aiesec-blue p-1 shadow-md
-              [.landing-impact_&]:z-10 [.landing-impact_&]:w-10 [.landing-impact_&]:p-0.5 [.landing-impact_&]:shadow-none lg:[.landing-impact_&]:w-[81.36px]
-              [.landing-impact_&:nth-of-type(1)]:-left-18.75! [.landing-impact_&:nth-of-type(1)]:top-61.25! lg:[.landing-impact_&:nth-of-type(1)]:left-[13.07%]! lg:[.landing-impact_&:nth-of-type(1)]:top-87.5!
-              [.landing-impact_&:nth-of-type(2)]:left-[20%]! [.landing-impact_&:nth-of-type(2)]:top-45.25! lg:[.landing-impact_&:nth-of-type(2)]:left-[36.43%]! lg:[.landing-impact_&:nth-of-type(2)]:top-41!
-              [.landing-impact_&:nth-of-type(3)]:left-[42.5%]! [.landing-impact_&:nth-of-type(3)]:top-20.25! lg:[.landing-impact_&:nth-of-type(3)]:left-[49.31%]! lg:[.landing-impact_&:nth-of-type(3)]:top-[40.68px]!
-              [.landing-impact_&:nth-of-type(4)]:left-[93.3%]! [.landing-impact_&:nth-of-type(4)]:top-32.75! lg:[.landing-impact_&:nth-of-type(4)]:left-[78.57%]! lg:[.landing-impact_&:nth-of-type(4)]:top-50!
-              [.landing-impact_&:nth-of-type(5)]:left-[78.2%]! [.landing-impact_&:nth-of-type(5)]:top-45.25! lg:[.landing-impact_&:nth-of-type(5)]:left-[85.05%]! lg:[.landing-impact_&:nth-of-type(5)]:top-108.25!"
-            style={{ left: `${avatar.left}%`, top: `${avatar.top}%` }}
-          >
-            <div className="aspect-square overflow-hidden rounded-full bg-white p-0.5 [.landing-impact_&]:p-0">
-              <CloudImage
-                id={avatar.id}
-                alt="AIESEC in Nigeria participant"
-                className="h-full w-full rounded-full object-cover"
-              />
+        {avatars.map((avatar) => {
+          const vars = orbitVars(avatar.arc, avatar.phase);
+          return (
+            // The frame is the half-circle box of the arc this avatar follows.
+            <div
+              key={avatar.id}
+              aria-hidden="true"
+              className={`pointer-events-none absolute left-1/2 aspect-[2/1] -translate-x-1/2 [.landing-impact_&]:z-10 ${ORBIT_FRAME[avatar.arc]}`}
+            >
+              {/* A zero-width bar standing on the circle's centre and rotating
+                  about it. The avatar sits at its top, so it rides the arc. */}
+              <div className="stats-orbit absolute bottom-0 left-1/2 h-full w-0" style={vars}>
+                <div className="absolute left-0 top-0 w-[6.3cqw] -translate-x-1/2 -translate-y-1/2 [.landing-impact_&]:w-10 lg:[.landing-impact_&]:w-[81.36px]">
+                  {/* Turns the opposite way so the photo stays upright, and
+                      fades in and out at the ends of the arc. */}
+                  <div className="stats-orbit-avatar w-full rounded-full bg-aiesec-blue p-1 shadow-md [.landing-impact_&]:p-0.5 [.landing-impact_&]:shadow-none" style={vars}>
+                    <div className="aspect-square overflow-hidden rounded-full bg-white p-0.5 [.landing-impact_&]:p-0">
+                      <CloudImage
+                        id={avatar.id}
+                        alt="AIESEC in Nigeria participant"
+                        className="h-full w-full rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         <StatList stats={stats} className="absolute inset-x-0 top-[79%] [.landing-impact_&]:top-78 [.landing-impact_&]:hidden lg:[.landing-impact_&]:flex" />
       </div>

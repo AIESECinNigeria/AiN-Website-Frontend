@@ -9,7 +9,7 @@ export const states: string[] = [
   'Anambra',
   'Bauchi',
   'Bayelsa',
-  'Benue',
+  // 'Benue',
   'Borno',
   'Cross River',
   'Delta',
@@ -43,7 +43,7 @@ export const states: string[] = [
 
 export const cities: string[] = [
   'Abuja',
-  'Benue',
+  // 'Benue',
   'Cross-River',
   'Edo',
   'Enugu',

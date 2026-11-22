@@ -29,10 +29,10 @@ const OurWhatView = () => {
           </div>
           <div className="flex justify-start my-4">
             <a
-              href="/leadership-summit/register"
+              href=""
               className="flex white-btn text-black items-center text-[12px] md:text-base border-black border shadow-[8px_8px_2px_-4px_#000]"
             >
-              Register for Leadership Summit
+             Registration for Leadership Summit has ended
               <CloudImage id="ain/ls/arrow" className="ml-1 h-6" alt="Arrow" />
             </a>
           </div>

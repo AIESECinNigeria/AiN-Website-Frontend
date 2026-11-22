@@ -15,8 +15,9 @@ const LeadershipHomePageHero = () => {
                   Get empowered to lead and drive sustainable development in Africa with AIESEC in Nigeria.
                 </p>
                 <div className="flex justify-start">
-                    <a href="/leadership-summit/register" className="flex primary-btn items-center lg:text-base text-black border-white border my-2">
-                        Register for Leadership Summit
+
+                      <a href="" className="flex primary-btn items-center lg:text-base text-black border-white border my-2">
+                        Registration for Leadership Summit has ended
                         <CloudImage id="ain/ls/arrow" className="ml-1 lg:h-6" alt="" />
                     </a>
                 </div>
