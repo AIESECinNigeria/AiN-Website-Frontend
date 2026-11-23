@@ -14,7 +14,12 @@ function ReadMoreButton({ className = "" }: { className?: string }) {
 }
 
 export default async function BlogSection() {
-  const posts = await getBlogArticles(3);
+  // The blog preview is non-essential: if Sanity is unavailable, hide it instead of failing the home page.
+  const posts = await getBlogArticles(3).catch((error) => {
+    console.error("Failed to load home page blog preview.", error);
+    return [];
+  });
+  if (posts.length === 0) return null;
   return (
     <section className="bg-white px-4 py-10 lg:px-20 lg:py-21">
       <div className="flex items-center justify-between gap-4 [&>a]:hidden lg:[&>a]:inline-flex">

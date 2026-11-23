@@ -20,6 +20,20 @@ function isTransientFailure(error: unknown): boolean {
 
 /** Retry published reads through Sanity's official CDN when the API is temporarily unreachable. */
 export async function requestSanityJson<T>(url: URL, token?: string): Promise<T> {
+  try {
+    return await requestWithRetries<T>(url, token);
+  } catch (error) {
+    // Blog content is published to a public dataset, so an expired, revoked or
+    // wrong-project token should not take the site down: fall back to an anonymous read.
+    if (token && error instanceof SanityHttpError && [401, 403].includes(error.status)) {
+      console.warn(`Sanity rejected the configured API token (${error.status}); retrying without it.`);
+      return requestWithRetries<T>(url);
+    }
+    throw error;
+  }
+}
+
+async function requestWithRetries<T>(url: URL, token?: string): Promise<T> {
   if (!/^[a-z0-9]+\.api\.sanity\.io$/.test(url.hostname)) {
     throw new Error("Invalid Sanity API hostname.");
   }
