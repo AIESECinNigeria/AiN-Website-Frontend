@@ -19,7 +19,7 @@ interface ScrollTypedTextProps {
  * reaches END. The gap between them is the scroll distance the typing is spread
  * over: a lower END means more scrolling, so slower typing. */
 const START = 0.95;
-const END = 0.5;
+const END = 1;
 
 /* How hard the scroll position is smoothed. Lower stiffness feels softer and
  * lets the typing run on for a moment after you stop scrolling. */
@@ -84,7 +84,7 @@ export default function ScrollTypedText({ text, className }: ScrollTypedTextProp
     }
 
     // Snap to the full text once the scroll is effectively done.
-    const next = clamped > 0.995 ? text.length : low;
+    const next = scrollYProgress.get() >= 1 || clamped > 0.995 ? text.length : low;
     setCount((current) => (current === next ? current : next));
   });
 
