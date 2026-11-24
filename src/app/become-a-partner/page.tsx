@@ -30,8 +30,8 @@ export default function BecomeAPartnerPage() {
       <StatsArc
         stats={[
           { value: "11,000+", label: "youths" },
-          { value: "500+", label: "volunteers" },
-          { value: "20+", label: "cities" },
+          { value: "900+", label: "volunteers" },
+          { value: "15+", label: "cities" },
         ]}
       />
 

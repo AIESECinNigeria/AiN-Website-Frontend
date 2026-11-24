@@ -49,7 +49,7 @@ export default function Footer() {
                 type="email"
                 required
                 placeholder="e.g johnemmanuel@gmail.com"
-                className="h-12.5 w-full min-w-0 flex-1 rounded-pill bg-aiesec-neutral-700 px-5 py-3.5 text-body text-white placeholder:text-aiesec-neutral-300 outline-none lg:h-19 lg:px-6 lg:py-5 lg:text-rd-body-02 adaptive-shell:lg:text-adaptive-24 adaptive-shell:lg:leading-[1.5]"
+                className="h-12.5 w-full min-w-0 flex-1 rounded-pill bg-aiesec-neutral-700 px-5 py-3.5 text-body text-white placeholder:text-aiesec-neutral-300 outline-none autofill:shadow-[inset_0_0_0_1000px_var(--color-aiesec-neutral-700)] autofill:[-webkit-text-fill-color:var(--color-white)] lg:h-19 lg:px-6 lg:py-5 lg:text-rd-body-02 adaptive-shell:lg:text-adaptive-24 adaptive-shell:lg:leading-[1.5]"
               />
               <button
                 type="submit"

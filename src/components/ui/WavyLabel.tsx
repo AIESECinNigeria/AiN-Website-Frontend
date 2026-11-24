@@ -46,7 +46,7 @@ export default function WavyLabel({
     : "flex h-[92px] flex-col items-center justify-center rounded-b-2xl px-4 text-center text-white";
 
   return (
-    <div className={className} style={{ color: fill }}>
+    <div className={`font-sans ${className}`} style={{ color: fill }}>
       <svg
         width="100%"
         height={wave.height}
@@ -69,13 +69,13 @@ export default function WavyLabel({
 
       <div className={bodyClass} style={{ backgroundColor: fill }}>
         {quote && (
-          <p className="text-lg font-medium leading-snug tracking-[-0.01em] lg:text-xl lg:leading-normal">
+          <p className="text-body font-medium leading-[1.5] tracking-[-0.01em] lg:text-adaptive-20">
             {quote}
           </p>
         )}
         <div>
-          <p className="text-xl font-semibold leading-7">{name}</p>
-          <p className="mt-0.5 text-base leading-6 text-white/90">{role}</p>
+          <p className="text-xl font-semibold leading-[1.4] lg:text-adaptive-20">{name}</p>
+          <p className="mt-0.5 text-base leading-[1.5] text-white/90 lg:text-adaptive-16">{role}</p>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ export interface StatsArcProps {
 
 const defaultStats: Stat[] = [
   { value: "100,000+", label: "youths impacted", mobileLabel: "youths" },
-  { value: "1000+", label: "active volunteers", mobileLabel: "volunteers" },
+  { value: "900+", label: "active volunteers", mobileLabel: "volunteers" },
   { value: "15+", label: "cities" },
 ];
 

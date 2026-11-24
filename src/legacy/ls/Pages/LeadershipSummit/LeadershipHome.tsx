@@ -3,7 +3,6 @@ import LeadershipOurWhat from '../../Containers/LeadershipOurWhat/LeadershipOurW
 import LeadershipOurTheme from '../../Containers/LeadershipOurTheme/LeadershipOurTheme';
 import LeadershipWhyAttend from '../../Containers/LeadershipWhyAttend/LeadershipWhyAttend'
 import LeadershipAboutAIESEC from '../../Containers/LeadershipAboutAIESEC/LeadershipAboutAIESEC';
-import LeadershipWaitlist from '../../Containers/LeadershipWaitlist/LeadershipWaitlist';
 
 const LeadershipHome = () => {
     return (
@@ -13,7 +12,6 @@ const LeadershipHome = () => {
             <LeadershipOurTheme/>
             <LeadershipWhyAttend/>
             <LeadershipAboutAIESEC/>
-            <LeadershipWaitlist/>
         </>
     );
 };
